@@ -12,5 +12,6 @@ setup(
     install_requires=[
         'Sphinx',
         'nbsphinx',
+        'sphinx-rtd-theme',
           ],
 )
