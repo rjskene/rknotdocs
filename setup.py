@@ -8,7 +8,6 @@ setup(
     author='TODO',
     author_email='todo@example.org',
     license='TODO',
-    packages=['rknotdocs'],
     zip_safe=False,
     install_requires=[
         'Sphinx',
