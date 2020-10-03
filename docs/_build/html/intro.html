@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction &mdash; RKnot  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="RKnot" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> RKnot
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Heterogeneity">Heterogeneity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Approach">Approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Expected-Contacts">Expected Contacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Likelihood-of-Transmission">Likelihood of Transmission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#The-Average-Contact">The Average Contact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#References">References</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RKnot</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Introduction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/intro.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Introduction">
+<h1>Introduction<a class="headerlink" href="#Introduction" title="Permalink to this headline">¶</a></h1>
+<p>RKnot’s purpose is two-fold:</p>
+<ol class="arabic simple">
+<li><p>Investigate the Herd Immunity Threshold (HIT) under Conditions of Heterogeneity</p></li>
+<li><p>Investigate impacts of policy decisions on viral spread, hospital capacity, and death</p></li>
+</ol>
+<p>Standard <span class="math notranslate nohighlight">\(R_0\)</span> models estimate HIT as:</p>
+<p><span class="math notranslate nohighlight">\(HIT = 1 - 1/R_0\)</span> <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3782273/">(ref)</a></p>
+<p>For a virus with <span class="math notranslate nohighlight">\(R_0\)</span> of 2.5 (<a class="reference external" href="https://www.cdc.gov/coronavirus/2019-ncov/hcp/planning-scenarios.html">as is estimated for sars-cov-2</a>), this results in a HIT of 60%. Yet, measurements of seroprevalance of antibodies have suggested 15-20% peaks in some communities (<a class="reference external" href="https://www.medrxiv.org/content/10.1101/2020.06.28.20142190v1">e.g. New York City</a>). <em>Is it possible that HIT is lower than</em> <span class="math notranslate nohighlight">\(R_0\)</span> <em>would suggest?</em></p>
+<p><span class="math notranslate nohighlight">\(R_0\)</span> carries several basic assumptions that are not applicable to real world populations. The key assumption is homogeneity, meaning specifically:</p>
+<ol class="arabic simple">
+<li><p>an infected subject exists in a pool otherwise entirely constituted of susceptible subjects</p></li>
+<li><p>an infected subject has the same number of contacts with susceptible subjects as any other infected subject</p></li>
+<li><p>each contact is equally likely to result in an infection, regardless of where, when, or between whom the contact was made</p></li>
+</ol>
+<div class="section" id="Heterogeneity">
+<h2>Heterogeneity<a class="headerlink" href="#Heterogeneity" title="Permalink to this headline">¶</a></h2>
+<p>RKnot seeks to address the shortfalls in <span class="math notranslate nohighlight">\(R_0\)</span> models by allowing the user to introduce customized, heterogeneous populations. Populations can have heterogeneity across several axis including:</p>
+<ul class="simple">
+<li><p>Fatality Rate</p></li>
+<li><p>Population Density</p></li>
+<li><p>Movement - frequency and distance of movements in the space</p></li>
+<li><p>Susceptibility - segments of population can be made immune (without requiring vaccination) to mimick phenomenon like <a class="reference external" href="https://www.bmj.com/content/370/bmj.m3563">possible T-cell immunity</a>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(T\)</span> or Transmission Factor: RKnot (as with <span class="math notranslate nohighlight">\(R_0\)</span>) assumes that all contacts have the same likelihood of transmission, <span class="math notranslate nohighlight">\(\tau\)</span>. This is a homogenous assumption, however, RKnot introduces a unitless Transmission Factor, <span class="math notranslate nohighlight">\(T\)</span>, for each subject at each contact that can modulate <span class="math notranslate nohighlight">\(\tau\)</span>. This could mimick social distancing or mask wearing or different socio-cultural norms that may impact spread (i.e. east Asian bows versus southern European double-kisses)</p></li>
+</ul>
+<p>Where RKnot seems to distinguish itself from prevailing models is that to affect the heterogeneity above, RKnot simulates <em>every contact of every subject in the population</em>.</p>
+<p>In order to do that, RKnot must determine the $ :nbsphinx-math:<a href="#id1"><span class="problematic" id="id2">`</span></a>tau <a href="#id3"><span class="problematic" id="id4">`</span></a>$ for the space created by the user.</p>
+</div>
+<div class="section" id="Approach">
+<h2>Approach<a class="headerlink" href="#Approach" title="Permalink to this headline">¶</a></h2>
+<p>R0 is typically assessed at the population level and individual level (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1804098/">and often those assessments disagree</a>). The basic SIR model evaluates Ro as:</p>
+<p><span class="math notranslate nohighlight">\(R_0=\beta*𝑑\)</span>            (see <a class="reference external" href="https://web.stanford.edu/~jhj1/teachingdocs/Jones-on-R0.pdf">‘R0 in Simple Models’</a>)</p>
+<p>β = transmission rate, or number of secondary of infections per unit time (typically days)</p>
+<p>𝑑 = infectious period, or infectiousness duration per unit time (typically days)</p>
+<p>This is often rewritten as:</p>
+<p><span class="math notranslate nohighlight">\(R_0=\beta/γ\)</span></p>
+<p>where:</p>
+<p>γ = recovery rate, or the expected recovery of infections per unit time (typically days)</p>
+<p>So, <span class="math notranslate nohighlight">\(R_0\)</span> can be read as the fraction of new infections vs. recovering infections over the “life” of an infection.</p>
+<p>Thus, modeling on a per contact or per subject basis is hampered b/c Ro models often average out contacts and focus more broadly on number of transmissions during the infection period (and assume contacts average out among the population).</p>
+<p>To model each contact, we must know the probability of transmission for each contact, <span class="math notranslate nohighlight">\(\tau\)</span>. The transmission rate <span class="math notranslate nohighlight">\(\beta\)</span> does imply a likelihood of infection, if the number of contacts is known and can be written as:</p>
+<p><span class="math notranslate nohighlight">\(\beta=\tau*c\)</span></p>
+<p>where 𝞽 = likelihood of infection during a contact c = number of contacts / unit time, (i.e. contact rate)</p>
+<p>Thus,</p>
+<p><span class="math notranslate nohighlight">\(R_0=\tau*c*𝑑\)</span>            (<a class="reference external" href="https://web.stanford.edu/~jhj1/teachingdocs/Jones-on-R0.pdf">see equation 1</a>)</p>
+<p>or</p>
+<p><span class="math notranslate nohighlight">\(R_0=\tau*c*1/\gamma\)</span></p>
+<p>For simulation purposes, we assume:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R_0\)</span> is known (from external analysis and provided by the user)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma\)</span> is known (from external analysis and provided by the user)</p></li>
+</ul>
+<p>Thus, unknowns are <span class="math notranslate nohighlight">\(\tau\)</span> &amp; c</p>
+<p>The simulation space, however, is given a number of parameters that allow us to estimate the expected number of contacts. We know:</p>
+<ul class="simple">
+<li><p>The population size</p></li>
+<li><p>The number of locations</p></li>
+<li><p>The movement patterns of subjects</p></li>
+<li><p>The likelihood that a subject will be at a particular location at one time given 1/2/3 above</p></li>
+</ul>
+</div>
+<div class="section" id="Expected-Contacts">
+<h2>Expected Contacts<a class="headerlink" href="#Expected-Contacts" title="Permalink to this headline">¶</a></h2>
+<p><span class="math notranslate nohighlight">\(R_0\)</span> assumes that an infected subject will hvae as many contacts with the population as any other subject. A simple method to estimate contacts for one infected subject is to, then, assume that each subject is equally likely to be in any one location at any time (in Rknot, this implemented by the <code class="docutils literal notranslate"><span class="pre">equal</span></code> mover function).</p>
+<p>The probability of a single dot being in a singe location is:</p>
+<p><span class="math notranslate nohighlight">\(P(LOC_{xy},DOT_i)=1/N\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(_{xy}\)</span> = x/y coordinates of the location <span class="math notranslate nohighlight">\(N\)</span> = number of locations</p>
+<p>The probability of another dot being there at the same time:</p>
+<p><span class="math notranslate nohighlight">\(P(LOC_{xy},DOT_{ij})=1/N*1/N\)</span></p>
+<p>The probability of <span class="math notranslate nohighlight">\(n\)</span> dots being at the same location at the same time:</p>
+<p><span class="math notranslate nohighlight">\(P(LOC_{xy},DOT_{ij})=1/N^n\)</span></p>
+<p>Then, the number of ordered contacts is:</p>
+<p><span class="math notranslate nohighlight">\(\sum_{n=1}^N(1 / N^n)\)</span></p>
+<p>And for all possible orders:</p>
+<p><span class="math notranslate nohighlight">\(\sum_{n=1}^N(1/N^n)*n\)</span></p>
+</div>
+<div class="section" id="Likelihood-of-Transmission">
+<h2>Likelihood of Transmission<a class="headerlink" href="#Likelihood-of-Transmission" title="Permalink to this headline">¶</a></h2>
+<p>With expected contact rate known, probability of transmission is found as:</p>
+<p><span class="math notranslate nohighlight">\(\tau=R_0/(𝑑*c)\)</span></p>
+<p>or</p>
+<p><span class="math notranslate nohighlight">\(\tau=R_0*γ/c\)</span> where <span class="math notranslate nohighlight">\(0&lt;=\tau&lt;=1\)</span></p>
+<p>Checking dimenions,</p>
+<p><span class="math notranslate nohighlight">\(=\frac{infections}{1}*\frac{1}{days}*\frac{days}{contacts}\)</span> <span class="math notranslate nohighlight">\(=\frac{infections}{contacts}\)</span></p>
+<p>This is the likelihood of transmission of a contact and is a fundamental factor used in the RKnot simulation.</p>
+<p>If a susceptible subject contacts an infected, anywhere in the space, at any time, its probability of infection is <span class="math notranslate nohighlight">\(\tau\)</span>.</p>
+<p>If a susceptible comes in contact with multiple infected at any time, its probability of infection is <span class="math notranslate nohighlight">\(\tau*n_{inf}\)</span></p>
+</div>
+<div class="section" id="The-Average-Contact">
+<h2>The Average Contact<a class="headerlink" href="#The-Average-Contact" title="Permalink to this headline">¶</a></h2>
+<p>RKnot assumes that each and every contact is an “Average Contact”. The Average Contact is a purely theoretical interaction that would result in about an average likelihood of transmission relative to all other possible interactions. The Average Contact is uninfluenced by external factors such as the demographics of the subjects, etc. Thus, the likelihood of transmission of an average contact is a fundamental property of the virus in question. And we would expect that more virulent viruses would
+have higher likelihood of transmission in an Average Contact, or that viruses with a higher <span class="math notranslate nohighlight">\(R_0\)</span> would have a higher likelihood of transmission in an Average Contact.</p>
+<p>I like to think of the Average Contact as two people on an elevator, standing two feet apart, having a conversation. This to me feels about average, or in the middle, of other contacts like, say, two people standing in a open field, 6 feet apart, having a conversation, or two people pressed right up against each other, by many other people, on the floor section of a concert.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="References">
+<h2>References<a class="headerlink" href="#References" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3782273/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3782273/</a></p></li>
+<li><p><a class="reference external" href="https://www.bmj.com/content/370/bmj.m3563">https://www.bmj.com/content/370/bmj.m3563</a></p></li>
+<li><p><a class="reference external" href="https://www.medrxiv.org/content/10.1101/2020.06.28.20142190v1">https://www.medrxiv.org/content/10.1101/2020.06.28.20142190v1</a></p></li>
+<li><p><a class="reference external" href="https://fivethirtyeight.com/features/without-a-vaccine-herd-immunity-wont-save-us/">https://fivethirtyeight.com/features/without-a-vaccine-herd-immunity-wont-save-us/</a></p></li>
+<li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3935673/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3935673/</a></p></li>
+<li><p><a class="reference external" href="https://web.stanford.edu/~jhj1/teachingdocs/Jones-on-R0.pdf">https://web.stanford.edu/~jhj1/teachingdocs/Jones-on-R0.pdf</a></p></li>
+<li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1804098/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1804098/</a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="RKnot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, rskene
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
