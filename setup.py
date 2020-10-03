@@ -10,8 +10,12 @@ setup(
     license='TODO',
     zip_safe=False,
     install_requires=[
-        'Sphinx',
-        'nbsphinx',
+        'docutils',
+        'jinja2',
+        'nbconvert!=5.4',
+        'traitlets',
+        'nbformat',
+        'sphinx>=1.8',
         'sphinx-rtd-theme',
           ],
 )
