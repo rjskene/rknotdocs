@@ -18,5 +18,6 @@ setup(
         'sphinx>=1.8',
         'sphinx-rtd-theme',
         'nbsphinx',
+        'ipython',
           ],
 )
