@@ -3,14 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-*****
-RKnot
-*****
+************
+RKnot - Beta
+************
 *A Simulation Space for Analyzing Viral Spread in Customized Populations*
-
 
 .. toctree::
    :maxdepth: 2
 
    intro
-
+   hit
