@@ -9,7 +9,7 @@ RKnot - Beta
 *A Simulation Space for Analyzing Viral Spread in Customized Populations*
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    intro
    hit
