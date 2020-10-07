@@ -32,7 +32,7 @@
         <script src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"equationNumbers": {"autoNumber": "AMS", "useLabelIds": true}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -435,9 +435,10 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Factors-Influencing-HIT">
 <h1>Factors Influencing HIT<a class="headerlink" href="#Factors-Influencing-HIT" title="Permalink to this headline">¶</a></h1>
+<p><em>BETA RELEASE: I should emphasize this project remains in the experimental stage and there are likely many tweaks to come that will improve/change outcomes. I do believe at this stage that the simulation provides good general insights regarding the relationship between various factors and viral spread.</em></p>
 <div class="section" id="Base-US-Simulation">
 <h2>Base US Simulation<a class="headerlink" href="#Base-US-Simulation" title="Permalink to this headline">¶</a></h2>
-<p>To explore the various concepts of RKnot and viral spread, we’ll use a simulation design based on <a class="reference external" href="https://www.cdc.gov/coronavirus/2019-ncov/hcp/planning-scenarios.html">CDC Best Planning Scenario</a> guidelines for virus characteristics including:</p>
+<p>To explore the various concepts of RKnot and viral spread, we’ll use a simulation design based on <a class="reference external" href="https://www.cdc.gov/coronavirus/2019-ncov/hcp/planning-scenarios.html">CDC Best Planning Scenario</a> guidelines for COVID-19 characteristics including:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(R_0\)</span> 2.5</p></li>
 <li><p>IFR for each of 4 age groups</p></li>
@@ -453,6 +454,7 @@ div.rendered_html tbody tr:hover {
 <p><span class="math notranslate nohighlight">\(^1\)</span><em>proportionately split among the 4 age groups to match US census data.</em></p>
 <p><span class="math notranslate nohighlight">\(^2\)</span><em>equal likelihood of transmission on any day (i.e. no viral load curve)</em></p>
 <p><a class="reference external" href="https://www.census.gov/prod/cen2010/briefs/c2010br-03.pdf">US Census Data</a></p>
+<p><em>Note while sars-cov-2 is obviously a major focus globally at the moment, the goal of RKnot is to be applicable to any virus (or anything that spreads like a virus)</em></p>
 </div>
 <div class="section" id="Natural">
 <h2>Natural<a class="headerlink" href="#Natural" title="Permalink to this headline">¶</a></h2>
@@ -554,7 +556,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/baseus/1.mp4" controls><p>alternative text</p>
-</video><p>*Note embedded videos are used for convenience purposes. Given the random processes involved, running the same code will produce slightly different results each time.</p>
+</video><p><em>Note embedded videos are used for convenience purposes. Given the random processes involved, running the same code will produce slightly different results each time.</em></p>
 <p>The sim results in a relatively standard spread curve with</p>
 <table class="docutils align-default">
 <colgroup>
@@ -573,10 +575,10 @@ div.rendered_html tbody tr:hover {
 </tr>
 </tbody>
 </table>
-<p>You’ll note this is somewhat higher than the expected HIT of 60% for <span class="math notranslate nohighlight">\(R_0\)</span> 2.5, but not quite equal. The differences result given:</p>
+<p>You’ll note this is higher than the expected HIT of 60% for <span class="math notranslate nohighlight">\(R_0\)</span> 2.5. The differences result given:</p>
 <ol class="arabic simple">
 <li><p>The simulation is a stochastic process and random variation will result in variation from the mathematical model in smaller populations.</p></li>
-<li><p>This is not an entirely homogeneous population, with different IFRs and different numbers of contacts between subjects. In particular, because dots can occupy the same location at the same time, and multiple infected dots at the same location increase the transmission rate for any susceptible, this tends to lead to faster spread than <span class="math notranslate nohighlight">\(R_0\)</span> would suggest.</p></li>
+<li><p>This is not an entirely homogeneous population, with different IFRs and different numbers of contacts between subjects. In particular, because dots can occupy the same location at the same time, and <a class="reference internal" href="intro.html#Likelihood-of-Transmission"><span class="std std-ref">multiple infected dots at the same location increase the transmission rate for any susceptible</span></a>, this tends to lead to faster spread than <span class="math notranslate nohighlight">\(R_0\)</span> would suggest.</p></li>
 </ol>
 </div>
 <div class="section" id="2.-Local">
@@ -995,7 +997,7 @@ div.rendered_html tbody tr:hover {
 </tr>
 </tbody>
 </table>
-<p>This gated structure results in essentially no impact. The use for this structure will become more evident in the disucssion on <a class="reference external" href="#policy">Policy Decisions.</a></p>
+<p>This gated structure results in essentially no impact. The use for this structure will become more evident in the disucssion on <a class="reference external" href="#Policy">Policy Decisions.</a></p>
 </div>
 <div class="section" id="7.-Events,-Gates,-and-Pre-Immunity">
 <h3>7. Events, Gates, and Pre-Immunity<a class="headerlink" href="#7.-Events,-Gates,-and-Pre-Immunity" title="Permalink to this headline">¶</a></h3>
