@@ -443,6 +443,7 @@ div.rendered_html tbody tr:hover {
 <li><p><span class="math notranslate nohighlight">\(R_0\)</span> 2.5</p></li>
 <li><p>IFR for each of 4 age groups</p></li>
 </ul>
+<p><em>Note while sars-cov-2 is obviously a topical globally, the goal of RKnot is to be applicable to any virus (or anything that spreads like a virus). sars-cov-2 is used only for illustration purposes.</em></p>
 <p>Other assumptions:</p>
 <ul class="simple">
 <li><p>Population of <span class="math notranslate nohighlight">\(10,000^1\)</span></p></li>
@@ -454,7 +455,6 @@ div.rendered_html tbody tr:hover {
 <p><span class="math notranslate nohighlight">\(^1\)</span><em>proportionately split among the 4 age groups to match US census data.</em></p>
 <p><span class="math notranslate nohighlight">\(^2\)</span><em>equal likelihood of transmission on any day (i.e. no viral load curve)</em></p>
 <p><a class="reference external" href="https://www.census.gov/prod/cen2010/briefs/c2010br-03.pdf">US Census Data</a></p>
-<p><em>Note while sars-cov-2 is obviously a major focus globally at the moment, the goal of RKnot is to be applicable to any virus (or anything that spreads like a virus)</em></p>
 </div>
 <div class="section" id="Natural">
 <h2>Natural<a class="headerlink" href="#Natural" title="Permalink to this headline">¶</a></h2>
@@ -584,7 +584,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="2.-Local">
 <h3>2. Local<a class="headerlink" href="#2.-Local" title="Permalink to this headline">¶</a></h3>
 <p>In remaining simulations, we begin to introduce ever increasing homogeneity.</p>
-<p>Our first change is change all of the subjects mover functions to <code class="docutils literal notranslate"><span class="pre">local</span></code>. The <code class="docutils literal notranslate"><span class="pre">local</span></code> mover has a strong bias towards locations only in its immediate vicinity, which is a better approximation of real world processes (though certainly not a perfect one).</p>
+<p>Our first change is to adjust the subjects mover functions to <code class="docutils literal notranslate"><span class="pre">local</span></code>. The <code class="docutils literal notranslate"><span class="pre">local</span></code> mover has a strong bias towards locations only in its immediate vicinity, which is a better approximation of real world processes (though certainly not a perfect one).</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
@@ -655,7 +655,7 @@ div.rendered_html tbody tr:hover {
 </tr>
 </tbody>
 </table>
-<p><em>CAUTION: RKnot estimates transmission rate assuming all subjects are ``equal`` movers. Thus, where ``local`` movers are used, the transmission rate may be underestimated and result in the much lower transmission witnessed.</em></p>
+<p><em>CAUTION: RKnot estimates transmission rate assuming all subjects are</em> <code class="docutils literal notranslate"><span class="pre">equal</span></code> <em>movers. Thus, where</em> <code class="docutils literal notranslate"><span class="pre">local</span></code> <em>movers are used, the transmission rate may (or may not) be underestimated. This is being investigated.</em></p>
 </div>
 <div class="section" id="3.-Social-Millenials">
 <h3>3. Social Millenials<a class="headerlink" href="#3.-Social-Millenials" title="Permalink to this headline">¶</a></h3>
@@ -741,7 +741,7 @@ div.rendered_html tbody tr:hover {
 </ul>
 <p>This means, in the inverse, that 10% and 25% of the subjects in the respective groups are already immune to the virus (whether through pre-existing T-cell immunity, anti-bodies, or otherwise).</p>
 <p>The older group is assumed to have a lower susceptibility factor as it is more likely that older people will have had more exposure to similar viruses over their lifetime.</p>
-<p>T-cell immunity to sars-cov-2 remains a controversial subject, but <a class="reference external" href="https://www.bmj.com/content/370/bmj.m3563">many studies</a> have found T-cell prevalance in between 20% - 50% of in <em>people unexposed to sars-cov-2</em>. It is suggested that exposure to “common cold” coronaviruses (or more dangerous ones) may convey this immunity.</p>
+<p>T-cell immunity to sars-cov-2 remains a controversial subject, but <a class="reference external" href="https://www.bmj.com/content/370/bmj.m3563">many studies</a> have found prevalance of T-cells between 20% - 50% in <em>people unexposed to sars-cov-2</em>. It is suggested that exposure to “common cold” coronaviruses (or more dangerous ones) may convey this immunity.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
@@ -1172,7 +1172,7 @@ div.rendered_html tbody tr:hover {
 </table>
 <p>Here we can that social distancing in a population does have a modest impact on peak infections. We also can see that social distancing among the most susceptible (i.e. <code class="docutils literal notranslate"><span class="pre">group4b</span></code>) was a key factor in a dramatically reduced fatality rate (50-75% reduction in fatalities).</p>
 <p>Essentially, in this simulation, social distancing prevented an outbreak in the <code class="docutils literal notranslate"><span class="pre">group4b</span></code> community (whereas outbreaks had previously occured there in prior sims).</p>
-<p>*Note that randomness in an important factor in viral transmission, so the results of the sim above will not be repeatable every time, though on balance we would expect this outcome to occur more often than in say, Example 7.</p>
+<p><em>Note that randomness in an important factor in viral transmission, so the results of the sim above will not be repeatable every time, though on balance we would expect this outcome to occur more often than in say, Example 7.</em></p>
 </div>
 <div class="section" id="9.-Isolation">
 <h3>9. Isolation<a class="headerlink" href="#9.-Isolation" title="Permalink to this headline">¶</a></h3>
@@ -1187,7 +1187,7 @@ div.rendered_html tbody tr:hover {
 <h2>Policy<a class="headerlink" href="#Policy" title="Permalink to this headline">¶</a></h2>
 <p>With a more realistic model of subject interaction, we can begin to experiment with the impact of different policy measures.</p>
 <p>RKnot can simulate policy measures via <code class="docutils literal notranslate"><span class="pre">Restriction</span></code>, <code class="docutils literal notranslate"><span class="pre">SocialDistancing</span></code>, and <code class="docutils literal notranslate"><span class="pre">Quarantine</span></code> objects.</p>
-<p>First we will reset our groups. We will maintain the 5 group structure with 2/3rds of the 70+ population gated. No groups will have pre-existing immunity. Remaining characteristics are as <a class="reference external" href="#">per here</a>.</p>
+<p>First we will reset our groups. We will maintain the 5 group structure with 1/3rd of the 70+ population gated. No groups will have pre-existing immunity. Remaining characteristics are as <a class="reference external" href="#">per here</a>.</p>
 <p>Events are as <a class="reference external" href="#">per here</a>.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
@@ -1340,16 +1340,14 @@ div.rendered_html tbody tr:hover {
 </tr>
 </tbody>
 </table>
-<p>We see that the curve is flattened significanlty during the restriction period and the peak of infections has been pushed way out to ~125+ days, but as restrictions are lifted the outbreak ensues and fatalities are actually higher than in many other sims.</p>
+<p>We see that the curve is flattened significanlty during the restriction period and the peak of infections has been pushed way out to ~125+ days, but, as restrictions are lifted, the outbreak ensues and fatalities are actually higher than in many other sims.</p>
 </div>
 <div class="section" id="2.-Restrict-Elderly-Visits">
 <h3>2. Restrict Elderly Visits<a class="headerlink" href="#2.-Restrict-Elderly-Visits" title="Permalink to this headline">¶</a></h3>
-<p>We can restrict events by name by passing <code class="docutils literal notranslate"><span class="pre">name</span></code> key to <code class="docutils literal notranslate"><span class="pre">criteria</span></code>.</p>
-<p>We can do this to restrict the travel event to the 70+ gated area. This restriction will last for a very long period of time.</p>
-<p>There will be no other restrictions.</p>
-<p>Policy measure is implemented on day 30 and maintained for another 120 days.</p>
+<p>We can restrict events by name by passing <code class="docutils literal notranslate"><span class="pre">name</span></code> key to <code class="docutils literal notranslate"><span class="pre">criteria</span></code>. We can do this to restrict the travel event to the 70+ gated area.</p>
+<p>The policy measure is implemented on day 30 and maintained for another 120 days. There will be no other restrictions.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1416,13 +1414,13 @@ div.rendered_html tbody tr:hover {
 </tr>
 </tbody>
 </table>
-<p>While this approach does not have big impact on viral spread, it is the <em>only policy measure that reduces fatalities in the long run</em>. The most susceptible are protected during the peak and the virus has “burned out” fast enough that the elderly are not infected when visits resume.</p>
+<p>While this approach does not have a big impact on viral spread, it is the <em>only policy measure that reduces fatalities in the long run</em>. The most susceptible are protected during the peak and the virus has “burned out” fast enough that the elderly are not infected when visits resume.</p>
 </div>
 <div class="section" id="3.-Social-Distancing">
 <h3>3. Social Distancing<a class="headerlink" href="#3.-Social-Distancing" title="Permalink to this headline">¶</a></h3>
-<p>We can mimick the implementation of Social Distancing policies in certain settings via the SocialDistancing object. Mask wearing, hand sanitizing, and 6-foot perimeters all provided varying levels of protection.</p>
-<p>It is hard to estimate the degree of protection by each, and even harder in combination. For instance, <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/23498357/">this study</a> found anywhere between a 1.1- and 55-fold reduction in exposure to influenze with varying mask designs.</p>
-<p>So we provide tmfs here for illustration purposes only, attempting to catch all social distancing practices. We also provide different tmfs for the different age groups, meant to simulate adherence to policy.</p>
+<p>We can mimick the implementation of Social Distancing policies in certain settings via the <code class="docutils literal notranslate"><span class="pre">SocialDistancing</span></code> object. Mask wearing, hand sanitizing, and 6-foot perimeters all provide varying levels of protection.</p>
+<p>It is hard to estimate the degree of protection from each, and even harder in combination. For instance, <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/23498357/">this study</a> found anywhere between a 1.1- and 55-fold reduction in exposure to influenza with varying mask designs.</p>
+<p>So we provide <code class="docutils literal notranslate"><span class="pre">tmfs</span></code> here for illustration purposes only, attempting to catch all social distancing practices. We also provide different <code class="docutils literal notranslate"><span class="pre">tmfs</span></code> for the different age groups, meant to simulate adherence to policy.</p>
 <p>The policy measure is implemented on day 30 and maintained for 120 days.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
