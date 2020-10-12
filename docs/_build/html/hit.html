@@ -519,7 +519,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">details</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -529,8 +529,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-2020-10-11 15:23:50,757 INFO resource_spec.py:223 -- Starting Ray with 11.67 GiB memory available for workers and up to 5.85 GiB for objects. You can adjust these settings with ray.init(memory=&lt;bytes&gt;, object_store_memory=&lt;bytes&gt;).
-2020-10-11 15:23:51,320 INFO services.py:1191 -- View the Ray dashboard at <span class="ansi-green-intense-fg ansi-bold">localhost:8266</span>
+2020-10-11 22:39:57,464 INFO resource_spec.py:223 -- Starting Ray with 10.45 GiB memory available for workers and up to 5.24 GiB for objects. You can adjust these settings with ray.init(memory=&lt;bytes&gt;, object_store_memory=&lt;bytes&gt;).
+2020-10-11 22:39:58,042 INFO services.py:1191 -- View the Ray dashboard at <span class="ansi-green-intense-fg ansi-bold">localhost:8266</span>
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -591,7 +591,7 @@ div.rendered_html tbody tr:hover {
 <p>In remaining simulations, we begin to introduce ever increasing homogeneity.</p>
 <p>Our first change is to adjust the subjects mover functions to <code class="docutils literal notranslate"><span class="pre">local</span></code>. The <code class="docutils literal notranslate"><span class="pre">local</span></code> mover has a strong bias towards locations only in its immediate vicinity, which is a better approximation of real world processes (though certainly not a perfect one).</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -603,7 +603,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
@@ -615,22 +615,6 @@ div.rendered_html tbody tr:hover {
 <span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
----------------------------------------------------------------------------------
-|                                  SIM DETAILS                                  |
-|-------------------------------------------------------------------------------|
-|           boundary|  [  1 100   1 100]|             n_locs|              10000|
-|-------------------|-------------------|-------------------|-------------------|
-|                  n|              10000|            density|                1.0|
-|-------------------|-------------------|-------------------|-------------------|
-|                ktr|                1.0|                tmr|               0.18|
-|-------------------|-------------------|-------------------|-------------------|
-</pre></div></div>
 </div>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/baseus/2.mp4" controls><p>Video Failed To Load</p>
 </video><p>This results in:</p>
@@ -672,7 +656,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
@@ -684,22 +668,6 @@ div.rendered_html tbody tr:hover {
 <span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
----------------------------------------------------------------------------------
-|                                  SIM DETAILS                                  |
-|-------------------------------------------------------------------------------|
-|           boundary|  [  1 100   1 100]|             n_locs|              10000|
-|-------------------|-------------------|-------------------|-------------------|
-|                  n|              10000|            density|                1.0|
-|-------------------|-------------------|-------------------|-------------------|
-|                ktr|                1.0|                tmr|               0.18|
-|-------------------|-------------------|-------------------|-------------------|
-</pre></div></div>
 </div>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/baseus/3.mp4" controls><p>Video Failed To Load</p>
 </video><p>This results in:</p>
@@ -743,7 +711,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
@@ -755,22 +723,6 @@ div.rendered_html tbody tr:hover {
 <span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
----------------------------------------------------------------------------------
-|                                  SIM DETAILS                                  |
-|-------------------------------------------------------------------------------|
-|           boundary|  [  1 100   1 100]|             n_locs|              10000|
-|-------------------|-------------------|-------------------|-------------------|
-|                  n|              10000|            density|                1.0|
-|-------------------|-------------------|-------------------|-------------------|
-|                ktr|                1.0|                tmr|               0.18|
-|-------------------|-------------------|-------------------|-------------------|
-</pre></div></div>
 </div>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/baseus/4.mp4" controls><p>Video Failed to Load</p>
 </video><p>This results in:</p>
@@ -832,33 +784,18 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
 <span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">use_init_func</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
----------------------------------------------------------------------------------
-|                                  SIM DETAILS                                  |
-|-------------------------------------------------------------------------------|
-|           boundary|  [  1 100   1 100]|             n_locs|              10000|
-|-------------------|-------------------|-------------------|-------------------|
-|                  n|              10000|            density|                1.0|
-|-------------------|-------------------|-------------------|-------------------|
-|                ktr|                1.0|                tmr|               0.18|
-|-------------------|-------------------|-------------------|-------------------|
-</pre></div></div>
 </div>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/baseus/5.mp4" controls><p>Video Failed to Load</p>
 </video><p>This results in:</p>
@@ -926,9 +863,11 @@ div.rendered_html tbody tr:hover {
     <span class="n">box_is_gated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">,</span> <span class="n">group3</span><span class="p">,</span> <span class="n">group4a</span><span class="p">,</span> <span class="n">group4b</span><span class="p">]</span>
+
 <span class="n">game</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;game&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">50</span><span class="p">,</span><span class="mi">84</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">church</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;church&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">91</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
 <span class="n">church2</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;church&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
 <span class="n">events</span> <span class="o">=</span> <span class="p">[</span><span class="n">game</span><span class="p">,</span> <span class="n">concert1</span><span class="p">,</span> <span class="n">concert2</span><span class="p">,</span> <span class="n">bar</span><span class="p">,</span> <span class="n">bar2</span><span class="p">,</span> <span class="n">bar3</span><span class="p">,</span> <span class="n">church</span><span class="p">,</span> <span class="n">church2</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -941,38 +880,24 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Travel</span>
+
 <span class="n">visit</span> <span class="o">=</span> <span class="n">Travel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;visit&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">visit</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
 <span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">use_init_func</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
----------------------------------------------------------------------------------
-|                                  SIM DETAILS                                  |
-|-------------------------------------------------------------------------------|
-|           boundary|  [  1 100   1 100]|             n_locs|              10000|
-|-------------------|-------------------|-------------------|-------------------|
-|                  n|              10000|            density|                1.0|
-|-------------------|-------------------|-------------------|-------------------|
-|                ktr|                1.0|                tmr|               0.18|
-|-------------------|-------------------|-------------------|-------------------|
-</pre></div></div>
 </div>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/baseus/6.mp4" controls><p>Video Failed to Load</p>
 </video><p>This results in:</p>
@@ -1008,15 +933,8 @@ div.rendered_html tbody tr:hover {
 <span></span><span class="n">group2</span><span class="p">[</span><span class="s1">&#39;susf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">8</span>
 <span class="n">group3</span><span class="p">[</span><span class="s1">&#39;susf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">65</span>
 <span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">,</span> <span class="n">group3</span><span class="p">,</span> <span class="n">group4a</span><span class="p">,</span> <span class="n">group4b</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">game</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;game&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">50</span><span class="p">,</span><span class="mi">84</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">game</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;game&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">50</span><span class="p">,</span><span class="mi">84</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">concert1</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;concert1&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">concert2</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;concert2&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">91</span><span class="p">,</span><span class="mi">92</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">bar</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">17</span><span class="p">,</span><span class="mi">24</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
@@ -1035,33 +953,18 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
 <span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">use_init_func</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
----------------------------------------------------------------------------------
-|                                  SIM DETAILS                                  |
-|-------------------------------------------------------------------------------|
-|           boundary|  [  1 100   1 100]|             n_locs|              10000|
-|-------------------|-------------------|-------------------|-------------------|
-|                  n|              10000|            density|                1.0|
-|-------------------|-------------------|-------------------|-------------------|
-|                ktr|                1.0|                tmr|               0.18|
-|-------------------|-------------------|-------------------|-------------------|
-</pre></div></div>
 </div>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/baseus/7.mp4" controls><p>Video Failed to Load</p>
 </video><p>This results in:</p>
@@ -1090,7 +993,7 @@ div.rendered_html tbody tr:hover {
 <p>In a self-aware population, we can also incorporate an assumption that certain members of the population will implement social distancing practices (even in the absence of prescribed government policy). For example, individuals might wear masks or face shields while in public.</p>
 <p>This is implemented via a SocialDistancing object, which reduces the transmission factor of the subjects in the applicable group.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1101,33 +1004,18 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
 <span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">use_init_func</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
----------------------------------------------------------------------------------
-|                                  SIM DETAILS                                  |
-|-------------------------------------------------------------------------------|
-|           boundary|  [  1 100   1 100]|             n_locs|              10000|
-|-------------------|-------------------|-------------------|-------------------|
-|                  n|              10000|            density|                1.0|
-|-------------------|-------------------|-------------------|-------------------|
-|                ktr|                1.0|                tmr|               0.18|
-|-------------------|-------------------|-------------------|-------------------|
-</pre></div></div>
 </div>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/baseus/8.mp4" controls><p>Video Failed to Load</p>
 </video><p>This results in:</p>
@@ -1168,11 +1056,13 @@ div.rendered_html tbody tr:hover {
 <p>First we will reset our groups. We will maintain the 5 group structure with 1/3rd of the 70+ population gated. No groups will have pre-existing immunity. Remaining characteristics are as <a class="reference external" href="#">per here</a>.</p>
 <p>Events are as <a class="reference external" href="#">per here</a>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+<span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;dlevel&#39;</span><span class="p">:</span> <span class="s1">&#39;med&#39;</span><span class="p">,</span> <span class="s1">&#39;Ro&#39;</span><span class="p">:</span><span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;imndur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;infdur&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">}</span>
+
+<span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
     <span class="n">name</span><span class="o">=</span><span class="s1">&#39;0-19&#39;</span><span class="p">,</span>
     <span class="n">n</span><span class="o">=</span><span class="mi">2700</span><span class="p">,</span>
     <span class="n">n_inf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
@@ -1210,12 +1100,11 @@ div.rendered_html tbody tr:hover {
     <span class="n">box_is_gated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">,</span> <span class="n">group3</span><span class="p">,</span> <span class="n">group4a</span><span class="p">,</span> <span class="n">group4b</span><span class="p">]</span>
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;dlevel&#39;</span><span class="p">:</span> <span class="s1">&#39;med&#39;</span><span class="p">,</span> <span class="s1">&#39;Ro&#39;</span><span class="p">:</span><span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;imndur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;infdur&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="s1">&#39;details&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1249,7 +1138,7 @@ div.rendered_html tbody tr:hover {
 <p>We assume this policy are implemented on day 30, when the population finally realizes there is a pandemic and government has had time to implement prevention measures.</p>
 <p>The restriction will last for 60 days.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1258,7 +1147,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1270,12 +1159,13 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events_w_res</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events_w_res</span><span class="p">,</span> <span class="n">details</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
 <span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">use_init_func</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
 </pre></div>
@@ -1324,7 +1214,7 @@ div.rendered_html tbody tr:hover {
 <p>We can restrict events by name by passing <code class="docutils literal notranslate"><span class="pre">name</span></code> key to <code class="docutils literal notranslate"><span class="pre">criteria</span></code>. We can do this to restrict the travel event to the <code class="docutils literal notranslate"><span class="pre">70+G</span></code> area.</p>
 <p>The policy measure is implemented on day 30 and maintained for another 120 days. There will be no other restrictions.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1335,33 +1225,18 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events_w_res</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
 <span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">use_init_func</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
----------------------------------------------------------------------------------
-|                                  SIM DETAILS                                  |
-|-------------------------------------------------------------------------------|
-|           boundary|  [  1 100   1 100]|             n_locs|              10000|
-|-------------------|-------------------|-------------------|-------------------|
-|                  n|              10000|            density|                1.0|
-|-------------------|-------------------|-------------------|-------------------|
-|                ktr|                1.0|                tmr|               0.18|
-|-------------------|-------------------|-------------------|-------------------|
-</pre></div></div>
 </div>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/baseus/no_visits.mp4" controls><p>Video Failed to Load</p>
 </video><p>This results in:</p>
@@ -1392,7 +1267,7 @@ div.rendered_html tbody tr:hover {
 <p>So we provide <code class="docutils literal notranslate"><span class="pre">tmfs</span></code> here for illustration purposes only, attempting to catch all social distancing practices. We also provide different <code class="docutils literal notranslate"><span class="pre">tmfs</span></code> for the different age groups, meant to simulate adherence to policy.</p>
 <p>The policy measure is implemented on day 30 and maintained for 120 days.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1401,7 +1276,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1410,33 +1285,18 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events_w_res</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
 <span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">use_init_func</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
----------------------------------------------------------------------------------
-|                                  SIM DETAILS                                  |
-|-------------------------------------------------------------------------------|
-|           boundary|  [  1 100   1 100]|             n_locs|              10000|
-|-------------------|-------------------|-------------------|-------------------|
-|                  n|              10000|            density|                1.0|
-|-------------------|-------------------|-------------------|-------------------|
-|                ktr|                1.0|                tmr|               0.18|
-|-------------------|-------------------|-------------------|-------------------|
-</pre></div></div>
 </div>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/baseus/policy_sd.mp4" controls><p>Video Failed to Load</p>
 </video><p>This results in:</p>
@@ -1464,7 +1324,7 @@ div.rendered_html tbody tr:hover {
 <h3>4. Social Distancing and Restrict Elderly Visits and Large Gatherings<a class="headerlink" href="#4.-Social-Distancing-and-Restrict-Elderly-Visits-and-Large-Gatherings" title="Permalink to this headline">¶</a></h3>
 <p>What happens if we combine the three approaches above?</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1479,33 +1339,18 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events_w_res</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
 <span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">use_init_func</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
----------------------------------------------------------------------------------
-|                                  SIM DETAILS                                  |
-|-------------------------------------------------------------------------------|
-|           boundary|  [  1 100   1 100]|             n_locs|              10000|
-|-------------------|-------------------|-------------------|-------------------|
-|                  n|              10000|            density|                1.0|
-|-------------------|-------------------|-------------------|-------------------|
-|                ktr|                1.0|                tmr|               0.18|
-|-------------------|-------------------|-------------------|-------------------|
-</pre></div></div>
 </div>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/baseus/sd_%26_no_large_%26_no_visits.mp4" controls><p>Video Failed to Load</p>
 </video><p>This results in:</p>
@@ -1535,7 +1380,7 @@ div.rendered_html tbody tr:hover {
 <p>We can even mimick the impact of quarantines via the Quarantine object.</p>
 <p>Here we show the impact of a 30-day quarantine for all groups in the Sim.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1546,33 +1391,18 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events_w_res</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
 <span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">use_init_func</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
----------------------------------------------------------------------------------
-|                                  SIM DETAILS                                  |
-|-------------------------------------------------------------------------------|
-|           boundary|  [  1 100   1 100]|             n_locs|              10000|
-|-------------------|-------------------|-------------------|-------------------|
-|                  n|              10000|            density|                1.0|
-|-------------------|-------------------|-------------------|-------------------|
-|                ktr|                1.0|                tmr|               0.18|
-|-------------------|-------------------|-------------------|-------------------|
-</pre></div></div>
 </div>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/baseus/quarantine.mp4" controls><p>Video Failed to Load</p>
 </video><p>This results in:</p>
@@ -1613,7 +1443,7 @@ div.rendered_html tbody tr:hover {
 <li><p>restrict visits to the elderly for a full year</p></li>
 </ul>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1709,33 +1539,18 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events_w_res</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
 <span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">use_init_func</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
----------------------------------------------------------------------------------
-|                                  SIM DETAILS                                  |
-|-------------------------------------------------------------------------------|
-|           boundary|  [  1 100   1 100]|             n_locs|              10000|
-|-------------------|-------------------|-------------------|-------------------|
-|                  n|              10000|            density|                1.0|
-|-------------------|-------------------|-------------------|-------------------|
-|                ktr|                1.0|                tmr|               0.18|
-|-------------------|-------------------|-------------------|-------------------|
-</pre></div></div>
 </div>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/baseus/fulsome.mp4" controls><p>Video Failed to Load</p>
 </video><p>This results in:</p>
