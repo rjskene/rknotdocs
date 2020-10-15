@@ -188,7 +188,8 @@
 </style>
 <div class="section" id="Introduction">
 <h1>Introduction<a class="headerlink" href="#Introduction" title="Permalink to this headline">¶</a></h1>
-<p><em>BETA RELEASE: I should emphasize this project remains in the experimental stage and there are likely many tweaks to come that will improve/change outcomes. I do believe at this stage that the simulation provides good general insights regarding the relationship between various factors and viral spread.</em></p>
+<p><strong>BETA RELEASE</strong></p>
+<p><em>This project remains in the experimental stage and there are likely many tweaks to come that will improve/change outcomes. I do believe at this stage that the simulation provides good general insights regarding the relationship between various factors and viral spread.</em></p>
 <p>RKnot’s purpose is two-fold:</p>
 <ol class="arabic simple">
 <li><p>Investigate the Herd Immunity Threshold (HIT) under Conditions of Heterogeneity</p></li>
@@ -200,6 +201,7 @@ HIT = 1 - 1/R_0
 \end{equation}</span></p>
 <p>For a virus with <span class="math notranslate nohighlight">\(R_0\)</span> of 2.5 (<a class="reference external" href="https://www.cdc.gov/coronavirus/2019-ncov/hcp/planning-scenarios.html">as is estimated for sars-cov-2</a>), this results in a HIT of 60%. Yet, measurements of seroprevalance of antibodies have suggested 15-20% peaks in some communities (<a class="reference external" href="https://www.medrxiv.org/content/10.1101/2020.06.28.20142190v1">e.g. New York City</a>).</p>
 <p><em>Is it possible that HIT is lower than</em> <span class="math notranslate nohighlight">\(R_0\)</span> <em>would suggest?</em></p>
+<p><em>How important is HIT in the severity of an outbreak, say, in terms of mortality?</em></p>
 <p><span class="math notranslate nohighlight">\(R_0\)</span> carries several basic assumptions that are not applicable to real world populations. The key assumption is homogeneity, meaning (among other things):</p>
 <ol class="arabic simple">
 <li><p>there is only one infected subject in a pool of susceptible subjects</p></li>
@@ -210,16 +212,16 @@ HIT = 1 - 1/R_0
 <h2>Heterogeneity<a class="headerlink" href="#Heterogeneity" title="Permalink to this headline">¶</a></h2>
 <p>RKnot seeks to address the shortfalls in <span class="math notranslate nohighlight">\(R_0\)</span> models by allowing the user to introduce customized, heterogeneous populations. Populations can have heterogeneity across several axis including:</p>
 <ul class="simple">
-<li><p><em>Fatality Rate</em></p></li>
-<li><p><em>Population Density</em></p></li>
-<li><p><em>Movement</em> - frequency and distance of location changes in space</p></li>
-<li><p><em>Susceptibility</em> - segments of population can be made immune (without requiring vaccination) to mimick phenomenon like <a class="reference external" href="https://www.bmj.com/content/370/bmj.m3563">possible T-cell immunity</a>.</p></li>
-<li><p><em>Transmission Factor,</em> <span class="math notranslate nohighlight">\(T\)</span>: RKnot (as with <span class="math notranslate nohighlight">\(R_0\)</span>) assumes that all contacts have the same likelihood of transmission, <span class="math notranslate nohighlight">\(\tau\)</span>. This is a homogenous assumption, however, RKnot introduces a unitless Transmission Factor, <span class="math notranslate nohighlight">\(T\)</span>, for each subject at each contact that can modulate <span class="math notranslate nohighlight">\(\tau\)</span>. This can be used to mimick social distancing or mask wearing or different socio-cultural norms that may impact spread (i.e. east Asian bows versus southern European double-kisses).</p></li>
+<li><p><strong>Fatality Rate</strong></p></li>
+<li><p><strong>Population Density</strong></p></li>
+<li><p><strong>Movement</strong> - frequency and distance of location changes in space</p></li>
+<li><p><strong>Susceptibility</strong> - segments of population can be made immune (without requiring vaccination) to mimick phenomenon like <a class="reference external" href="https://www.bmj.com/content/370/bmj.m3563">possible T-cell immunity</a>.</p></li>
+<li><p><strong>Transmission Factor,</strong> <span class="math notranslate nohighlight">\(T\)</span>: RKnot (as with <span class="math notranslate nohighlight">\(R_0\)</span>) assumes that all contacts have the same likelihood of transmission, <span class="math notranslate nohighlight">\(\tau\)</span>. This is a homogenous assumption, however, RKnot introduces a unitless Transmission Factor, <span class="math notranslate nohighlight">\(T\)</span>, for each subject at each contact that can modulate <span class="math notranslate nohighlight">\(\tau\)</span>. This can be used to mimick social distancing or mask wearing or different socio-cultural norms that may impact spread (i.e. east Asian bows versus southern European double-kisses).</p></li>
 </ul>
 <p>Future Additions:</p>
 <ul class="simple">
-<li><p><em>Infectiousness Curve</em> - <span class="math notranslate nohighlight">\(R_0\)</span> models assume an infected subject is equally likely to transmit at any point during the infection, however, <a class="reference external" href="https://www.ijidonline.com/article/S1201-9712%2820%2930119-3/pdf">research suggests</a> viral load and, thereby, likelihood of transmission follows a distribution curve. RKnot does <em>not currently support this feature</em>, however, it is being added.</p></li>
-<li><p><em>Isolation</em> - with the heightened awareness of a pandemic, individuals in population are more likely to self-isolate or quarantine themselves upon sympton onset, thereby helping to reduce spread.</p></li>
+<li><p><strong>Infectiousness Curve</strong> - <span class="math notranslate nohighlight">\(R_0\)</span> models assume an infected subject is equally likely to transmit at any point during the infection, however, <a class="reference external" href="https://www.ijidonline.com/article/S1201-9712%2820%2930119-3/pdf">research suggests</a> viral load and, thereby, likelihood of transmission follows a distribution curve. RKnot does <em>not currently support this feature</em>, however, it is being added.</p></li>
+<li><p><strong>Isolation</strong> - with the heightened awareness of a pandemic, individuals in population are more likely to self-isolate or quarantine themselves upon sympton onset, thereby helping to reduce spread.</p></li>
 </ul>
 <p>Where RKnot seems to distinguish itself from prevailing models is that to affect the heterogeneity above, RKnot simulates <em>every contact of every subject in the population</em>.</p>
 <p>In order to do that, RKnot must determine the <span class="math notranslate nohighlight">\(\tau\)</span> for the space created by the user.</p>

@@ -436,16 +436,26 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Factors-Influencing-HIT">
 <h1>Factors Influencing HIT<a class="headerlink" href="#Factors-Influencing-HIT" title="Permalink to this headline">¶</a></h1>
-<p><em>BETA RELEASE: I should emphasize this project remains in the experimental stage and there are likely many tweaks to come that will improve/change outcomes. I do believe at this stage that the simulation provides good general insights regarding the relationship between various factors and viral spread.</em></p>
-<p><em>Note that randomness is in an important factor in viral transmission (and RKnot’s approach to simulation), so the results of the sims below will not be repeatable with each iteration. These help show general differences based on state; any fulsome analysis should run the same simulation multiple times for increased certainty.</em></p>
+<p><strong>BETA RELEASE</strong></p>
+<p><em>This project remains in the experimental stage and there are likely many tweaks to come that will improve/change outcomes. I do believe at this stage that the simulation provides good general insights regarding the relationship between various factors and viral spread.</em></p>
+<p><strong>REPLICABILITY</strong></p>
+<p><em>Randomness is in an important factor in RKnot’s approach to simulation (and frankly in real-word viral transmission), so the results of the sims below will not be repeatable with each iteration. The below examples are meant to show general differences based on state; further analysis should run the same simulation multiple times to see the mean impact.</em></p>
+<p><strong>SARS-COV-2</strong></p>
+<p><em>While sars-cov-2 is obviously topical globally, the goal of RKnot is to be applicable to any virus (or anything that spreads like a virus). sars-cov-2 is used only for illustration purposes.</em></p>
 <div class="section" id="Base-US-Simulation">
 <h2>Base US Simulation<a class="headerlink" href="#Base-US-Simulation" title="Permalink to this headline">¶</a></h2>
 <p>To explore the various concepts of RKnot and viral spread, we’ll use a simulation design based on <a class="reference external" href="https://www.cdc.gov/coronavirus/2019-ncov/hcp/planning-scenarios.html">CDC Best Planning Scenario</a> guidelines for COVID-19 characteristics including:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(R_0\)</span> 2.5</p></li>
-<li><p>IFR for each of 4 age groups</p></li>
+<li><p>IFR for each of 4 age groups</p>
+<ul>
+<li><p>0-19: 0.003%</p></li>
+<li><p>20-49: 0.02%</p></li>
+<li><p>50-69: 0.5%</p></li>
+<li><p>70+: 5.4%</p></li>
 </ul>
-<p><em>Note while sars-cov-2 is obviously a topical globally, the goal of RKnot is to be applicable to any virus (or anything that spreads like a virus). sars-cov-2 is used only for illustration purposes.</em></p>
+</li>
+</ul>
 <p>Other assumptions:</p>
 <ul class="simple">
 <li><p>Population of <span class="math notranslate nohighlight">\(10,000^1\)</span></p></li>
@@ -469,16 +479,48 @@ div.rendered_html tbody tr:hover {
 <li><p>All dots are susceptible at initiation.</p></li>
 <li><p>All dots are equally likely to move to any dot on the grid (<code class="docutils literal notranslate"><span class="pre">mover='equal'</span></code>)</p></li>
 </ul>
-<p>group1 = dict( name=‘0-19’, n=2700, n_inf=0, ifr=0.00003, mover=‘equal’, ) group2 = dict( name=‘20-49’, n=4100, n_inf=1, ifr=0.0002, mover=‘equal’, ) group3 = dict( name=‘50-69’, n=2300, n_inf=1, ifr=0.005, mover=‘equal’, ) group4 = dict( name=‘70+’, n=900, n_inf=0, ifr=0.054, mover=‘equal’, ) groups = [group1, group2, group3, group4] params = {‘dlevel’: ‘med’, ‘Ro’:2.5, ‘days’: 365, ‘imndur’: 365, ‘infdur’: 14}</p>
+<p>The basic layout is below. These parameters can also be imported from <code class="docutils literal notranslate"><span class="pre">rknot.sims.baseus</span></code> for convenienve.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;0-19&#39;</span><span class="p">,</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">2700</span><span class="p">,</span>
+    <span class="n">n_inf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">ifr</span><span class="o">=</span><span class="mf">0.00003</span><span class="p">,</span>
+    <span class="n">mover</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;20-49&#39;</span><span class="p">,</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">4100</span><span class="p">,</span>
+    <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">ifr</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span>
+    <span class="n">mover</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">group3</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;50-69&#39;</span><span class="p">,</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">2300</span><span class="p">,</span>
+    <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">ifr</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span>
+    <span class="n">mover</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">group4</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;70+&#39;</span><span class="p">,</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span>
+    <span class="n">n_inf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">ifr</span><span class="o">=</span><span class="mf">0.054</span><span class="p">,</span>
+    <span class="n">mover</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">,</span> <span class="n">group3</span><span class="p">,</span> <span class="n">group4</span><span class="p">]</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;dlevel&#39;</span><span class="p">:</span> <span class="s1">&#39;med&#39;</span><span class="p">,</span> <span class="s1">&#39;Ro&#39;</span><span class="p">:</span><span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;imndur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;infdur&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rknot</span> <span class="kn">import</span> <span class="n">Sim</span><span class="p">,</span> <span class="n">Chart</span>
+</pre></div>
+</div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">rknot</span> <span class="kn">import</span> <span class="n">Sim</span><span class="p">,</span> <span class="n">Chart</span>
-
-<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">details</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
-<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">details</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -487,8 +529,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-2020-10-11 22:39:57,464 INFO resource_spec.py:223 -- Starting Ray with 10.45 GiB memory available for workers and up to 5.24 GiB for objects. You can adjust these settings with ray.init(memory=&lt;bytes&gt;, object_store_memory=&lt;bytes&gt;).
-2020-10-11 22:39:58,042 INFO services.py:1191 -- View the Ray dashboard at <span class="ansi-green-intense-fg ansi-bold">localhost:8266</span>
+2020-10-14 19:22:06,218 INFO resource_spec.py:223 -- Starting Ray with 10.69 GiB memory available for workers and up to 5.35 GiB for objects. You can adjust these settings with ray.init(memory=&lt;bytes&gt;, object_store_memory=&lt;bytes&gt;).
+2020-10-14 19:22:06,676 INFO services.py:1191 -- View the Ray dashboard at <span class="ansi-green-intense-fg ansi-bold">localhost:8265</span>
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -508,16 +550,9 @@ div.rendered_html tbody tr:hover {
 </pre></div></div>
 </div>
 <p>Running the animation will result in a video as per below:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">use_init_func</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">use_init_func</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
 </pre></div>
 </div>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/baseus/1.mp4" controls><p>alternative text</p>
@@ -536,7 +571,7 @@ div.rendered_html tbody tr:hover {
 <td><p>70%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.47%</p></td>
+<td><p>0.53%</p></td>
 </tr>
 </tbody>
 </table>
@@ -572,20 +607,19 @@ div.rendered_html tbody tr:hover {
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>7%</p></td>
+<td><p>5%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>36%</p></td>
+<td><p>26%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.47%</p></td>
+<td><p>0.43%</p></td>
 </tr>
 </tbody>
 </table>
 <p>We can see that restricting movement has a major impact on spread, creating a much longer, flatter curve with very low peak infection and a much lower HIT than <span class="math notranslate nohighlight">\(R_0\)</span> would suggest.</p>
-<p>The virus does remain among the population, however, resulting in high penetration and fatalities.</p>
-<p>From this we can see that, while HIT is important, it is not the only factor worth considering.</p>
-<p><em>CAUTION: RKnot estimates transmission rate assuming all subjects are</em> <code class="docutils literal notranslate"><span class="pre">equal</span></code> <em>movers. Thus, where</em> <code class="docutils literal notranslate"><span class="pre">local</span></code> <em>movers are used, the transmission rate may (or may not) be underestimated. This is being investigated.</em></p>
+<p>The virus does remain among the population, however, resulting in high penetration and fatalities. While HIT is important, it is not the only factor worth considering if the ultimate goal is to reduce fatalities.</p>
+<p><em>CAUTION: RKnot estimates transmission rate assuming all subjects are</em> <code class="docutils literal notranslate"><span class="pre">equal</span></code> <em>movers. Thus, where</em> <code class="docutils literal notranslate"><span class="pre">local</span></code> <em>movers are used, the transmission rate may (or may not) be underestimated.</em></p>
 </div>
 <div class="section" id="3.-Social">
 <h3>3. Social<a class="headerlink" href="#3.-Social" title="Permalink to this headline">¶</a></h3>
@@ -612,13 +646,13 @@ div.rendered_html tbody tr:hover {
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>38%</p></td>
+<td><p>39%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>64%</p></td>
+<td><p>63%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.57%</p></td>
+<td><p>0.54%</p></td>
 </tr>
 </tbody>
 </table>
@@ -654,30 +688,28 @@ div.rendered_html tbody tr:hover {
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>22%</p></td>
+<td><p>21%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>47%</p></td>
+<td><p>40%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
 <td><p>0.46%</p></td>
 </tr>
 </tbody>
 </table>
-<p>We can see that pre-existing immunity would significantly reduce HIT … but again reducing HIT does not appreciably impact the fatality rate. In this sim, this results at least in part from the fact the elderly are assumed to <em>not</em> have pre-existing immunity.</p>
+<p>We can see that pre-existing immunity would significantly reduce HIT … but again reducing HIT does not impact the fatality rate as much as one might expect.</p>
+<p>In this sim, this results at least in part from the fact the elderly are assumed to <em>not</em> have pre-existing immunity (and they may have).</p>
 </div>
 <div class="section" id="5.-Events">
 <h3>5. Events<a class="headerlink" href="#5.-Events" title="Permalink to this headline">¶</a></h3>
 <p>Certainly, the vast majority of people in the US do not move in such pre-defined ways as set out by the <code class="docutils literal notranslate"><span class="pre">mover</span></code> function. In reality, people tend to move with a local bias with a small number of interactions, supplemented by larger movements to locations with a large number of interactions in a small amount of time.</p>
-<p>In RKnot, we can simulate this with Event objects. And we will incorporate a number of them in this simulation.</p>
-<p>First, we will reset the susceptibility factors of all the groups to 1 and reset all <code class="docutils literal notranslate"><span class="pre">mover</span></code> functions to <code class="docutils literal notranslate"><span class="pre">local</span></code>.</p>
+<p>In RKnot, we can simulate this with <a class="reference internal" href="concepts.html#Events"><span class="std std-ref">Event objects</span></a>. And we will incorporate a number of them in this simulation.</p>
+<p>First, we will reset our group parameters by importing from <code class="docutils literal notranslate"><span class="pre">sims.baseus</span></code>.</p>
 <p>Then we will instantiate a handful of events recurring periodically over the duration of the sim.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Event</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rknot.sims.baseus</span> <span class="kn">import</span> <span class="n">params</span><span class="p">,</span> <span class="n">groups</span>
 
-<span class="n">group2</span><span class="p">[</span><span class="s1">&#39;mover&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;local&#39;</span>
-<span class="n">group2</span><span class="p">[</span><span class="s1">&#39;susf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">group3</span><span class="p">[</span><span class="s1">&#39;susf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">,</span> <span class="n">group3</span><span class="p">,</span> <span class="n">group4</span><span class="p">]</span>
+<span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Event</span>
 
 <span class="n">school1</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;school1&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">25</span><span class="p">,</span><span class="mi">42</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">school2</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;school2&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">78</span><span class="p">,</span><span class="mi">82</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -698,40 +730,6 @@ div.rendered_html tbody tr:hover {
 <span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">if</span> <span class="n">RUN</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Event</span>
-
-    <span class="n">group2</span><span class="p">[</span><span class="s1">&#39;mover&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;local&#39;</span>
-    <span class="n">group2</span><span class="p">[</span><span class="s1">&#39;susf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">group3</span><span class="p">[</span><span class="s1">&#39;susf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">,</span> <span class="n">group3</span><span class="p">,</span> <span class="n">group4</span><span class="p">]</span>
-
-    <span class="n">school1</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;school1&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">25</span><span class="p">,</span><span class="mi">42</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">school2</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;school2&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">78</span><span class="p">,</span><span class="mi">82</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">game</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;game&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">50</span><span class="p">,</span><span class="mi">84</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-    <span class="n">concert1</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;concert1&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-    <span class="n">concert2</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;concert2&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">91</span><span class="p">,</span><span class="mi">92</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-    <span class="n">bar</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">17</span><span class="p">,</span><span class="mi">24</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-    <span class="n">bar2</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bar2&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">87</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-    <span class="n">bar3</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bar3&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">52</span><span class="p">,</span><span class="mi">89</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-    <span class="n">church</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;church&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">91</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-
-    <span class="n">events</span> <span class="o">=</span> <span class="p">[</span><span class="n">school1</span><span class="p">,</span> <span class="n">school2</span><span class="p">,</span> <span class="n">game</span><span class="p">,</span> <span class="n">concert1</span><span class="p">,</span> <span class="n">concert2</span><span class="p">,</span> <span class="n">bar</span><span class="p">,</span> <span class="n">bar2</span><span class="p">,</span> <span class="n">bar3</span><span class="p">,</span> <span class="n">church</span><span class="p">]</span>
-
-    <span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
-    <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-
-    <span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">use_init_func</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">SAVE_CHARTS</span><span class="p">:</span>
-    <span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;vids/baseus/5.mp4&#39;</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="n">FFMpegWriter</span><span class="p">(</span><span class="n">fps</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/baseus/5.mp4" controls><p>Video Failed to Load</p>
 </video><p>This results in:</p>
 <table class="docutils align-default">
@@ -741,22 +739,23 @@ div.rendered_html tbody tr:hover {
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>15%</p></td>
+<td><p>24%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>53%</p></td>
+<td><p>43%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.47%</p></td>
+<td><p>0.45%</p></td>
 </tr>
 </tbody>
 </table>
 <p>We can see that this sort of event-based structure resulted in lower peak infections and HIT relative to <a class="reference external" href="#Social">the Social mover example</a>. The curve is flatter and longer.</p>
 <p>The selection of events here is relatively arbitrary and perhaps not perfectly illustrative of the nature of movement but it does highlight how more heterogeneous movement might lead to lower HIT.</p>
+<p>We should investigate whether this event based approach is truly analogous to mathematical models of homogeneity (and therefore whether the heterogeneity is a factor in reducing the spread).</p>
 </div>
 <div class="section" id="6.-Gates">
 <h3>6. Gates<a class="headerlink" href="#6.-Gates" title="Permalink to this headline">¶</a></h3>
-<p>We can further improve the real world interactions by introducing gates. Subjects are not always freely able to interact with all other people in a population. Often their movement is restricted to within certain areas. Furthermore, other people’s access into those areas is restricted.</p>
+<p>We can further improve the real world interactions by introducing <a class="reference internal" href="concepts.html#Gates"><span class="std std-ref">gates</span></a>. Subjects are not always freely able to interact with all other people in a population. Often their movement is restricted to within certain areas. Furthermore, other people’s access into those areas is restricted.</p>
 <p>Elderly people living in retirement homes or assisted living centers is an example. To simulate this, we will split <code class="docutils literal notranslate"><span class="pre">group4</span></code> into two separate groups.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">group4a</span></code></p>
@@ -819,48 +818,29 @@ div.rendered_html tbody tr:hover {
 </video><p>This results in:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 71%" />
-<col style="width: 29%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>25%</p></td>
+<td><p>23%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>60%</p></td>
+<td><p>54%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.6%</p></td>
+<td><p>0.53%</p></td>
 </tr>
 </tbody>
 </table>
-<p>This gated structure results in essentially no impact. The use for this structure will become more evident in the disucssion on <a class="reference external" href="#Policy">Policy Decisions.</a></p>
+<p>This gated structure results in essentially no impact from the <a class="reference external" href="#Events">prior sim</a>. The use for this structure will become more evident in the disucssion on <a class="reference external" href="#Policy">Policy Decisions.</a></p>
 </div>
 <div class="section" id="7.-Events,-Gates,-and-Pre-Immunity">
 <h3>7. Events, Gates, and Pre-Immunity<a class="headerlink" href="#7.-Events,-Gates,-and-Pre-Immunity" title="Permalink to this headline">¶</a></h3>
 <p>Now we can see how pre-immunity might impact viral spread in a population with more homogeneous interactions.</p>
-<p>We will also split <code class="docutils literal notranslate"><span class="pre">group2</span></code> into two separate groups with different movers (<code class="docutils literal notranslate"><span class="pre">group2a</span></code> and <code class="docutils literal notranslate"><span class="pre">group2b</span></code>. The 20-49 age group is a large cohort and not all members will move in the same way. Some will move socially, other more locally.</p>
-<p>Then, we update the group list and update our events for the new group structure.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group2</span><span class="p">[</span><span class="s1">&#39;susf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">8</span>
 <span class="n">group3</span><span class="p">[</span><span class="s1">&#39;susf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">65</span>
 <span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">,</span> <span class="n">group3</span><span class="p">,</span> <span class="n">group4a</span><span class="p">,</span> <span class="n">group4b</span><span class="p">]</span>
-
-<span class="n">game</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;game&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">50</span><span class="p">,</span><span class="mi">84</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-<span class="n">concert1</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;concert1&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-<span class="n">concert2</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;concert2&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">91</span><span class="p">,</span><span class="mi">92</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-<span class="n">bar</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">17</span><span class="p">,</span><span class="mi">24</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">bar2</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bar2&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">87</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">bar3</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bar3&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">52</span><span class="p">,</span><span class="mi">89</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">church</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;church&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">91</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">church2</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;church&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-
-<span class="n">visit</span> <span class="o">=</span> <span class="n">Travel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;visit&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">events</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">school1</span><span class="p">,</span> <span class="n">school2</span><span class="p">,</span>
-    <span class="n">game</span><span class="p">,</span> <span class="n">concert1</span><span class="p">,</span> <span class="n">concert2</span><span class="p">,</span> <span class="n">bar</span><span class="p">,</span> <span class="n">bar2</span><span class="p">,</span> <span class="n">bar3</span><span class="p">,</span>
-    <span class="n">church</span><span class="p">,</span> <span class="n">church2</span><span class="p">,</span> <span class="n">visit</span><span class="p">,</span>
-<span class="p">]</span>
 
 <span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
@@ -878,18 +858,18 @@ div.rendered_html tbody tr:hover {
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>16%</p></td>
+<td><p>15%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>37%</p></td>
+<td><p>38%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
 <td><p>0.45%</p></td>
 </tr>
 </tbody>
 </table>
-<p>So once again we see that pre-existing immunity would have the effect of significanlty reducing peak infections and HIT although fatalities were not impacted.</p>
-<p>An outbreak occured in ‘70+G’ age group (which you can see from the full grey square in the bottom left hand corner of the grid), despite the gated area and limiting travel to one visitor a day.</p>
+<p>So once again we see that pre-existing immunity would have the effect of reducing peak infections and HIT.</p>
+<p>Still, fatalities were not impacted because of an outbreak in ‘70+G’ age group (which you can see from the full grey square in the bottom left hand corner of the grid) … this despite the gated area and limiting travel to one visitor a day.</p>
 </div>
 <div class="section" id="8.-Self-Aware-Social-Distancing">
 <h3>8. Self Aware Social Distancing<a class="headerlink" href="#8.-Self-Aware-Social-Distancing" title="Permalink to this headline">¶</a></h3>
@@ -911,23 +891,23 @@ div.rendered_html tbody tr:hover {
 </video><p>This results in:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 71%" />
-<col style="width: 29%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>13%</p></td>
+<td><p>15%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
 <td><p>34%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.2%</p></td>
+<td><p>0.29%</p></td>
 </tr>
 </tbody>
 </table>
-<p>Here we can see that social distancing in a population had a small impact on peak infections.</p>
-<p>We also can see that social distancing among the most susceptible (i.e. <code class="docutils literal notranslate"><span class="pre">group4b</span></code>) was a key factor in a dramatically reduced fatality rate.</p>
+<p>Here we can see that social distancing in the broader population had almost no impact on peak infections or HIT.</p>
+<p><strong>BUT</strong> social distancing among the most susceptible (i.e. <code class="docutils literal notranslate"><span class="pre">group4b</span></code>) was a key factor in a dramatically reduced fatality rate.</p>
 <p>Essentially, in this simulation, social distancing prevented an outbreak in the <code class="docutils literal notranslate"><span class="pre">group4b</span></code> community (whereas outbreaks had previously occured there in prior sims).</p>
 </div>
 <div class="section" id="9.-Isolation">
@@ -942,70 +922,10 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Policy">
 <h2>Policy<a class="headerlink" href="#Policy" title="Permalink to this headline">¶</a></h2>
 <p>With a more realistic model of subject interaction, we can begin to experiment with the impact of different policy measures.</p>
-<p>RKnot can simulate policy measures via <code class="docutils literal notranslate"><span class="pre">Restriction</span></code>, <code class="docutils literal notranslate"><span class="pre">SocialDistancing</span></code>, and <code class="docutils literal notranslate"><span class="pre">Quarantine</span></code> objects.</p>
-<p>First we will reset our groups. We will maintain the 5 group structure with 1/3rd of the 70+ population gated. No groups will have pre-existing immunity. Remaining characteristics are as <a class="reference external" href="#">per here</a>.</p>
-<p>Events are as <a class="reference external" href="#">per here</a>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;dlevel&#39;</span><span class="p">:</span> <span class="s1">&#39;med&#39;</span><span class="p">,</span> <span class="s1">&#39;Ro&#39;</span><span class="p">:</span><span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;imndur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;infdur&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">}</span>
-
-<span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;0-19&#39;</span><span class="p">,</span>
-    <span class="n">n</span><span class="o">=</span><span class="mi">2700</span><span class="p">,</span>
-    <span class="n">n_inf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">ifr</span><span class="o">=</span><span class="mf">0.00003</span><span class="p">,</span>
-    <span class="n">mover</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">group2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;20-49&#39;</span><span class="p">,</span>
-    <span class="n">n</span><span class="o">=</span><span class="mi">4100</span><span class="p">,</span>
-    <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">ifr</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span>
-    <span class="n">mover</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">group3</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;50-69&#39;</span><span class="p">,</span>
-    <span class="n">n</span><span class="o">=</span><span class="mi">2300</span><span class="p">,</span>
-    <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">ifr</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span>
-    <span class="n">mover</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">group4a</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;70+&#39;</span><span class="p">,</span>
-    <span class="n">n</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
-    <span class="n">n_inf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">ifr</span><span class="o">=</span><span class="mf">0.042</span><span class="p">,</span>
-    <span class="n">mover</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">group4b</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;70+G&#39;</span><span class="p">,</span>
-    <span class="n">n</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
-    <span class="n">n_inf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">ifr</span><span class="o">=</span><span class="mf">0.0683</span><span class="p">,</span>
-    <span class="n">mover</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">,</span>
-    <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
-    <span class="n">box_is_gated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">,</span> <span class="n">group3</span><span class="p">,</span> <span class="n">group4a</span><span class="p">,</span> <span class="n">group4b</span><span class="p">]</span>
-
-<span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Event</span><span class="p">,</span> <span class="n">Travel</span>
-
-<span class="n">school1</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;school1&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">25</span><span class="p">,</span><span class="mi">42</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">school2</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;school2&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">78</span><span class="p">,</span><span class="mi">82</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">game</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;game&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">50</span><span class="p">,</span><span class="mi">84</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-<span class="n">concert1</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;concert1&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-<span class="n">concert2</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;concert2&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">91</span><span class="p">,</span><span class="mi">92</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-<span class="n">bar</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">17</span><span class="p">,</span><span class="mi">24</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">bar2</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bar2&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">87</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">bar3</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bar3&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">52</span><span class="p">,</span><span class="mi">89</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">church</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;church&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">91</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">church2</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;church&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-
-<span class="n">visit</span> <span class="o">=</span> <span class="n">Travel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;visit&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">events</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">school1</span><span class="p">,</span> <span class="n">school2</span><span class="p">,</span>
-    <span class="n">game</span><span class="p">,</span> <span class="n">concert1</span><span class="p">,</span> <span class="n">concert2</span><span class="p">,</span> <span class="n">bar</span><span class="p">,</span> <span class="n">bar2</span><span class="p">,</span> <span class="n">bar3</span><span class="p">,</span>
-    <span class="n">church</span><span class="p">,</span> <span class="n">church2</span><span class="p">,</span> <span class="n">visit</span><span class="p">,</span>
-<span class="p">]</span>
+<p>RKnot can simulate policy measures via <code class="docutils literal notranslate"><span class="pre">Restriction</span></code>, <code class="docutils literal notranslate"><span class="pre">SocialDistancing</span></code>, and <code class="docutils literal notranslate"><span class="pre">Quarantine</span></code> objects. Further details <a class="reference internal" href="concepts.html#Restrictions"><span class="std std-ref">here</span></a>.</p>
+<p>The simulations are based on <a class="reference external" href="#Gates">this scenario</a> and so the impact of the policy measures contemplated should be considered relative to that scenario.</p>
+<p>The structure can be imported as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rknot.sims.baseus</span> <span class="kn">import</span> <span class="n">params</span><span class="p">,</span> <span class="n">events_gated</span><span class="p">,</span> <span class="n">groups_gated</span>
 </pre></div>
 </div>
 <div class="section" id="1.-Restrict-Large-Gatherings">
@@ -1019,9 +939,9 @@ div.rendered_html tbody tr:hover {
 <span class="n">large_gatherings</span> <span class="o">=</span> <span class="n">Restriction</span><span class="p">(</span>
     <span class="n">name</span><span class="o">=</span><span class="s1">&#39;large&#39;</span><span class="p">,</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">criteria</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;capacity&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
 <span class="p">)</span>
-<span class="n">events_w_res</span> <span class="o">=</span> <span class="n">events</span> <span class="o">+</span> <span class="p">[</span><span class="n">large_gatherings</span><span class="p">]</span>
+<span class="n">events_w_res</span> <span class="o">=</span> <span class="n">events_gated</span> <span class="o">+</span> <span class="p">[</span><span class="n">large_gatherings</span><span class="p">]</span>
 
-<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events_w_res</span><span class="p">,</span> <span class="n">details</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups_gated</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events_w_res</span><span class="p">,</span> <span class="n">details</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 
 <span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">use_init_func</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1037,63 +957,54 @@ div.rendered_html tbody tr:hover {
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>23%</p></td>
+<td><p>12%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>58%</p></td>
+<td><p>27%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
 <td><p>0.42%</p></td>
 </tr>
 </tbody>
 </table>
-<p>We see that the curve is flattened significanlty during the restriction period and the peak of infections has been pushed way out to ~125+ days. As restrictions are lifted, however, the outbreak ensues and fatalities are about the same as other, less restrictive simulations.</p>
-<p>An early outbreak in the <code class="docutils literal notranslate"><span class="pre">group2b</span></code> gated area results in an early peak, creating the appearance of a “second wave”.</p>
+<p>We see that the curve is flattened significanlty during the restriction period and the peak of infections has been pushed way out to ~125+ days. As restrictions are lifted, however, the outbreak ensues and fatalities are only slightly lower than less restrictive simulations.</p>
 </div>
 <div class="section" id="2.-Restrict-Elderly-Visits">
 <h3>2. Restrict Elderly Visits<a class="headerlink" href="#2.-Restrict-Elderly-Visits" title="Permalink to this headline">¶</a></h3>
 <p>We can restrict events by name by passing <code class="docutils literal notranslate"><span class="pre">name</span></code> key to <code class="docutils literal notranslate"><span class="pre">criteria</span></code>. We can do this to restrict the travel event to the <code class="docutils literal notranslate"><span class="pre">70+G</span></code> area.</p>
 <p>The policy measure is implemented on day 30 and maintained for another 120 days. There will be no other restrictions.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="err">```</span><span class="n">python</span>
-<span class="n">no_visits</span> <span class="o">=</span> <span class="n">Restriction</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">no_visits</span> <span class="o">=</span> <span class="n">Restriction</span><span class="p">(</span>
     <span class="n">name</span><span class="o">=</span><span class="s1">&#39;no_visits&#39;</span><span class="p">,</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="n">criteria</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;visit&#39;</span><span class="p">}</span>
 <span class="p">)</span>
-<span class="n">events_w_res</span> <span class="o">=</span> <span class="n">events</span> <span class="o">+</span> <span class="p">[</span><span class="n">no_visits</span><span class="p">]</span>
+<span class="n">events_w_res</span> <span class="o">=</span> <span class="n">events_gated</span> <span class="o">+</span> <span class="p">[</span><span class="n">no_visits</span><span class="p">]</span>
 
-<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events_w_res</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups_gated</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events_w_res</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 
 <span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">use_init_func</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
-<span class="err">```</span>
 </pre></div>
-</div>
 </div>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/baseus/no_visits.mp4" controls><p>Video Failed to Load</p>
 </video><p>This results in:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 67%" />
-<col style="width: 33%" />
+<col style="width: 71%" />
+<col style="width: 29%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>25%</p></td>
+<td><p>26%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>49%</p></td>
+<td><p>51%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.27%</p></td>
+<td><p>0.3%</p></td>
 </tr>
 </tbody>
 </table>
-<p>Interestingly despite having a higher peak and HIT level than prior examples, we see that <em>fatalities are significantly reduced in the long run</em>. The most susceptible are protected during the peak and the virus has “burned out” fast enough that the elderly are not infected when visits resume.</p>
+<p>Interestingly despite having a higher peak and HIT level than prior examples, we see that <em>fatalities are the lowest of any sim run to this point</em>. The most susceptible are protected during the peak and the virus has “burned out” fast enough that they are not infected when visits resume.</p>
 <p>We can see here that allowing a <em>high level of infection</em> among the <strong>least susceptible</strong> has resulted in a <em>low level of fatalities</em> among the <strong>most susceptible</strong>.</p>
 </div>
 <div class="section" id="3.-Social-Distancing">
@@ -1105,9 +1016,9 @@ div.rendered_html tbody tr:hover {
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">SocialDistancing</span> <span class="k">as</span> <span class="n">SD</span>
 
 <span class="n">sd</span> <span class="o">=</span> <span class="n">SD</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">tmfs</span><span class="o">=</span><span class="p">[</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="o">.</span><span class="mi">7</span><span class="p">,</span><span class="o">.</span><span class="mi">65</span><span class="p">,</span><span class="o">.</span><span class="mi">5</span><span class="p">],</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
-<span class="n">events_w_res</span> <span class="o">=</span> <span class="n">events</span> <span class="o">+</span> <span class="p">[</span><span class="n">sd</span><span class="p">]</span>
+<span class="n">events_w_res</span> <span class="o">=</span> <span class="n">events_gated</span> <span class="o">+</span> <span class="p">[</span><span class="n">sd</span><span class="p">]</span>
 
-<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events_w_res</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups_gated</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events_w_res</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 
 <span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">use_init_func</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1118,22 +1029,22 @@ div.rendered_html tbody tr:hover {
 </video><p>This results in:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 67%" />
-<col style="width: 33%" />
+<col style="width: 71%" />
+<col style="width: 29%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
 <td><p>14%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>34%</p></td>
+<td><p>46%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.39%</p></td>
+<td><p>0.4%</p></td>
 </tr>
 </tbody>
 </table>
-<p>We can see that social distancing is certainly the most effective approach of the Policy measures in “flattening the curve”. Spread is remarkably limited during the policy period with a long-tail of low infections towards the end.</p>
+<p>We can see that social distancing is certainly the most effective approach in terms of “flattening the curve” with the infection peak push all the way out to ~200 days, again after the restrictions are lifted.</p>
 <p>Still, the social distancing measures were not sufficient to prevent an outbreak in <code class="docutils literal notranslate"><span class="pre">group2b</span></code>, which resulted in a higher fatality rate than other approaches.</p>
 </div>
 <div class="section" id="4.-Social-Distancing-and-Restrict-Elderly-Visits-and-Large-Gatherings">
@@ -1146,9 +1057,9 @@ div.rendered_html tbody tr:hover {
     <span class="n">name</span><span class="o">=</span><span class="s1">&#39;no_visits&#39;</span><span class="p">,</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="n">criteria</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;visit&#39;</span><span class="p">}</span>
 <span class="p">)</span>
 <span class="n">sd</span> <span class="o">=</span> <span class="n">SD</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">tmfs</span><span class="o">=</span><span class="p">[</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="o">.</span><span class="mi">7</span><span class="p">,</span><span class="o">.</span><span class="mi">65</span><span class="p">,</span><span class="o">.</span><span class="mi">5</span><span class="p">],</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
-<span class="n">events_w_res</span> <span class="o">=</span> <span class="n">events</span> <span class="o">+</span> <span class="p">[</span><span class="n">large_gatherings</span><span class="p">,</span> <span class="n">no_visits</span><span class="p">,</span> <span class="n">sd</span><span class="p">]</span>
+<span class="n">events_w_res</span> <span class="o">=</span> <span class="n">events_gated</span> <span class="o">+</span> <span class="p">[</span><span class="n">large_gatherings</span><span class="p">,</span> <span class="n">no_visits</span><span class="p">,</span> <span class="n">sd</span><span class="p">]</span>
 
-<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events_w_res</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups_gated</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events_w_res</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 
 <span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">use_init_func</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1164,13 +1075,13 @@ div.rendered_html tbody tr:hover {
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>20%</p></td>
+<td><p>12%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>51%</p></td>
+<td><p>29%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.45%</p></td>
+<td><p>0.38%</p></td>
 </tr>
 </tbody>
 </table>
@@ -1185,9 +1096,9 @@ div.rendered_html tbody tr:hover {
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Quarantine</span>
 
 <span class="n">quarantine</span> <span class="o">=</span> <span class="n">Quarantine</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">duration</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="n">events_w_res</span> <span class="o">=</span> <span class="n">events</span> <span class="o">+</span> <span class="p">[</span><span class="n">quarantine</span><span class="p">]</span>
+<span class="n">events_w_res</span> <span class="o">=</span> <span class="n">events_gated</span> <span class="o">+</span> <span class="p">[</span><span class="n">quarantine</span><span class="p">]</span>
 
-<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events_w_res</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups_gated</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events_w_res</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 
 <span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">use_init_func</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1203,10 +1114,10 @@ div.rendered_html tbody tr:hover {
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>0%</p></td>
+<td><p>2%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>0%</p></td>
+<td><p>2%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
 <td><p>0%</p></td>
@@ -1338,13 +1249,13 @@ div.rendered_html tbody tr:hover {
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>5%</p></td>
+<td><p>14%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>39%</p></td>
+<td><p>36%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.16%</p></td>
+<td><p>0.29%</p></td>
 </tr>
 </tbody>
 </table>
