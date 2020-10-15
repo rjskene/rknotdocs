@@ -13,35 +13,35 @@
    "source": [
     "RKnot builds a simulation across four dimensions of global properties:\n",
     "\n",
-    "* Time\n",
+    "* **Time**\n",
     "    * The fundamental unit of time is a `tick`. \n",
     "    * Each iteration of the simulation is one tick. During a tick, the following occurs:\n",
     "        * subjects can move to new locations\n",
     "        * subjects can have contact with other subjects (at the same location)\n",
-    "        * attributes of the subjects can change, including whether or not they are infected, if they have recovered, if they are once again susceptible, what parts of the grid they have access to etc.\n",
+    "        * attributes of the subjects can change\n",
     "    * in the real world, many of the fundamental properties of a virus as measured in days (i.e. recovery rate or duration of immunity). RKnot translates these inputs into ticks.\n",
-    "    * Currently, RKnot only supports a `tick` is equal to one day. The goal is to support any number of ticks during a day.\n",
-    "* Space\n",
+    "    * Currently, RKnot only supports one `tick` per day. The goal is to support any number of ticks during a day.\n",
+    "* **Space**\n",
     "    * Subjects interact in an two-dimensional environment called the Grid.\n",
-    "    * The Grid *must* be a square. The Grid size can be passed manually or it can be determined automatically for a specified degree of desired density.\n",
-    "    * Each pair of x,y coordinates in the Grid is a location. A single subject can only occupy a single location at once. There is no limit to the number of different subjects that can occupy a single location at once.\n",
-    "    * A \"contact\" occurs when an infected subject and a susceptible subject occupy the same location on the same tick.\n",
-    "    * Subjects move through the Grid according to user-specified `mover` functions. These `mover` functions typically incorporate a degree of randomness.\n",
-    "    * A subject can also move by subscribing to an Event. An Event can occur at any location on any tick (unless a Restriction or Quarantine applies) and can nominate a certain number of dots to subscribe/attend.\n",
-    "    * Portions of the Grid may be restricted by Boxes and/or Gates.\n",
+    "    * The Grid *must* be a square. The Grid size can be passed manually or it can be determined automatically for a specified density level.\n",
+    "    * Each pair of xy coordinates in the Grid is a location. \n",
+    "    * A *contact* occurs when an infected subject and a susceptible subject occupy the same location on the same tick.\n",
+    "    * A single subject can only occupy a single location at one tick. There is no limit to the number of subjects that can occupy a single location at one tick.\n",
+    "    * Subjects move through the Grid according to user-specified `mover` [functions](#Mover-Functions). These functions typically incorporate a degree of randomness.\n",
+    "    * A subject can also move by attending an [Event](#Events).\n",
+    "    * Portions of the Grid may be restricted by [Boxes and/or Gates](#Boxes-and-Gates).\n",
     "\n",
-    "* Subjects\n",
-    "    * subjects (also referred to as \"dots\") are the analog to people in the simulation.\n",
-    "    * subjects carry many attributes through the life of the simulation that are updated and changed as required.\n",
-    "    * all attributes of all subjects are tracked in the [Dot Matrix](#Dot-Matrix).\n",
-    "* Virus\n",
-    "    * the sim houses several characteristics fundamental to the simulated virus are passed including:\n",
+    "* **Subjects**\n",
+    "    * subjects (also referred to as \"dots\") are the analog of people in the simulation.\n",
+    "    * subjects carry many attributes through the life of the simulation that are updated and changed as required [see Dot Matrix](#Dot-Matrix)).\n",
+    "* **Virus**\n",
+    "    * the user must pass several characteristics fundamental to the simulated virus. RKnot infers others. Virus characteristics include:\n",
     "        * $R_0$\n",
     "        * Duration of Infectiousness\n",
     "        * Duration of Immunity\n",
     "        * Infection Fatality Rate\n",
-    "        * Transmission Rate (inferred from )\n",
-    "        * Infectiousness Curve (aka Viral Load) - TBD"
+    "        * Transmission Rate (inferred)\n",
+    "        * Infectiousness Curve (aka Viral Load) - *TBD*"
    ]
   },
   {
@@ -76,9 +76,9 @@
     "import ray\n",
     "ray.shutdown()\n",
     "\n",
-    "RUN = F\n",
+    "RUN = False\n",
     "SHOW_CHARTS = False\n",
-    "SAVE_CHARTS = True"
+    "SAVE_CHARTS = False"
    ]
   },
   {
@@ -99,9 +99,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "`run` is the main method of the `Sim` object. `run` loops through each `tick` in the simulation, calling the `next` method for each `tick`.\n",
-    "\n",
-    "`i_tick` is the current tick in the sim. `ticks` is the total."
+    "`run` is the main method of the `Sim` object. `run` iterates through each `tick` in the simulation. Currently, one day == one tick."
    ]
   },
   {
@@ -206,7 +204,7 @@
    "source": [
     "<video width='705' height='340' \n",
     "    src='https://storage.googleapis.com/rknotvids/keycons/intro.mp4' controls>alternative text</video>\n",
-    "<br>"
+    "<br></br>"
    ]
   },
   {
@@ -216,11 +214,11 @@
     "The animation is split in 3 sections: \n",
     "\n",
     "* **Infections**\n",
-    "    * shows the change in infection level over each day, showing both current infection level and total penetration ('Ever')\n",
+    "    * shows the change in infection level over each day, showing both current infection level and total penetration (\"Ever\" in the legend)\n",
     "* **Details**\n",
     "    * provides several on-the-run statistics including Effective Reproduction Number, total fatalities, and fatalities by group.\n",
     "* **Interactions**\n",
-    "    * the visual representation of the Grid. Each marker is a subject and each cross-section of gridlines is a point (for larger grids the lines are removed).\n",
+    "    * the visual representation of subjects in the Grid. Each marker is a subject and each cross-section of gridlines is a point (for larger grids the lines are removed).\n",
     "    \n",
     "The animation is broken up into components that can be viewed in various preset configurations. [see Chart for more details](#Chart)."
    ]
@@ -229,13 +227,14 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "As per the animation, the default simulation is of a single infected subject, moving across a 4x4 two-dimensional space according to the `equal` mover function. The subject is equally likely to move to any location in the Grid on any tick."
+    "As per the animation above, the default simulation is of a single infected subject, moving across a 4x4 two-dimensional space according to the `equal` mover function. The subject is equally likely to move to any location in the Grid on any tick."
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
+    "___\n",
     "### Subjects ###"
    ]
   },
@@ -244,7 +243,7 @@
    "metadata": {},
    "source": [
     "#### Dots ###\n",
-    "Dots are equivalent to subjects/people in the simulation space. A subject has many attributes that are adjusted during the course of a simulation, including:\n",
+    "Dots are subjects/people in the simulation space. A subject has many attributes that are adjusted over time, including:\n",
     "\n",
     "* which Group it belongs to\n",
     "* if it is alive\n",
@@ -254,7 +253,7 @@
     "* any restricted areas that apply to it ([see Boxes and Gates](#Boxes-and-Gates))\n",
     "* if infected, when it will recover (or when it will succumb)\n",
     "* if recovered, when it will again become susceptible\n",
-    "* what its fatality rate is\n",
+    "* its fatality rate\n",
     "* its `mover` function\n",
     "\n",
     "[see Dot Matrix](#Dot-Matrix) for a more fulsome discussion."
@@ -310,7 +309,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Below we see this structure create a 10x10 Grid with two subjects, only one of which is infected at the outset."
+    "Below we see this structure creates a 10x10 Grid with two subjects, only one of which is infected at the outset."
    ]
   },
   {
@@ -392,15 +391,15 @@
     "* `box` & `gates` \n",
     "    * see [Boxes and Gates](#Boxes-and-Gates)\n",
     "* `mover`\n",
-    "    * selects the function used to dictate a dot's movement ([see Mover Functions](#Mover-Functions))\n",
+    "    * function used to dictate a dot's movement ([see Mover Functions](#Mover-Functions))\n",
     "* `tmf`\n",
-    "    * this is the *transmission factor*, $\\tau$, applied to each of the dots interactions.\n",
-    "    * default: 1\n",
+    "    * [*transmission factor*](intro.ipynb#Introduction), $T$, applied to each of the dots interactions.\n",
+    "    * default: 1 \n",
     "* `susf`\n",
-    "    * meaning *susceptiblity factor*; this is the fraction of subjects in a group that will be made susceptible to the virus at initiation\n",
-    "    * in other words, the inverse of `susf` ($1/{susf}$) is the number of subjects in a group that already have immunity.\n",
+    "    * *susceptiblity factor*; the fraction of subjects in a group that will be made susceptible to the virus at initiation\n",
+    "    * the inverse of `susf` ($1/{susf}$) is the number of subjects in a group that already have immunity.\n",
     "* `ifr`\n",
-    "    * meaning *infection fatality rate*; or the likelihood that an infection of a subject will be fatal"
+    "    * *infection fatality rate*; or the likelihood that an infection of a subject will be fatal"
    ]
   },
   {
@@ -493,14 +492,15 @@
    "metadata": {},
    "source": [
     "<video width='705' height='340' \n",
-    "    src='https://storage.googleapis.com/rknotvids/keycons/group2.mp4' controls>alternative text</video>"
+    "    src='https://storage.googleapis.com/rknotvids/keycons/group2.mp4' controls>alternative text</video>\n",
+    "<br>"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Or as an iterable of dictionaries for multiple groups. Each group is assigned a unique marker in the animation."
+    "Or as an iterable of dictionaries. Each group is assigned a unique marker in the animation."
    ]
   },
   {
@@ -601,18 +601,19 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
+    "___\n",
     "### The Grid ###\n",
     "\n",
-    "All subject interactions in an RKnot simulation take place inside the Grid. The grid is a `Grid` object, which is in turn is a sub-classed numpy array with some additional features.\n",
+    "All interactions in an RKnot simulation take place inside the Grid. The grid is a `Grid` object, which in turn is a sub-classed numpy array with some additional features.\n",
     "\n",
-    "The Grid size can be determined by passing the `square` parameter (as per above) or by passing the `dlevel` parameter (short for density level). Each `dlevel` corresponds to a certain density of the population in the Grid.\n",
+    "The Grid size can be determined by passing the `square` parameter or the `dlevel` parameter. Each `dlevel` corresponds to a certain density.\n",
     "\n",
     "Available `dlevel` options are:"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 11,
+   "execution_count": 6,
    "metadata": {
     "hide_input": true
    },
@@ -623,7 +624,7 @@
        "{'low': 0.2, 'med': 1, 'high': 10}"
       ]
      },
-     "execution_count": 11,
+     "execution_count": 6,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -636,7 +637,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "If we set `dlevel=med`, the Grid will be set such that the density is 1 subject per location. For a group of 100 subjects, that will result in a 10x10 grid. We can see these attributes by also passing `details=True`."
+    "If we set `dlevel=med`, the Grid will be set such that the density is 1 subject per location. For a group of 100 subjects, that will result in a 10x10 grid. We can see these attributes by passing `details=True`."
    ]
   },
   {
@@ -752,7 +753,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "For smaller populations, the density level can only of course be approximated. RKnot defaults to rounding up to the nearest square value (which is rounding down the density).\n",
+    "For smaller populations, the density level can only be approximated. RKnot defaults to rounding up to the nearest square value.\n",
     "\n",
     "Passing `dlevel='high'` on popuation of 1,020 subjects results in an 11x11 grid (121 locations or 8.42 subjects per location)."
    ]
@@ -865,12 +866,13 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "#### MOVER FUNCTIONS ####"
+    "___\n",
+    "#### Mover Functions ####"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 16,
+   "execution_count": 11,
    "metadata": {
     "hide_input": true,
     "nbsphinx": "hidden"
@@ -880,7 +882,7 @@
     "from IPython.display import Markdown as md\n",
     "\n",
     "from rknot.space import MOVER_NAMES\n",
-    "msg = \"When a subject changes locations, this is called a 'move'. A move is \"\n",
+    "msg = \"When a subject changes locations, this is called a *move*. A move is \"\n",
     "msg += \"completed during a tick and \"\n",
     "msg += \"the movement of a subject on any tick is governed by its `mover` function. \"\n",
     "msg += \"Movers select a location according to a pre-defined probability distribution, \"\n",
@@ -1162,70 +1164,55 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 19,
+   "execution_count": 121,
    "metadata": {
     "nbsphinx": "hidden"
    },
    "outputs": [],
    "source": [
-    "from rknot.space.movers import MOVER_DEFNS\n",
+    "from rknot.space.movers import MOVER_DEFNS, MOVER_NAMES\n",
     "text = ''\n",
     "for i, mover in enumerate(MOVER_NAMES):\n",
-    "    text += '* {} \\n'.format(mover.capitalize())\n",
-    "    text += '    * {} \\n'.format(MOVER_DEFNS[i])\n",
-    "    text += \"\"\"\n",
-    "        <video width='705' height='340' \n",
-    "        src='https://storage.googleapis.com/rknotvids/keycons/{}.mp4' controls>alternative text</video>\n",
-    "    \"\"\".format(mover)\n",
-    "    text += ' \\n'"
+    "    text += '\\n * {}: '.format(mover.capitalize())\n",
+    "    text += '{}\\n\\n'.format(MOVER_DEFNS[i])\n",
+    "    text += '<video width=\"705\" height=\"340\" src=\"https://storage.googleapis.com/rknotvids/keycons/{}.mp4\" controls>alternative text</video>'.format(mover)\n",
+    "    text += '<br></br>'\n",
+    "    "
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 20,
+   "execution_count": 122,
    "metadata": {
-    "hide_input": true
+    "hide_input": true,
+    "scrolled": false
    },
    "outputs": [
     {
      "data": {
       "text/markdown": [
-       "* Equal \n",
-       "    * The subject is equally likely to move any location. \n",
        "\n",
-       "        <video width='705' height='340' \n",
-       "        src='https://storage.googleapis.com/rknotvids/keycons/equal.mp4' controls>alternative text</video>\n",
-       "     \n",
-       "* Local \n",
-       "    * The subject has a strong bias towards dots only in its immediate vicinity. \n",
+       " * Equal: The subject is equally likely to move to any location.\n",
        "\n",
-       "        <video width='705' height='340' \n",
-       "        src='https://storage.googleapis.com/rknotvids/keycons/local.mp4' controls>alternative text</video>\n",
-       "     \n",
-       "* Traveller \n",
-       "    * The subject commonly moves to locations far across the Grid. \n",
+       "<video width=\"705\" height=\"340\" src=\"https://storage.googleapis.com/rknotvids/keycons/equal.mp4\" controls>alternative text</video><br></br>\n",
+       " * Local: The subject has a strong bias towards dots only in its immediate vicinity.\n",
        "\n",
-       "        <video width='705' height='340' \n",
-       "        src='https://storage.googleapis.com/rknotvids/keycons/traveller.mp4' controls>alternative text</video>\n",
-       "     \n",
-       "* Quarantine \n",
-       "    * The subject has a strong bias towards not moving, with only some movement occuring. \n",
+       "<video width=\"705\" height=\"340\" src=\"https://storage.googleapis.com/rknotvids/keycons/local.mp4\" controls>alternative text</video><br></br>\n",
+       " * Traveller: The subject commonly moves to locations far across the Grid.\n",
        "\n",
-       "        <video width='705' height='340' \n",
-       "        src='https://storage.googleapis.com/rknotvids/keycons/quarantine.mp4' controls>alternative text</video>\n",
-       "     \n",
-       "* Social \n",
-       "    * The subject moves mostly within its vicinty but also to other more medium distance location. \n",
+       "<video width=\"705\" height=\"340\" src=\"https://storage.googleapis.com/rknotvids/keycons/traveller.mp4\" controls>alternative text</video><br></br>\n",
+       " * Quarantine: The subject has a strong bias towards not moving, with only some movement occuring.\n",
        "\n",
-       "        <video width='705' height='340' \n",
-       "        src='https://storage.googleapis.com/rknotvids/keycons/social.mp4' controls>alternative text</video>\n",
-       "     \n"
+       "<video width=\"705\" height=\"340\" src=\"https://storage.googleapis.com/rknotvids/keycons/quarantine.mp4\" controls>alternative text</video><br></br>\n",
+       " * Social: The subject moves mostly within its vicinty but also to other more medium distance location.\n",
+       "\n",
+       "<video width=\"705\" height=\"340\" src=\"https://storage.googleapis.com/rknotvids/keycons/social.mp4\" controls>alternative text</video><br></br>"
       ],
       "text/plain": [
        "<IPython.core.display.Markdown object>"
       ]
      },
-     "execution_count": 20,
+     "execution_count": 122,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -1246,19 +1233,21 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
+    "___\n",
     "### Boxes and Gates ###\n",
     "The movement of a subject across the Grid can be restricted by two concepts known as Boxes and Gates. These concepts are designed to mimick certain funcitonal or perceived boundaries between groups, such as international borders or closed-access communities like assisted-living facilities.\n",
     "\n",
     "The distinction between boxes and gates is simple:\n",
     "\n",
-    "* Boxes: *cannot* **exit**\n",
-    "* Gates: *cannot* **enter**"
+    "* Subjects *cannot* **exit** Boxes\n",
+    "* Subjects *cannot* **enter** Gates"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
+    "___\n",
     "#### Boxes ####\n",
     "A box is a $m*n$ subset of locations within the Grid that a subject(s) cannot leave.\n",
     "\n",
@@ -1316,7 +1305,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Currently, a box *can only be specified* by passing the `box` parameter as group keyword. When this is done, every dot in the group is only able to move with the `box`, regardless of the size of the Grid."
+    "Currently, a box *can only be specified* by passing the `box` parameter as group keyword. Every dot in the group is only able to move within the `box`, regardless of the size of the Grid."
    ]
   },
   {
@@ -1403,7 +1392,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "A group can only have one box, but each group can have its own box."
+    "A group can only have one box and each group can have its own box."
    ]
   },
   {
@@ -1590,12 +1579,13 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
+    "___\n",
     "#### Gates ####\n",
     "Gates are the inverse of boxes. A gate is an area that subjects are cannot enter.\n",
     "\n",
-    "Gates are a Gate object, which is a subclass of Grid, and they are created via the same 4 element iterable. For now, in a Sim, a gate can only be created by passing the `box_is_gated=True` flag as a keyword in a group dictionary.\n",
+    "Gates are a Gate object, which is a subclass of Grid, and they are created via the same 4 element iterable. For now, a gate can only be created by passing the `box_is_gated=True` flag as a keyword in a group dictionary.\n",
     "\n",
-    "Using the previous example, with this flag set, we can see that `group2` dots can no longer enter the `group1` box."
+    "Using the previous example, we can see that `group2` dots can no longer enter the `group1` box."
    ]
   },
   {
@@ -1619,47 +1609,11 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 30,
+   "execution_count": 83,
    "metadata": {
-    "nbshpinx": "hidden"
+    "nbsphinx": "hidden"
    },
-   "outputs": [
-    {
-     "data": {
-      "application/vnd.jupyter.widget-view+json": {
-       "model_id": "3fa89e4135bc4e7bbf6bed8acb216836",
-       "version_major": 2,
-       "version_minor": 0
-      },
-      "text/plain": [
-       "HBox(children=(FloatProgress(value=0.0, max=50.0), HTML(value='')))"
-      ]
-     },
-     "metadata": {},
-     "output_type": "display_data"
-    },
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "\n"
-     ]
-    },
-    {
-     "data": {
-      "application/vnd.jupyter.widget-view+json": {
-       "model_id": "40a4667b974d42d4a3747127caccf6b2",
-       "version_major": 2,
-       "version_minor": 0
-      },
-      "text/plain": [
-       "HBox(children=(FloatProgress(value=0.0, max=51.0), HTML(value='')))"
-      ]
-     },
-     "metadata": {},
-     "output_type": "display_data"
-    }
-   ],
+   "outputs": [],
    "source": [
     "if RUN:\n",
     "    group1 = dict(name='1', n=5, n_inf=1, box=[1,3,1,3], box_is_gated=True)\n",
@@ -1689,7 +1643,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "This structure can lead to some intricate movement patterns of, say, only isolated groups:"
+    "This structure can lead to some intricate movement patterns. Here we show isolated groups:"
    ]
   },
   {
@@ -1783,7 +1737,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Or some isolated groups and some free moving:"
+    "And here some isolated and some free moving."
    ]
   },
   {
@@ -1878,12 +1832,13 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
+    "___\n",
     "### Events ###\n",
     "Events impact the attributes of subjects over the course of the simulation.\n",
     "\n",
-    "Events can impact location, transmission factors, susceptibility, etc. Events can occur for one tick or more and they can recur on a periodic basis. Events typically impact a specified number of subjects.\n",
+    "Events are utilized to better simulate real-world behavior. \n",
     "\n",
-    "Events are utilized to better simulate real-world behavior. For instance, people do not move in consistent, prescribed ways. They move in regular ways most of the time with contacts that are well defined, but sometimes they attend events (perhaps periodically or unique) that are not governed by their regular movement patterns."
+    "For instance, people do not move in consistent, prescribed ways. They move in regular ways most of the time with contacts that are well defined, but sometimes they attend events (perhaps periodically or uniquely) that are not governed by their regular movement patterns."
    ]
   },
   {
@@ -1891,11 +1846,11 @@
    "metadata": {},
    "source": [
     "#### Event ####\n",
-    "An `Event` is as event that occurs at a particular location.\n",
+    "An `Event` is an event that occurs at a particular location.\n",
     "\n",
     "An `Event` accepts the following parameters:\n",
     "\n",
-    "* `xy`, the x,y coordinates of the location\n",
+    "* `xy`, the xy coordinates of the location\n",
     "* `start_tick`, the tick when the event begins\n",
     "* `groups`, an iterable of group ids that are eligible for the event\n",
     "* `capacity`, the number of subjects that should attend\n",
@@ -1905,7 +1860,7 @@
     "\n",
     "To schedule an event, you must pass a list of event objects to the `events` parameter.\n",
     "\n",
-    "To begin with, we'll create a single `Event` object, called `show`, that occurs once on the tick 5 of the sim."
+    "To begin with, we'll create a single `Event` object, called `show`, that occurs once on day 5."
    ]
   },
   {
@@ -2008,11 +1963,11 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "If you look closely at the animation (or pause it) on frame 6, you'll see that all the dots seemingly disappear, save for one, at location (5,5). \n",
+    "If you look closely at the animation on frame 6, you'll see that all the dots seemingly disappear, save for one, at location 5,5. \n",
     "\n",
     "In fact, all 10 dots are *actually at that location at the same time*.\n",
     "\n",
-    "We can confirm this by inspecting the [Dot Matrix](#) at that tick via the `dotlog` attribute."
+    "We can confirm this by inspecting the [Dot Matrix](#) on that day via the `dotlog` attribute."
    ]
   },
   {
@@ -2249,10 +2204,11 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
+    "___\n",
     "#### Travel ####\n",
     "Travel is a special type of event that allows a subject to enter a gate.\n",
     "\n",
-    "When a dot(s) enters a gate via a Travel object, its box and gate attributes are temporarily adjusted to match those of the groups within the gate. The attributes are revert when the event expires (determined by `duration` parameter).\n",
+    "When a dot enters a gate via a Travel object, its box and gate attributes are temporarily adjusted to match those of the groups within the gate. The attributes revert when the event ends (determined by `duration` parameter).\n",
     "\n",
     "Once inside the gate, the dot(s) are free to interact with other dots normally."
    ]
@@ -2288,67 +2244,11 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 44,
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "application/vnd.jupyter.widget-view+json": {
-       "model_id": "49612186aa874ed195376dee9684339b",
-       "version_major": 2,
-       "version_minor": 0
-      },
-      "text/plain": [
-       "HBox(children=(FloatProgress(value=0.0, max=50.0), HTML(value='')))"
-      ]
-     },
-     "metadata": {},
-     "output_type": "display_data"
-    },
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "\n"
-     ]
-    },
-    {
-     "name": "stderr",
-     "output_type": "stream",
-     "text": [
-      "/Users/spindicate/Documents/programming/rknot/rknot/animate/main.py:160: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).\n",
-      "  self.fig = plt.figure(figsize=figsize)\n"
-     ]
-    },
-    {
-     "data": {
-      "application/vnd.jupyter.widget-view+json": {
-       "model_id": "72977e7719f54770b383e9b16af7b760",
-       "version_major": 2,
-       "version_minor": 0
-      },
-      "text/plain": [
-       "HBox(children=(FloatProgress(value=0.0, max=51.0), HTML(value='')))"
-      ]
-     },
-     "metadata": {},
-     "output_type": "display_data"
-    },
-    {
-     "name": "stderr",
-     "output_type": "stream",
-     "text": [
-      "/Users/spindicate/Documents/programming/rknot/rknot/animate/subplots.py:323: RuntimeWarning: invalid value encountered in double_scalars\n",
-      "  self.max.set_alpha(0.5*i_currmax / argmax)\n",
-      "/Users/spindicate/Documents/programming/rknot/rknot/animate/subplots.py:327: RuntimeWarning: invalid value encountered in double_scalars\n",
-      "  self.hit.set_alpha(0.5*imax / argmax)\n",
-      "/Users/spindicate/Documents/programming/rknot/rknot/animate/subplots.py:323: RuntimeWarning: invalid value encountered in double_scalars\n",
-      "  self.max.set_alpha(0.5*i_currmax / argmax)\n",
-      "/Users/spindicate/Documents/programming/rknot/rknot/animate/subplots.py:327: RuntimeWarning: invalid value encountered in double_scalars\n",
-      "  self.hit.set_alpha(0.5*imax / argmax)\n"
-     ]
-    }
-   ],
+   "execution_count": 84,
+   "metadata": {
+    "nbsphinx": "hidden"
+   },
+   "outputs": [],
    "source": [
     "if RUN:\n",
     "    from rknot.events import Travel\n",
@@ -2388,7 +2288,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Many unique configurations can be achieved with this structure. Below the `group1` box will be vacated by the solitary `group1` dot (essentially switching places with a dot from `group2`."
+    "Many unique configurations can be achieved with this structure. Below, the `group1` box will be vacated by the solitary `group1` dot (essentially switching places with a dot from `group2`)."
    ]
   },
   {
@@ -2531,6 +2431,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
+    "___\n",
     "#### Quarantine ###\n",
     "\n",
     "A quarantine is an event object that makes several changes to a dots state\n",
@@ -2749,6 +2650,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
+    "___\n",
     "#### Social Distancing ####\n",
     "Event to mimick social distancing practices.\n",
     "\n",
@@ -2761,6 +2663,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
+    "___\n",
     "#### Vaccination ###\n",
     "TBD"
    ]
@@ -2769,6 +2672,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
+    "___\n",
     "#### Restrictions ####\n",
     "A restriction object restricts attendance to events that fall within the specified criteria. Each event has a `restricted` attribute that defaults to `False`. A restriction object filters out events from the event schedule by setting `restricted=True` for each event that satisfies the criteria.\n",
     "\n",
@@ -2786,19 +2690,19 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 54,
+   "execution_count": 87,
    "metadata": {
     "nbsphinx": "hidden"
    },
    "outputs": [],
    "source": [
     "from rknot.events import Restriction\n",
-    "msg = str(list(Restriction.OPERATORS.keys()))"
+    "msg = ' '.join(list(Restriction.OPERATORS.keys()))"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 55,
+   "execution_count": 88,
    "metadata": {
     "hide_input": true
    },
@@ -2806,13 +2710,13 @@
     {
      "data": {
       "text/markdown": [
-       "['capacity', 'name', 'ticks', 'groups', 'loc_id']"
+       "capacity name ticks groups loc_id"
       ],
       "text/plain": [
        "<IPython.core.display.Markdown object>"
       ]
      },
-     "execution_count": 55,
+     "execution_count": 88,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -2825,7 +2729,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "The simplest way to restrict an event is to restrict it by its name."
+    "The simplest way to restrict an event is by its name."
    ]
   },
   {
@@ -2949,7 +2853,7 @@
     "\n",
     "But on day 10, the `group1` dots no longer converge on location `(1,1)`. Instead, they are spread throughout their box. So `res1` has successfully restricted attendance to `show1`.\n",
     "\n",
-    "Unlike `Quarantine` objects, however, the `group1` dots have not changed their standard movement patterns. The dots simply revert to their designated `mover` function (in fact, `Quarantine` *is* an event object and it creates `Restriction` objects internally to eliminate events during the quarantine.\n",
+    "Unlike `Quarantine` objects, however, the `group1` dots have not changed their standard movement patterns. The dots simply revert to their designated `mover` function (*in fact, `Quarantine` is an event object and it creates `Restriction` objects internally to eliminate events during the quarantine*).\n",
     "\n",
     "We can restrict multiple events via the other criteria. Next we will restrict events based on their capacity. Events with more than 5 subjects in attendance will be restricted."
    ]
@@ -3078,7 +2982,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 60,
+   "execution_count": 89,
    "metadata": {
     "nbsphinx": "hidden"
    },
@@ -3088,25 +2992,24 @@
     "msg = \"The dot matrix is essentially RKnot's canonical form of data structure. \"\n",
     "msg += \"The matrix is simply a 2D `numpy` array of shape $n*${} \".format(len(LABELS))\n",
     "msg += \"with each of the $n$ rows representing a dot and each column representing \"\n",
-    "msg += \"an attribute. These attributes have the same functionality as any attribute \"\n",
-    "msg += \"on a class object.\\n\""
+    "msg += \"an attribute.\\n\""
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 61,
+   "execution_count": 90,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/markdown": [
-       "The **Dot Matrix** is essentially RKnot's canonical form of data structure. The matrix is simply a 2D `numpy` array of shape $n*$21 with each of the $n$ rows representing a dot and each column representing an attribute. These attributes have the same functionality as any attribute on a class object.\n"
+       "The dot matrix is essentially RKnot's canonical form of data structure. The matrix is simply a 2D `numpy` array of shape $n*$21 with each of the $n$ rows representing a dot and each column representing an attribute.\n"
       ],
       "text/plain": [
        "<IPython.core.display.Markdown object>"
       ]
      },
-     "execution_count": 61,
+     "execution_count": 90,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -3133,7 +3036,7 @@
    "source": [
     "The dot matrix is created inside a **Ray** actor at instantiation and is only passed back to the main `Sim` object when the simulation is completed.\n",
     "\n",
-    "It can be accessed via the `dots` attribute. Below is a 4 dot sample:"
+    "It can be accessed via the `dots` attribute. Below is a sample of 4 dots:"
    ]
   },
   {
@@ -3206,7 +3109,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 65,
+   "execution_count": 91,
    "metadata": {},
    "outputs": [
     {
@@ -3218,7 +3121,7 @@
     }
    ],
    "source": [
-    "from rknot.dots import MATRIX_LABELS, MATRIX_COL_DEFNS as DEFNS\n",
+    "from rknot.dots import MATRIX_LABELS\n",
     "print (MATRIX_LABELS)"
    ]
   },
@@ -3226,7 +3129,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "With the labels, the matrix above could be shown in a table, as follows:"
+    "With the labels, the matrix above can be shown in a table."
    ]
   },
   {
@@ -3279,15 +3182,20 @@
    "metadata": {},
    "source": [
     "There are several data types at work:    \n",
+    "\n",
     "* *categorical integers*; used to identify related objects\n",
     "    * `id`, `group_id`, `loc_id`, `box_id`, `event_id`, `mover`\n",
+    "    \n",
     "* *boolean integers*; used to set boolean flags\n",
-    "    * `0 means False` and `1 means True`\n",
+    "    * `0` means `False` and `1` means `True`\n",
     "    * `is_alive`, `is_vaxxed`, `is_sus`, `is_inf`, `ever_inf`, `go_home`\n",
+    "\n",
     "* *coordinates*; used to identify locations\n",
     "    * `x`, `y`, `homex`, `homey`\n",
+    "\n",
     "* *event ticks*; integers that trigger an event on the given tick\n",
     "    * `depart`, `recover`, `relapse`\n",
+    "\n",
     "* *factors*; scaled integers that must be unscaled before being used in multiplicative formulas\n",
     "    * `tmf`, `ifr`"
    ]
@@ -3356,7 +3264,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 72,
+   "execution_count": 123,
    "metadata": {
     "nbsphinx": "hidden"
    },
@@ -3367,7 +3275,7 @@
        "'/Users/spindicate/Documents/programming/rknot/docs/docs/concepts.ipynb'"
       ]
      },
-     "execution_count": 72,
+     "execution_count": 123,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -3381,6 +3289,15 @@
     "from shutil import copyfile\n",
     "copyfile(dir_ + filename, dir_docs + filename)"
    ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "nbsphinx": "hidden"
+   },
+   "outputs": [],
+   "source": []
   }
  ],
  "metadata": {
