@@ -192,8 +192,14 @@
 <p><em>This project remains in the experimental stage and there are likely many tweaks to come that will improve/change outcomes. I do believe at this stage that the simulation provides good general insights regarding the relationship between various factors and viral spread.</em></p>
 <p>RKnot’s purpose is two-fold:</p>
 <ol class="arabic simple">
-<li><p>Investigate the Herd Immunity Threshold (HIT) under Conditions of Heterogeneity</p></li>
-<li><p>Investigate impacts of policy decisions on viral spread, hospital capacity, and death</p></li>
+<li><p>Investigate the Herd Immunity Threshold (HIT) under conditions of heterogeneity</p></li>
+<li><p>Investigate impacts of policy decisions on viral spread, hospital capacity, and fatalities</p></li>
+</ol>
+<p>RKnot attempts to distinguish itself from prevailing models by simulating <em>every subject</em> and <em>every contact</em> in a population. This allows us to:</p>
+<ol class="arabic simple">
+<li><p>customize populations in order to explore almost any setting on any scale.</p></li>
+<li><p>introduce more realistic movement and contact patterns that do <em>not</em> fit commonly-used assumptions (such as average contact rates or probabilisitic interactions).</p></li>
+<li><p>directly assess the impact of policy decisions by isolating and manipulating specific interactions.</p></li>
 </ol>
 <p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3782273/">Standard models</a> of <span class="math notranslate nohighlight">\(R_0\)</span> estimate HIT as:</p>
 <p><span class="math">\begin{equation}
@@ -214,16 +220,13 @@ HIT = 1 - 1/R_0
 <ul class="simple">
 <li><p><strong>Fatality Rate</strong></p></li>
 <li><p><strong>Population Density</strong></p></li>
-<li><p><strong>Movement</strong> - frequency and distance of location changes in space</p></li>
+<li><p><strong>Movement</strong> - frequency and distance of location changes in space according to different probability distributions.</p></li>
+<li><p><strong>Events</strong> - in the real world, people do not move and interact according to smooth probability functions. In fact, they typically have a small subset of movements that are huge outliers from any distribution. These are the professional sporting events, vacation trips, church functions, house parties, etc. that are scheduled and often times recurring. Thankfully, they are more often than not deterministic, which allows us to incorporate them in a simulation.</p></li>
 <li><p><strong>Susceptibility</strong> - segments of population can be made immune (without requiring vaccination) to mimick phenomenon like <a class="reference external" href="https://www.bmj.com/content/370/bmj.m3563">possible T-cell immunity</a>.</p></li>
-<li><p><strong>Transmission Factor,</strong> <span class="math notranslate nohighlight">\(T\)</span>: RKnot (as with <span class="math notranslate nohighlight">\(R_0\)</span>) assumes that all contacts have the same likelihood of transmission, <span class="math notranslate nohighlight">\(\tau\)</span>. This is a homogenous assumption, however, RKnot introduces a unitless Transmission Factor, <span class="math notranslate nohighlight">\(T\)</span>, for each subject at each contact that can modulate <span class="math notranslate nohighlight">\(\tau\)</span>. This can be used to mimick social distancing or mask wearing or different socio-cultural norms that may impact spread (i.e. east Asian bows versus southern European double-kisses).</p></li>
+<li><p><strong>Transmission Factor</strong>, <span class="math notranslate nohighlight">\(T\)</span>: RKnot (as with <span class="math notranslate nohighlight">\(R_0\)</span>) assumes that all contacts have the same likelihood of transmission, <span class="math notranslate nohighlight">\(\tau\)</span> (subject to the viral load at the time of the interaction). This is a homogenous assumption. RKnot introduces a unitless Transmission Factor, <span class="math notranslate nohighlight">\(T\)</span>, for each subject at each contact that can modulate <span class="math notranslate nohighlight">\(\tau\)</span>. This can be used to mimick social distancing or mask wearing or different socio-cultural norms that may impact spread (i.e. east Asian
+bows versus southern European double-kisses).</p></li>
 </ul>
-<p>Future Additions:</p>
-<ul class="simple">
-<li><p><strong>Infectiousness Curve</strong> - <span class="math notranslate nohighlight">\(R_0\)</span> models assume an infected subject is equally likely to transmit at any point during the infection, however, <a class="reference external" href="https://www.ijidonline.com/article/S1201-9712%2820%2930119-3/pdf">research suggests</a> viral load and, thereby, likelihood of transmission follows a distribution curve. RKnot does <em>not currently support this feature</em>, however, it is being added.</p></li>
-<li><p><strong>Isolation</strong> - with the heightened awareness of a pandemic, individuals in population are more likely to self-isolate or quarantine themselves upon sympton onset, thereby helping to reduce spread.</p></li>
-</ul>
-<p>Where RKnot seems to distinguish itself from prevailing models is that to affect the heterogeneity above, RKnot simulates <em>every contact of every subject in the population</em>.</p>
+<p><em>Still To Be Incorporated</em> + <strong>Isolation</strong> - with the heightened awareness of a pandemic, individuals in population are more likely to self-isolate or quarantine themselves upon sympton onset, thereby helping to reduce spread.</p>
 <p>In order to do that, RKnot must determine the <span class="math notranslate nohighlight">\(\tau\)</span> for the space created by the user.</p>
 </div>
 <div class="section" id="Approach">
@@ -235,27 +238,30 @@ R_0=\beta*d
 \end{equation}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{equation}
-\\\textit{where: }\beta \textit{ = transmission rate, or number of secondary of infections per unit time}\\ d \textit{ = infectious period, or infectiousness duration per unit time}
+\\\textit{where: }\beta \textit{ = transmission rate, or number of secondary of infections per unit time}\\ d \textit{ = infectious period}
 \end{equation}\end{split}\]</div>
-<p>This is often rewritten as:</p>
+<p><span class="math notranslate nohighlight">\(\beta\)</span> can be further broken down as:</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation}
-R_0=\beta/γ
+\beta=\tau*c
 \end{equation}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{equation}
-\\\textit{where: }\gamma \textit{ = recovery rate}
+\\\textit{where: }\tau \textit{ = probability of transmission}\\ c \textit{ = number of contacts between an infected and a susceptible per unit time}
 \end{equation}\end{split}\]</div>
-<p><a class="reference external" href="https://web.stanford.edu/~jhj1/teachingdocs/Jones-on-R0.pdf">see R0 in Simple Models</a></p>
 <p>Thus,</p>
 <p><span class="math">\begin{equation}
 R_0=\tau*c*𝑑
 \end{equation}</span></p>
 <p>or</p>
 <p><span class="math">\begin{equation}
-R_0=\tau*c*1/\gamma
+R_0=\frac{\tau*c}{\gamma}
 \end{equation}</span></p>
-<p><a class="reference external" href="https://web.stanford.edu/~jhj1/teachingdocs/Jones-on-R0.pdf">see equation 1 here</a></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}
+\\\textit{where: }\gamma \textit{ = recovery rate}
+\end{equation}\end{split}\]</div>
+<p><a class="reference external" href="https://web.stanford.edu/~jhj1/teachingdocs/Jones-on-R0.pdf">see R0 in Simple Models</a></p>
 <p>For simulation purposes, we assume:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(R_0\)</span> is known (from external analysis and provided by the user)</p></li>
@@ -308,11 +314,7 @@ P(LOC_{xy},DOT_{ij})=1/N^n
 <h2>Likelihood of Transmission<a class="headerlink" href="#Likelihood-of-Transmission" title="Permalink to this headline">¶</a></h2>
 <p>With expected contact rate known, probability of transmission is found as:</p>
 <p><span class="math">\begin{equation}
-\tau=R_0/(𝑑*c)
-\end{equation}</span></p>
-<p>or</p>
-<p><span class="math">\begin{equation}
-\tau=R_0*γ/c  \;\;\;\;\;\textit{where}\;0<=\tau<=1
+\tau=\frac{R_0}{𝑑*c} \;\;\;\;\;\textit{where}\;0<=\tau<=1
 \end{equation}</span></p>
 <p>Checking dimenions,</p>
 <div class="math notranslate nohighlight">
@@ -333,6 +335,43 @@ P(LOC_{xy},DOT_{ij})=1/N^n
 \end{equation}\]</div>
 <p>This ensures that the likelihood of transmission is asymptotic to 1, as follows:</p>
 <p><img alt="Drawing" src="https://storage.googleapis.com/rknotvids/imgs/tau_v_contacts.png" /></p>
+<p>As of yet, we have not incorporated the concept of viral load (aka generation time, or the infectiousness curve, etc). The analysis above assumes that an infected is equally like to cause a secondary infection at any time during the infectious period, <span class="math notranslate nohighlight">\(d\)</span>. We know, however, that an infected person is typically more infectious at some points than at others.</p>
+<p>This is a function of the viral load of a subject. It takes time for the virus to accumulate in the subject and, then, in turn it takes time for the subject to dimish the virus via its immune response. The more virus a subject is carrying, the more likely it is to cause a secondary infection. And so the likelihood of transmission should follow a similar pattern as the viral load (or vice versa). This <a class="reference external" href="https://www.nytimes.com/interactive/2020/10/02/science/charting-a-coronavirus-infection.html?s=03">New York Times
+piece</a> has a nice breakdown of this concept for sar-cov-2.</p>
+<p>The infectiousness curve can be inferred through observation via measuring the serial interval, as was done in <a class="reference external" href="https://www.ijidonline.com/article/S1201-9712%2820%2930119-3/pdf">this</a> study.</p>
+<p>The team behind <a class="reference external" href="https://rt.live/">rt.live</a> reproduced this curve as follows. Code found <a class="reference external" href="https://github.com/rtcovidlive/covid-model/blob/master/tutorial.ipynb">here</a>.</p>
+<p><img alt="Drawing" src="https://storage.googleapis.com/rknotvids/imgs/generation_time.png" /></p>
+<p>We can then discretize this distribution for daily intervals:</p>
+<p><img alt="Drawing" src="https://storage.googleapis.com/rknotvids/imgs/gt_discrete.png" /></p>
+<p>Two assumptions are made above:</p>
+<ol class="arabic simple">
+<li><p>Only one secondary infection occurs during the infectious period (this is the serial interval by definition).</p></li>
+<li><p>The number of contacts on any day is unknown (and doesn’t need to be known). The number of contacts is assumed to “average out” across the population and over time.</p></li>
+</ol>
+<p>Thus, the distribution of the actual likelihood of transmission, <span class="math notranslate nohighlight">\(\tau\)</span>, as a function of time, <span class="math notranslate nohighlight">\(t\)</span>, is the above distribution multiplied by the expected secondary infections during the infectious period, <span class="math notranslate nohighlight">\(R_0\)</span>, divided by the number of contacts per day:</p>
+<p><span class="math">\begin{equation}
+f(t)*\frac{R_0}{c}
+\end{equation}</span></p>
+<p>If, for example, we assume <span class="math notranslate nohighlight">\(R_0\)</span> 2.5 and 2 contacts per day, we get the following likelihood of transmission curve:</p>
+<p><img alt="Drawing" src="https://storage.googleapis.com/rknotvids/imgs/gt_discrete.png" /></p>
+<p>Thus, if a susceptible subject has contact with an infected, anywhere in the space, its probability of infection is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}
+\tau_i
+\\\textit{where: }i\textit{ = days since the primary infection occured}
+\end{equation}\end{split}\]</div>
+<p>If a susceptible comes in contact with multiple infected, we assume that this results in multiple contacts that occur in succession (although continuously). So we must sum all the branches of the probability tree that end in an infection:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+\sum^n_{i=1}(1-\tau_{t,i-1})*\tau_{ti}
+\end{equation}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}
+\\\textit{where:}\;\;\tau_0=0
+\\t\;\textit{= days since in infection}
+\\\tau\;\textit{= likelihood of transmission}
+\\n\;\textit{= number of infected dots}
+\end{equation}\end{split}\]</div>
 </div>
 <div class="section" id="The-Average-Contact">
 <h2>The Average Contact<a class="headerlink" href="#The-Average-Contact" title="Permalink to this headline">¶</a></h2>
