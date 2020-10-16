@@ -328,11 +328,16 @@ P(LOC_{xy},DOT_{ij})=1/N^n
 \[\begin{equation}
 \tau
 \end{equation}\]</div>
-<p>If a susceptible comes in contact with multiple infected at any time, its probability of infection is:</p>
+<p>If a susceptible comes in contact with multiple infected, we assume that this results in multiple contacts that occur in succession (although continuously). So we must sum all the branches of the probability tree that end in an infection:</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation}
-\tau^{1/n_{inf}}
+\sum^n_{i=1}(1-\tau)^i*\tau
 \end{equation}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}
+\\\textit{where:}\tau\;\textit{= likelihood of transmission}
+\\n\;\textit{= number of infected dots}
+\end{equation}\end{split}\]</div>
 <p>This ensures that the likelihood of transmission is asymptotic to 1, as follows:</p>
 <p><img alt="Drawing" src="https://storage.googleapis.com/rknotvids/imgs/tau_v_contacts.png" /></p>
 <p>As of yet, we have not incorporated the concept of viral load (aka generation time, or the infectiousness curve, etc). The analysis above assumes that an infected is equally like to cause a secondary infection at any time during the infectious period, <span class="math notranslate nohighlight">\(d\)</span>. We know, however, that an infected person is typically more infectious at some points than at others.</p>
@@ -358,25 +363,29 @@ f(t)*\frac{R_0}{c}
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{equation}
 \tau_i
-\\\textit{where: }i\textit{ = days since the primary infection occured}
+\\\textit{where: }i\textit{ = time since the infection occured}
 \end{equation}\end{split}\]</div>
-<p>If a susceptible comes in contact with multiple infected, we assume that this results in multiple contacts that occur in succession (although continuously). So we must sum all the branches of the probability tree that end in an infection:</p>
+<p>With respect to multiple infected at a single location, we have to make a slight tweak to the prior equation to account for the differing transmission likelihoods that each infected dot will have based on how many days it has been infected.</p>
+<p>Again, we sum all the branches of the probability tree that end in an infection. For each branch, the likelihood of terminating in an infection is the cumulative productive of the likelihood that each prior contact will <em>not</em> result an infection times the likelihood that the current product <em>will</em> result.</p>
+<p>To account</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation}
-\sum^n_{i=1}(1-\tau_{t,i-1})*\tau_{ti}
+\sum^n_{i=1}(\tau_{it}*\prod^{i-1}_{j=0}(1-\tau_{jt}))
 \end{equation}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{equation}
-\\\textit{where:}\;\;\tau_0=0
-\\t\;\textit{= days since in infection}
-\\\tau\;\textit{= likelihood of transmission}
+\\\textit{where:}\;\tau_0=0
+\\\tau\;\textit{= likelihood of transmission for dot i at time t}
+\\t\;\textit{= time since infection occured for dot i}
 \\n\;\textit{= number of infected dots}
 \end{equation}\end{split}\]</div>
+<p>If we assume a random <span class="math notranslate nohighlight">\(\tau\)</span> values between 0 and 20% for 30 different infected dots, the likelihood of transmission to a susceptible as a function of the number of dots at the same location, scales as follows:</p>
+<p><img alt="Drawing" src="https://storage.googleapis.com/rknotvids/imgs/multi_tau_v_contacts.png" /></p>
 </div>
 <div class="section" id="The-Average-Contact">
 <h2>The Average Contact<a class="headerlink" href="#The-Average-Contact" title="Permalink to this headline">¶</a></h2>
-<p>Currently, RKnot assumes that each and every contact is an <strong>Average Contact</strong>. The Average Contact is a purely theoretical interaction that would result in about an average likelihood of transmission relative to all other possible interactions. The Average Contact is uninfluenced by external factors such as the demographics of the subjects, etc. Thus, the likelihood of transmission of an average contact is a fundamental property of the virus in question. And we would expect that viruses with a
-higher <span class="math notranslate nohighlight">\(R_0\)</span> would have higher likelihood of transmission in an Average Contact.</p>
+<p>Currently, RKnot assumes that each and every contact is an <strong>Average Contact</strong>. The Average Contact is a purely theoretical interaction that would result in about an average likelihood of transmission relative to all other possible interactions (after accounting for viral load in the infected subject). The Average Contact is uninfluenced by external factors such as the demographics of the subjects, etc. Thus, the likelihood of transmission of an average contact is a fundamental property of the
+virus in question. And we would expect that viruses with a higher <span class="math notranslate nohighlight">\(R_0\)</span> would have higher likelihood of transmission in an Average Contact.</p>
 <p>I like to think of the Average Contact as two people on an elevator, standing two feet apart, having a conversation. This to me feels about average, or in the middle, of other contacts like, say, two people standing in a open field, 6 feet apart, having a conversation, or two people pressed right up against each other, by many other people, on the floor section of a concert.</p>
 </div>
 <hr class="docutils" />
