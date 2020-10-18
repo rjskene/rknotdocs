@@ -646,7 +646,7 @@ div.rendered_html tbody tr:hover {
 <p>The Grid size can be determined by passing the <code class="docutils literal notranslate"><span class="pre">square</span></code> parameter or the <code class="docutils literal notranslate"><span class="pre">dlevel</span></code> parameter. Each <code class="docutils literal notranslate"><span class="pre">dlevel</span></code> corresponds to a certain density.</p>
 <p>Available <code class="docutils literal notranslate"><span class="pre">dlevel</span></code> options are:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -655,7 +655,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -665,7 +665,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>If we set <code class="docutils literal notranslate"><span class="pre">dlevel=med</span></code>, the Grid will be set such that the density is 1 subject per location. For a group of 100 subjects, that will result in a 10x10 grid. We can see these attributes by passing <code class="docutils literal notranslate"><span class="pre">details=True</span></code>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -681,8 +681,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-2020-10-12 13:50:28,944 INFO resource_spec.py:223 -- Starting Ray with 12.11 GiB memory available for workers and up to 6.08 GiB for objects. You can adjust these settings with ray.init(memory=&lt;bytes&gt;, object_store_memory=&lt;bytes&gt;).
-2020-10-12 13:50:29,337 INFO services.py:1191 -- View the Ray dashboard at <span class="ansi-green-intense-fg ansi-bold">localhost:8265</span>
+2020-10-17 01:04:45,150 INFO resource_spec.py:223 -- Starting Ray with 10.4 GiB memory available for workers and up to 5.22 GiB for objects. You can adjust these settings with ray.init(memory=&lt;bytes&gt;, object_store_memory=&lt;bytes&gt;).
+2020-10-17 01:04:45,622 INFO services.py:1191 -- View the Ray dashboard at <span class="ansi-green-intense-fg ansi-bold">localhost:8265</span>
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -697,7 +697,7 @@ div.rendered_html tbody tr:hover {
 |-------------------|-------------------|-------------------|-------------------|
 |                  n|                100|            density|                1.0|
 |-------------------|-------------------|-------------------|-------------------|
-|                ktr|               1.01|                tmr|               0.01|
+|                ktr|               1.01|                   |                   |
 |-------------------|-------------------|-------------------|-------------------|
 </pre></div></div>
 </div>
@@ -711,7 +711,7 @@ div.rendered_html tbody tr:hover {
 </video><p>For smaller populations, the density level can only be approximated. RKnot defaults to rounding up to the nearest square value.</p>
 <p>Passing <code class="docutils literal notranslate"><span class="pre">dlevel='high'</span></code> on popuation of 1,020 subjects results in an 11x11 grid (121 locations or 8.42 subjects per location).</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -722,15 +722,6 @@ div.rendered_html tbody tr:hover {
 <span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">dlevel</span><span class="o">=</span><span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="n">details</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-2020-10-12 13:50:48,730 INFO resource_spec.py:223 -- Starting Ray with 12.11 GiB memory available for workers and up to 6.07 GiB for objects. You can adjust these settings with ray.init(memory=&lt;bytes&gt;, object_store_memory=&lt;bytes&gt;).
-2020-10-12 13:50:49,130 INFO services.py:1191 -- View the Ray dashboard at <span class="ansi-green-intense-fg ansi-bold">localhost:8265</span>
-</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -744,7 +735,7 @@ div.rendered_html tbody tr:hover {
 |-------------------|-------------------|-------------------|-------------------|
 |                  n|               1020|            density|  8.429752066115702|
 |-------------------|-------------------|-------------------|-------------------|
-|                ktr|                8.5|                tmr|                0.0|
+|                ktr|                8.5|                   |                   |
 |-------------------|-------------------|-------------------|-------------------|
 </pre></div></div>
 </div>
@@ -759,7 +750,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Mover-Functions">
 <h3>Mover Functions<a class="headerlink" href="#Mover-Functions" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -768,16 +759,16 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<p>When a subject changes locations, this is called a ‘move’. A move is completed during a tick and the movement of a subject on any tick is governed by its <code class="docutils literal notranslate"><span class="pre">mover</span></code> function. Movers select a location according to a pre-defined probability distribution, so the general movement pattern of a dot can be pre-determined, but any one movement occurs randomly.</p>
+<p>When a subject changes locations, this is called a <em>move</em>. A move is completed during a tick and the movement of a subject on any tick is governed by its <code class="docutils literal notranslate"><span class="pre">mover</span></code> function. Movers select a location according to a pre-defined probability distribution, so the general movement pattern of a dot can be pre-determined, but any one movement occurs randomly.</p>
 <p>There are currently 5 mover functions. Their respective definitions, along with examples of their movement are provided below.</p>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[122]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[100]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -786,21 +777,24 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[122]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[100]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<ul class="simple">
-<li><p>Equal: The subject is equally likely to move to any location.</p></li>
-</ul>
+<p><strong>Equal</strong></p>
+<p><em>The subject is equally likely to move to any location.</em></p>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/equal.mp4" controls><p>alternative text</p>
-</video><p>* Local: The subject has a strong bias towards dots only in its immediate vicinity.</p>
+</video><p><strong>Local</strong></p>
+<p><em>The subject has a strong bias towards dots only in its immediate vicinity.</em></p>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/local.mp4" controls><p>alternative text</p>
-</video><p>* Traveller: The subject commonly moves to locations far across the Grid.</p>
+</video><p><strong>Traveller</strong></p>
+<p><em>The subject commonly moves to locations far across the Grid.</em></p>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/traveller.mp4" controls><p>alternative text</p>
-</video><p>* Quarantine: The subject has a strong bias towards not moving, with only some movement occuring.</p>
+</video><p><strong>Quarantine</strong></p>
+<p><em>The subject has a strong bias towards not moving, with only some movement occuring.</em></p>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/quarantine.mp4" controls><p>alternative text</p>
-</video><p>* Social: The subject moves mostly within its vicinty but also to other more medium distance location.</p>
+</video><p><strong>Social</strong></p>
+<p><em>The subject moves mostly within its vicinty but also to other more medium distance location.</em></p>
 <video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/social.mp4" controls><p>alternative text</p>
 </video></div>
 </div>
@@ -830,7 +824,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -839,7 +833,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -978,7 +972,7 @@ div.rendered_html tbody tr:hover {
 <p>In fact, all 10 dots are <em>actually at that location at the same time</em>.</p>
 <p>We can confirm this by inspecting the <a class="reference external" href="#">Dot Matrix</a> on that day via the <code class="docutils literal notranslate"><span class="pre">dotlog</span></code> attribute.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -988,7 +982,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1180,7 +1174,7 @@ array([[5, 5],
 <p>Restrictions have potential as a versatile tool that can be used to investigate the impact of various government and business policy decisions that impact spread.</p>
 <p>The Restriction object has a <code class="docutils literal notranslate"><span class="pre">criteria</span></code> parameter that accepts a <code class="docutils literal notranslate"><span class="pre">dict</span></code>, with keywords related to event object attributes. Acceptable <code class="docutils literal notranslate"><span class="pre">criteria</span></code> keys are currently:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[88]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1189,7 +1183,7 @@ array([[5, 5],
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[88]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1251,7 +1245,7 @@ array([[5, 5],
 <div class="section" id="Dot-Matrix">
 <h2>Dot Matrix<a class="headerlink" href="#Dot-Matrix" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[90]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1260,11 +1254,11 @@ array([[5, 5],
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[90]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<p>The dot matrix is essentially RKnot’s canonical form of data structure. The matrix is simply a 2D <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array of shape $n*$21 with each of the <span class="math notranslate nohighlight">\(n\)</span> rows representing a dot and each column representing an attribute.</p>
+<p>The dot matrix is RKnot’s canonical form of data structure. The matrix is simply a 2D <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array of shape $n*$22 with each of the <span class="math notranslate nohighlight">\(n\)</span> rows representing a dot and each column representing an attribute.</p>
 </div>
 </div>
 <p>More typical Python objects have been eschewed in favor the Dot Matrix because:</p>
@@ -1277,7 +1271,7 @@ array([[5, 5],
 <p>The dot matrix is created inside a <strong>Ray</strong> actor at instantiation and is only passed back to the main <code class="docutils literal notranslate"><span class="pre">Sim</span></code> object when the simulation is completed.</p>
 <p>It can be accessed via the <code class="docutils literal notranslate"><span class="pre">dots</span></code> attribute. Below is a sample of 4 dots:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1286,27 +1280,23 @@ array([[5, 5],
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([[   0,    0,    1,    0,    0,    1,    1,   13,    2,    4,    2,
-           4,    1,    1, -999,    0,  100,  650,   -1,  373,  738,    0,
-           1],
-       [   1,    0,    1,    0,    0,    1,    1,   12,    2,    3,    2,
-           3,    1,    1, -999,    0,  100,  650,   -1,  369,  734,    0,
-           1],
-       [   2,    0,    1,    0,    0,    1,    1,    4,    1,    5,    1,
-           5,    1,    1, -999,    0,  100,  650,   -1,  373,  738,    0,
-           1],
-       [   3,    0,    1,    0,    0,    1,    1,    4,    1,    5,    1,
-           5,    1,    1, -999,    0,  100,  650,   -1,  371,  736,    0,
-           1]])
+array([[   0,    0,    1,    0,    1,    0,    0,    5,    1,    6,    3,
+           8,    0,    0, -999,    0,  100,  650,   -1,   -1,   -1,   -1],
+       [   1,    0,    1,    0,    1,    0,    0,    2,    1,    3,    6,
+           3,    0,    0, -999,    0,  100,  650,   -1,   -1,   -1,   -1],
+       [   2,    0,    1,    0,    0,    1,    1,   88,    9,    9,    8,
+           4,    0,    0, -999,    0,  100,  650,    0,   -1,  365,  730],
+       [   3,    0,    1,    0,    0,    1,    1,   52,    6,    3,    4,
+           1,    0,    0, -999,    0,  100,  650,    0,   -1,  365,  730]])
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1315,7 +1305,7 @@ array([[   0,    0,    1,    0,    0,    1,    1,   13,    2,    4,    2,
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1323,7 +1313,7 @@ array([[   0,    0,    1,    0,    0,    1,    1,   13,    2,    4,    2,
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[91]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1337,12 +1327,12 @@ array([[   0,    0,    1,    0,    0,    1,    1,   13,    2,    4,    2,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[&#39;id&#39;, &#39;group_id&#39;, &#39;is_alive&#39;, &#39;is_vaxxed&#39;, &#39;is_sus&#39;, &#39;is_inf&#39;, &#39;ever_inf&#39;, &#39;loc_id&#39;, &#39;x&#39;, &#39;y&#39;, &#39;homex&#39;, &#39;homey&#39;, &#39;go_home&#39;, &#39;box_id&#39;, &#39;event_id&#39;, &#39;mover&#39;, &#39;tmf&#39;, &#39;ifr&#39;, &#39;depart&#39;, &#39;recover&#39;, &#39;relapse&#39;]
+[&#39;id&#39;, &#39;group_id&#39;, &#39;is_alive&#39;, &#39;is_vaxxed&#39;, &#39;is_sus&#39;, &#39;is_inf&#39;, &#39;ever_inf&#39;, &#39;loc_id&#39;, &#39;x&#39;, &#39;y&#39;, &#39;homex&#39;, &#39;homey&#39;, &#39;go_home&#39;, &#39;box_id&#39;, &#39;event_id&#39;, &#39;mover&#39;, &#39;tmf&#39;, &#39;ifr&#39;, &#39;inf_tick&#39;, &#39;depart&#39;, &#39;recover&#39;, &#39;relapse&#39;]
 </pre></div></div>
 </div>
 <p>With the labels, the matrix above can be shown in a table.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1351,12 +1341,13 @@ array([[   0,    0,    1,    0,    0,    1,    1,   13,    2,    4,    2,
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <table class="docutils align-default">
 <colgroup>
+<col style="width: 5%" />
 <col style="width: 5%" />
 <col style="width: 5%" />
 <col style="width: 5%" />
@@ -1398,6 +1389,7 @@ array([[   0,    0,    1,    0,    0,    1,    1,   13,    2,    4,    2,
 <th class="head"><p>mover</p></th>
 <th class="head"><p>tmf</p></th>
 <th class="head"><p>ifr</p></th>
+<th class="head"><p>inf_tick</p></th>
 <th class="head"><p>depart</p></th>
 <th class="head"><p>recover</p></th>
 <th class="head"><p>relapse</p></th>
@@ -1408,45 +1400,47 @@ array([[   0,    0,    1,    0,    0,    1,    1,   13,    2,    4,    2,
 <td><p>0</p></td>
 <td><p>1</p></td>
 <td><p>0</p></td>
+<td><p>1</p></td>
 <td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>5</p></td>
 <td><p>1</p></td>
-<td><p>1</p></td>
-<td><p>13</p></td>
-<td><p>2</p></td>
-<td><p>4</p></td>
-<td><p>2</p></td>
-<td><p>4</p></td>
-<td><p>1</p></td>
-<td><p>1</p></td>
+<td><p>6</p></td>
+<td><p>3</p></td>
+<td><p>8</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
 <td><p>-999</p></td>
 <td><p>0</p></td>
 <td><p>100</p></td>
 <td><p>650</p></td>
 <td><p>-1</p></td>
-<td><p>373</p></td>
-<td><p>738</p></td>
+<td><p>-1</p></td>
+<td><p>-1</p></td>
+<td><p>-1</p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
 <td><p>0</p></td>
 <td><p>1</p></td>
 <td><p>0</p></td>
+<td><p>1</p></td>
 <td><p>0</p></td>
-<td><p>1</p></td>
-<td><p>1</p></td>
-<td><p>12</p></td>
+<td><p>0</p></td>
 <td><p>2</p></td>
-<td><p>3</p></td>
-<td><p>2</p></td>
-<td><p>3</p></td>
 <td><p>1</p></td>
-<td><p>1</p></td>
+<td><p>3</p></td>
+<td><p>6</p></td>
+<td><p>3</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
 <td><p>-999</p></td>
 <td><p>0</p></td>
 <td><p>100</p></td>
 <td><p>650</p></td>
 <td><p>-1</p></td>
-<td><p>369</p></td>
-<td><p>734</p></td>
+<td><p>-1</p></td>
+<td><p>-1</p></td>
+<td><p>-1</p></td>
 </tr>
 <tr class="row-even"><td><p>2</p></td>
 <td><p>0</p></td>
@@ -1455,20 +1449,21 @@ array([[   0,    0,    1,    0,    0,    1,    1,   13,    2,    4,    2,
 <td><p>0</p></td>
 <td><p>1</p></td>
 <td><p>1</p></td>
+<td><p>88</p></td>
+<td><p>9</p></td>
+<td><p>9</p></td>
+<td><p>8</p></td>
 <td><p>4</p></td>
-<td><p>1</p></td>
-<td><p>5</p></td>
-<td><p>1</p></td>
-<td><p>5</p></td>
-<td><p>1</p></td>
-<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
 <td><p>-999</p></td>
 <td><p>0</p></td>
 <td><p>100</p></td>
 <td><p>650</p></td>
+<td><p>0</p></td>
 <td><p>-1</p></td>
-<td><p>373</p></td>
-<td><p>738</p></td>
+<td><p>365</p></td>
+<td><p>730</p></td>
 </tr>
 <tr class="row-odd"><td><p>3</p></td>
 <td><p>0</p></td>
@@ -1477,20 +1472,21 @@ array([[   0,    0,    1,    0,    0,    1,    1,   13,    2,    4,    2,
 <td><p>0</p></td>
 <td><p>1</p></td>
 <td><p>1</p></td>
+<td><p>52</p></td>
+<td><p>6</p></td>
+<td><p>3</p></td>
 <td><p>4</p></td>
 <td><p>1</p></td>
-<td><p>5</p></td>
-<td><p>1</p></td>
-<td><p>5</p></td>
-<td><p>1</p></td>
-<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
 <td><p>-999</p></td>
 <td><p>0</p></td>
 <td><p>100</p></td>
 <td><p>650</p></td>
+<td><p>0</p></td>
 <td><p>-1</p></td>
-<td><p>371</p></td>
-<td><p>736</p></td>
+<td><p>365</p></td>
+<td><p>730</p></td>
 </tr>
 <tr class="row-even"><td><p>4</p></td>
 <td><p>0</p></td>
@@ -1499,20 +1495,21 @@ array([[   0,    0,    1,    0,    0,    1,    1,   13,    2,    4,    2,
 <td><p>0</p></td>
 <td><p>1</p></td>
 <td><p>1</p></td>
-<td><p>1</p></td>
-<td><p>1</p></td>
-<td><p>2</p></td>
-<td><p>1</p></td>
-<td><p>2</p></td>
-<td><p>1</p></td>
-<td><p>1</p></td>
+<td><p>63</p></td>
+<td><p>7</p></td>
+<td><p>4</p></td>
+<td><p>7</p></td>
+<td><p>6</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
 <td><p>-999</p></td>
 <td><p>0</p></td>
 <td><p>100</p></td>
 <td><p>650</p></td>
+<td><p>0</p></td>
 <td><p>-1</p></td>
-<td><p>367</p></td>
-<td><p>732</p></td>
+<td><p>365</p></td>
+<td><p>730</p></td>
 </tr>
 </tbody>
 </table>
@@ -1549,7 +1546,7 @@ array([[   0,    0,    1,    0,    0,    1,    1,   13,    2,    4,    2,
 </ul>
 <p>The column attributes are defined as follows:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1558,7 +1555,7 @@ array([[   0,    0,    1,    0,    0,    1,    1,   13,    2,    4,    2,
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1579,53 +1576,58 @@ array([[   0,    0,    1,    0,    0,    1,    1,   13,    2,    4,    2,
 <tbody>
 <tr class="row-even"><td><p>id</p></td>
 <td><p>the subject’s unique identifier</p></td>
-<td><p>homex</p></td>
-<td><p>x coord of the subject’s home location (its original starting point)</p></td>
-</tr>
-<tr class="row-odd"><td><p>group_id</p></td>
-<td><p>the unique identifier of the subject’s group</p></td>
 <td><p>homey</p></td>
 <td><p>y coord of the subject’s home location (its original starting point)</p></td>
 </tr>
-<tr class="row-even"><td><p>is_alive</p></td>
-<td><p>Is the subject alive?</p></td>
+<tr class="row-odd"><td><p>group_id</p></td>
+<td><p>the unique identifier of the subject’s group</p></td>
 <td><p>go_home</p></td>
 <td><p>is the subject going home on the next move?</p></td>
 </tr>
-<tr class="row-odd"><td><p>is_vaxxed</p></td>
-<td><p>Has the subject been vaccinated?</p></td>
+<tr class="row-even"><td><p>is_alive</p></td>
+<td><p>Is the subject alive?</p></td>
 <td><p>box_id</p></td>
 <td><p>id of the box the subject belongs to</p></td>
 </tr>
-<tr class="row-even"><td><p>is_sus</p></td>
-<td><p>Is the subject susceptible to infection?</p></td>
+<tr class="row-odd"><td><p>is_vaxxed</p></td>
+<td><p>Has the subject been vaccinated?</p></td>
 <td><p>event_id</p></td>
 <td><p>id of the event the subject is attending</p></td>
 </tr>
-<tr class="row-odd"><td><p>is_inf</p></td>
-<td><p>Is the subject infected?</p></td>
+<tr class="row-even"><td><p>is_sus</p></td>
+<td><p>Is the subject susceptible to infection?</p></td>
 <td><p>mover</p></td>
 <td><p>id of the subject’s mover function</p></td>
 </tr>
-<tr class="row-even"><td><p>ever_inf</p></td>
-<td><p>Has the subject ever been infected?</p></td>
+<tr class="row-odd"><td><p>is_inf</p></td>
+<td><p>Is the subject infected?</p></td>
 <td><p>tmf</p></td>
 <td><p>the subject’s transmission factor</p></td>
 </tr>
-<tr class="row-odd"><td><p>loc_id</p></td>
-<td><p>id of the subject’s current location</p></td>
+<tr class="row-even"><td><p>ever_inf</p></td>
+<td><p>Has the subject ever been infected?</p></td>
 <td><p>ifr</p></td>
 <td><p>the subject’s infection fatality rate</p></td>
+</tr>
+<tr class="row-odd"><td><p>loc_id</p></td>
+<td><p>id of the subject’s current location</p></td>
+<td><p>inf_tick</p></td>
+<td><p>the tick a subject is infected</p></td>
 </tr>
 <tr class="row-even"><td><p>x</p></td>
 <td><p>x coord of the subject’s current location</p></td>
 <td><p>depart</p></td>
-<td><p>the date an infected subject will depart</p></td>
+<td><p>the tick an infected subject will depart</p></td>
 </tr>
 <tr class="row-odd"><td><p>y</p></td>
 <td><p>y coord of the subject’s curretn location</p></td>
 <td><p>recover</p></td>
-<td><p>the date an infected subject will no longer be infected or susceptible</p></td>
+<td><p>the tick an infected subject will no longer be infected or susceptible</p></td>
+</tr>
+<tr class="row-even"><td><p>homex</p></td>
+<td><p>x coord of the subject’s home location (its original starting point)</p></td>
+<td><p>relapse</p></td>
+<td><p>the tick a recovered subject will again become susceptible</p></td>
 </tr>
 </tbody>
 </table>
