@@ -90,9 +90,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#Heterogeneity">Heterogeneity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Approach">Approach</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Expected-Contacts">Expected Contacts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#The-Average-Contact">The Average Contact</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Likelihood-of-Transmission">Likelihood of Transmission</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Dynamic-Infectiousness">Dynamic Infectiousness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#The-Average-Contact">The Average Contact</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#References">References</a></li>
 </ul>
 </li>
@@ -199,7 +198,7 @@
 <p>RKnot attempts to distinguish itself from prevailing models by simulating <em>every subject</em> and <em>every contact</em> in a population. This allows us to:</p>
 <ol class="arabic simple">
 <li><p>customize populations in order to explore almost any setting on any scale.</p></li>
-<li><p>introduce more realistic movement and contact patterns that do <em>not</em> fit commonly-used assumptions.</p></li>
+<li><p>introduce more realistic movement and contact patterns that do <em>not</em> fit commonly-used assumptions (such as average contact rates or probabilisitic interactions).</p></li>
 <li><p>directly assess the impact of policy decisions by isolating and manipulating specific interactions.</p></li>
 </ol>
 <p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3782273/">Standard models</a> of <span class="math notranslate nohighlight">\(R_0\)</span> estimate HIT as:</p>
@@ -227,10 +226,7 @@ HIT = 1 - 1/R_0
 <li><p><strong>Transmission Factor</strong>, <span class="math notranslate nohighlight">\(T\)</span>: RKnot (as with <span class="math notranslate nohighlight">\(R_0\)</span>) assumes that all contacts have the same likelihood of transmission, <span class="math notranslate nohighlight">\(\tau\)</span> (subject to the viral load at the time of the interaction). This is a homogenous assumption. RKnot introduces a unitless Transmission Factor, <span class="math notranslate nohighlight">\(T\)</span>, for each subject at each contact that can modulate <span class="math notranslate nohighlight">\(\tau\)</span>. This can be used to mimick social distancing or mask wearing or different socio-cultural norms that may impact spread (i.e. east Asian
 bows versus southern European double-kisses).</p></li>
 </ul>
-<p><em>Still To Be Incorporated</em></p>
-<ul class="simple">
-<li><p><strong>Isolation</strong> - with the heightened awareness of a pandemic, individuals in population are more likely to self-isolate or quarantine themselves upon sympton onset, thereby helping to reduce spread.</p></li>
-</ul>
+<p><em>Still To Be Incorporated</em> + <strong>Isolation</strong> - with the heightened awareness of a pandemic, individuals in population are more likely to self-isolate or quarantine themselves upon sympton onset, thereby helping to reduce spread.</p>
 <p>In order to do that, RKnot must determine the <span class="math notranslate nohighlight">\(\tau\)</span> for the space created by the user.</p>
 </div>
 <div class="section" id="Approach">
@@ -314,23 +310,9 @@ P(LOC_{xy},DOT_{ij})=1/N^n
 \sum_{n=1}^N(1/N^n)*n
 \end{equation}\]</div>
 </div>
-<div class="section" id="The-Average-Contact">
-<h2>The Average Contact<a class="headerlink" href="#The-Average-Contact" title="Permalink to this headline">¶</a></h2>
-<p>Currently, RKnot assumes that each and every contact is an <strong>Average Contact</strong>, <span class="math notranslate nohighlight">\(\overline{c}\)</span>.</p>
-<p><span class="math notranslate nohighlight">\(\overline{c}\)</span> is a purely theoretical interaction that would result in about an average likelihood of transmission relative to all other possible interactions. It is not influenced by external factors such as the demographics of the subjects, the properties of the location, etc. Thus, the <span class="math notranslate nohighlight">\(\tau\)</span> an Average Contact is a fundamental property of the virus (the <em>perhaps</em> <strong>the</strong> fundamental property that drives all others).</p>
-<p>I like to think of the <span class="math notranslate nohighlight">\(\overline{c}\)</span> as the <em>Elevator Case</em>, i.e.:</p>
-<ul class="simple">
-<li><p>Two people on an elevator, standing three feet apart, having a conversation for several minutes before one person exits. No masks nor other conscious social distancing, but no particularly reckless behaviour either.</p></li>
-</ul>
-<p>Then, every other conceivable interaction can now be scaled relative to the Elevator Case on continuum of higher or lower probability of transmission using a transmission factor, <span class="math notranslate nohighlight">\(T\)</span>. For instance:</p>
-<ul class="simple">
-<li><p>two college students pressed very closely on a concert floor and yelling at the band on stage would have <span class="math notranslate nohighlight">\(T &gt;&gt;&gt; 1x\)</span></p></li>
-<li><p>two people standing in a open field, 6 feet apart with masks on exchanging limited pleasantries would have <span class="math notranslate nohighlight">\(T &lt;&lt;&lt; 1x\)</span></p></li>
-</ul>
-</div>
 <div class="section" id="Likelihood-of-Transmission">
 <h2>Likelihood of Transmission<a class="headerlink" href="#Likelihood-of-Transmission" title="Permalink to this headline">¶</a></h2>
-<p>With expected contact rate known, probability of transmission under the SIR model is found as:</p>
+<p>With expected contact rate known, probability of transmission is found as:</p>
 <p><span class="math">\begin{equation}
 \tau=\frac{R_0}{𝑑*c} \;\;\;\;\;\textit{where}\;0<=\tau<=1
 \end{equation}</span></p>
@@ -341,7 +323,7 @@ P(LOC_{xy},DOT_{ij})=1/N^n
 =\frac{\text{infections}}{\text{number of contacts}}
 \end{equation}\]</div>
 <p>This is the likelihood of transmission of a contact and is a fundamental factor used in the RKnot simulation.</p>
-<p>If a susceptible subject has contact with an infected at the same location, at any time, its probability of infection is:</p>
+<p>If a susceptible subject has contact with an infected, anywhere in the space, at any time, its probability of infection is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation}
 \tau
@@ -358,14 +340,53 @@ P(LOC_{xy},DOT_{ij})=1/N^n
 \end{equation}\end{split}\]</div>
 <p>This ensures that the likelihood of transmission is asymptotic to 1, as follows:</p>
 <p><img alt="Drawing" src="https://storage.googleapis.com/rknotvids/imgs/tau_v_contacts.png" /></p>
+<p>As of yet, we have not incorporated the concept of viral load (aka generation time, or the infectiousness curve, etc). The analysis above assumes that an infected is equally like to cause a secondary infection at any time during the infectious period, <span class="math notranslate nohighlight">\(d\)</span>. We know, however, that an infected person is typically more infectious at some points than at others.</p>
+<p>This is a function of the viral load of a subject. It takes time for the virus to accumulate in the subject and, then, in turn it takes time for the subject to dimish the virus via its immune response. The more virus a subject is carrying, the more likely it is to cause a secondary infection. And so the likelihood of transmission should follow a similar pattern as the viral load (or vice versa). This <a class="reference external" href="https://www.nytimes.com/interactive/2020/10/02/science/charting-a-coronavirus-infection.html?s=03">New York Times
+piece</a> has a nice breakdown of this concept for sar-cov-2.</p>
+<p>The infectiousness curve can be inferred through observation via measuring the serial interval, as was done in <a class="reference external" href="https://www.ijidonline.com/article/S1201-9712%2820%2930119-3/pdf">this</a> study.</p>
+<p>The team behind <a class="reference external" href="https://rt.live/">rt.live</a> reproduced this curve as follows. Code found <a class="reference external" href="https://github.com/rtcovidlive/covid-model/blob/master/tutorial.ipynb">here</a>.</p>
+<p><img alt="Drawing" src="https://storage.googleapis.com/rknotvids/imgs/generation_time.png" /></p>
+<p>We can then discretize this distribution for daily intervals:</p>
+<p><img alt="Drawing" src="https://storage.googleapis.com/rknotvids/imgs/gt_discrete.png" /></p>
+<p>Two assumptions are made above:</p>
+<ol class="arabic simple">
+<li><p>Only one secondary infection occurs during the infectious period (this is the serial interval by definition).</p></li>
+<li><p>The number of contacts on any day is unknown (and doesn’t need to be known). The number of contacts is assumed to “average out” across the population and over time.</p></li>
+</ol>
+<p>Thus, the distribution of the actual likelihood of transmission, <span class="math notranslate nohighlight">\(\tau\)</span>, as a function of time, <span class="math notranslate nohighlight">\(t\)</span>, is the above distribution multiplied by the expected secondary infections during the infectious period, <span class="math notranslate nohighlight">\(R_0\)</span>, divided by the number of contacts per day:</p>
+<p><span class="math">\begin{equation}
+f(t)*\frac{R_0}{c}
+\end{equation}</span></p>
+<p>If, for example, we assume <span class="math notranslate nohighlight">\(R_0\)</span> 2.5 and 2 contacts per day, we get the following likelihood of transmission curve:</p>
+<p><img alt="Drawing" src="https://storage.googleapis.com/rknotvids/imgs/gt_discrete.png" /></p>
+<p>Thus, if a susceptible subject has contact with an infected, anywhere in the space, its probability of infection is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}
+\tau_i
+\\\textit{where: }i\textit{ = time since the infection occured}
+\end{equation}\end{split}\]</div>
+<p>With respect to multiple infected at a single location, we have to make a slight tweak to the prior equation to account for the differing transmission likelihoods that each infected dot will have based on how many days it has been infected.</p>
+<p>Again, we sum all the branches of the probability tree that end in an infection. For each branch, the likelihood of terminating in an infection is the cumulative productive of the likelihood that each prior contact will <em>not</em> result an infection times the likelihood that the current product <em>will</em> result.</p>
+<p>To account</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+\sum^n_{i=1}(\tau_{it}*\prod^{i-1}_{j=0}(1-\tau_{jt}))
+\end{equation}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}
+\\\textit{where:}\;\tau_0=0
+\\\tau\;\textit{= likelihood of transmission for dot i at time t}
+\\t\;\textit{= time since infection occured for dot i}
+\\n\;\textit{= number of infected dots}
+\end{equation}\end{split}\]</div>
+<p>If we assume a random <span class="math notranslate nohighlight">\(\tau\)</span> values between 0 and 20% for 30 different infected dots, the likelihood of transmission to a susceptible as a function of the number of dots at the same location, scales as follows:</p>
+<p><img alt="Drawing" src="https://storage.googleapis.com/rknotvids/imgs/multi_tau_v_contacts.png" /></p>
 </div>
-<div class="section" id="Dynamic-Infectiousness">
-<h2>Dynamic Infectiousness<a class="headerlink" href="#Dynamic-Infectiousness" title="Permalink to this headline">¶</a></h2>
-<p>At present, RKnot does not formally incorporate concepts of viral load. The SIR model assumes that an infected is equally likely to cause a secondary infection at any time during the infectious period, <span class="math notranslate nohighlight">\(d\)</span>.</p>
-<p>In reality, the infectiousness of an individual changes over time. This is a function of the viral load of a subject. It takes time for the virus to accumulate in the subject and, then, in turn it takes time for the subject to dimish the virus via its immune response.</p>
-<p>The more virus a subject is carrying, the more likely it is to cause a secondary infection. And so the likelihood of transmission should follow a similar pattern as the viral load (or vice versa). This <a class="reference external" href="https://www.nytimes.com/interactive/2020/10/02/science/charting-a-coronavirus-infection.html?s=03">New York Times piece</a> has nice visualisations of this concept for sar-cov-2.</p>
-<p>There are several models available in the literature that provide more sophisticated infectiousness curves, including some that account for asymptomatic spread. For instance, <a class="reference external" href="https://www.ijidonline.com/article/S1201-9712%2820%2930119-3/pdf">this</a> study focuses on the serial interval and <a class="reference external" href="https://www.medrxiv.org/content/10.1101/2020.03.08.20032946v1.full.pdf">this</a> study accounts for asymptomatic spread, incubation period, etc.</p>
-<p>Incorporation of these concepts into RKnot is being explored. It is important to note that <span class="math notranslate nohighlight">\(R_0\)</span> in a SIR model is not necessarily equal to <span class="math notranslate nohighlight">\(R_0\)</span> in a more sophisticated model.</p>
+<div class="section" id="The-Average-Contact">
+<h2>The Average Contact<a class="headerlink" href="#The-Average-Contact" title="Permalink to this headline">¶</a></h2>
+<p>Currently, RKnot assumes that each and every contact is an <strong>Average Contact</strong>. The Average Contact is a purely theoretical interaction that would result in about an average likelihood of transmission relative to all other possible interactions (after accounting for viral load in the infected subject). The Average Contact is uninfluenced by external factors such as the demographics of the subjects, etc. Thus, the likelihood of transmission of an average contact is a fundamental property of the
+virus in question. And we would expect that viruses with a higher <span class="math notranslate nohighlight">\(R_0\)</span> would have higher likelihood of transmission in an Average Contact.</p>
+<p>I like to think of the Average Contact as two people on an elevator, standing two feet apart, having a conversation. This to me feels about average, or in the middle, of other contacts like, say, two people standing in a open field, 6 feet apart, having a conversation, or two people pressed right up against each other, by many other people, on the floor section of a concert.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="References">
@@ -379,9 +400,6 @@ P(LOC_{xy},DOT_{ij})=1/N^n
 <li><p><a class="reference external" href="https://web.stanford.edu/~jhj1/teachingdocs/Jones-on-R0.pdf">https://web.stanford.edu/~jhj1/teachingdocs/Jones-on-R0.pdf</a></p></li>
 <li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1804098/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1804098/</a></p></li>
 <li><p><a class="reference external" href="https://www.ijidonline.com/article/S1201-9712%2820%2930119-3/pdf">https://www.ijidonline.com/article/S1201-9712%2820%2930119-3/pdf</a></p></li>
-<li><p><a class="reference external" href="https://www.nytimes.com/interactive/2020/10/02/science/charting-a-coronavirus-infection.html?s=03">https://www.nytimes.com/interactive/2020/10/02/science/charting-a-coronavirus-infection.html?s=03</a></p></li>
-<li><p><a class="reference external" href="https://www.ijidonline.com/article/S1201-9712%2820%2930119-3/pdf">https://www.ijidonline.com/article/S1201-9712%2820%2930119-3/pdf</a></p></li>
-<li><p><a class="reference external" href="https://www.medrxiv.org/content/10.1101/2020.03.08.20032946v1.full.pdf">https://www.medrxiv.org/content/10.1101/2020.03.08.20032946v1.full.pdf</a></p></li>
 </ul>
 </div>
 </div>
