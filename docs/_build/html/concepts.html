@@ -1,0 +1,1693 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Key Concepts &mdash; RKnot  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"equationNumbers": {"autoNumber": "AMS", "useLabelIds": true}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Factors Influencing HIT" href="hit.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> RKnot
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hit.html">Factors Influencing HIT</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Key Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#The-Sim">The Sim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Subjects">Subjects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Dots">Dots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Groups">Groups</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#The-Grid">The Grid</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Mover-Functions">Mover Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Boxes-and-Gates">Boxes and Gates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Boxes">Boxes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Gates">Gates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Events">Events</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Event">Event</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Travel">Travel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Quarantine">Quarantine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Social-Distancing">Social Distancing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Vaccination">Vaccination</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Restrictions">Restrictions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Dot-Matrix">Dot Matrix</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RKnot</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Key Concepts</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/concepts.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Key-Concepts">
+<h1>Key Concepts<a class="headerlink" href="#Key-Concepts" title="Permalink to this headline">¶</a></h1>
+<p>RKnot builds a simulation across four dimensions of global properties:</p>
+<ul class="simple">
+<li><p><strong>Time</strong></p>
+<ul>
+<li><p>The fundamental unit of time is a <code class="docutils literal notranslate"><span class="pre">tick</span></code>.</p></li>
+<li><p>Each iteration of the simulation is one tick. During a tick, the following occurs:</p>
+<ul>
+<li><p>subjects can move to new locations</p></li>
+<li><p>subjects can have contact with other subjects (at the same location)</p></li>
+<li><p>attributes of the subjects can change</p></li>
+</ul>
+</li>
+<li><p>in the real world, many of the fundamental properties of a virus as measured in days (i.e. recovery rate or duration of immunity). RKnot translates these inputs into ticks.</p></li>
+<li><p>Currently, RKnot only supports one <code class="docutils literal notranslate"><span class="pre">tick</span></code> per day. The goal is to support any number of ticks during a day.</p></li>
+</ul>
+</li>
+<li><p><strong>Space</strong></p>
+<ul>
+<li><p>Subjects interact in an two-dimensional environment called the Grid.</p></li>
+<li><p>The Grid <em>must</em> be a square. The Grid size can be passed manually or it can be determined automatically for a specified density level.</p></li>
+<li><p>Each pair of xy coordinates in the Grid is a location.</p></li>
+<li><p>A <em>contact</em> occurs when an infected subject and a susceptible subject occupy the same location on the same tick.</p></li>
+<li><p>A single subject can only occupy a single location at one tick. There is no limit to the number of subjects that can occupy a single location at one tick.</p></li>
+<li><p>Subjects move through the Grid according to user-specified <code class="docutils literal notranslate"><span class="pre">mover</span></code> <a class="reference external" href="#Mover-Functions">functions</a>. These functions typically incorporate a degree of randomness.</p></li>
+<li><p>A subject can also move by attending an <a class="reference external" href="#Events">Event</a>.</p></li>
+<li><p>Portions of the Grid may be restricted by <a class="reference external" href="#Boxes-and-Gates">Boxes and/or Gates</a>.</p></li>
+</ul>
+</li>
+<li><p><strong>Subjects</strong></p>
+<ul>
+<li><p>subjects (also referred to as “dots”) are the analog of people in the simulation.</p></li>
+<li><p>subjects carry many attributes through the life of the simulation that are updated and changed as required <a class="reference external" href="#Dot-Matrix">see Dot Matrix</a>).</p></li>
+</ul>
+</li>
+<li><p><strong>Virus</strong></p>
+<ul>
+<li><p>the user must pass several characteristics fundamental to the simulated virus. RKnot infers others. Virus characteristics include:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(R_0\)</span></p></li>
+<li><p>Duration of Infectiousness</p></li>
+<li><p>Duration of Immunity</p></li>
+<li><p>Infection Fatality Rate</p></li>
+<li><p>Transmission Rate (inferred)</p></li>
+<li><p>Infectiousness Curve (aka Viral Load) - <em>TBD</em></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="The-Sim">
+<h2>The Sim<a class="headerlink" href="#The-Sim" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Sim</span></code> object is the user interface for the RKnot simulation package. A Sim object is instantiated with pre-defined characteristics of the space, the subjects, and the virus (<a class="reference external" href="#">source</a>).</p>
+<p>For demonstration purposes, a quick default simulation can be run by simply providing a few parameters.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rknot</span> <span class="kn">import</span> <span class="n">Sim</span><span class="p">,</span> <span class="n">Chart</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;square&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Ro&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;imndur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;infdur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">}</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">run</span></code> is the main method of the <code class="docutils literal notranslate"><span class="pre">Sim</span></code> object. <code class="docutils literal notranslate"><span class="pre">run</span></code> iterates through each <code class="docutils literal notranslate"><span class="pre">tick</span></code> in the simulation. Currently, one day == one tick.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">sim.run()</span></code> does not return any values, but it does update various attributes of the <code class="docutils literal notranslate"><span class="pre">sim</span></code> object. After calling <code class="docutils literal notranslate"><span class="pre">run</span></code>, you can then pass <code class="docutils literal notranslate"><span class="pre">sim</span></code> to the <code class="docutils literal notranslate"><span class="pre">Chart</span></code> object, which will generate an animation of the simulation across time.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">dot_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/intro.mp4" controls><p>alternative text</p>
+</video><p>The animation is split in 3 sections:</p>
+<ul class="simple">
+<li><p><strong>Infections</strong></p>
+<ul>
+<li><p>shows the change in infection level over each day, showing both current infection level and total penetration (“Ever” in the legend)</p></li>
+</ul>
+</li>
+<li><p><strong>Details</strong></p>
+<ul>
+<li><p>provides several on-the-run statistics including Effective Reproduction Number, total fatalities, and fatalities by group.</p></li>
+</ul>
+</li>
+<li><p><strong>Interactions</strong></p>
+<ul>
+<li><p>the visual representation of subjects in the Grid. Each marker is a subject and each cross-section of gridlines is a point (for larger grids the lines are removed).</p></li>
+</ul>
+</li>
+</ul>
+<p>The animation is broken up into components that can be viewed in various preset configurations. <a class="reference external" href="#Chart">see Chart for more details</a>.</p>
+<p>As per the animation above, the default simulation is of a single infected subject, moving across a 4x4 two-dimensional space according to the <code class="docutils literal notranslate"><span class="pre">equal</span></code> mover function. The subject is equally likely to move to any location in the Grid on any tick.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="Subjects">
+<h2>Subjects<a class="headerlink" href="#Subjects" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Dots">
+<h3>Dots<a class="headerlink" href="#Dots" title="Permalink to this headline">¶</a></h3>
+<p>Dots are subjects/people in the simulation space. A subject has many attributes that are adjusted over time, including:</p>
+<ul class="simple">
+<li><p>which Group it belongs to</p></li>
+<li><p>if it is alive</p></li>
+<li><p>if it is infected</p></li>
+<li><p>if it is susceptible</p></li>
+<li><p>its location</p></li>
+<li><p>any restricted areas that apply to it (<a class="reference external" href="#Boxes-and-Gates">see Boxes and Gates</a>)</p></li>
+<li><p>if infected, when it will recover (or when it will succumb)</p></li>
+<li><p>if recovered, when it will again become susceptible</p></li>
+<li><p>its fatality rate</p></li>
+<li><p>its <code class="docutils literal notranslate"><span class="pre">mover</span></code> function</p></li>
+</ul>
+<p><a class="reference external" href="#Dot-Matrix">see Dot Matrix</a> for a more fulsome discussion.</p>
+</div>
+<div class="section" id="Groups">
+<h3>Groups<a class="headerlink" href="#Groups" title="Permalink to this headline">¶</a></h3>
+<p>Dots are the fundamental subjects of the simulation, but dots can <strong>only</strong> be created via a Group object.</p>
+<p>To create our group objects, we can pass a list of dictionaries to the <code class="docutils literal notranslate"><span class="pre">groups</span></code> parameter of Sim. The dictionaries correspond to the attributes of the group, which in turn correspond to the attributes of its constituent dots at initiation.</p>
+<p>To create a group, you need only provide two parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>, population size of the group at initiation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_inf</span></code>, number of infected subjects in the group at initiation</p></li>
+</ul>
+<p><em>If only one group is being provided, you can pass a dictionary. With multiple groups, pass an iterable of dicts.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;square&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;Ro&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;imndur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;infdur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">}</span>
+<span class="n">group</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span>
+    <span class="n">sim</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">dot_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">config</span><span class="o">=</span><span class="s1">&#39;dots_only&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Below we see this structure creates a 10x10 Grid with two subjects, only one of which is infected at the outset.</p>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/group1.mp4" controls><p>alternative text</p>
+</video><p>There are many other additional parameters and customizations that can provided:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p>
+<ul>
+<li><p>if not provided, Sim will create one, but it is highly recommended that you provide a name</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">box</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">gates</span></code></p>
+<ul>
+<li><p>see <a class="reference external" href="#Boxes-and-Gates">Boxes and Gates</a></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mover</span></code></p>
+<ul>
+<li><p>function used to dictate a dot’s movement (<a class="reference external" href="#Mover-Functions">see Mover Functions</a>)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tmf</span></code></p>
+<ul>
+<li><p><a class="reference internal" href="intro.html#Introduction"><span class="std std-ref">transmission factor</span></a>, <span class="math notranslate nohighlight">\(T\)</span>, applied to each of the dots interactions.</p></li>
+<li><p>default: 1</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">susf</span></code></p>
+<ul>
+<li><p><em>susceptiblity factor</em>; the fraction of subjects in a group that will be made susceptible to the virus at initiation</p></li>
+<li><p>the inverse of <code class="docutils literal notranslate"><span class="pre">susf</span></code> (<span class="math notranslate nohighlight">\(1/{susf}\)</span>) is the number of subjects in a group that already have immunity.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ifr</span></code></p>
+<ul>
+<li><p><em>infection fatality rate</em>; or the likelihood that an infection of a subject will be fatal</p></li>
+</ul>
+</li>
+</ul>
+<p>These can again be passed as a dictionary of a single group:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mover</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="n">tmf</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">susf</span><span class="o">=.</span><span class="mi">75</span><span class="p">,</span> <span class="n">ifr</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span>
+    <span class="n">sim</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">dot_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">config</span><span class="o">=</span><span class="s1">&#39;dots_only&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/group2.mp4" controls><p>alternative text</p>
+</video><p>Or as an iterable of dictionaries. Each group is assigned a unique marker in the animation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mover</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="n">tmf</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">susf</span><span class="o">=.</span><span class="mi">75</span><span class="p">,</span> <span class="n">ifr</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">mover</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="n">tmf</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">susf</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">ifr</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">]</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span>
+    <span class="n">sim</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">dot_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">config</span><span class="o">=</span><span class="s1">&#39;dots_only&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/group3.mp4" controls><p>alternative text</p>
+</video></div>
+</div>
+<hr class="docutils" />
+<div class="section" id="The-Grid">
+<h2>The Grid<a class="headerlink" href="#The-Grid" title="Permalink to this headline">¶</a></h2>
+<p>All interactions in an RKnot simulation take place inside the Grid. The grid is a <code class="docutils literal notranslate"><span class="pre">Grid</span></code> object, which in turn is a sub-classed numpy array with some additional features.</p>
+<p>The Grid size can be determined by passing the <code class="docutils literal notranslate"><span class="pre">square</span></code> parameter or the <code class="docutils literal notranslate"><span class="pre">dlevel</span></code> parameter. Each <code class="docutils literal notranslate"><span class="pre">dlevel</span></code> corresponds to a certain density.</p>
+<p>Available <code class="docutils literal notranslate"><span class="pre">dlevel</span></code> options are:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">Sim</span><span class="o">.</span><span class="n">DENSITIES</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;low&#39;: 0.2, &#39;med&#39;: 1, &#39;high&#39;: 10}
+</pre></div></div>
+</div>
+<p>If we set <code class="docutils literal notranslate"><span class="pre">dlevel=med</span></code>, the Grid will be set such that the density is 1 subject per location. For a group of 100 subjects, that will result in a 10x10 grid. We can see these attributes by passing <code class="docutils literal notranslate"><span class="pre">details=True</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Ro&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;imndur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;infdur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">}</span>
+<span class="n">group</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="n">dlevel</span><span class="o">=</span><span class="s1">&#39;med&#39;</span><span class="p">,</span> <span class="n">details</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2020-10-17 01:04:45,150 INFO resource_spec.py:223 -- Starting Ray with 10.4 GiB memory available for workers and up to 5.22 GiB for objects. You can adjust these settings with ray.init(memory=&lt;bytes&gt;, object_store_memory=&lt;bytes&gt;).
+2020-10-17 01:04:45,622 INFO services.py:1191 -- View the Ray dashboard at <span class="ansi-green-intense-fg ansi-bold">localhost:8265</span>
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+---------------------------------------------------------------------------------
+|                                  SIM DETAILS                                  |
+|-------------------------------------------------------------------------------|
+|           boundary|      [ 1 10  1 10]|             n_locs|                100|
+|-------------------|-------------------|-------------------|-------------------|
+|                  n|                100|            density|                1.0|
+|-------------------|-------------------|-------------------|-------------------|
+|                ktr|               1.01|                   |                   |
+|-------------------|-------------------|-------------------|-------------------|
+</pre></div></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">config</span><span class="o">=</span><span class="s1">&#39;dots_only&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/grid1.mp4" controls><p>alternative text</p>
+</video><p>For smaller populations, the density level can only be approximated. RKnot defaults to rounding up to the nearest square value.</p>
+<p>Passing <code class="docutils literal notranslate"><span class="pre">dlevel='high'</span></code> on popuation of 1,020 subjects results in an 11x11 grid (121 locations or 8.42 subjects per location).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">]</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">dlevel</span><span class="o">=</span><span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="n">details</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+---------------------------------------------------------------------------------
+|                                  SIM DETAILS                                  |
+|-------------------------------------------------------------------------------|
+|           boundary|      [ 1 11  1 11]|             n_locs|                121|
+|-------------------|-------------------|-------------------|-------------------|
+|                  n|               1020|            density|  8.429752066115702|
+|-------------------|-------------------|-------------------|-------------------|
+|                ktr|                8.5|                   |                   |
+|-------------------|-------------------|-------------------|-------------------|
+</pre></div></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">config</span><span class="o">=</span><span class="s1">&#39;dots_only&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/grid2.mp4" controls><p>alternative text</p>
+</video><hr class="docutils" />
+<div class="section" id="Mover-Functions">
+<h3>Mover Functions<a class="headerlink" href="#Mover-Functions" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">md</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<p>When a subject changes locations, this is called a <em>move</em>. A move is completed during a tick and the movement of a subject on any tick is governed by its <code class="docutils literal notranslate"><span class="pre">mover</span></code> function. Movers select a location according to a pre-defined probability distribution, so the general movement pattern of a dot can be pre-determined, but any one movement occurs randomly.</p>
+<p>There are currently 5 mover functions. Their respective definitions, along with examples of their movement are provided below.</p>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[100]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">md</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[100]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<p><strong>Equal</strong></p>
+<p><em>The subject is equally likely to move to any location.</em></p>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/equal.mp4" controls><p>alternative text</p>
+</video><p><strong>Local</strong></p>
+<p><em>The subject has a strong bias towards dots only in its immediate vicinity.</em></p>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/local.mp4" controls><p>alternative text</p>
+</video><p><strong>Traveller</strong></p>
+<p><em>The subject commonly moves to locations far across the Grid.</em></p>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/traveller.mp4" controls><p>alternative text</p>
+</video><p><strong>Quarantine</strong></p>
+<p><em>The subject has a strong bias towards not moving, with only some movement occuring.</em></p>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/quarantine.mp4" controls><p>alternative text</p>
+</video><p><strong>Social</strong></p>
+<p><em>The subject moves mostly within its vicinty but also to other more medium distance location.</em></p>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/social.mp4" controls><p>alternative text</p>
+</video></div>
+</div>
+<p>Movement can also be governed by <a class="reference external" href="#Boxes-and-Gates">Boxes and Gates</a> or <a class="reference external" href="#Events">Events</a>.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="Boxes-and-Gates">
+<h2>Boxes and Gates<a class="headerlink" href="#Boxes-and-Gates" title="Permalink to this headline">¶</a></h2>
+<p>The movement of a subject across the Grid can be restricted by two concepts known as Boxes and Gates. These concepts are designed to mimick certain funcitonal or perceived boundaries between groups, such as international borders or closed-access communities like assisted-living facilities.</p>
+<p>The distinction between boxes and gates is simple:</p>
+<ul class="simple">
+<li><p>Subjects <em>cannot</em> <strong>exit</strong> Boxes</p></li>
+<li><p>Subjects <em>cannot</em> <strong>enter</strong> Gates</p></li>
+</ul>
+<hr class="docutils" />
+<div class="section" id="Boxes">
+<h3>Boxes<a class="headerlink" href="#Boxes" title="Permalink to this headline">¶</a></h3>
+<p>A box is a <span class="math notranslate nohighlight">\(m*n\)</span> subset of locations within the Grid that a subject(s) cannot leave.</p>
+<p>The locations are specified by passing a four element iterable that specifies the coordinates of the “four corners” of the box according to [<span class="math notranslate nohighlight">\(x_0\)</span>, <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(y_0\)</span>, <span class="math notranslate nohighlight">\(y_1\)</span>]</p>
+<p>So passing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">box</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>creates a box with four corners:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>   <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>    <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>   <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">md</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<p>and a total of 35 locations.</p>
+</div>
+</div>
+<p>Currently, a box <em>can only be specified</em> by passing the <code class="docutils literal notranslate"><span class="pre">box</span></code> parameter as group keyword. Every dot in the group is only able to move within the <code class="docutils literal notranslate"><span class="pre">box</span></code>, regardless of the size of the Grid.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">group1</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">dot_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="s1">&#39;dots_only&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/boxes1.mp4" controls><p>alternative text</p>
+</video><p>A group can only have one box and each group can have its own box.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">]</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span>
+    <span class="n">sim</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">dot_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="s1">&#39;dots_only&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/boxes2.mp4" controls><p>alternative text</p>
+</video><p>Remember that a box only restricts the subjects in that group from <em>leaving</em> the space. Other dots not assigned to that box can move into the space without restriction.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">]</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">dot_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="s1">&#39;dots_only&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/boxes3.mp4" controls><p>alternative text</p>
+</video></div>
+<hr class="docutils" />
+<div class="section" id="Gates">
+<h3>Gates<a class="headerlink" href="#Gates" title="Permalink to this headline">¶</a></h3>
+<p>Gates are the inverse of boxes. A gate is an area that subjects are cannot enter.</p>
+<p>Gates are a Gate object, which is a subclass of Grid, and they are created via the same 4 element iterable. For now, a gate can only be created by passing the <code class="docutils literal notranslate"><span class="pre">box_is_gated=True</span></code> flag as a keyword in a group dictionary.</p>
+<p>Using the previous example, we can see that <code class="docutils literal notranslate"><span class="pre">group2</span></code> dots can no longer enter the <code class="docutils literal notranslate"><span class="pre">group1</span></code> box.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">box_is_gated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">]</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span>
+    <span class="n">sim</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">dot_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="s1">&#39;dots_only&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/gates1.mp4" controls><p>alternative text</p>
+</video><p>This structure can lead to some intricate movement patterns. Here we show isolated groups:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">],</span> <span class="n">box_is_gated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> <span class="n">box_is_gated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">group3</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">22</span><span class="p">],</span> <span class="n">box_is_gated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">group4</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">25</span><span class="p">],</span> <span class="n">box_is_gated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">,</span> <span class="n">group3</span><span class="p">,</span> <span class="n">group4</span><span class="p">]</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">config</span><span class="o">=</span><span class="s1">&#39;dots_only&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/gates2.mp4" controls><p>alternative text</p>
+</video><p>And here some isolated and some free moving.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">box_is_gated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">14</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">19</span><span class="p">],</span> <span class="n">box_is_gated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">group3</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">group4</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">,</span> <span class="n">group3</span><span class="p">,</span> <span class="n">group4</span><span class="p">]</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">config</span><span class="o">=</span><span class="s1">&#39;dots_only&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/gates3.mp4" controls><p>alternative text</p>
+</video></div>
+</div>
+<hr class="docutils" />
+<div class="section" id="Events">
+<h2>Events<a class="headerlink" href="#Events" title="Permalink to this headline">¶</a></h2>
+<p>Events impact the attributes of subjects over the course of the simulation.</p>
+<p>Events are utilized to better simulate real-world behavior.</p>
+<p>For instance, people do not move in consistent, prescribed ways. They move in regular ways most of the time with contacts that are well defined, but sometimes they attend events (perhaps periodically or uniquely) that are not governed by their regular movement patterns.</p>
+<div class="section" id="Event">
+<h3>Event<a class="headerlink" href="#Event" title="Permalink to this headline">¶</a></h3>
+<p>An <code class="docutils literal notranslate"><span class="pre">Event</span></code> is an event that occurs at a particular location.</p>
+<p>An <code class="docutils literal notranslate"><span class="pre">Event</span></code> accepts the following parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">xy</span></code>, the xy coordinates of the location</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_tick</span></code>, the tick when the event begins</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">groups</span></code>, an iterable of group ids that are eligible for the event</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code>, the number of subjects that should attend</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">recurring</span></code>, how often the event recurs (i.e. every <em>nth</em> tick); if set to 0, the event does <em>not</em> recur</p></li>
+</ul>
+<p>When an <code class="docutils literal notranslate"><span class="pre">Event</span></code> concludes, the subject returns to its <code class="docutils literal notranslate"><span class="pre">home</span></code> location as specified in the dot matrix.</p>
+<p>To schedule an event, you must pass a list of event objects to the <code class="docutils literal notranslate"><span class="pre">events</span></code> parameter.</p>
+<p>To begin with, we’ll create a single <code class="docutils literal notranslate"><span class="pre">Event</span></code> object, called <code class="docutils literal notranslate"><span class="pre">show</span></code>, that occurs once on day 5.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Event</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;square&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;Ro&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;imndur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;infdur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">}</span>
+<span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">show</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;show&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">events</span> <span class="o">=</span> <span class="p">[</span><span class="n">show</span><span class="p">]</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">group1</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">dotlog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">config</span><span class="o">=</span><span class="s1">&#39;dots_only&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/event1.mp4" controls><p>alternative text</p>
+</video><p>If you look closely at the animation on frame 6, you’ll see that all the dots seemingly disappear, save for one, at location 5,5.</p>
+<p>In fact, all 10 dots are <em>actually at that location at the same time</em>.</p>
+<p>We can confirm this by inspecting the <a class="reference external" href="#">Dot Matrix</a> on that day via the <code class="docutils literal notranslate"><span class="pre">dotlog</span></code> attribute.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">rknot.dots</span> <span class="kn">import</span> <span class="n">MATRIX_COL_LABELS</span> <span class="k">as</span> <span class="n">ML</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[</span><span class="mi">5</span><span class="p">][:,</span> <span class="n">ML</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]:</span><span class="n">ML</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([[5, 5],
+       [5, 5],
+       [5, 5],
+       [5, 5],
+       [5, 5],
+       [5, 5],
+       [5, 5],
+       [5, 5],
+       [5, 5],
+       [5, 5]])
+</pre></div></div>
+</div>
+<p>We can see the event more clearly if we extend the duration to 10 days. We also significantly reduced the frame rate.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">show</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;show&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">events</span> <span class="o">=</span> <span class="p">[</span><span class="n">show</span><span class="p">]</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">group1</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span>
+    <span class="n">sim</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">dot_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+    <span class="n">config</span><span class="o">=</span><span class="s1">&#39;dots_only&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/event2.mp4" controls><p>alternative text</p>
+</video><p>Many event objects can be specified at once, in various combinations of groups.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">show</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;show&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">game</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;game&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">church</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;church&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">]</span>
+<span class="n">events</span> <span class="o">=</span> <span class="p">[</span><span class="n">show</span><span class="p">,</span> <span class="n">game</span><span class="p">,</span> <span class="n">church</span><span class="p">]</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span>
+    <span class="n">sim</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">dot_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="s1">&#39;no_details&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/event3.mp4" controls><p>alternative text</p>
+</video></div>
+<hr class="docutils" />
+<div class="section" id="Travel">
+<h3>Travel<a class="headerlink" href="#Travel" title="Permalink to this headline">¶</a></h3>
+<p>Travel is a special type of event that allows a subject to enter a gate.</p>
+<p>When a dot enters a gate via a Travel object, its box and gate attributes are temporarily adjusted to match those of the groups within the gate. The attributes revert when the event ends (determined by <code class="docutils literal notranslate"><span class="pre">duration</span></code> parameter).</p>
+<p>Once inside the gate, the dot(s) are free to interact with other dots normally.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Travel</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;square&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;Ro&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;imndur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;infdur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">}</span>
+
+<span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">box_is_gated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> <span class="n">box_is_gated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">visit</span> <span class="o">=</span> <span class="n">Travel</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;visit&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">10</span>
+<span class="p">)</span>
+
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">]</span>
+<span class="n">events</span> <span class="o">=</span> <span class="p">[</span><span class="n">visit</span><span class="p">]</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span>
+    <span class="n">sim</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">dot_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="s1">&#39;no_details&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/travel1.mp4" controls><p>alternative text</p>
+</video><p>Many unique configurations can be achieved with this structure. Below, the <code class="docutils literal notranslate"><span class="pre">group1</span></code> box will be vacated by the solitary <code class="docutils literal notranslate"><span class="pre">group1</span></code> dot (essentially switching places with a dot from <code class="docutils literal notranslate"><span class="pre">group2</span></code>).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Travel</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;square&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;Ro&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;imndur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;infdur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">}</span>
+
+<span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">box_is_gated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> <span class="n">box_is_gated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">visit2</span> <span class="o">=</span> <span class="n">Travel</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;visit2&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">10</span>
+<span class="p">)</span>
+<span class="n">visit1</span> <span class="o">=</span> <span class="n">Travel</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;visit1&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">10</span>
+<span class="p">)</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">]</span>
+<span class="n">events</span> <span class="o">=</span> <span class="p">[</span><span class="n">visit2</span><span class="p">,</span> <span class="n">visit1</span><span class="p">]</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span>
+    <span class="n">sim</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">dot_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="s1">&#39;no_details&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/travel2.mp4" controls><p>alternative text</p>
+</video></div>
+<hr class="docutils" />
+<div class="section" id="Quarantine">
+<h3>Quarantine<a class="headerlink" href="#Quarantine" title="Permalink to this headline">¶</a></h3>
+<p>A quarantine is an event object that makes several changes to a dots state in order to restrict its movement.</p>
+<p>When a dot is quarantined,</p>
+<ol class="arabic simple">
+<li><p>it goes back to its home location (<a class="reference external" href="#Dot-Matrix">see Dot Matrix</a>)</p></li>
+<li><p>its boxes and gates are reset to match its group</p></li>
+<li><p>its mover function is changed to ‘quarantine’</p></li>
+</ol>
+<p>In addition, a Quarantine object will create a additional restriction objects that disallow events during the quarantine (<a class="reference external" href="#Restrictions">see Restrictions below</a>)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Quarantine</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;square&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;Ro&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;imndur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;infdur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">}</span>
+
+<span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">box_is_gated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> <span class="n">box_is_gated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">quar</span> <span class="o">=</span> <span class="n">Quarantine</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">duration</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">]</span>
+<span class="n">events</span> <span class="o">=</span> <span class="p">[</span><span class="n">quar</span><span class="p">]</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span>
+    <span class="n">sim</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">dot_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="s1">&#39;no_details&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/quar1.mp4" controls><p>alternative text</p>
+</video><p>We can see from above that once in quaratine, the subjects barely move. We can include events in our structure. The events will be restricted during the quarantine period, then will resume when the quarantine ends.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;square&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;Ro&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;imndur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;infdur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">}</span>
+
+<span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">box_is_gated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> <span class="n">box_is_gated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">show</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;show&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">visit2</span> <span class="o">=</span> <span class="n">Travel</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;visit2&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">10</span>
+<span class="p">)</span>
+<span class="n">visit1</span> <span class="o">=</span> <span class="n">Travel</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;visit1&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">10</span>
+<span class="p">)</span>
+
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">]</span>
+<span class="n">events</span> <span class="o">=</span> <span class="p">[</span><span class="n">show</span><span class="p">,</span> <span class="n">visit2</span><span class="p">,</span> <span class="n">visit1</span><span class="p">,</span> <span class="n">quar</span><span class="p">]</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span>
+    <span class="n">sim</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">dot_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="s1">&#39;no_details&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/quar2.mp4" controls><p>alternative text</p>
+</video></div>
+<hr class="docutils" />
+<div class="section" id="Social-Distancing">
+<h3>Social Distancing<a class="headerlink" href="#Social-Distancing" title="Permalink to this headline">¶</a></h3>
+<p>Event to mimick social distancing practices.</p>
+<p>Social distancing is assumed to impact the Transmission Factor, <span class="math notranslate nohighlight">\(\tau\)</span> of each dot. The core hypothesis is that practices such as maintaining 6-feet of distance or mask wearing don’t reduce the number of contacts, but do reduce the likelihood that a contact will result in a new infection (ceterus paribus).</p>
+<p>You can see use of this object <a class="reference internal" href="hit.html#3.-Social-Distancing"><span class="std std-ref">here</span></a>.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="Vaccination">
+<h3>Vaccination<a class="headerlink" href="#Vaccination" title="Permalink to this headline">¶</a></h3>
+<p>TBD</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="Restrictions">
+<h3>Restrictions<a class="headerlink" href="#Restrictions" title="Permalink to this headline">¶</a></h3>
+<p>A restriction object restricts attendance to events that fall within the specified criteria. Each event has a <code class="docutils literal notranslate"><span class="pre">restricted</span></code> attribute that defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>. A restriction object filters out events from the event schedule by setting <code class="docutils literal notranslate"><span class="pre">restricted=True</span></code> for each event that satisfies the criteria.</p>
+<p>To clarify, a Restriction is <em>not</em> an event. Events act on dots. Restrictions act on events.</p>
+<p>Restrictions have potential as a versatile tool that can be used to investigate the impact of various government and business policy decisions that impact spread.</p>
+<p>The Restriction object has a <code class="docutils literal notranslate"><span class="pre">criteria</span></code> parameter that accepts a <code class="docutils literal notranslate"><span class="pre">dict</span></code>, with keywords related to event object attributes. Acceptable <code class="docutils literal notranslate"><span class="pre">criteria</span></code> keys are currently:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">md</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<p>capacity name ticks groups loc_id</p>
+</div>
+</div>
+<p>The simplest way to restrict an event is by its name.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Restriction</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;square&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;Ro&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;imndur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;infdur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">}</span>
+
+<span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">box_is_gated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> <span class="n">box_is_gated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">show1</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;show1&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">show2</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;show2&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="n">criteria</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;show1&#39;</span><span class="p">}</span>
+<span class="n">res1</span> <span class="o">=</span> <span class="n">Restriction</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;no_show1&#39;</span><span class="p">,</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">criteria</span><span class="o">=</span><span class="n">criteria</span><span class="p">)</span>
+
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">]</span>
+<span class="n">events</span> <span class="o">=</span> <span class="p">[</span><span class="n">show1</span><span class="p">,</span> <span class="n">show2</span><span class="p">,</span> <span class="n">res1</span><span class="p">]</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">dotlog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span>
+    <span class="n">sim</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">dot_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="s1">&#39;no_details&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/restrict1.mp4" controls><p>alternative text</p>
+</video><p>In the above, we can see that every other day both group boxes have events that are attended by all dots in the group.</p>
+<p>But on day 10, the <code class="docutils literal notranslate"><span class="pre">group1</span></code> dots no longer converge on location <code class="docutils literal notranslate"><span class="pre">(1,1)</span></code>. Instead, they are spread throughout their box. So <code class="docutils literal notranslate"><span class="pre">res1</span></code> has successfully restricted attendance to <code class="docutils literal notranslate"><span class="pre">show1</span></code>.</p>
+<p>Unlike <code class="docutils literal notranslate"><span class="pre">Quarantine</span></code> objects, however, the <code class="docutils literal notranslate"><span class="pre">group1</span></code> dots have not changed their standard movement patterns. The dots simply revert to their designated <code class="docutils literal notranslate"><span class="pre">mover</span></code> function (<em>in fact, ``Quarantine`` is an event object and it creates ``Restriction`` objects internally to eliminate events during the quarantine</em>).</p>
+<p>We can restrict multiple events via the other criteria. Next we will restrict events based on their capacity. Events with more than 5 subjects in attendance will be restricted.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">criteria</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;capacity&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+<span class="n">res1</span> <span class="o">=</span> <span class="n">Restriction</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;cap5&#39;</span><span class="p">,</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">criteria</span><span class="o">=</span><span class="n">criteria</span><span class="p">)</span>
+
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">]</span>
+<span class="n">events</span> <span class="o">=</span> <span class="p">[</span><span class="n">show1</span><span class="p">,</span> <span class="n">show2</span><span class="p">,</span> <span class="n">res1</span><span class="p">]</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span>
+    <span class="n">sim</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">dot_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="s1">&#39;no_details&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">animate</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<video width="705" height="340" src="https://storage.googleapis.com/rknotvids/keycons/restrict2.mp4" controls><p>alternative text</p>
+</video><p>In the above we see that neither of the groups had events from day 10 onward during the quarantine period.</p>
+<p>Restrictions can be chained together as desired to form a complex and tailored policy recipe for the population of the sim. <a class="reference internal" href="hit.html#A-Fulsome-Scenario"><span class="std std-ref">See this example</span></a>.</p>
+</div>
+</div>
+<div class="section" id="Dot-Matrix">
+<h2>Dot Matrix<a class="headerlink" href="#Dot-Matrix" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">md</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<p>The dot matrix is RKnot’s canonical form of data structure. The matrix is simply a 2D <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array of shape $n*$22 with each of the <span class="math notranslate nohighlight">\(n\)</span> rows representing a dot and each column representing an attribute.</p>
+</div>
+</div>
+<p>More typical Python objects have been eschewed in favor the Dot Matrix because:</p>
+<ul class="simple">
+<li><p><strong>RKnot</strong> relies heavily on <a class="reference external" href="https://docs.ray.io/en/latest/">Ray</a> for parallel processing and <a class="reference external" href="https://numba.pydata.org/">Numba</a> for just-in-time compilation and vectorization to improve processing speed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Numpy</span></code> arrays have several advantages in <strong>Ray</strong> including <a class="reference external" href="https://ray-project.github.io/2017/10/15/fast-python-serialization-with-ray-and-arrow.html">rapid serialization</a> and ease of batching.</p></li>
+<li><p><strong>Numba</strong> also integrates well with <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, providing many of its features and leads to major performance improvements.</p></li>
+<li><p>Aside from <strong>Ray</strong> and <strong>Numba</strong>, the object approach is much slower, more cumbersome, and more memory intensive than the simple data structure deployed in <strong>RKnot</strong>.</p></li>
+</ul>
+<p>The dot matrix is created inside a <strong>Ray</strong> actor at instantiation and is only passed back to the main <code class="docutils literal notranslate"><span class="pre">Sim</span></code> object when the simulation is completed.</p>
+<p>It can be accessed via the <code class="docutils literal notranslate"><span class="pre">dots</span></code> attribute. Below is a sample of 4 dots:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">sim</span><span class="o">.</span><span class="n">dots</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([[   0,    0,    1,    0,    1,    0,    0,    5,    1,    6,    3,
+           8,    0,    0, -999,    0,  100,  650,   -1,   -1,   -1,   -1],
+       [   1,    0,    1,    0,    1,    0,    0,    2,    1,    3,    6,
+           3,    0,    0, -999,    0,  100,  650,   -1,   -1,   -1,   -1],
+       [   2,    0,    1,    0,    0,    1,    1,   88,    9,    9,    8,
+           4,    0,    0, -999,    0,  100,  650,    0,   -1,  365,  730],
+       [   3,    0,    1,    0,    0,    1,    1,   52,    6,    3,    4,
+           1,    0,    0, -999,    0,  100,  650,    0,   -1,  365,  730]])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">md</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<p>Labels for the individual columns are available via the <code class="docutils literal notranslate"><span class="pre">MATRIX_LABELS</span></code> property.</p>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">rknot.dots</span> <span class="kn">import</span> <span class="n">MATRIX_LABELS</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">MATRIX_LABELS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;id&#39;, &#39;group_id&#39;, &#39;is_alive&#39;, &#39;is_vaxxed&#39;, &#39;is_sus&#39;, &#39;is_inf&#39;, &#39;ever_inf&#39;, &#39;loc_id&#39;, &#39;x&#39;, &#39;y&#39;, &#39;homex&#39;, &#39;homey&#39;, &#39;go_home&#39;, &#39;box_id&#39;, &#39;event_id&#39;, &#39;mover&#39;, &#39;tmf&#39;, &#39;ifr&#39;, &#39;inf_tick&#39;, &#39;depart&#39;, &#39;recover&#39;, &#39;relapse&#39;]
+</pre></div></div>
+</div>
+<p>With the labels, the matrix above can be shown in a table.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">md</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>id</p></th>
+<th class="head"><p>group_id</p></th>
+<th class="head"><p>is_alive</p></th>
+<th class="head"><p>is_vaxxed</p></th>
+<th class="head"><p>is_sus</p></th>
+<th class="head"><p>is_inf</p></th>
+<th class="head"><p>ever_inf</p></th>
+<th class="head"><p>loc_id</p></th>
+<th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+<th class="head"><p>homex</p></th>
+<th class="head"><p>homey</p></th>
+<th class="head"><p>go_home</p></th>
+<th class="head"><p>box_id</p></th>
+<th class="head"><p>event_id</p></th>
+<th class="head"><p>mover</p></th>
+<th class="head"><p>tmf</p></th>
+<th class="head"><p>ifr</p></th>
+<th class="head"><p>inf_tick</p></th>
+<th class="head"><p>depart</p></th>
+<th class="head"><p>recover</p></th>
+<th class="head"><p>relapse</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>5</p></td>
+<td><p>1</p></td>
+<td><p>6</p></td>
+<td><p>3</p></td>
+<td><p>8</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>-999</p></td>
+<td><p>0</p></td>
+<td><p>100</p></td>
+<td><p>650</p></td>
+<td><p>-1</p></td>
+<td><p>-1</p></td>
+<td><p>-1</p></td>
+<td><p>-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>3</p></td>
+<td><p>6</p></td>
+<td><p>3</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>-999</p></td>
+<td><p>0</p></td>
+<td><p>100</p></td>
+<td><p>650</p></td>
+<td><p>-1</p></td>
+<td><p>-1</p></td>
+<td><p>-1</p></td>
+<td><p>-1</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>88</p></td>
+<td><p>9</p></td>
+<td><p>9</p></td>
+<td><p>8</p></td>
+<td><p>4</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>-999</p></td>
+<td><p>0</p></td>
+<td><p>100</p></td>
+<td><p>650</p></td>
+<td><p>0</p></td>
+<td><p>-1</p></td>
+<td><p>365</p></td>
+<td><p>730</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>52</p></td>
+<td><p>6</p></td>
+<td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>-999</p></td>
+<td><p>0</p></td>
+<td><p>100</p></td>
+<td><p>650</p></td>
+<td><p>0</p></td>
+<td><p>-1</p></td>
+<td><p>365</p></td>
+<td><p>730</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>63</p></td>
+<td><p>7</p></td>
+<td><p>4</p></td>
+<td><p>7</p></td>
+<td><p>6</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>-999</p></td>
+<td><p>0</p></td>
+<td><p>100</p></td>
+<td><p>650</p></td>
+<td><p>0</p></td>
+<td><p>-1</p></td>
+<td><p>365</p></td>
+<td><p>730</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>There are several data types at work:</p>
+<ul class="simple">
+<li><p><em>categorical integers</em>; used to identify related objects</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">group_id</span></code>, <code class="docutils literal notranslate"><span class="pre">loc_id</span></code>, <code class="docutils literal notranslate"><span class="pre">box_id</span></code>, <code class="docutils literal notranslate"><span class="pre">event_id</span></code>, <code class="docutils literal notranslate"><span class="pre">mover</span></code></p></li>
+</ul>
+</li>
+<li><p><em>boolean integers</em>; used to set boolean flags</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> means <code class="docutils literal notranslate"><span class="pre">False</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code> means <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_alive</span></code>, <code class="docutils literal notranslate"><span class="pre">is_vaxxed</span></code>, <code class="docutils literal notranslate"><span class="pre">is_sus</span></code>, <code class="docutils literal notranslate"><span class="pre">is_inf</span></code>, <code class="docutils literal notranslate"><span class="pre">ever_inf</span></code>, <code class="docutils literal notranslate"><span class="pre">go_home</span></code></p></li>
+</ul>
+</li>
+<li><p><em>coordinates</em>; used to identify locations</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">homex</span></code>, <code class="docutils literal notranslate"><span class="pre">homey</span></code></p></li>
+</ul>
+</li>
+<li><p><em>event ticks</em>; integers that trigger an event on the given tick</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">depart</span></code>, <code class="docutils literal notranslate"><span class="pre">recover</span></code>, <code class="docutils literal notranslate"><span class="pre">relapse</span></code></p></li>
+</ul>
+</li>
+<li><p><em>factors</em>; scaled integers that must be unscaled before being used in multiplicative formulas</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">tmf</span></code>, <code class="docutils literal notranslate"><span class="pre">ifr</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p>The column attributes are defined as follows:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">md</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 22%" />
+<col style="width: 28%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Definition</p></th>
+<th class="head"><p>Label</p></th>
+<th class="head"><p>Definition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>the subject’s unique identifier</p></td>
+<td><p>homey</p></td>
+<td><p>y coord of the subject’s home location (its original starting point)</p></td>
+</tr>
+<tr class="row-odd"><td><p>group_id</p></td>
+<td><p>the unique identifier of the subject’s group</p></td>
+<td><p>go_home</p></td>
+<td><p>is the subject going home on the next move?</p></td>
+</tr>
+<tr class="row-even"><td><p>is_alive</p></td>
+<td><p>Is the subject alive?</p></td>
+<td><p>box_id</p></td>
+<td><p>id of the box the subject belongs to</p></td>
+</tr>
+<tr class="row-odd"><td><p>is_vaxxed</p></td>
+<td><p>Has the subject been vaccinated?</p></td>
+<td><p>event_id</p></td>
+<td><p>id of the event the subject is attending</p></td>
+</tr>
+<tr class="row-even"><td><p>is_sus</p></td>
+<td><p>Is the subject susceptible to infection?</p></td>
+<td><p>mover</p></td>
+<td><p>id of the subject’s mover function</p></td>
+</tr>
+<tr class="row-odd"><td><p>is_inf</p></td>
+<td><p>Is the subject infected?</p></td>
+<td><p>tmf</p></td>
+<td><p>the subject’s transmission factor</p></td>
+</tr>
+<tr class="row-even"><td><p>ever_inf</p></td>
+<td><p>Has the subject ever been infected?</p></td>
+<td><p>ifr</p></td>
+<td><p>the subject’s infection fatality rate</p></td>
+</tr>
+<tr class="row-odd"><td><p>loc_id</p></td>
+<td><p>id of the subject’s current location</p></td>
+<td><p>inf_tick</p></td>
+<td><p>the tick a subject is infected</p></td>
+</tr>
+<tr class="row-even"><td><p>x</p></td>
+<td><p>x coord of the subject’s current location</p></td>
+<td><p>depart</p></td>
+<td><p>the tick an infected subject will depart</p></td>
+</tr>
+<tr class="row-odd"><td><p>y</p></td>
+<td><p>y coord of the subject’s curretn location</p></td>
+<td><p>recover</p></td>
+<td><p>the tick an infected subject will no longer be infected or susceptible</p></td>
+</tr>
+<tr class="row-even"><td><p>homex</p></td>
+<td><p>x coord of the subject’s home location (its original starting point)</p></td>
+<td><p>relapse</p></td>
+<td><p>the tick a recovered subject will again become susceptible</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="hit.html" class="btn btn-neutral float-left" title="Factors Influencing HIT" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, rskene
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
