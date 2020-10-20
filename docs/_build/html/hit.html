@@ -516,7 +516,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -529,8 +529,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-2020-10-14 19:22:06,218 INFO resource_spec.py:223 -- Starting Ray with 10.69 GiB memory available for workers and up to 5.35 GiB for objects. You can adjust these settings with ray.init(memory=&lt;bytes&gt;, object_store_memory=&lt;bytes&gt;).
-2020-10-14 19:22:06,676 INFO services.py:1191 -- View the Ray dashboard at <span class="ansi-green-intense-fg ansi-bold">localhost:8265</span>
+2020-10-16 23:17:22,257 INFO resource_spec.py:223 -- Starting Ray with 12.01 GiB memory available for workers and up to 6.02 GiB for objects. You can adjust these settings with ray.init(memory=&lt;bytes&gt;, object_store_memory=&lt;bytes&gt;).
+2020-10-16 23:17:22,701 INFO services.py:1191 -- View the Ray dashboard at <span class="ansi-green-intense-fg ansi-bold">localhost:8265</span>
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -545,7 +545,7 @@ div.rendered_html tbody tr:hover {
 |-------------------|-------------------|-------------------|-------------------|
 |                  n|              10000|            density|                1.0|
 |-------------------|-------------------|-------------------|-------------------|
-|                ktr|                1.0|                tmr|               0.18|
+|                ktr|                1.0|                   |                   |
 |-------------------|-------------------|-------------------|-------------------|
 </pre></div></div>
 </div>
@@ -565,20 +565,20 @@ div.rendered_html tbody tr:hover {
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>46%</p></td>
+<td><p>41%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>70%</p></td>
+<td><p>65%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.53%</p></td>
+<td><p>0.52%</p></td>
 </tr>
 </tbody>
 </table>
-<p>You’ll note this is higher than the expected HIT of 60% for <span class="math notranslate nohighlight">\(R_0\)</span> 2.5. The differences result given:</p>
+<p>You’ll note this is slightly higher than the expected HIT of 60% for <span class="math notranslate nohighlight">\(R_0\)</span> 2.5. The differences result given:</p>
 <ol class="arabic simple">
 <li><p>The simulation is a stochastic process and random variation will result in variation from the mathematical model in smaller populations.</p></li>
-<li><p>This is not an entirely homogeneous population, with different IFRs and different numbers of contacts between subjects. In particular, because dots can occupy the same location at the same time, and <a class="reference internal" href="intro.html#Likelihood-of-Transmission"><span class="std std-ref">multiple infected dots at the same location increase the transmission rate for any susceptible</span></a>, this tends to lead to faster spread than <span class="math notranslate nohighlight">\(R_0\)</span> would suggest.</p></li>
+<li><p>This is not an entirely homogeneous population, with different IFRs and different numbers of contacts between subjects.</p></li>
 </ol>
 </div>
 <div class="section" id="2.-Local">
@@ -610,15 +610,16 @@ div.rendered_html tbody tr:hover {
 <td><p>5%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>26%</p></td>
+<td><p>49%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.43%</p></td>
+<td><p>0.38%</p></td>
 </tr>
 </tbody>
 </table>
-<p>We can see that restricting movement has a major impact on spread, creating a much longer, flatter curve with very low peak infection and a much lower HIT than <span class="math notranslate nohighlight">\(R_0\)</span> would suggest.</p>
-<p>The virus does remain among the population, however, resulting in high penetration and fatalities. While HIT is important, it is not the only factor worth considering if the ultimate goal is to reduce fatalities.</p>
+<p>We can see that restricting movement has a major impact on spread, creating a much longer, flatter curve with very low peak infection and a lower HIT than <span class="math notranslate nohighlight">\(R_0\)</span> would suggest. Fatalities have also reduced by ~25% from <a class="reference external" href="#Equal">Example 1</a>.</p>
+<p>The virus does remain among the population, however, resulting in high penetration and relatively high fatalities. For comparison a 0.38% fatality rate is equivalent to &gt;1MM deaths across the US.</p>
+<p>So while HIT is an important consideration, it should not be the sole focus if the ultimate goal is to reduce fatalities.</p>
 <p><em>CAUTION: RKnot estimates transmission rate assuming all subjects are</em> <code class="docutils literal notranslate"><span class="pre">equal</span></code> <em>movers. Thus, where</em> <code class="docutils literal notranslate"><span class="pre">local</span></code> <em>movers are used, the transmission rate may (or may not) be underestimated.</em></p>
 </div>
 <div class="section" id="3.-Social">
@@ -646,13 +647,13 @@ div.rendered_html tbody tr:hover {
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>39%</p></td>
+<td><p>34%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>63%</p></td>
+<td><p>62%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.54%</p></td>
+<td><p>0.61%</p></td>
 </tr>
 </tbody>
 </table>
@@ -691,15 +692,16 @@ div.rendered_html tbody tr:hover {
 <td><p>21%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>40%</p></td>
+<td><p>44%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.46%</p></td>
+<td><p>0.49%</p></td>
 </tr>
 </tbody>
 </table>
 <p>We can see that pre-existing immunity would significantly reduce HIT … but again reducing HIT does not impact the fatality rate as much as one might expect.</p>
-<p>In this sim, this results at least in part from the fact the elderly are assumed to <em>not</em> have pre-existing immunity (and they may have).</p>
+<p>Comparing to Example <a class="reference external" href="#Social">3</a>, HIT reduced by a third and fatalities declined by only a sixth.</p>
+<p>In this sim specifically, this results at least in part from the fact the elderly are assumed to <em>not</em> have pre-existing immunity.</p>
 </div>
 <div class="section" id="5.-Events">
 <h3>5. Events<a class="headerlink" href="#5.-Events" title="Permalink to this headline">¶</a></h3>
@@ -739,23 +741,29 @@ div.rendered_html tbody tr:hover {
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>24%</p></td>
+<td><p>22%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>43%</p></td>
+<td><p>52%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.45%</p></td>
+<td><p>0.48%</p></td>
 </tr>
 </tbody>
 </table>
-<p>We can see that this sort of event-based structure resulted in lower peak infections and HIT relative to <a class="reference external" href="#Social">the Social mover example</a>. The curve is flatter and longer.</p>
-<p>The selection of events here is relatively arbitrary and perhaps not perfectly illustrative of the nature of movement but it does highlight how more heterogeneous movement might lead to lower HIT.</p>
-<p>We should investigate whether this event based approach is truly analogous to mathematical models of homogeneity (and therefore whether the heterogeneity is a factor in reducing the spread).</p>
+<p>We can see that this sort of event-based structure resulted in lower peak infections and HIT relative to <a class="reference external" href="#Equal">Example 1</a> &amp; <a class="reference external" href="#Social">Example 3</a>. The curve is flatter and longer.</p>
+<p>This scenario are not perfectly substitutable with <a class="reference external" href="#Equal">Example 1</a>. For example, lower spread might result because there are fewer contacts. BUT this scenario actually results in more total interactions between subjects than the prior ones:</p>
+<p>Avg Number of Contacts per Subject:</p>
+<p>Example 1: 50.3</p>
+<p>Example 2: 51.7</p>
+<p>Example 3: 53.8</p>
+<p>Example 5: 56.5</p>
+<p><em>Average of first 100 days across 5 sims for each scenario.</em></p>
+<p>Other issues with substitutability may exist and are being explored. SIR models determine R0 in the idealized environment of Example 1 and so may not be suitable for customized environments such as this one.</p>
 </div>
 <div class="section" id="6.-Gates">
 <h3>6. Gates<a class="headerlink" href="#6.-Gates" title="Permalink to this headline">¶</a></h3>
-<p>We can further improve the real world interactions by introducing <a class="reference internal" href="concepts.html#Gates"><span class="std std-ref">gates</span></a>. Subjects are not always freely able to interact with all other people in a population. Often their movement is restricted to within certain areas. Furthermore, other people’s access into those areas is restricted.</p>
+<p>We can further improve the real world relevance of interactions by introducing <a class="reference internal" href="concepts.html#Gates"><span class="std std-ref">gates</span></a>. Subjects are not always freely able to interact with all other people in a population. Often their movement is restricted to within certain areas. Furthermore, other people’s access into those areas is restricted.</p>
 <p>Elderly people living in retirement homes or assisted living centers is an example. To simulate this, we will split <code class="docutils literal notranslate"><span class="pre">group4</span></code> into two separate groups.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">group4a</span></code></p>
@@ -823,21 +831,21 @@ div.rendered_html tbody tr:hover {
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>23%</p></td>
+<td><p>26%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>54%</p></td>
+<td><p>51%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.53%</p></td>
+<td><p>0.58%</p></td>
 </tr>
 </tbody>
 </table>
-<p>This gated structure results in essentially no impact from the <a class="reference external" href="#Events">prior sim</a>. The use for this structure will become more evident in the disucssion on <a class="reference external" href="#Policy">Policy Decisions.</a></p>
+<p>This gated structure results in a similar curve to <a class="reference external" href="#Events">Example 5</a>, however, it does result in more fatalities as an outbreak occurs in the most susceptible 70+G group inside the gate. The use for this structure will become more evident in the disucssion on <a class="reference external" href="#Policy">Policy Decisions.</a></p>
 </div>
 <div class="section" id="7.-Events,-Gates,-and-Pre-Immunity">
 <h3>7. Events, Gates, and Pre-Immunity<a class="headerlink" href="#7.-Events,-Gates,-and-Pre-Immunity" title="Permalink to this headline">¶</a></h3>
-<p>Now we can see how pre-immunity might impact viral spread in a population with more homogeneous interactions.</p>
+<p>Now we can see how pre-immunity might impact viral spread in a population with more heterogeneous interactions.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group2</span><span class="p">[</span><span class="s1">&#39;susf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">8</span>
 <span class="n">group3</span><span class="p">[</span><span class="s1">&#39;susf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">65</span>
 <span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">,</span> <span class="n">group3</span><span class="p">,</span> <span class="n">group4a</span><span class="p">,</span> <span class="n">group4b</span><span class="p">]</span>
@@ -858,13 +866,13 @@ div.rendered_html tbody tr:hover {
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>15%</p></td>
+<td><p>14%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>38%</p></td>
+<td><p>22%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.45%</p></td>
+<td><p>0.57%</p></td>
 </tr>
 </tbody>
 </table>
@@ -896,13 +904,13 @@ div.rendered_html tbody tr:hover {
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>15%</p></td>
+<td><p>18%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>34%</p></td>
+<td><p>35%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.29%</p></td>
+<td><p>0.38%</p></td>
 </tr>
 </tbody>
 </table>
@@ -957,17 +965,17 @@ div.rendered_html tbody tr:hover {
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>12%</p></td>
+<td><p>19%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>27%</p></td>
+<td><p>48%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.42%</p></td>
+<td><p>0.38%</p></td>
 </tr>
 </tbody>
 </table>
-<p>We see that the curve is flattened significanlty during the restriction period and the peak of infections has been pushed way out to ~125+ days. As restrictions are lifted, however, the outbreak ensues and fatalities are only slightly lower than less restrictive simulations.</p>
+<p>We see that the curve is flattened significanlty during the restriction period and the peak of infections has been pushed way out to 100+ days. As the restriction is lifted, however, the outbreak ensues. Notice that the 70+G region was spared from the outbreak until ~100 days, when a wave of infections quickly increased the fatality rate.</p>
 </div>
 <div class="section" id="2.-Restrict-Elderly-Visits">
 <h3>2. Restrict Elderly Visits<a class="headerlink" href="#2.-Restrict-Elderly-Visits" title="Permalink to this headline">¶</a></h3>
@@ -989,18 +997,18 @@ div.rendered_html tbody tr:hover {
 </video><p>This results in:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 71%" />
-<col style="width: 29%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>26%</p></td>
+<td><p>23%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>51%</p></td>
+<td><p>46%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.3%</p></td>
+<td><p>0.33%</p></td>
 </tr>
 </tbody>
 </table>
@@ -1029,23 +1037,24 @@ div.rendered_html tbody tr:hover {
 </video><p>This results in:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 71%" />
-<col style="width: 29%" />
+<col style="width: 67%" />
+<col style="width: 33%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>14%</p></td>
+<td><p>19%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>46%</p></td>
+<td><p>63%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.4%</p></td>
+<td><p>0.58%</p></td>
 </tr>
 </tbody>
 </table>
-<p>We can see that social distancing is certainly the most effective approach in terms of “flattening the curve” with the infection peak push all the way out to ~200 days, again after the restrictions are lifted.</p>
-<p>Still, the social distancing measures were not sufficient to prevent an outbreak in <code class="docutils literal notranslate"><span class="pre">group2b</span></code>, which resulted in a higher fatality rate than other approaches.</p>
+<p>We can see that social distancing is certainly the most effective approach in terms of “flattening the curve” with the infection peak pushed all the way out to 190+ days.</p>
+<p>Yet again, though, we see infections dramatically rise after the social distancing restrictions are lifted (180 days).</p>
+<p>In addition, there was an outbreak in the 70+G area, which resulted in a much higher fatality rate than other approaches.</p>
 </div>
 <div class="section" id="4.-Social-Distancing-and-Restrict-Elderly-Visits-and-Large-Gatherings">
 <h3>4. Social Distancing and Restrict Elderly Visits and Large Gatherings<a class="headerlink" href="#4.-Social-Distancing-and-Restrict-Elderly-Visits-and-Large-Gatherings" title="Permalink to this headline">¶</a></h3>
@@ -1078,10 +1087,10 @@ div.rendered_html tbody tr:hover {
 <td><p>12%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>29%</p></td>
+<td><p>60%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.38%</p></td>
+<td><p>0.48%</p></td>
 </tr>
 </tbody>
 </table>
@@ -1114,10 +1123,10 @@ div.rendered_html tbody tr:hover {
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>2%</p></td>
+<td><p>1%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>2%</p></td>
+<td><p>1%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
 <td><p>0%</p></td>
@@ -1125,11 +1134,12 @@ div.rendered_html tbody tr:hover {
 </tbody>
 </table>
 <p>The pandemic never materializes in this simulation. The quarantine eradicates the virus swiftly.</p>
-<p>This is a very interesting result. This obvioulsy did not occur in many places in the real world that took this approach. There are several possible reasons worth considering:</p>
+<p>This is an interesting result. This obvioulsy did not occur in many places in the real world that took this approach. There are several possible reasons worth considering:</p>
 <ul class="simple">
 <li><p>Random Variation: if you run this simulation multiple times, you will note some sims where spread does occur.</p></li>
 <li><p>Scale: a larger simulation would increase the possibility that a very small number of subjects can continue to pass around the virus while it is muted in the broader population</p></li>
 <li><p>Adherence: real-world adherence to the implemented policies was much lower than this simulation suggests.</p></li>
+<li><p>Inconsistency: some areas implemented strict quarantines while others did not, and there was mixing among those populations.</p></li>
 </ul>
 </div>
 </div>
@@ -1252,15 +1262,15 @@ div.rendered_html tbody tr:hover {
 <td><p>14%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>36%</p></td>
+<td><p>35%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.29%</p></td>
+<td><p>0.23%</p></td>
 </tr>
 </tbody>
 </table>
-<p>This results in a low peak, but there is a second wave effect as the restrictions roll off over the course of the first decline.</p>
-<p>Despite the second wave, this sim has by far the lowest fatality rate of the group and is achieved simply by restricting access to the elderly population for the duration of the outbreak.</p>
+<p>The virus barely survives for the first 6-months of the outbreak, then as per other scenarios, once restrictions are lifted an outbreak occurs. Still, when the outbreak does occur, it is characterized by one of the lowest peaks and HITs in our analysis (due in part to the pre-immmunity of some of the groups).</p>
+<p>And it achieves the lowest fatality rate of the group, mainly by restricting access to the elderly population for the duration of the pandemic and ensuring an outbreak never occurs in that region.</p>
 </div>
 </div>
 
