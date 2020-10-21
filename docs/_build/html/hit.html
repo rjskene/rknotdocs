@@ -97,9 +97,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#5.-Events">5. Events</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#6.-Gates">6. Gates</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#7.-Events,-Gates,-and-Pre-Immunity">7. Events, Gates, and Pre-Immunity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#8.-Self-Aware-Social-Distancing">8. Self Aware Social Distancing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#8.-Self-Aware-Social-Distancing-+-Pre-Immunity">8. Self Aware Social Distancing + Pre-Immunity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#9.-Isolation">9. Isolation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#10.-Infectiousness-Curve">10. Infectiousness Curve</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#Policy">Policy</a><ul>
@@ -879,8 +878,8 @@ div.rendered_html tbody tr:hover {
 <p>So once again we see that pre-existing immunity would have the effect of reducing peak infections and HIT.</p>
 <p>Still, fatalities were not impacted because of an outbreak in ‘70+G’ age group (which you can see from the full grey square in the bottom left hand corner of the grid) … this despite the gated area and limiting travel to one visitor a day.</p>
 </div>
-<div class="section" id="8.-Self-Aware-Social-Distancing">
-<h3>8. Self Aware Social Distancing<a class="headerlink" href="#8.-Self-Aware-Social-Distancing" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="8.-Self-Aware-Social-Distancing-+-Pre-Immunity">
+<h3>8. Self Aware Social Distancing + Pre-Immunity<a class="headerlink" href="#8.-Self-Aware-Social-Distancing-+-Pre-Immunity" title="Permalink to this headline">¶</a></h3>
 <p>In a self-aware population, we can also incorporate an assumption that certain members of the population will implement social distancing practices (even in the absence of prescribed government policy). For example, individuals might wear masks or face shields while in public.</p>
 <p>This is implemented via a SocialDistancing object, which reduces the transmission factor of the subjects in the applicable group.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">SocialDistancing</span> <span class="k">as</span> <span class="n">SD</span>
@@ -904,13 +903,13 @@ div.rendered_html tbody tr:hover {
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Peak</p></td>
-<td><p>18%</p></td>
+<td><p>23%</p></td>
 </tr>
 <tr class="row-even"><td><p>HIT</p></td>
-<td><p>35%</p></td>
+<td><p>48%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fatalities</p></td>
-<td><p>0.38%</p></td>
+<td><p>0.47%</p></td>
 </tr>
 </tbody>
 </table>
@@ -920,10 +919,6 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="9.-Isolation">
 <h3>9. Isolation<a class="headerlink" href="#9.-Isolation" title="Permalink to this headline">¶</a></h3>
-<p>TBD</p>
-</div>
-<div class="section" id="10.-Infectiousness-Curve">
-<h3>10. Infectiousness Curve<a class="headerlink" href="#10.-Infectiousness-Curve" title="Permalink to this headline">¶</a></h3>
 <p>TBD</p>
 </div>
 </div>
