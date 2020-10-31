@@ -39,7 +39,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Factors Influencing HIT" href="hit.html" />
+    <link rel="next" title="Factors Influencing Spread" href="hit.html" />
     <link rel="prev" title="RKnot - Beta" href="index.html" /> 
 </head>
 
@@ -96,7 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#References">References</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="hit.html">Factors Influencing HIT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hit.html">Factors Influencing Spread</a></li>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Key Concepts</a></li>
 </ul>
 
@@ -191,12 +191,12 @@
 <h1>Introduction<a class="headerlink" href="#Introduction" title="Permalink to this headline">¶</a></h1>
 <p><strong>BETA RELEASE</strong></p>
 <p><em>This project remains in the experimental stage and there are likely many tweaks to come that will improve/change outcomes. I do believe at this stage that the simulation provides good general insights regarding the relationship between various factors and viral spread.</em></p>
-<p>RKnot’s purpose is two-fold:</p>
+<p><strong>RKnot’s</strong> purpose is two-fold:</p>
 <ol class="arabic simple">
-<li><p>Investigate the Herd Immunity Threshold (HIT) under conditions of heterogeneity</p></li>
+<li><p>Investigate the viral spread under conditions of heterogeneity</p></li>
 <li><p>Investigate impacts of policy decisions on viral spread, hospital capacity, and fatalities</p></li>
 </ol>
-<p>RKnot attempts to distinguish itself from prevailing models by simulating <em>every subject</em> and <em>every contact</em> in a population. This allows us to:</p>
+<p><strong>RKnot</strong> attempts to distinguish itself from prevailing models by simulating <em>every subject</em> and <em>every contact</em> in a population. This allows us to:</p>
 <ol class="arabic simple">
 <li><p>customize populations in order to explore almost any setting on any scale.</p></li>
 <li><p>introduce more realistic movement and contact patterns that do <em>not</em> fit commonly-used assumptions.</p></li>
@@ -217,21 +217,22 @@ HIT = 1 - 1/R_0
 </ol>
 <div class="section" id="Heterogeneity">
 <h2>Heterogeneity<a class="headerlink" href="#Heterogeneity" title="Permalink to this headline">¶</a></h2>
-<p>RKnot seeks to address the shortfalls in <span class="math notranslate nohighlight">\(R_0\)</span> models by allowing the user to introduce customized, heterogeneous populations. Populations can have heterogeneity across several axis including:</p>
+<p><strong>RKnot</strong> seeks to address the shortfalls in <span class="math notranslate nohighlight">\(R_0\)</span> models by allowing the user to introduce customized, heterogeneous populations across several axis including:</p>
 <ul class="simple">
 <li><p><strong>Fatality Rate</strong></p></li>
 <li><p><strong>Population Density</strong></p></li>
 <li><p><strong>Movement</strong> - frequency and distance of location changes in space according to different probability distributions.</p></li>
 <li><p><strong>Events</strong> - in the real world, people do not move and interact according to smooth probability functions. In fact, they typically have a small subset of movements that are huge outliers from any distribution. These are the professional sporting events, vacation trips, church functions, house parties, etc. that are scheduled and often times recurring. Thankfully, they are more often than not deterministic, which allows us to incorporate them in a simulation.</p></li>
 <li><p><strong>Susceptibility</strong> - segments of population can be made immune (without requiring vaccination) to mimick phenomenon like <a class="reference external" href="https://www.bmj.com/content/370/bmj.m3563">possible T-cell immunity</a>.</p></li>
-<li><p><strong>Transmission Factor</strong>, <span class="math notranslate nohighlight">\(T\)</span>: RKnot (as with <span class="math notranslate nohighlight">\(R_0\)</span>) assumes that all contacts have the same likelihood of transmission, <span class="math notranslate nohighlight">\(\tau\)</span> (subject to the viral load at the time of the interaction). This is a homogenous assumption. RKnot introduces a unitless Transmission Factor, <span class="math notranslate nohighlight">\(T\)</span>, for each subject at each contact that can modulate <span class="math notranslate nohighlight">\(\tau\)</span>. This can be used to mimick social distancing or mask wearing or different socio-cultural norms that may impact spread (i.e. east Asian
-bows versus southern European double-kisses).</p></li>
+<li><p><strong>Transmission Factor</strong>, <span class="math notranslate nohighlight">\(T\)</span>: <span class="math notranslate nohighlight">\(R_0\)</span> assumes that all contacts have the same likelihood of transmission, <span class="math notranslate nohighlight">\(\tau\)</span> (subject to the viral load at the time of the interaction). This is a homogenous assumption. <strong>RKnot</strong> introduces a unitless Transmission Factor, <span class="math notranslate nohighlight">\(T\)</span>, for each subject at each contact that can modulate <span class="math notranslate nohighlight">\(\tau\)</span>. This can be used to mimick social distancing or mask wearing or different socio-cultural norms that may impact spread (i.e. east Asian bows versus
+southern European double-kisses).</p></li>
 </ul>
 <p><em>Still To Be Incorporated</em></p>
 <ul class="simple">
+<li><p><strong>Location Transmission Factor</strong>: similar to <span class="math notranslate nohighlight">\(\tau\)</span> above, we can introduce a tranmission factor to specific locations that might result in higher or lower likelihood of spread. This could be used to simulate certain work environments (like enclosed office spaces or meat-packing plants). It can also be used to mimic seasonality, by changing the location <span class="math notranslate nohighlight">\(\tau\)</span> over time to account for, say, more time outdoors in temperate seasons.</p></li>
 <li><p><strong>Isolation</strong> - with the heightened awareness of a pandemic, individuals in population are more likely to self-isolate or quarantine themselves upon sympton onset, thereby helping to reduce spread.</p></li>
 </ul>
-<p>In order to do that, RKnot must determine the <span class="math notranslate nohighlight">\(\tau\)</span> for the space created by the user.</p>
+<p>In order to do that, <strong>RKnot</strong> must determine the <span class="math notranslate nohighlight">\(\tau\)</span> for the space created by the user.</p>
 </div>
 <div class="section" id="Approach">
 <h2>Approach<a class="headerlink" href="#Approach" title="Permalink to this headline">¶</a></h2>
@@ -282,7 +283,7 @@ R_0=\frac{\tau*c}{\gamma}
 </div>
 <div class="section" id="Expected-Contacts">
 <h2>Expected Contacts<a class="headerlink" href="#Expected-Contacts" title="Permalink to this headline">¶</a></h2>
-<p><span class="math notranslate nohighlight">\(R_0\)</span> assumes that an infected subject will have as many contacts with the population as any other subject. A simple method to estimate contacts for one infected subject is to, then, assume that each subject is equally likely to be in any one location at any time (in RKnot, this implemented by the <code class="docutils literal notranslate"><span class="pre">equal</span></code> mover function).</p>
+<p><span class="math notranslate nohighlight">\(R_0\)</span> assumes that an infected subject will have as many contacts with the population as any other subject. A simple method to estimate contacts for one infected subject is to, then, assume that each subject is equally likely to be in any one location at any time (in <strong>RKnot</strong>, this implemented by the <code class="docutils literal notranslate"><span class="pre">equal</span></code> mover function).</p>
 <p>The probability of a single dot being in a singe location is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation}
@@ -316,8 +317,8 @@ P(LOC_{xy},DOT_{ij})=1/N^n
 </div>
 <div class="section" id="The-Average-Contact">
 <h2>The Average Contact<a class="headerlink" href="#The-Average-Contact" title="Permalink to this headline">¶</a></h2>
-<p>Currently, RKnot assumes that each and every contact is an <strong>Average Contact</strong>, <span class="math notranslate nohighlight">\(\overline{c}\)</span>.</p>
-<p><span class="math notranslate nohighlight">\(\overline{c}\)</span> is a purely theoretical interaction that would result in about an average likelihood of transmission relative to all other possible interactions. It is not influenced by external factors such as the demographics of the subjects, the properties of the location, etc. Thus, the <span class="math notranslate nohighlight">\(\tau\)</span> an Average Contact is a fundamental property of the virus (the <em>perhaps</em> <strong>the</strong> fundamental property that drives all others).</p>
+<p>Currently, <strong>RKnot</strong> assumes that each and every contact is an <em>Average Contact</em>, <span class="math notranslate nohighlight">\(\overline{c}\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\overline{c}\)</span> is a purely theoretical interaction that would result in about an average likelihood of transmission relative to all other possible interactions. It is not influenced by external factors such as the demographics of the subjects, the properties of the location, etc. Thus, the <span class="math notranslate nohighlight">\(\tau\)</span> of an Average Contact is a fundamental property of the virus (the <em>perhaps</em> <strong>the</strong> fundamental property that drives all others).</p>
 <p>I like to think of the <span class="math notranslate nohighlight">\(\overline{c}\)</span> as the <em>Elevator Case</em>, i.e.:</p>
 <ul class="simple">
 <li><p>Two people on an elevator, standing three feet apart, having a conversation for several minutes before one person exits. No masks nor other conscious social distancing, but no particularly reckless behaviour either.</p></li>
@@ -340,20 +341,20 @@ P(LOC_{xy},DOT_{ij})=1/N^n
 =\frac{\text{infections}}{1}*\frac{1}{time}*\frac{time}{\text{number of contacts}}
 =\frac{\text{infections}}{\text{number of contacts}}
 \end{equation}\]</div>
-<p>This is the likelihood of transmission of a contact and is a fundamental factor used in the RKnot simulation.</p>
+<p>This is the likelihood of transmission of a contact and is a fundamental factor used in the simulation.</p>
 <p>If a susceptible subject has contact with an infected at the same location, at any time, its probability of infection is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation}
 \tau
 \end{equation}\]</div>
-<p>If a susceptible comes in contact with multiple infected, we assume that this results in multiple contacts that occur in succession (although continuously). So we must sum all the branches of the probability tree that end in an infection:</p>
+<p>If a susceptible comes in contact with multiple infected, we assume that this results in multiple contacts that occur in succession. So we must sum all the branches of the probability tree that end in an infection:</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation}
 \sum^n_{i=1}(1-\tau)^i*\tau
 \end{equation}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{equation}
-\\\textit{where:}\tau\;\textit{= likelihood of transmission}
+\\\textit{where:}\;\tau\;\textit{= likelihood of transmission}
 \\n\;\textit{= number of infected dots}
 \end{equation}\end{split}\]</div>
 <p>This ensures that the likelihood of transmission is asymptotic to 1, as follows:</p>
@@ -361,11 +362,11 @@ P(LOC_{xy},DOT_{ij})=1/N^n
 </div>
 <div class="section" id="Dynamic-Infectiousness">
 <h2>Dynamic Infectiousness<a class="headerlink" href="#Dynamic-Infectiousness" title="Permalink to this headline">¶</a></h2>
-<p>At present, RKnot does not formally incorporate concepts of viral load. The SIR model assumes that an infected is equally likely to cause a secondary infection at any time during the infectious period, <span class="math notranslate nohighlight">\(d\)</span>.</p>
+<p>At present, <strong>RKnot</strong> does not formally incorporate concepts of viral load. The SIR model assumes that an infected is equally likely to cause a secondary infection at any time during the infectious period, <span class="math notranslate nohighlight">\(d\)</span>.</p>
 <p>In reality, the infectiousness of an individual changes over time. This is a function of the viral load of a subject. It takes time for the virus to accumulate in the subject and, then, in turn it takes time for the subject to dimish the virus via its immune response.</p>
 <p>The more virus a subject is carrying, the more likely it is to cause a secondary infection. And so the likelihood of transmission should follow a similar pattern as the viral load (or vice versa). This <a class="reference external" href="https://www.nytimes.com/interactive/2020/10/02/science/charting-a-coronavirus-infection.html?s=03">New York Times piece</a> has nice visualisations of this concept for sar-cov-2.</p>
 <p>There are several models available in the literature that provide more sophisticated infectiousness curves, including some that account for asymptomatic spread. For instance, <a class="reference external" href="https://www.ijidonline.com/article/S1201-9712%2820%2930119-3/pdf">this</a> study focuses on the serial interval and <a class="reference external" href="https://www.medrxiv.org/content/10.1101/2020.03.08.20032946v1.full.pdf">this</a> study accounts for asymptomatic spread, incubation period, etc.</p>
-<p>Incorporation of these concepts into RKnot is being explored. It is important to note that <span class="math notranslate nohighlight">\(R_0\)</span> in a SIR model is not necessarily equal to <span class="math notranslate nohighlight">\(R_0\)</span> in a more sophisticated model.</p>
+<p>Incorporation of these concepts into <strong>RKnot</strong> is being explored. It is important to note that <span class="math notranslate nohighlight">\(R_0\)</span> in a SIR model is not necessarily equal to <span class="math notranslate nohighlight">\(R_0\)</span> in a more sophisticated model.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="References">
@@ -394,7 +395,7 @@ P(LOC_{xy},DOT_{ij})=1/N^n
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="hit.html" class="btn btn-neutral float-right" title="Factors Influencing HIT" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="hit.html" class="btn btn-neutral float-right" title="Factors Influencing Spread" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="RKnot - Beta" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

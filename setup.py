@@ -5,9 +5,9 @@ setup(
     version='0.1',
     description="My sample package",
     long_description="",
-    author='TODO',
-    author_email='todo@example.org',
-    license='TODO',
+    author='rskene',
+    author_email='covidcharts1@gmail.com',
+    license='none',
     zip_safe=False,
     install_requires=[
         'docutils',
@@ -17,7 +17,7 @@ setup(
         'nbformat',
         'sphinx>=1.8',
         'sphinx-rtd-theme',
-        'nbsphinx',
+        # 'nbsphinx',
         'ipython',
           ],
 )
