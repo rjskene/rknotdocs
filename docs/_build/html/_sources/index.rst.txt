@@ -12,5 +12,6 @@ RKnot - Beta
    :maxdepth: 3
 
    intro
-   hit
+   theory
+   constant
    concepts

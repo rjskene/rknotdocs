@@ -12,5 +12,6 @@ RKnot - Beta
    :maxdepth: 3
 
    intro
-   constant
+   theory
    concepts
+   sir

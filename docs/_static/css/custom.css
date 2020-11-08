@@ -1,0 +1,30 @@
+.alert-rknot {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert-rknot h4 {
+  margin-top: 0;
+  color: inherit;
+}
+
+.alert-rknot .alert-rknot-link {
+  font-weight: bold;
+}
+
+.alert-rknot ol, 
+.alert-rknot ul {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  display: inline;
+}
+
+.alert-rknot-info {
+  background-color: #EFF6FB;
+  border-color: #bce8f1;
+  color: #24536A;
+}
