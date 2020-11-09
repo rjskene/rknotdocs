@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Factors Influencing Spread &mdash; RKnot  documentation</title>
+  <title>SIR: Factors Influencing Spread &mdash; RKnot  documentation</title>
   
 
   
@@ -39,7 +39,9 @@
 
     
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Sizing" href="sizing.html" />
+    <link rel="prev" title="Key Concepts" href="concepts.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,10 +86,37 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="theory.html">Viral Spread Theory in RKnot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Key Concepts</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SIR: Factors Influencing Spread</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Base-US-Simulation">Base US Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Natural">Natural</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#1.-Equal">1. Equal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#2.-Local">2. Local</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#3.-Social">3. Social</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#4.-Pre-Existing-Immunity">4. Pre-Existing Immunity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#5.-Events">5. Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#6.-Gates">6. Gates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#7.-Pre-Immunity-with-Events-and-Gates">7. Pre-Immunity with Events and Gates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#8.-Self-Aware-Social-Distancing">8. Self Aware Social Distancing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#9.-Self-Aware-Social-Distancing-+-Pre-Immunity">9. Self Aware Social Distancing + Pre-Immunity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#10.-Isolation">10. Isolation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Policy">Policy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#1.-Restrict-Large-Gatherings">1. Restrict Large Gatherings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#2.-Social-Distancing">2. Social Distancing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#3.-Restrict-Elderly-Visits">3. Restrict Elderly Visits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#4.-Social-Distancing-and-Restrict-Elderly-Visits-and-Large-Gatherings">4. Social Distancing and Restrict Elderly Visits and Large Gatherings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#5.-Quarantine">5. Quarantine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#6.-Quarantine-with-Adherence">6. Quarantine with Adherence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sizing.html">Sizing</a></li>
 </ul>
 
             
@@ -134,13 +163,13 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Factors Influencing Spread</li>
+      <li>SIR: Factors Influencing Spread</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/hit.ipynb.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/sir.ipynb.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -408,14 +437,10 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="Factors-Influencing-Spread">
-<h1>Factors Influencing Spread<a class="headerlink" href="#Factors-Influencing-Spread" title="Permalink to this headline">¶</a></h1>
-<p><strong>BETA RELEASE</strong></p>
-<p><em>This project remains in the experimental stage and there are likely many tweaks to come that will improve/change outcomes. I do believe at this stage that the simulation provides good general insights regarding the relationship between various factors and viral spread.</em></p>
+<div class="section" id="SIR:-Factors-Influencing-Spread">
+<h1>SIR: Factors Influencing Spread<a class="headerlink" href="#SIR:-Factors-Influencing-Spread" title="Permalink to this headline">¶</a></h1>
 <p><strong>REPLICABILITY</strong></p>
 <p><em>Randomness is in an important factor in RKnot’s approach to simulation (and frankly in real-word viral transmission), so the results of the sims below will not be repeatable with each iteration. The below examples are meant to show general differences based on state; further analysis should run the same simulation multiple times to see the mean impact.</em></p>
-<p><strong>SARS-COV-2</strong></p>
-<p><em>While sars-cov-2 is obviously topical globally, the goal of RKnot is to be applicable to any virus (or anything that spreads like a virus). sars-cov-2 is used only for illustration purposes.</em></p>
 <div class="section" id="Base-US-Simulation">
 <h2>Base US Simulation<a class="headerlink" href="#Base-US-Simulation" title="Permalink to this headline">¶</a></h2>
 <p>To explore the various concepts of RKnot and viral spread, we’ll use a simulation design based on <a class="reference external" href="https://www.cdc.gov/coronavirus/2019-ncov/hcp/planning-scenarios.html">CDC Best Planning Scenario</a> guidelines for COVID-19 characteristics including:</p>
@@ -1499,6 +1524,15 @@ div.rendered_html tbody tr:hover {
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sizing.html" class="btn btn-neutral float-right" title="Sizing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="concepts.html" class="btn btn-neutral float-left" title="Key Concepts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

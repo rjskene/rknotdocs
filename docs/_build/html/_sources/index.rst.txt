@@ -15,3 +15,5 @@ RKnot - Beta
    theory
    concepts
    sir
+   load
+   sizing

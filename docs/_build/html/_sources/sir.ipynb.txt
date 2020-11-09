@@ -4,16 +4,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "## Factors Influencing Spread ##"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "**BETA RELEASE**\n",
-    "\n",
-    "*This project remains in the experimental stage and there are likely many tweaks to come that will improve/change outcomes. I do believe at this stage that the simulation provides good general insights regarding the relationship between various factors and viral spread.*"
+    "## SIR:  Factors Influencing Spread ##"
    ]
   },
   {
@@ -23,15 +14,6 @@
     "**REPLICABILITY**\n",
     "\n",
     "*Randomness is in an important factor in RKnot's approach to simulation (and frankly in real-word viral transmission), so the results of the sims below will not be repeatable with each iteration. The below examples are meant to show general differences based on state; further analysis should run the same simulation multiple times to see the mean impact.*"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "**SARS-COV-2**\n",
-    "\n",
-    "*While sars-cov-2 is obviously topical globally, the goal of RKnot is to be applicable to any virus (or anything that spreads like a virus). sars-cov-2 is used only for illustration purposes.*"
    ]
   },
   {
@@ -112,14 +94,14 @@
     "    import imp\n",
     "    imp.reload(modulename)\n",
     "    \n",
+    "from IPython.display import display, Markdown, Latex\n",
+    "def md(value):\n",
+    "    return display(Markdown(value))\n",
+    "\n",
     "def perstr(val):\n",
     "    return '{0:.0%}'.format(val)\n",
     "def fatstr(val):\n",
     "    return '{0:.2%}'.format(val)\n",
-    "\n",
-    "from IPython.display import display, Markdown, Latex\n",
-    "def md(value):\n",
-    "    return display(Markdown(value))\n",
     "\n",
     "def get_results(sim):\n",
     "    peak = perstr(sim.log['curr_per'].max())\n",
@@ -322,12 +304,7 @@
    "outputs": [],
    "source": [
     "if SAVE_CHARTS:\n",
-    "    chart = Chart(sim1, **chart_params)\n",
-    "    chart.animate.save(\n",
-    "        PATH + '1.mp4', \n",
-    "        writer=FFMpegWriter(metadata=meta, **writer_params), \n",
-    "        **save_params\n",
-    "    )"
+    "    chart = Chart(sim1, **chart_params)"
    ]
   },
   {
@@ -2870,7 +2847,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 71,
    "metadata": {
     "nbsphinx": "hidden"
    },

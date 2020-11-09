@@ -1,0 +1,1413 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sizing &mdash; RKnot  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"equationNumbers": {"autoNumber": "AMS", "useLabelIds": true}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="SIR: Factors Influencing Spread" href="sir.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> RKnot
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory.html">Viral Spread Theory in RKnot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sir.html">SIR: Factors Influencing Spread</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sizing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#SIR:-Confirming-Contacts">SIR: Confirming Contacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#SIR:-Confirming-R_0">SIR: Confirming <span class="math notranslate nohighlight">\(R_0\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#SIR:-Impact-of-Changes-in-Mover-Function">SIR: Impact of Changes in Mover Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Customization">Customization</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RKnot</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Sizing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/sizing.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Sizing">
+<h1>Sizing<a class="headerlink" href="#Sizing" title="Permalink to this headline">¶</a></h1>
+<p>The appropriate sizing of a simulation space is often more art than science but we can use several tools in the RKnot package to ensure that any particular simulation has the appropriate attributes and initial conditions.</p>
+<div class="section" id="SIR:-Confirming-Contacts">
+<h2>SIR: Confirming Contacts<a class="headerlink" href="#SIR:-Confirming-Contacts" title="Permalink to this headline">¶</a></h2>
+<p>For instance, in our <a class="reference internal" href="sir.html"><span class="doc">SIR-based simulations</span></a> with constant transmission risk, the SIR model is mostly faithfully replicated with a contact rate of 1 per day … and <a class="reference internal" href="theory.html#Expected-Contact-Rate"><span class="std std-ref">we have seen mathematically</span></a> that a density level of 1 dot per location should result in a contact rate of ~1 per day.</p>
+<p>Below, we will investigate if, in fact, that is the case.</p>
+<p>First, create a small population of 100 subjects with no movement bias and a single infected subject.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">rknot</span> <span class="kn">import</span> <span class="n">Sim</span>
+
+<span class="n">group</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">ifr</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">mover</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We will restrict the simulation to just 14 days. We set <code class="docutils literal notranslate"><span class="pre">dlevel=med</span></code>, which sets the population density to 1 subject per location.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">dlevel</span><span class="o">=</span><span class="s1">&#39;med&#39;</span><span class="p">,</span>
+    <span class="n">R0</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">infdur</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+    <span class="n">days</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>When running the sim, set <code class="docutils literal notranslate"><span class="pre">dotlog=True</span></code>. The <code class="docutils literal notranslate"><span class="pre">dotlog</span></code> is 3d record of the dot matrix at each tick in the simulation. We can use it to test several things.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dotlog</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code> as it can impact performance for large populations and longer simulations.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">dotlog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "4f282c0cc8d6481aafb849ff5242297d", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<p>Upon completion of the sim, an attribute <code class="docutils literal notranslate"><span class="pre">dotlog</span></code> has been added. We can see it has shape (14, 100, 23), corresponding to 14 ticks, 100 dots, and the 23 attributes in the dot matrix.</p>
+</div>
+</div>
+<p>The initial infected dot is chosen at random, so we cannot isolate and track its movements ahead of time. But we <em>can</em> isolate it in the first first frame of the <code class="docutils literal notranslate"><span class="pre">dotlog</span></code> and review its entire history in the sim.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">rknot.dots.matrix</span> <span class="kn">import</span> <span class="n">ML</span><span class="p">,</span> <span class="n">MLNB</span>
+
+
+<span class="n">i_inf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span> <span class="n">ML</span><span class="p">[</span><span class="s1">&#39;is_inf&#39;</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[:,</span> <span class="n">i_inf</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([[[ 64,   0,   1,   0,   0,   1,   1,  89,   9,  10,  40,   5,
+           1,   0,   0,  -1,   0, 100,   0,   0,  -1,  15, 381]],
+
+       [[ 64,   0,   1,   0,   0,   1,   1,  16,   2,   7,  40,   5,
+           1,   0,   0,  -1,   0, 100,   0,   0,  -1,  15, 381]],
+
+       [[ 64,   0,   1,   0,   0,   1,   1,  17,   2,   8,  40,   5,
+           1,   0,   0,  -1,   0, 100,   0,   0,  -1,  15, 381]],
+
+       [[ 64,   0,   1,   0,   0,   1,   1,   2,   1,   3,  40,   5,
+           1,   0,   0,  -1,   0, 100,   0,   0,  -1,  15, 381]],
+
+       [[ 64,   0,   1,   0,   0,   1,   1,  46,   5,   7,  40,   5,
+           1,   0,   0,  -1,   0, 100,   0,   0,  -1,  15, 381]],
+
+       [[ 64,   0,   1,   0,   0,   1,   1,  30,   4,   1,  40,   5,
+           1,   0,   0,  -1,   0, 100,   0,   0,  -1,  15, 381]],
+
+       [[ 64,   0,   1,   0,   0,   1,   1,  12,   2,   3,  40,   5,
+           1,   0,   0,  -1,   0, 100,   0,   0,  -1,  15, 381]],
+
+       [[ 64,   0,   1,   0,   0,   1,   1,   0,   1,   1,  40,   5,
+           1,   0,   0,  -1,   0, 100,   0,   0,  -1,  15, 381]],
+
+       [[ 64,   0,   1,   0,   0,   1,   1,  68,   7,   9,  40,   5,
+           1,   0,   0,  -1,   0, 100,   0,   0,  -1,  15, 381]],
+
+       [[ 64,   0,   1,   0,   0,   1,   1,  59,   6,  10,  40,   5,
+           1,   0,   0,  -1,   0, 100,   0,   0,  -1,  15, 381]],
+
+       [[ 64,   0,   1,   0,   0,   1,   1,  31,   4,   2,  40,   5,
+           1,   0,   0,  -1,   0, 100,   0,   0,  -1,  15, 381]],
+
+       [[ 64,   0,   1,   0,   0,   1,   1,  81,   9,   2,  40,   5,
+           1,   0,   0,  -1,   0, 100,   0,   0,  -1,  15, 381]],
+
+       [[ 64,   0,   1,   0,   0,   1,   1,  81,   9,   2,  40,   5,
+           1,   0,   0,  -1,   0, 100,   0,   0,  -1,  15, 381]],
+
+       [[ 64,   0,   1,   0,   0,   1,   1,  82,   9,   3,  40,   5,
+           1,   0,   0,  -1,   0, 100,   0,   0,  -1,  15, 381]]])
+</pre></div></div>
+</div>
+<p>We can then determine which locations the dot visited at each tick.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">locs_visited</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[:,</span> <span class="n">i_inf</span><span class="p">,</span> <span class="n">ML</span><span class="p">[</span><span class="s1">&#39;loc_id&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="n">locs_visited</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([89, 16, 17,  2, 46, 30, 12,  0, 68, 59, 31, 81, 81, 82])
+</pre></div></div>
+</div>
+<p>Next, find how many total dots were at the same location at the same time as the initial infected.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">dots_at_loc</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[:,:,</span><span class="n">ML</span><span class="p">[</span><span class="s1">&#39;loc_id&#39;</span><span class="p">]]</span> <span class="o">==</span> <span class="n">locs_visited</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span>
+<span class="n">dots_at_loc</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([3, 2, 1, 2, 1, 1, 1, 2, 1, 2, 3, 1, 4, 2])
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<p>The array above tells us there we 3 dots at location id 89 on the first tick, 2 dots at location id 16 on the second tick, etc.</p>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">assert</span> <span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="n">ML</span><span class="p">[</span><span class="s1">&#39;loc_id&#39;</span><span class="p">]]</span> <span class="o">==</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;locs_visited1&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="n">dots_at_loc</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">assert</span> <span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="n">ML</span><span class="p">[</span><span class="s1">&#39;loc_id&#39;</span><span class="p">]]</span> <span class="o">==</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;locs_visited1&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="n">dots_at_loc</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>Again, the expected contact rate ~1 per day. First, we subtract 1 from <code class="docutils literal notranslate"><span class="pre">dots_at_loc</span></code> since a contact constitutes two or more dots. Then find the mean and variance of the infected dot’s daily contacts.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">contacts</span> <span class="o">=</span> <span class="n">dots_at_loc</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">contacts</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">var</span> <span class="o">=</span> <span class="n">contacts</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">if</span> <span class="n">UPDATEDB</span><span class="p">:</span>
+    <span class="n">db</span><span class="p">[</span><span class="s1">&#39;mean, var 1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">contacts</span><span class="p">)</span>
+<span class="n">mean</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">contacts</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;mean, var 1&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span> <span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.86 0.84
+</pre></div></div>
+</div>
+<p>The contact distribution is as follows:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">contacts</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">contacts</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">contacts</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/sizing_28_0.png" src="_images/sizing_28_0.png" />
+</div>
+</div>
+<p>The contact rate is in range of the expected value of 1, but this example has a very small sample size. We can expand the sample by continuing to isolate the initial infected dot but increasing the simulation length.</p>
+<p>The code above has been factored into a helper function <code class="docutils literal notranslate"><span class="pre">contacts_of_init_inf</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">rknot</span> <span class="kn">import</span> <span class="n">Sim</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">dlevel</span><span class="o">=</span><span class="s1">&#39;med&#39;</span><span class="p">,</span>
+    <span class="n">R0</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">infdur</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+    <span class="n">days</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">dotlog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a15c7ce12b5f4a2ca440633d5f7420a9", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">rknot.helpers</span> <span class="kn">import</span> <span class="n">contacts_of_init_inf</span>
+
+<span class="n">contacts</span> <span class="o">=</span> <span class="n">contacts_of_init_inf</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">)</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">contacts</span><span class="p">)</span>
+<span class="n">var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">contacts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span> <span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1.1666666666666667 0.8055555555555555
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">contacts</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">contacts</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">contacts</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/sizing_34_0.png" src="_images/sizing_34_0.png" />
+</div>
+</div>
+<p>Again, we find a similar average contact rate and variance, although histogram shape is altered somewhat.</p>
+<p>For an even larger sample, we can repeat the above process for every dot in the simulation. The loop below gives us a record of every daily contact count for every dot in the sim.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span><span class="p">,</span> <span class="n">prange</span>
+<span class="kn">from</span> <span class="nn">rknot.dots.matrix</span> <span class="kn">import</span> <span class="n">MLNB</span>
+
+<span class="nd">@njit</span><span class="p">(</span><span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">find_all_contacts</span><span class="p">(</span><span class="n">dotlog</span><span class="p">,</span> <span class="n">MLNB</span><span class="p">):</span>
+    <span class="n">days</span> <span class="o">=</span> <span class="n">dotlog</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">dotlog</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">all_contacts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">days</span><span class="o">*</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">prange</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">locs_visited</span> <span class="o">=</span> <span class="n">dotlog</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="n">MLNB</span><span class="p">[</span><span class="s1">&#39;loc_id&#39;</span><span class="p">]]</span>
+        <span class="n">dots_at_loc</span> <span class="o">=</span> <span class="n">dotlog</span><span class="p">[:,:,</span><span class="n">MLNB</span><span class="p">[</span><span class="s1">&#39;loc_id&#39;</span><span class="p">]]</span> <span class="o">==</span> <span class="n">locs_visited</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">contacts</span> <span class="o">=</span> <span class="n">dots_at_loc</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">all_contacts</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">days</span><span class="p">:</span><span class="n">i</span><span class="o">*</span><span class="n">days</span><span class="o">+</span><span class="n">days</span><span class="p">]</span> <span class="o">=</span> <span class="n">contacts</span>
+
+    <span class="k">return</span> <span class="n">all_contacts</span>
+
+<span class="n">all_contacts</span> <span class="o">=</span> <span class="n">find_all_contacts</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[:</span><span class="mi">14</span><span class="p">],</span> <span class="n">MLNB</span><span class="p">)</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">all_contacts</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">var</span> <span class="o">=</span> <span class="n">all_contacts</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">if</span> <span class="n">UPDATEDB</span><span class="p">:</span>
+    <span class="n">db</span><span class="p">[</span><span class="s1">&#39;mean, var 3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">all_contacts</span><span class="p">)</span>
+<span class="n">mean</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">all_contacts</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;mean, var 3&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span> <span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.9571428571428572 0.8724489795918366
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">all_contacts</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">all_contacts</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">all_contacts</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/sizing_39_0.png" src="_images/sizing_39_0.png" />
+</div>
+</div>
+<p>We find that all the dots in the sim had a contact rate near 1 (as expected) and variance near 1.</p>
+<p>Yet another approach would be to iterate over a number of different sims and look for the mean and variance of contacts for the infected dot across those sims.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">tqdm.auto</span> <span class="kn">import</span> <span class="n">trange</span>
+
+<span class="n">days</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">infdur</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;dlevel&#39;</span><span class="p">:</span> <span class="s1">&#39;med&#39;</span><span class="p">,</span> <span class="s1">&#39;R0&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;infdur&#39;</span><span class="p">:</span> <span class="n">infdur</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="n">days</span><span class="p">}</span>
+
+<span class="n">contacts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">days</span><span class="o">*</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">trange</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">dotlog</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">pbar_on</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">inf_contacts</span> <span class="o">=</span> <span class="n">contacts_of_init_inf</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">)</span>
+    <span class="n">contacts</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">days</span><span class="p">:</span><span class="n">i</span><span class="o">*</span><span class="n">days</span> <span class="o">+</span> <span class="n">days</span><span class="p">]</span> <span class="o">=</span> <span class="n">inf_contacts</span>
+
+<span class="n">mean</span><span class="p">,</span> <span class="n">var</span> <span class="o">=</span> <span class="n">contacts</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">contacts</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f7df301df5524734a33d345618863589", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">if</span> <span class="n">UPDATEDB</span><span class="p">:</span>
+    <span class="n">db</span><span class="p">[</span><span class="s1">&#39;mean, var 3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">contacts</span><span class="p">)</span>
+<span class="n">mean</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">contacts</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;mean, var 3&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span> <span class="p">(</span><span class="n">contacts</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">contacts</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">14</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1.0114285714285713 14.16
+</pre></div></div>
+</div>
+<p>Above we see that the infected dot average close to 1 contact per day or 14 contacts over the duration of the infection.</p>
+</div>
+<div class="section" id="SIR:-Confirming-R_0">
+<h2>SIR: Confirming <span class="math notranslate nohighlight">\(R_0\)</span><a class="headerlink" href="#SIR:-Confirming-R_0" title="Permalink to this headline">¶</a></h2>
+<p>We can similarly use the dotlog to confirm that the simulation results in the correct level of <span class="math notranslate nohighlight">\(R_0\)</span>, whether passed explicitly or implied through other parameters.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">dlevel</span><span class="o">=</span><span class="s1">&#39;med&#39;</span><span class="p">,</span>
+    <span class="n">R0</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">infdur</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+    <span class="n">days</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">dotlog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "c0400899de0e4d0aa39522fb985f6fb9", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<p>Again, we can find the ids that had contact with the infected dot at each tick.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">i_inf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span> <span class="n">ML</span><span class="p">[</span><span class="s1">&#39;is_inf&#39;</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="n">locs_visited</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[:,</span> <span class="n">i_inf</span><span class="p">,</span> <span class="n">ML</span><span class="p">[</span><span class="s1">&#39;loc_id&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="n">dots_at_loc</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[:,:,</span><span class="n">ML</span><span class="p">[</span><span class="s1">&#39;loc_id&#39;</span><span class="p">]]</span> <span class="o">==</span> <span class="n">locs_visited</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>Now, we will check each dots’ <code class="docutils literal notranslate"><span class="pre">is_inf</span></code> attribute <em>before</em> and <em>after</em> the contact occurs.</p>
+<p>Remember, transmission is the last step in each tick and that the dot matrix is update at the beginning of each tick. So, the status of the dot at tick i is its status <em>before</em> contact.</p>
+<p>We sum the dots infected before and subtract the dots infected after, which gives the dots infected at that contact.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">i_contact</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">dots_at_loc</span><span class="p">)</span> <span class="c1"># ids of each dot at each location</span>
+<span class="n">i_contact</span> <span class="o">=</span> <span class="n">i_contact</span><span class="p">[</span><span class="n">i_contact</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">i_inf</span><span class="p">]</span> <span class="c1"># excludes the initial infected dot</span>
+
+<span class="c1"># the infection status of each dot, before each contact</span>
+<span class="n">infs_pre</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[</span><span class="n">i_contact</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">i_contact</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ML</span><span class="p">[</span><span class="s1">&#39;is_inf&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">fwd_inf</span> <span class="o">=</span> <span class="n">i_contact</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="c1"># shift the ticks for each contact one tick forward</span>
+<span class="n">fwd_mask</span> <span class="o">=</span> <span class="n">fwd_inf</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">sim</span><span class="o">.</span><span class="n">ticks</span>
+
+<span class="c1"># the infection status of each dot, after each contact</span>
+<span class="n">infs_post</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[</span><span class="n">fwd_inf</span><span class="p">[</span><span class="n">fwd_mask</span><span class="p">][:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">fwd_inf</span><span class="p">[</span><span class="n">fwd_mask</span><span class="p">][:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">ML</span><span class="p">[</span><span class="s1">&#39;is_inf&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># Number of secondary infections created by the initial infected dot</span>
+<span class="n">n_sec</span> <span class="o">=</span> <span class="n">infs_post</span> <span class="o">-</span> <span class="n">infs_pre</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;The sim above resulted in </span><span class="si">{}</span><span class="s1"> infections.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_sec</span><span class="p">)</span>
+<span class="n">md</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<p>The sim above resulted in 5 infections.</p>
+</div>
+</div>
+<p>Again, transmission is stochastic. We can find a more useful mean by averaging the <span class="math notranslate nohighlight">\(R_0\)</span> over several simulations.</p>
+<p>The code used above has been factored into the function <code class="docutils literal notranslate"><span class="pre">find_n_sec</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">rknot.helpers</span> <span class="kn">import</span> <span class="n">find_n_sec</span>
+
+<span class="n">days</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">infdur</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;dlevel&#39;</span><span class="p">:</span> <span class="s1">&#39;med&#39;</span><span class="p">,</span> <span class="s1">&#39;R0&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;infdur&#39;</span><span class="p">:</span> <span class="n">infdur</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="n">days</span><span class="p">}</span>
+
+<span class="n">contacts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">infdur</span><span class="o">*</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="n">n_secs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">trange</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">dotlog</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">pbar_on</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">n_secs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">find_n_sec</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[:</span><span class="n">infdur</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">inf_contacts</span> <span class="o">=</span> <span class="n">contacts_of_init_inf</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[:</span><span class="n">infdur</span><span class="p">])</span>
+    <span class="n">contacts</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">infdur</span><span class="p">:</span><span class="n">i</span><span class="o">*</span><span class="n">infdur</span> <span class="o">+</span> <span class="n">infdur</span><span class="p">]</span> <span class="o">=</span> <span class="n">inf_contacts</span>
+
+<span class="n">mean</span><span class="p">,</span> <span class="n">var</span> <span class="o">=</span> <span class="n">n_secs</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">n_secs</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "149f542693d541d6b8a3383e035ece2b", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span> <span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">contacts</span><span class="p">[:</span><span class="n">infdur</span><span class="o">*</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">14</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2.42 2.2036000000000002 13.79
+</pre></div></div>
+</div>
+<p>We can see that the <span class="math notranslate nohighlight">\(R_0\)</span> resulting in the sims, on average, is relatively close to the <span class="math notranslate nohighlight">\(R_0\)</span> provided.</p>
+</div>
+<div class="section" id="SIR:-Impact-of-Changes-in-Mover-Function">
+<h2>SIR: Impact of Changes in Mover Function<a class="headerlink" href="#SIR:-Impact-of-Changes-in-Mover-Function" title="Permalink to this headline">¶</a></h2>
+<p>With the veracity of the SIR model and the assessment process confirmed, we can check the impact of changes to various attributes of the sim, including the <code class="docutils literal notranslate"><span class="pre">mover</span></code> function.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">group</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">ifr</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">mover</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">days</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">infdur</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;dlevel&#39;</span><span class="p">:</span> <span class="s1">&#39;med&#39;</span><span class="p">,</span> <span class="s1">&#39;R0&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;infdur&#39;</span><span class="p">:</span> <span class="n">infdur</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="n">days</span><span class="p">}</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">contacts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">infdur</span><span class="o">*</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="n">n_secs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">trange</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">dotlog</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">pbar_on</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">n_secs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">find_n_sec</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[:</span><span class="n">infdur</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">inf_contacts</span> <span class="o">=</span> <span class="n">contacts_of_init_inf</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[:</span><span class="n">infdur</span><span class="p">])</span>
+    <span class="n">contacts</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">infdur</span><span class="p">:</span><span class="n">i</span><span class="o">*</span><span class="n">infdur</span> <span class="o">+</span> <span class="n">infdur</span><span class="p">]</span> <span class="o">=</span> <span class="n">inf_contacts</span>
+
+<span class="n">mean_ktr</span><span class="p">,</span> <span class="n">var_ktr</span> <span class="o">=</span> <span class="n">contacts</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">contacts</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+<span class="n">mean_nsec</span><span class="p">,</span> <span class="n">var_nsec</span> <span class="o">=</span> <span class="n">n_secs</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">n_secs</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a66ed27ca2664279a9e43dd2b0c144a6", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">if</span> <span class="n">UPDATEDB</span><span class="p">:</span>
+    <span class="n">db</span><span class="p">[</span><span class="s1">&#39;contacts mean, var local&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">contacts</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">contacts</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
+    <span class="n">db</span><span class="p">[</span><span class="s1">&#39;nsecs mean, var local&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_secs</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">n_secs</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
+
+<span class="n">mean_ktr</span><span class="p">,</span> <span class="n">var_ktr</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;contacts mean, var local&#39;</span><span class="p">]</span>
+<span class="n">mean_nsec</span><span class="p">,</span> <span class="n">var_nsec</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;nsecs mean, var local&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span> <span class="p">(</span><span class="n">mean_ktr</span><span class="p">,</span> <span class="n">var_ktr</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">mean_nsec</span><span class="p">,</span> <span class="n">var_nsec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.9607142857142857 0.9305994897959183
+2.9 2.59
+</pre></div></div>
+</div>
+<p>Despite the signficant change in movement pattern, which we know results in a very different infection curve, the <span class="math notranslate nohighlight">\(R_0\)</span> is only slightly different than that predicted under SIR conditions.</p>
+</div>
+<div class="section" id="Customization">
+<h2>Customization<a class="headerlink" href="#Customization" title="Permalink to this headline">¶</a></h2>
+<p>We can use this testing approach to structure simulation space to fit a set of desired properties.</p>
+<p>For example, in this <a class="reference external" href="https://www.medrxiv.org/content/10.1101/2020.08.07.20169920v3.full.pdf">paper</a>, the authors fit a transmission risk profile of the virus to several properties of the environment including: + mean <span class="math notranslate nohighlight">\(R_0\)</span> of 1.8 + 4 contacts per day + 40 variance of contacts</p>
+<p>We can import the tmr curve from <code class="docutils literal notranslate"><span class="pre">rknot.dots.fhutch</span></code>.</p>
+<p>We will pass a density level of 4 dots per location (which will lead to ~4 contacts per day) and we extend the simulation to 21 days, given the <code class="docutils literal notranslate"><span class="pre">tmr</span></code> curve has shape 20.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">rknot.dots.fhutch</span> <span class="kn">import</span> <span class="n">tmr</span>
+
+<span class="n">group</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">ifr</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">mover</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">days</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="n">infdur</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;dlevel&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;R0&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;inf_curve&#39;</span><span class="p">:</span> <span class="n">tmr</span><span class="p">,</span>  <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="n">days</span><span class="p">}</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">contacts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">infdur</span><span class="o">*</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="n">n_secs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">trange</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">dotlog</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">pbar_on</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">n_secs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">find_n_sec</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[:</span><span class="n">infdur</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">inf_contacts</span> <span class="o">=</span> <span class="n">contacts_of_init_inf</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[:</span><span class="n">infdur</span><span class="p">])</span>
+    <span class="n">contacts</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">infdur</span><span class="p">:</span><span class="n">i</span><span class="o">*</span><span class="n">infdur</span> <span class="o">+</span> <span class="n">infdur</span><span class="p">]</span> <span class="o">=</span> <span class="n">inf_contacts</span>
+
+<span class="n">mean_ktr</span><span class="p">,</span> <span class="n">var_ktr</span> <span class="o">=</span> <span class="n">contacts</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">contacts</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+<span class="n">mean_nsec</span><span class="p">,</span> <span class="n">var_nsec</span> <span class="o">=</span> <span class="n">n_secs</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">n_secs</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "0ab5ec7fd1834ab3a8f69d7c48e3e85d", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">if</span> <span class="n">UPDATEDB</span><span class="p">:</span>
+    <span class="n">db</span><span class="p">[</span><span class="s1">&#39;contacts mean, var 2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">contacts</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">contacts</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
+    <span class="n">db</span><span class="p">[</span><span class="s1">&#39;nsecs mean, var 2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_secs</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">n_secs</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
+
+<span class="n">mean_ktr</span><span class="p">,</span> <span class="n">var_ktr</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;contacts mean, var 2&#39;</span><span class="p">]</span>
+<span class="n">mean_nsec</span><span class="p">,</span> <span class="n">var_nsec</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;nsecs mean, var 2&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span> <span class="p">(</span><span class="n">mean_ktr</span><span class="p">,</span> <span class="n">var_ktr</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">mean_nsec</span><span class="p">,</span> <span class="n">var_nsec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3.9957142857142856 3.8985530612244905
+1.98 2.4196
+</pre></div></div>
+</div>
+<p>The <span class="math notranslate nohighlight">\(R_0\)</span> is close to the expected value of 1.8. We can also see that the contact rate is close to 4, however, the variance is well below the required 40.</p>
+<p>RKnot’s event based structure (which more closely mimicks real world movement pattern) can help us increase the variance of contacts.</p>
+<p>We will use the root <code class="docutils literal notranslate"><span class="pre">`baseus</span></code> structure &lt;constant.ipynb#sir&gt;`__ to work with a larger population.</p>
+<p>Because we are adding many larger events, we should be able to tune down the density level, but still reach the average 4 contacts per day level. Below we will use <code class="docutils literal notranslate"><span class="pre">dlevel=3.5</span></code>.</p>
+<p>We also augment the events so that they fit inside the grid space.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Event</span>
+<span class="kn">from</span> <span class="nn">rknot.sims</span> <span class="kn">import</span> <span class="n">baseus</span>
+
+<span class="n">groups</span> <span class="o">=</span> <span class="n">baseus</span><span class="o">.</span><span class="n">groups</span>
+<span class="n">groups</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s1">&#39;n_inf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">school1</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;school1&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">25</span><span class="p">,</span><span class="mi">42</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">school2</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;school2&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">34</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">school3</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;school3&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">47</span><span class="p">,</span><span class="mi">28</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">game1</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;game1&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">50</span><span class="p">,</span><span class="mi">39</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">game2</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;game2&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">24</span><span class="p">,</span><span class="mi">25</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">76</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">game3</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;game3&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">43</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">56</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">game4</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;game4&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">26</span><span class="p">,</span><span class="mi">53</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">113</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">28</span><span class="p">)</span>
+<span class="n">concert1</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;concert1&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">concert2</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;concert2&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">53</span><span class="p">,</span><span class="mi">46</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">concert3</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;concert3&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">31</span><span class="p">,</span><span class="mi">19</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">concert4</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;concert4&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">19</span><span class="p">,</span><span class="mi">21</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">28</span><span class="p">)</span>
+<span class="n">concert5</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;concert5&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">19</span><span class="p">,</span><span class="mi">20</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">21</span><span class="p">)</span>
+<span class="n">concert6</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;concert6&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">41</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">28</span><span class="p">)</span>
+<span class="n">concert7</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;concert7&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">125</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">bar1</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bar1&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">bar2</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bar2&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">49</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">bar3</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bar3&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">26</span><span class="p">,</span><span class="mi">45</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">bar4</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bar4&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">14</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">church</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;church&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">51</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="n">events</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">school1</span><span class="p">,</span> <span class="n">school2</span><span class="p">,</span> <span class="n">school3</span><span class="p">,</span> <span class="n">game1</span><span class="p">,</span> <span class="n">game2</span><span class="p">,</span> <span class="n">game3</span><span class="p">,</span> <span class="n">game4</span><span class="p">,</span>
+    <span class="n">concert1</span><span class="p">,</span> <span class="n">concert2</span><span class="p">,</span> <span class="n">concert3</span><span class="p">,</span> <span class="n">concert4</span><span class="p">,</span> <span class="n">concert5</span><span class="p">,</span> <span class="n">concert6</span><span class="p">,</span> <span class="n">concert7</span><span class="p">,</span>
+    <span class="n">bar1</span><span class="p">,</span> <span class="n">bar2</span><span class="p">,</span> <span class="n">bar3</span><span class="p">,</span> <span class="n">bar4</span><span class="p">,</span>
+    <span class="n">church</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">days</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">days</span><span class="o">=</span><span class="n">days</span><span class="p">,</span>
+    <span class="n">inf_curve</span><span class="o">=</span><span class="n">tmr</span><span class="p">,</span>
+    <span class="n">dlevel</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span>
+    <span class="n">imndur</span><span class="o">=</span><span class="mi">365</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">length</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">contacts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">length</span><span class="o">*</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="n">n_secs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">trange</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">dotlog</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">pbar_on</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">n_secs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">find_n_sec</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[:</span><span class="n">length</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">inf_contacts</span> <span class="o">=</span> <span class="n">contacts_of_init_inf</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[:</span><span class="n">length</span><span class="p">])</span>
+    <span class="n">contacts</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">length</span><span class="p">:</span><span class="n">i</span><span class="o">*</span><span class="n">length</span> <span class="o">+</span> <span class="n">length</span><span class="p">]</span> <span class="o">=</span> <span class="n">inf_contacts</span>
+
+<span class="n">mean_ktr</span><span class="p">,</span> <span class="n">var_ktr</span> <span class="o">=</span> <span class="n">contacts</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">contacts</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+<span class="n">mean_nsec</span><span class="p">,</span> <span class="n">var_nsec</span> <span class="o">=</span> <span class="n">n_secs</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">n_secs</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5d1b85d330894d6b80b28244259ee408", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">if</span> <span class="n">UPDATEDB</span><span class="p">:</span>
+    <span class="n">db</span><span class="p">[</span><span class="s1">&#39;contacts mean, var 4&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">contacts</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">contacts</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
+    <span class="n">db</span><span class="p">[</span><span class="s1">&#39;nsecs mean, var 4&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_secs</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">n_secs</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
+
+<span class="n">mean_ktr</span><span class="p">,</span> <span class="n">var_ktr</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;contacts mean, var 4&#39;</span><span class="p">]</span>
+<span class="n">mean_nsec</span><span class="p">,</span> <span class="n">var_nsec</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;nsecs mean, var 4&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">groups</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[{&#39;name&#39;: &#39;0-19&#39;, &#39;n&#39;: 2700, &#39;n_inf&#39;: 0, &#39;ifr&#39;: 3e-05, &#39;mover&#39;: &#39;local&#39;},
+ {&#39;name&#39;: &#39;20-49&#39;, &#39;n&#39;: 4100, &#39;n_inf&#39;: 1, &#39;ifr&#39;: 0.0002, &#39;mover&#39;: &#39;local&#39;},
+ {&#39;name&#39;: &#39;50-69&#39;, &#39;n&#39;: 2300, &#39;n_inf&#39;: 0, &#39;ifr&#39;: 0.005, &#39;mover&#39;: &#39;local&#39;},
+ {&#39;name&#39;: &#39;70+&#39;, &#39;n&#39;: 900, &#39;n_inf&#39;: 0, &#39;ifr&#39;: 0.054, &#39;mover&#39;: &#39;local&#39;}]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span> <span class="p">(</span><span class="n">mean_ktr</span><span class="p">,</span> <span class="n">var_ktr</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">mean_nsec</span><span class="p">,</span> <span class="n">var_nsec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3.899 49.89179899999999
+1.96 5.538399999999999
+</pre></div></div>
+</div>
+<p>We can see this simulation fits the FREDHUTCH model quite nicely. This space is used as the base structure for the <a class="reference external" href="load.ipynb#Events">experiments in viral load found here.</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="sir.html" class="btn btn-neutral float-left" title="SIR: Factors Influencing Spread" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, rskene
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
