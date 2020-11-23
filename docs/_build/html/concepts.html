@@ -40,7 +40,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="SIR: Factors Influencing Spread" href="sir.html" />
+    <link rel="next" title="Sizing" href="sizing.html" />
     <link rel="prev" title="Viral Spread Theory in RKnot" href="theory.html" /> 
 </head>
 
@@ -86,8 +86,11 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ARCHITECTURE</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="theory.html">Viral Spread Theory in RKnot</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Key Concepts</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#The-Sim">The Sim</a></li>
@@ -117,8 +120,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#Dot-Matrix">Dot Matrix</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="sir.html">SIR: Factors Influencing Spread</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sizing.html">Sizing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SIMULATIONS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sir.html">SIR: Factors Influencing Spread</a></li>
 </ul>
 
             
@@ -920,8 +926,8 @@ div.rendered_html tbody tr:hover {
 </video><p></p><p>If you watch closely, you’ll see on Day 5 that all the dots seemingly disappear, save for one, at location (5,5).</p>
 <p>In fact, all 10 dots are <em>actually at that location at the same time</em>.</p>
 <p>We can confirm this by inspecting the <a class="reference external" href="#">Dot Matrix</a> on that day via the <code class="docutils literal notranslate"><span class="pre">dotlog</span></code> attribute.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -929,6 +935,24 @@ div.rendered_html tbody tr:hover {
 <span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[</span><span class="mi">4</span><span class="p">][:,</span> <span class="n">ML</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]:</span><span class="n">ML</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([[5, 5],
+       [5, 5],
+       [5, 5],
+       [5, 5],
+       [5, 5],
+       [5, 5],
+       [5, 5],
+       [5, 5],
+       [5, 5],
+       [5, 5]])
+</pre></div></div>
 </div>
 <p>We can see the event more clearly if we extend the duration to 10 days. We also significantly reduced the frame rate.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">show</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;show&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -1096,7 +1120,7 @@ div.rendered_html tbody tr:hover {
 <h3>Social Distancing<a class="headerlink" href="#Social-Distancing" title="Permalink to this headline">¶</a></h3>
 <p>Event to mimick social distancing practices.</p>
 <p>Social distancing is assumed to impact the Transmission Factor, <span class="math notranslate nohighlight">\(\tau\)</span> of each dot. The core hypothesis is that practices such as maintaining 6-feet of distance or mask wearing don’t reduce the number of contacts, but do reduce the likelihood that a contact will result in a new infection (ceterus paribus).</p>
-<p>You can see use of this object <a class="reference external" href="hit.ipynb#3.-Social-Distancing">here</a>.</p>
+<p>You can see use of this object here.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="Vaccination">
@@ -1110,6 +1134,13 @@ div.rendered_html tbody tr:hover {
 <p>To clarify, a Restriction is <em>not</em> an event. Events act on dots. Restrictions act on events.</p>
 <p>Restrictions have potential as a versatile tool that can be used to investigate the impact of various government and business policy decisions that impact spread.</p>
 <p>The Restriction object has a <code class="docutils literal notranslate"><span class="pre">criteria</span></code> parameter that accepts a <code class="docutils literal notranslate"><span class="pre">dict</span></code>, with keywords related to event object attributes. Acceptable <code class="docutils literal notranslate"><span class="pre">criteria</span></code> keys are currently:</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<p>capacity name ticks groups loc_id</p>
+</div>
+</div>
 <p>The simplest way to restrict an event is by its name:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Restriction</span>
 
@@ -1166,6 +1197,13 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Dot-Matrix">
 <h2>Dot Matrix<a class="headerlink" href="#Dot-Matrix" title="Permalink to this headline">¶</a></h2>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<p>The dot matrix is essentially RKnot’s canonical form of data structure. The matrix is simply a 2D <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array of shape (<em>n</em>, 23) with each of the <em>n</em> rows representing a dot and each column representing an attribute.</p>
+</div>
+</div>
 <p>More typical Python objects have been eschewed in favor the Dot Matrix because:</p>
 <ul class="simple">
 <li><p><strong>RKnot</strong> relies heavily on <a class="reference external" href="https://docs.ray.io/en/latest/">Ray</a> for parallel processing and <a class="reference external" href="https://numba.pydata.org/">Numba</a> for just-in-time compilation and vectorization to improve processing speed.</p></li>
@@ -1174,8 +1212,8 @@ div.rendered_html tbody tr:hover {
 </ul>
 <p>The dot matrix is created inside a <strong>Ray</strong> actor at instantiation and is only passed back to the main <code class="docutils literal notranslate"><span class="pre">Sim</span></code> object when the simulation is completed.</p>
 <p>It can be accessed via the <code class="docutils literal notranslate"><span class="pre">dots</span></code> attribute. Below is a sample of 4 dots:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1183,9 +1221,25 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([[  0,   0,   1,   0,   0,   1,   1,  65,   7,   6,  54,   6,   5,
+          0,   0,  -1,   0, 100, 650,   0,  -1, 365, 730],
+       [  1,   0,   1,   0,   0,   1,   1,  77,   8,   8,  22,   3,   3,
+          0,   0,  -1,   0, 100, 650,   0,  -1, 365, 730],
+       [  2,   0,   1,   0,   0,   1,   1,  11,   2,   2,  88,   9,   9,
+          0,   0,  -1,   0, 100, 650,   0,  -1, 365, 730],
+       [  3,   0,   1,   0,   0,   1,   1,  27,   3,   8,  96,  10,   7,
+          0,   0,  -1,   0, 100, 650,  42,  -1, 407, 772]])
+</pre></div></div>
+</div>
 <p>The column attributes have corresponding labels:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1194,7 +1248,196 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;id&#39;, &#39;group_id&#39;, &#39;is_alive&#39;, &#39;is_vaxxed&#39;, &#39;is_sus&#39;, &#39;is_inf&#39;, &#39;ever_inf&#39;, &#39;loc_id&#39;, &#39;x&#39;, &#39;y&#39;, &#39;home_id&#39;, &#39;homex&#39;, &#39;homey&#39;, &#39;go_home&#39;, &#39;box_id&#39;, &#39;event_id&#39;, &#39;mover&#39;, &#39;tmf&#39;, &#39;ifr&#39;, &#39;inf_tick&#39;, &#39;depart&#39;, &#39;recover&#39;, &#39;relapse&#39;]
+</pre></div></div>
+</div>
 <p>With these labels, the 4 dot matrix above can be shown in a table.</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>id</p></th>
+<th class="head"><p>group_id</p></th>
+<th class="head"><p>is_alive</p></th>
+<th class="head"><p>is_vaxxed</p></th>
+<th class="head"><p>is_sus</p></th>
+<th class="head"><p>is_inf</p></th>
+<th class="head"><p>ever_inf</p></th>
+<th class="head"><p>loc_id</p></th>
+<th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+<th class="head"><p>home_id</p></th>
+<th class="head"><p>homex</p></th>
+<th class="head"><p>homey</p></th>
+<th class="head"><p>go_home</p></th>
+<th class="head"><p>box_id</p></th>
+<th class="head"><p>event_id</p></th>
+<th class="head"><p>mover</p></th>
+<th class="head"><p>tmf</p></th>
+<th class="head"><p>ifr</p></th>
+<th class="head"><p>inf_tick</p></th>
+<th class="head"><p>depart</p></th>
+<th class="head"><p>recover</p></th>
+<th class="head"><p>relapse</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>65</p></td>
+<td><p>7</p></td>
+<td><p>6</p></td>
+<td><p>54</p></td>
+<td><p>6</p></td>
+<td><p>5</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>-1</p></td>
+<td><p>0</p></td>
+<td><p>100</p></td>
+<td><p>650</p></td>
+<td><p>0</p></td>
+<td><p>-1</p></td>
+<td><p>365</p></td>
+<td><p>730</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>77</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>22</p></td>
+<td><p>3</p></td>
+<td><p>3</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>-1</p></td>
+<td><p>0</p></td>
+<td><p>100</p></td>
+<td><p>650</p></td>
+<td><p>0</p></td>
+<td><p>-1</p></td>
+<td><p>365</p></td>
+<td><p>730</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>11</p></td>
+<td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>88</p></td>
+<td><p>9</p></td>
+<td><p>9</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>-1</p></td>
+<td><p>0</p></td>
+<td><p>100</p></td>
+<td><p>650</p></td>
+<td><p>0</p></td>
+<td><p>-1</p></td>
+<td><p>365</p></td>
+<td><p>730</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>27</p></td>
+<td><p>3</p></td>
+<td><p>8</p></td>
+<td><p>96</p></td>
+<td><p>10</p></td>
+<td><p>7</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>-1</p></td>
+<td><p>0</p></td>
+<td><p>100</p></td>
+<td><p>650</p></td>
+<td><p>42</p></td>
+<td><p>-1</p></td>
+<td><p>407</p></td>
+<td><p>772</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>91</p></td>
+<td><p>10</p></td>
+<td><p>2</p></td>
+<td><p>56</p></td>
+<td><p>6</p></td>
+<td><p>7</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>-1</p></td>
+<td><p>0</p></td>
+<td><p>100</p></td>
+<td><p>650</p></td>
+<td><p>5</p></td>
+<td><p>-1</p></td>
+<td><p>370</p></td>
+<td><p>735</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>There are several data types at work:</p>
 <ul class="simple">
 <li><p><em>categorical integers</em>; used to identify related objects</p>
@@ -1225,6 +1468,84 @@ div.rendered_html tbody tr:hover {
 </li>
 </ul>
 <p>The column attributes are defined as follows:</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 22%" />
+<col style="width: 28%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Definition</p></th>
+<th class="head"><p>Label</p></th>
+<th class="head"><p>Definition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>the subject’s unique identifier</p></td>
+<td><p>homex</p></td>
+<td><p>x coord of the subject’s home location</p></td>
+</tr>
+<tr class="row-odd"><td><p>group_id</p></td>
+<td><p>the unique identifier of the subject’s group</p></td>
+<td><p>homey</p></td>
+<td><p>y coord of the subject’s home location</p></td>
+</tr>
+<tr class="row-even"><td><p>is_alive</p></td>
+<td><p>Is the subject alive?</p></td>
+<td><p>go_home</p></td>
+<td><p>is the subject going home on the next move?</p></td>
+</tr>
+<tr class="row-odd"><td><p>is_vaxxed</p></td>
+<td><p>Has the subject been vaccinated?</p></td>
+<td><p>box_id</p></td>
+<td><p>id of the box the subject belongs to</p></td>
+</tr>
+<tr class="row-even"><td><p>is_sus</p></td>
+<td><p>Is the subject susceptible to infection?</p></td>
+<td><p>event_id</p></td>
+<td><p>id of the event the subject is attending</p></td>
+</tr>
+<tr class="row-odd"><td><p>is_inf</p></td>
+<td><p>Is the subject infected?</p></td>
+<td><p>mover</p></td>
+<td><p>id of the subject’s mover function</p></td>
+</tr>
+<tr class="row-even"><td><p>ever_inf</p></td>
+<td><p>Has the subject ever been infected?</p></td>
+<td><p>tmf</p></td>
+<td><p>the subject’s transmission factor</p></td>
+</tr>
+<tr class="row-odd"><td><p>loc_id</p></td>
+<td><p>id of the subject’s current location</p></td>
+<td><p>ifr</p></td>
+<td><p>the subject’s infection fatality rate</p></td>
+</tr>
+<tr class="row-even"><td><p>x</p></td>
+<td><p>x coord of the subject’s current location</p></td>
+<td><p>inf_tick</p></td>
+<td><p>the tick a subject is infected</p></td>
+</tr>
+<tr class="row-odd"><td><p>y</p></td>
+<td><p>y coord of the subject’s curretn location</p></td>
+<td><p>depart</p></td>
+<td><p>the tick an infected subject will depart</p></td>
+</tr>
+<tr class="row-even"><td><p>home_id</p></td>
+<td><p>id of the subject’s home location</p></td>
+<td><p>recover</p></td>
+<td><p>the tick an infected subject will no longer be infected or susceptible</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 
@@ -1236,7 +1557,7 @@ div.rendered_html tbody tr:hover {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="sir.html" class="btn btn-neutral float-right" title="SIR: Factors Influencing Spread" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sizing.html" class="btn btn-neutral float-right" title="Sizing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="theory.html" class="btn btn-neutral float-left" title="Viral Spread Theory in RKnot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -694,7 +694,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 22,
+   "execution_count": 12,
    "metadata": {
     "tags": [
      "hide_input"
@@ -1305,11 +1305,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 21,
    "metadata": {
     "nbsphinx": "hidden"
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "application/vnd.jupyter.widget-view+json": {
+       "model_id": "5bf21eba05624f07ba55e32f2c21ed62",
+       "version_major": 2,
+       "version_minor": 0
+      },
+      "text/plain": [
+       "HBox(children=(FloatProgress(value=0.0, max=50.0), HTML(value='')))"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
    "source": [
     "from rknot.events import Event\n",
     "\n",
@@ -1325,9 +1340,29 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 22,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[5, 5],\n",
+       "       [5, 5],\n",
+       "       [5, 5],\n",
+       "       [5, 5],\n",
+       "       [5, 5],\n",
+       "       [5, 5],\n",
+       "       [5, 5],\n",
+       "       [5, 5],\n",
+       "       [5, 5],\n",
+       "       [5, 5]])"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "from rknot.dots import MATRIX_COL_LABELS as ML\n",
     "sim.dotlog[4][:, ML['x']:ML['y']+1]"
@@ -1361,7 +1396,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 23,
    "metadata": {
     "nbsphinx": "hidden"
    },
@@ -1432,7 +1467,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 24,
    "metadata": {
     "nbsphinx": "hidden"
    },
@@ -1519,7 +1554,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 25,
    "metadata": {
     "nbsphinx": "hidden"
    },
@@ -1606,7 +1641,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 26,
    "metadata": {
     "nbsphinx": "hidden"
    },
@@ -1703,7 +1738,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 27,
    "metadata": {
     "nbsphinx": "hidden"
    },
@@ -1788,7 +1823,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 28,
    "metadata": {
     "nbsphinx": "hidden"
    },
@@ -1846,7 +1881,7 @@
     "\n",
     "Social distancing is assumed to impact the Transmission Factor, $\\tau$ of each dot. The core hypothesis is that practices such as maintaining 6-feet of distance or mask wearing don't reduce the number of contacts, but do reduce the likelihood that a contact will result in a new infection (ceterus paribus).\n",
     "\n",
-    "You can see use of this object [here](hit.ipynb#3.-Social-Distancing)."
+    "You can see use of this object [here](sir.ipynb#3.-Social-Distancing)."
    ]
   },
   {
@@ -1880,13 +1915,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 29,
    "metadata": {
     "tags": [
      "hide_input"
     ]
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/markdown": [
+       "capacity name ticks groups loc_id"
+      ],
+      "text/plain": [
+       "<IPython.core.display.Markdown object>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
    "source": [
     "from rknot.helpers import md\n",
     "from rknot.events import Restriction\n",
@@ -1936,7 +1984,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 30,
    "metadata": {
     "nbsphinx": "hidden"
    },
@@ -2022,7 +2070,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 31,
    "metadata": {
     "nbsphinx": "hidden"
    },
@@ -2083,13 +2131,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 32,
    "metadata": {
     "tags": [
      "hide_input"
     ]
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/markdown": [
+       "The dot matrix is essentially RKnot's canonical form of data structure. The matrix is simply a 2D `numpy` array of shape (*n*, 23) with each of the *n* rows representing a dot and each column representing an attribute.\n"
+      ],
+      "text/plain": [
+       "<IPython.core.display.Markdown object>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
    "source": [
     "from rknot.dots import MATRIX_LABELS as LABELS\n",
     "msg = \"The dot matrix is essentially RKnot's canonical form of data structure. \"\n",
@@ -2122,11 +2183,29 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 33,
    "metadata": {
     "scrolled": true
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[  0,   0,   1,   0,   0,   1,   1,  65,   7,   6,  54,   6,   5,\n",
+       "          0,   0,  -1,   0, 100, 650,   0,  -1, 365, 730],\n",
+       "       [  1,   0,   1,   0,   0,   1,   1,  77,   8,   8,  22,   3,   3,\n",
+       "          0,   0,  -1,   0, 100, 650,   0,  -1, 365, 730],\n",
+       "       [  2,   0,   1,   0,   0,   1,   1,  11,   2,   2,  88,   9,   9,\n",
+       "          0,   0,  -1,   0, 100, 650,   0,  -1, 365, 730],\n",
+       "       [  3,   0,   1,   0,   0,   1,   1,  27,   3,   8,  96,  10,   7,\n",
+       "          0,   0,  -1,   0, 100, 650,  42,  -1, 407, 772]])"
+      ]
+     },
+     "execution_count": 33,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "sim.dots[:4]"
    ]
@@ -2140,9 +2219,17 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 34,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['id', 'group_id', 'is_alive', 'is_vaxxed', 'is_sus', 'is_inf', 'ever_inf', 'loc_id', 'x', 'y', 'home_id', 'homex', 'homey', 'go_home', 'box_id', 'event_id', 'mover', 'tmf', 'ifr', 'inf_tick', 'depart', 'recover', 'relapse']\n"
+     ]
+    }
+   ],
    "source": [
     "from rknot.dots import MATRIX_LABELS\n",
     "print (MATRIX_LABELS)"
@@ -2157,13 +2244,32 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 35,
    "metadata": {
     "tags": [
      "hide_input"
     ]
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/markdown": [
+       "| id | group_id | is_alive | is_vaxxed | is_sus | is_inf | ever_inf | loc_id | x | y | home_id | homex | homey | go_home | box_id | event_id | mover | tmf | ifr | inf_tick | depart | recover | relapse | \n",
+       "| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | \n",
+       "| 0 | 0 | 1 | 0 | 0 | 1 | 1 | 65 | 7 | 6 | 54 | 6 | 5 | 0 | 0 | -1 | 0 | 100 | 650 | 0 | -1 | 365 | 730 | \n",
+       "| 1 | 0 | 1 | 0 | 0 | 1 | 1 | 77 | 8 | 8 | 22 | 3 | 3 | 0 | 0 | -1 | 0 | 100 | 650 | 0 | -1 | 365 | 730 | \n",
+       "| 2 | 0 | 1 | 0 | 0 | 1 | 1 | 11 | 2 | 2 | 88 | 9 | 9 | 0 | 0 | -1 | 0 | 100 | 650 | 0 | -1 | 365 | 730 | \n",
+       "| 3 | 0 | 1 | 0 | 0 | 1 | 1 | 27 | 3 | 8 | 96 | 10 | 7 | 0 | 0 | -1 | 0 | 100 | 650 | 42 | -1 | 407 | 772 | \n",
+       "| 4 | 0 | 1 | 0 | 0 | 1 | 1 | 91 | 10 | 2 | 56 | 6 | 7 | 0 | 0 | -1 | 0 | 100 | 650 | 5 | -1 | 370 | 735 |"
+      ],
+      "text/plain": [
+       "<IPython.core.display.Markdown object>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
    "source": [
     "msg = '| ' + ' '.join(['{} |'.format(label) for label in MATRIX_LABELS])\n",
     "msg += ' \\n'\n",
@@ -2207,13 +2313,38 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 36,
    "metadata": {
     "tags": [
      "hide_input"
     ]
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/markdown": [
+       "| Label | Definition | Label | Definition | \n",
+       "|:---:|:---|:---:|:---| \n",
+       "| id | the subject's unique identifier  |homex | x coord of the subject's home location  |\n",
+       "| group_id | the unique identifier of the subject's group  |homey | y coord of the subject's home location |\n",
+       "| is_alive | Is the subject alive?  |go_home | is the subject going home on the next move? |\n",
+       "| is_vaxxed | Has the subject been vaccinated?  |box_id | id of the box the subject belongs to  |\n",
+       "| is_sus | Is the subject susceptible to infection?  |event_id | id of the event the subject is attending  |\n",
+       "| is_inf | Is the subject infected?  |mover | id of the subject's mover function |\n",
+       "| ever_inf | Has the subject ever been infected?  |tmf | the subject's transmission factor  |\n",
+       "| loc_id | id of the subject's current location  |ifr | the subject's infection fatality rate  |\n",
+       "| x | x coord of the subject's current location  |inf_tick | the tick a subject is infected |\n",
+       "| y | y coord of the subject's curretn location  |depart | the tick an infected subject will depart |\n",
+       "| home_id | id of the subject's home location |recover | the tick an infected subject will no longer be infected or susceptible  |\n"
+      ],
+      "text/plain": [
+       "<IPython.core.display.Markdown object>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
    "source": [
     "from rknot.dots.matrix import MATRIX_COL_DEFNS as DEFNS\n",
     "table = '| Label | Definition '*2 + '|'\n",
@@ -2243,7 +2374,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 38,
    "metadata": {
     "nbsphinx": "hidden"
    },

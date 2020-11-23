@@ -16,7 +16,7 @@ RKnot - Beta
 .. toctree::
    :caption: ARCHITECTURE
    :maxdepth: 3
-
+      
    theory
    concepts
    sizing
