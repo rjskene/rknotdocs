@@ -97,6 +97,7 @@
 <p class="caption"><span class="caption-text">SIMULATIONS</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="sir.html">SIR: Factors Influencing Spread</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load.html">Dynamic Transmission Risk</a></li>
 </ul>
 
             
@@ -228,6 +229,7 @@
 <li class="toctree-l2"><a class="reference internal" href="concepts.html#Boxes-and-Gates">Boxes and Gates</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="concepts.html#Boxes">Boxes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="concepts.html#Gates">Gates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="concepts.html#VBoxes">VBoxes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="concepts.html#Events">Events</a><ul>
@@ -243,16 +245,24 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sizing.html">Sizing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sizing.html#Contact-Rates">Contact Rates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sizing.html#Impact-of-Density">Impact of Density</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sizing.html#SIR:-Measuring-Contact-Rates">SIR: Measuring Contact Rates</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="sizing.html#We-find-that-all-the-dots-in-the-sim-had-a-mean-contact-rate-near-1-(as-expected)-and-variance-near-1.">We find that all the dots in the sim had a mean contact rate near 1 (as expected) and variance near 1.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sizing.html#Importance-of-Distributions">Importance of Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sizing.html#Constant-Contact-Rate-and-Transmission-Risk">Constant Contact Rate and Transmission Risk</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sizing.html#Daily-Contact-Distribution">Daily Contact Distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sizing.html#Curve-Details">Curve Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sizing.html#Secondary-Infection-Distribution">Secondary Infection Distribution</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="sizing.html#SIR:-Confirming-R_0">SIR: Confirming <span class="math notranslate nohighlight">\(R_0\)</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="sizing.html#SIR:-Impact-of-Changes-in-Mover-Function">SIR: Impact of Changes in Mover Function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sizing.html#Customization">Customization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sizing.html#TMR75">TMR75</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sizing.html#Movement-Changes">Movement Changes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sizing.html#Local-Bias">Local Bias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sizing.html#Interplay-of-Movement-and-Density">Interplay of Movement and Density</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sizing.html#Location-Clustering">Location Clustering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sizing.html#R_0-Distribution"><span class="math notranslate nohighlight">\(R_0\)</span> Distribution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sizing.html#Complex-Environments">Complex Environments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sizing.html#Hutch-Model:-R_0-of-1.8">Hutch Model: <span class="math notranslate nohighlight">\(R_0\)</span> of 1.8</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -282,6 +292,24 @@
 <li class="toctree-l3"><a class="reference internal" href="sir.html#4.-Social-Distancing-and-Restrict-Elderly-Visits-and-Large-Gatherings">4. Social Distancing and Restrict Elderly Visits and Large Gatherings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sir.html#5.-Quarantine">5. Quarantine</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sir.html#6.-Quarantine-with-Adherence">6. Quarantine with Adherence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="load.html">Dynamic Transmission Risk</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="load.html#Structure">Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="load.html#1.-Events">1. Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="load.html#6.-Gates">6. Gates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="load.html#9.-Self-Aware-Social-Distancing-+-Pre-Immunity">9. Self Aware Social Distancing + Pre-Immunity</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="load.html#Policy">Policy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="load.html#1.-Restrict-Large-Gatherings">1. Restrict Large Gatherings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="load.html#2.-Social-Distancing">2. Social Distancing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="load.html#3.-Restrict-Elderly-Visits">3. Restrict Elderly Visits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="load.html#4.-Social-Distancing-and-Restrict-Elderly-Visits-and-Large-Gatherings">4. Social Distancing and Restrict Elderly Visits and Large Gatherings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="load.html#5.-Quarantine">5. Quarantine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="load.html#6.-Quarantine-with-Adherence">6. Quarantine with Adherence</a></li>
 </ul>
 </li>
 </ul>

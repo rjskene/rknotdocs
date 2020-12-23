@@ -102,6 +102,7 @@
 <p class="caption"><span class="caption-text">SIMULATIONS</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="sir.html">SIR: Factors Influencing Spread</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load.html">Dynamic Transmission Risk</a></li>
 </ul>
 
             
@@ -444,7 +445,7 @@ div.rendered_html tbody tr:hover {
 <p><strong>RKnot</strong> utilizes parallelization via <a class="reference external" href="https://docs.ray.io/en/master/index.html">Ray</a> and JIT-compilation via <a class="reference external" href="https://numba.pydata.org/">Numba</a> for performance improvements amd <a class="reference external" href="https://matplotlib.org/">Matplotlib</a> for visualizaitons.</p>
 <div class="admonition note">
 <p class="admonition-title fa fa-exclamation-circle">Note</p>
-<p>Documentation examples focus on sars-cov-2, however, RKnot can be used to simulate any virus, or anything that spreads like a virus.</p>
+<p>Documentation examples focus on <strong>sars-cov-2</strong>, however, <strong>RKnot</strong> can be used to simulate any virus, or anything that spreads like a virus.</p>
 </div>
 <div class="section" id="Basic-Example">
 <h2>Basic Example<a class="headerlink" href="#Basic-Example" title="Permalink to this headline">¶</a></h2>
@@ -468,7 +469,7 @@ div.rendered_html tbody tr:hover {
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rknot</span> <span class="kn">import</span> <span class="n">Sim</span><span class="p">,</span> <span class="n">Chart</span>
 
 <span class="n">group</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span> <span class="s1">&#39;n_inf&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;R0&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;imndur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;infdur&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="s1">&#39;dlevel&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="mi">150</span><span class="p">}</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;R0&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;imndur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;infdur&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="s1">&#39;density&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="mi">150</span><span class="p">}</span>
 
 
 <span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
@@ -523,7 +524,7 @@ div.rendered_html tbody tr:hover {
 <p>Or you can jump right into the example simulations we have built and explore how different properities impact spread:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="sir.html"><span class="doc">Factors Influencing Spread</span></a></p></li>
-<li><p><a class="reference external" href="load.ipynb">Impact of Dynamce Transmission Risk</a></p></li>
+<li><p><a class="reference internal" href="load.html"><span class="doc">Impact of Dynamce Transmission Risk</span></a></p></li>
 </ul>
 </div>
 </div>
