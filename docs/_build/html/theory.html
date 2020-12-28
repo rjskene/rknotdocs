@@ -434,16 +434,6 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;rknot_nb&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
 <div class="section" id="Viral-Spread-Theory-in-RKnot">
 <h1>Viral Spread Theory in RKnot<a class="headerlink" href="#Viral-Spread-Theory-in-RKnot" title="Permalink to this headline">¶</a></h1>
 <p><em>RKnot</em> is built up from the contact level. A contact is an interaction between an infected person and a susceptible person that could result in transmission of the virus (more details <a class="reference external" href="#Average-Contact">below</a>). Contacts occur in a 2d environment in which subjects move randomly according to pre-defined distributions or deterministically according to event subscription.</p>
@@ -573,15 +563,16 @@ E(\overline{c})=k*\sum_{i=1}^k(1/N^k)
 </div>
 <p>In fact, we can prove that the contact rate for an equal mover is the density using probability theory. We can view the probability of contact with other dots in the space as a binomial random variable with the <em>trials</em> representing the number of dots at a location, so:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}B(k - 1, 1 / N)
+\[\begin{split}\begin{equation}
+B(k - 1, 1 / N)
 \\
 \textit{k is the number of dots}
 \\
-\textit{N is the number of locations}\end{split}\]</div>
+\textit{N is the number of locations}
+\end{equation}\end{split}\]</div>
 <p>If there are three dots (and 3 locations), the distribution governing their interactions is the sum of the two Binomial functions:</p>
 <div class="math notranslate nohighlight">
-\[B(2 - 1, 1 / 3)
-B(2 - 1, 1 / 3)\]</div>
+\[B(2 - 1, 1 / 3) + B(2 - 1, 1 / 3)\]</div>
 <p>We know the <a class="reference external" href="http://web.stanford.edu/class/archive/cs/cs109/cs109.1182/lectures/15%20Convolution.pdf">sum of two Binomial distributions</a> is:</p>
 <div class="math notranslate nohighlight">
 \[B(m, p) + B(n, p) = B(m+n, p)\]</div>
@@ -590,15 +581,20 @@ B(2 - 1, 1 / 3)\]</div>
 \[B(2 - 1, 1 / 3) + B(2 - 1, 1 / 3) = B(2, 1 / 3)\]</div>
 <p>and for k dots:</p>
 <div class="math notranslate nohighlight">
-\[\sum_k^i B(n_i, 1/N) = B(\sum_k^in_i, 1/N)\;\text{where: } n_i = 1\]</div>
+\[\begin{equation}
+\sum_k^i B(n_i, 1/N) = B(\sum_k^in_i, 1/N)\;\text{where: } n_i = 1
+\end{equation}\]</div>
 <p>which simplifies to:</p>
 <div class="math notranslate nohighlight">
-\[B(k, 1/N)\]</div>
+\[\begin{equation}
+B(k, 1/N)
+\end{equation}\]</div>
 <p>and we know the mean of a binomial distribution is the product <span class="math notranslate nohighlight">\(n*p\)</span></p>
 <div class="math notranslate nohighlight">
 \[\mu = np = k / N = density\]</div>
+<p>We can see that relationship below, where an environment with density of 5 generates a <span class="math notranslate nohighlight">\(\overline{k}\)</span> of 5.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[79]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -641,7 +637,7 @@ B(2 - 1, 1 / 3)\]</div>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/theory_12_0.png" src="_images/theory_12_0.png" />
+<img alt="_images/theory_14_0.png" src="_images/theory_14_0.png" />
 </div>
 </div>
 </div>
@@ -782,10 +778,10 @@ B(2 - 1, 1 / 3)\]</div>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/theory_21_0.png" src="_images/theory_21_0.png" />
+<img alt="_images/theory_23_0.png" src="_images/theory_23_0.png" />
 </div>
 </div>
-<p>We can see that sars-cov-2 viral load has a long tail, however, the Hutch paper showed that the amount of virus present during the tail is unlikely to result in high transmission, as per below.</p>
+<p>We can see that sars-cov-2 viral load can have a long tail, however, the Hutch paper showed that the amount of virus present during the tail is unlikely to result in high transmission, as per below.</p>
 <p>Transmission risk is derived from the viral load above as well as two properties of the infectiousness of the subjects in the contact, <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\gamma\)</span> (see the paper for more details).</p>
 <p>The paper estimated <span class="math notranslate nohighlight">\(\alpha\)</span> = 0.8 and <span class="math notranslate nohighlight">\(\gamma\)</span> = <span class="math notranslate nohighlight">\(10^7\)</span>.</p>
 <div class="nbinput nblast docutils container">
@@ -815,7 +811,7 @@ B(2 - 1, 1 / 3)\]</div>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/theory_25_0.png" src="_images/theory_25_0.png" />
+<img alt="_images/theory_27_0.png" src="_images/theory_27_0.png" />
 </div>
 </div>
 <p>We can further combine Chart 1 and Chart 2 above to show that transmission of sars-cov-2 is likely only during a very narrow range in the early stage of infection.</p>
@@ -823,7 +819,7 @@ B(2 - 1, 1 / 3)\]</div>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/theory_27_0.png" src="_images/theory_27_0.png" />
+<img alt="_images/theory_29_0.png" src="_images/theory_29_0.png" />
 </div>
 </div>
 <p>Note that there is only a significant risk of transmission of the virus for during the first few days of the infection period (shown as the more orange color under the curve).</p>
@@ -832,7 +828,7 @@ B(2 - 1, 1 / 3)\]</div>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/theory_32_0.png" src="_images/theory_32_0.png" />
+<img alt="_images/theory_34_0.png" src="_images/theory_34_0.png" />
 </div>
 </div>
 </div>
