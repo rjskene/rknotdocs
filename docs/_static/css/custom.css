@@ -4,9 +4,9 @@ img {
   margin: 0 auto !important;
   width: 35em !important;
 }
-div.prompt > .highlight > pre {
+/* div.prompt > .highlight > pre {
   display: none !important;
-}
+} */
 div.nbinput.container div.prompt, div.nboutput.container div.prompt  {
   width: 0px !important;
 }
@@ -36,13 +36,13 @@ td.results-table  {
   word-break:normal !important;
   padding: 1.1em;
 }
+
 .alert-rknot {
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px;
 }
-
 .alert-rknot h4 {
   margin-top: 0;
   color: inherit;
