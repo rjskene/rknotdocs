@@ -527,9 +527,11 @@ div.rendered_html tbody tr:hover {
 <img alt="_images/sizing_10_0.png" src="_images/sizing_10_0.png" />
 </div>
 </div>
-<div class="admonition warning">
-<p class="admonition-title fa fa-exclamation-circle">SIR auto-adjustment for density</p>
-<p>When R0 and <code class="docutils literal notranslate"><span class="pre">infdur</span></code> are provided, <strong>RKnot</strong> will automatically scale the transmission risk such that the environment will produce the desired R0, regardless of the density. We can see this in the next comparison.</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div class="admonition note"><p class="admonition-title fa fa-exclamation-circle">SIR auto-adjustment for density</p><p>When R0 and `infdur` are provided, **RKnot** will automatically scale the transmission risk such that the environment will produce the desired R0, regardless of the density. We can see this in the next comparison.</p></div></div>
 </div>
 </div>
 <div class="section" id="Curve-Details">
@@ -1047,9 +1049,11 @@ c_t\;\approx\;\Gamma(\alpha, \theta)\;\approx\;\Gamma(\frac{\overline{k}}{\theta
 <li><p><span class="math notranslate nohighlight">\(\lambda\)</span> of 10**7.5</p></li>
 </ul>
 <p>The parameter best fit for both outcomes was determined on a number of external inputs including adherence to the findings of the Endo model that &gt;70%+ primary infections caused no secondary infections.</p>
-<div class="admonition warning">
-<p class="admonition-title fa fa-exclamation-circle">Limitation of one tick per day</p>
-<p>Currently, <strong>RKnot</strong> cannot replicate <span class="math notranslate nohighlight">\(R_0\)</span> of 2.8 according to the above parameters as it cannot generate a <span class="math notranslate nohighlight">\(\overline{k}=20\)</span> according to the required Gamma distribution. This will be more viable when multiple ticks per day are available.</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div class="admonition warning"><p class="admonition-title fa fa-exclamation-circle">Limitation of one tick per day</p><p>Currently, **RKnot** cannot replicate $R_0$ of 2.8 according to the above parameters as it cannot generate a $\overline{k}=20$ according to the required Gamma distribution. This will be more viable when multiple ticks per day are available.</p></div></div>
 </div>
 <p><span class="math notranslate nohighlight">\(\underline{\text{Process}}\)</span></p>
 <p>Our goal is to replicate both the Hutch model gamma distribution (both <span class="math notranslate nohighlight">\(\overline{k}\)</span> and <span class="math notranslate nohighlight">\(\theta\)</span>) and the Endo model <span class="math notranslate nohighlight">\(R_0\)</span> distribution.</p>
@@ -1064,14 +1068,20 @@ c_t\;\approx\;\Gamma(\alpha, \theta)\;\approx\;\Gamma(\frac{\overline{k}}{\theta
 <p>We have also seen that changing movement patterns only has an impact where density &lt; 1 and can only increase it up to the density. So, if our density must be &lt;= 1, our movement pattern can only ever increase density to &lt;= 1.</p>
 <p>So we are left with events and vboxes.</p>
 <p>Thus, our process for building complex environments is as follows:</p>
-<div class="admonition note">
-<p class="admonition-title fa fa-exclamation-circle">Process for Environment Sizing</p>
-<ol><li><p>Identify required contact distribution based on Hutch parameters.</p>
-</li><li><p>Identify contact distribution to result from events.</p>
-</li><li><p>Determine the number of events required for each capacity to replicate the curve from 2) above.</p>
-</li><li><p>Determine the density of the remaining dots not in the vbox and find mover function that helps replicate the required contact distribution at the lower contact levels.</p>
-</li><li><p>Set the vbox location size based on maximum number of events per day.</p>
-</li></ol></div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div class="admonition note"><p class="admonition-title fa fa-exclamation-circle">Process for Environment Sizing</p><p></p>
+    <ol>
+        <li>Identify required contact distribution based on Hutch parameters.</li>
+        <li>Identify contact distribution to result from events.</li>
+        <li>Determine the number of events required for each capacity to replicate the curve from 2) above.</li>
+        <li>Determine the density of the remaining dots not in the vbox and find mover function that helps replicate the required contact distribution at the lower contact levels.</li>
+        <li>Set the vbox location size based on maximum number of events per day.</li>
+    </ol>
+</div></div>
+</div>
 <div class="section" id="Hutch-Model:-R_0-of-1.8">
 <h3>Hutch Model: <span class="math notranslate nohighlight">\(R_0\)</span> of 1.8<a class="headerlink" href="#Hutch-Model:-R_0-of-1.8" title="Permalink to this headline">¶</a></h3>
 <p>We will demonstrate the building of a complex environment using <span class="math notranslate nohighlight">\(R_0\)</span> 1.8 Hutch model.</p>
@@ -1089,7 +1099,7 @@ c_t\;\approx\;\Gamma(\alpha, \theta)\;\approx\;\Gamma(\frac{\overline{k}}{\theta
 <p>We know that there should be <span class="math notranslate nohighlight">\(n_{dots}\)</span> * <span class="math notranslate nohighlight">\(n_{days}\)</span> number of records of contacts (300,000) and so can show the number of occurences of each amount of contacts from a gamma sample:</p>
 <p>The initial parameters are as follows:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1108,7 +1118,7 @@ c_t\;\approx\;\Gamma(\alpha, \theta)\;\approx\;\Gamma(\frac{\overline{k}}{\theta
 </div>
 <p>From these, we can generate a sample gamma distribution as follows:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>

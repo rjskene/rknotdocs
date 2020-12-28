@@ -423,44 +423,12 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="admonition warning">
-<p class="admonition-title fa fa-exclamation-circle">BETA RELEASE</p>
-<p>This project remains in the experimental stage and there are likely many tweaks to come that will improve/change outcomes.</p>
-</div>
-<div class="admonition warning"><p class="admonition-title fa fa-exclamation-circle"><p>BETA RELEASE</p>
-</p><p><p>This project remains in the experimental stage and there are likely many tweaks to come that will improve/change outcomes.</p>
-</p></div><div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">html</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;div class=&quot;admonition warning&quot;&gt;</span>
-<span class="s2">&lt;p class=&quot;admonition-title fa fa-exclamation-circle&quot;&gt;BETA RELEASE&lt;/p&gt;</span>
-<span class="s2">&lt;p&gt;This project remains in the experimental stage and there are likely many tweaks to come that will improve/change outcomes.&lt;/p&gt;</span>
-<span class="s2">&lt;/div&gt;&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">html</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-<div class="admonition warning">
-<p class="admonition-title fa fa-exclamation-circle">BETA RELEASE</p>
-<p>This project remains in the experimental stage and there are likely many tweaks to come that will improve/change outcomes.</p>
-</div></div>
+<div class="admonition warning"><p class="admonition-title fa fa-exclamation-circle">BETA Release</p><p>This project remains in the experimental stage and there are likely many tweaks to come that will improve/change outcomes.</p></div></div>
 </div>
-<div class="admonition warning"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BETA</span> <span class="n">RELEASE</span>
-
-    <span class="n">This</span> <span class="n">project</span> <span class="n">remains</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">experimental</span> <span class="n">stage</span> <span class="ow">and</span> <span class="n">there</span> <span class="n">are</span> <span class="n">likely</span> <span class="n">many</span> <span class="n">tweaks</span> <span class="n">to</span> <span class="n">come</span> <span class="n">that</span> <span class="n">will</span> <span class="n">improve</span><span class="o">/</span><span class="n">change</span> <span class="n">outcomes</span><span class="o">.</span>
-    </pre></div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</div><div class="admonition warning"><p class="admonition-title fa fa-exclamation-circle"><p>BETA RELEASE</p>
-</p><p><p>This project remains in the experimental stage and there are likely many tweaks to come that will improve/change outcomes.</p>
-</p></div><p>Add Task</p>
 <div class="section" id="Introduction">
 <h1>Introduction<a class="headerlink" href="#Introduction" title="Permalink to this headline">¶</a></h1>
 <p><strong>RKnot</strong> is a simulation architecture for viral spread that aims to:</p>
@@ -477,9 +445,11 @@ div.rendered_html tbody tr:hover {
 <li><p>influencing interactions via an array of interventions that can be used in any combination</p></li>
 </ul>
 <p><strong>RKnot</strong> utilizes parallelization via <a class="reference external" href="https://docs.ray.io/en/master/index.html">Ray</a> and JIT-compilation via <a class="reference external" href="https://numba.pydata.org/">Numba</a> for performance improvements amd <a class="reference external" href="https://matplotlib.org/">Matplotlib</a> for visualizaitons.</p>
-<div class="admonition note">
-<p class="admonition-title fa fa-exclamation-circle">Note</p>
-<p>Documentation examples focus on <strong>sars-cov-2</strong>, however, <strong>RKnot</strong> can be used to simulate any virus, or anything that spreads like a virus.</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div class="admonition note"><p class="admonition-title fa fa-exclamation-circle">Note</p><p>Documentation examples focus on **sars-cov-2**, however, **RKnot** can be used to simulate <em>any</em> virus, or anything that spreads like a virus.</p></div></div>
 </div>
 <div class="section" id="Basic-Example">
 <h2>Basic Example<a class="headerlink" href="#Basic-Example" title="Permalink to this headline">¶</a></h2>

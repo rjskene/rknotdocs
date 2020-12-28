@@ -98,7 +98,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#Likelihood-of-Transmission">Likelihood of Transmission</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#Dynamic-Transmission-Risk">Dynamic Transmission Risk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Dynamic-Transmission-Risk">Dynamic Transmission Risk</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Hutch-Model">Hutch Model</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#Other-Forms-of-Heterogeneity">Other Forms of Heterogeneity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#The-Average-Contact">The Average Contact</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#References">References</a></li>
@@ -431,6 +434,16 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;rknot_nb&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="Viral-Spread-Theory-in-RKnot">
 <h1>Viral Spread Theory in RKnot<a class="headerlink" href="#Viral-Spread-Theory-in-RKnot" title="Permalink to this headline">¶</a></h1>
 <p><em>RKnot</em> is built up from the contact level. A contact is an interaction between an infected person and a susceptible person that could result in transmission of the virus (more details <a class="reference external" href="#Average-Contact">below</a>). Contacts occur in a 2d environment in which subjects move randomly according to pre-defined distributions or deterministically according to event subscription.</p>
@@ -448,8 +461,7 @@ E(n_{infs}) = \sum_{i=1}^N c_i*\tau_i
 <p>Thus, the transmission risk of the virus is required in order to mimick its spread. This can be provided directly or derived from a virus’ estimated <span class="math notranslate nohighlight">\(R_0\)</span>.</p>
 <div class="section" id="R_0">
 <h2><span class="math notranslate nohighlight">\(R_0\)</span><a class="headerlink" href="#R_0" title="Permalink to this headline">¶</a></h2>
-<p>The propensity for a virus to spread is most-commonly referenced by its Initial Reproduction Number, <span class="math notranslate nohighlight">\(R_0\)</span>.</p>
-<p><span class="math notranslate nohighlight">\(R_0\)</span> is essentially the number of new infections that will be caused by a single infected person in an entirely susceptible population.</p>
+<p>The propensity for a virus to spread is most-commonly referenced by its Basic Reproduction Number, <span class="math notranslate nohighlight">\(R_0\)</span>. <span class="math notranslate nohighlight">\(R_0\)</span> is the number of new infections that will be caused by a single infected person in an entirely susceptible population.</p>
 <p>At an individual level, <span class="math notranslate nohighlight">\(R_0\)</span> is influenced by many factors: the number of contacts the infected person has, the location of contacts, the social setting of contacts, etc.</p>
 <p>At a population level, many models of <span class="math notranslate nohighlight">\(R_0\)</span> assume that the individual factors average out, thus leaving us with a property that is fundamental to the virus itself. We can see there is a broad range of <span class="math notranslate nohighlight">\(R_0\)</span> values for different viruses in the <a class="reference external" href="https://en.wikipedia.org/wiki/Basic_reproduction_number">wikipedia entry</a>.</p>
 <p><span class="math notranslate nohighlight">\(R_0\)</span> can be described as:</p>
@@ -459,7 +471,8 @@ R_0=\beta*d
 \end{equation}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{equation}
-\\\textit{where: }\beta \textit{ = transmission rate (infections / day)}\\ d \textit{ = duration of infection (days)}
+\\\textit{where: }\beta \textit{ = transmission rate (infections / day)}
+\\ d \textit{ = duration of infection (days)}
 \end{equation}\end{split}\]</div>
 <p>The above ignores the number of contacts made, however,</p>
 <p><span class="math notranslate nohighlight">\(\beta\)</span> can be further broken down as:</p>
@@ -536,26 +549,99 @@ P(LOC_{xy},DOT_i)=1/N
 \[\begin{equation}
 P(LOC_{xy},DOT_{ij})=1/N*1/N
 \end{equation}\]</div>
-<p>The probability of <span class="math notranslate nohighlight">\(n\)</span> dots being at the same location at the same time:</p>
+<p>The probability of <span class="math notranslate nohighlight">\(k\)</span> dots being at the same location at the same time:</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation}
-P(LOC_{xy},DOT_{ij})=1/N^n
+P(LOC_{xy},DOT_{ij})=1/N^k
 \end{equation}\]</div>
 <p>Then, the number of ordered contacts is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation}
-\sum_{n=1}^N(1 / N^n)
+\sum_{i=1}^k(1 / N^k)
 \end{equation}\]</div>
 <p>And for all possible orders:</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation}
-E(\overline{c})=\sum_{n=1}^N(1/N^n)*n
+E(\overline{c})=k*\sum_{i=1}^k(1/N^k)
 \end{equation}\]</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <p>The result is a contact rate that is closely related to the density of the simulation space. For example, a population of 100 subjects in a space of 100 locations, would have an expected contact rate of 1.01 per day</p>
+</div>
+</div>
+<p>In fact, we can prove that the contact rate for an equal mover is the density using probability theory. We can view the probability of contact with other dots in the space as a binomial random variable with the <em>trials</em> representing the number of dots at a location, so:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}B(k - 1, 1 / N)
+\\
+\textit{k is the number of dots}
+\\
+\textit{N is the number of locations}\end{split}\]</div>
+<p>If there are three dots (and 3 locations), the distribution governing their interactions is the sum of the two Binomial functions:</p>
+<div class="math notranslate nohighlight">
+\[B(2 - 1, 1 / 3)
+B(2 - 1, 1 / 3)\]</div>
+<p>We know the <a class="reference external" href="http://web.stanford.edu/class/archive/cs/cs109/cs109.1182/lectures/15%20Convolution.pdf">sum of two Binomial distributions</a> is:</p>
+<div class="math notranslate nohighlight">
+\[B(m, p) + B(n, p) = B(m+n, p)\]</div>
+<p>so:</p>
+<div class="math notranslate nohighlight">
+\[B(2 - 1, 1 / 3) + B(2 - 1, 1 / 3) = B(2, 1 / 3)\]</div>
+<p>and for k dots:</p>
+<div class="math notranslate nohighlight">
+\[\sum_k^i B(n_i, 1/N) = B(\sum_k^in_i, 1/N)\;\text{where: } n_i = 1\]</div>
+<p>which simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[B(k, 1/N)\]</div>
+<p>and we know the mean of a binomial distribution is the product <span class="math notranslate nohighlight">\(n*p\)</span></p>
+<div class="math notranslate nohighlight">
+\[\mu = np = k / N = density\]</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">density</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">n_dots</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">n_locs</span> <span class="o">=</span> <span class="n">n_dots</span> <span class="o">//</span> <span class="n">density</span>
+
+<span class="c1"># binom always returns n + 1</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">n_locs</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">n_dots</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">kontact</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">binom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="n">counts</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="mi">100000</span><span class="p">),</span>
+    <span class="n">bins</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rwidth</span><span class="o">=.</span><span class="mi">9</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">+.</span><span class="mi">5</span><span class="p">,</span> <span class="n">kontact</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="n">i</span><span class="o">+.</span><span class="mi">5</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Contacts&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;$\mu$: </span><span class="si">{</span><span class="n">n</span><span class="o">*</span><span class="n">p</span><span class="si">}</span><span class="s1"> contacts / day&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/theory_12_0.png" src="_images/theory_12_0.png" />
 </div>
 </div>
 </div>
@@ -594,7 +680,9 @@ E(\overline{c})=\sum_{n=1}^N(1/N^n)*n
 <p>, when in reality, we know that the infectiousness of an individual changes over time as a function of viral load. It takes time for the virus to accumulate in the subject and, then, in turn it takes time for the subject to dimish the virus via its immune response.</p>
 <p>Generally, the greater the viral load, the greater the transmission risk. And so the likelihood of transmission should follow a similar pattern as the viral load (or vice versa). This <a class="reference external" href="https://www.nytimes.com/interactive/2020/10/02/science/charting-a-coronavirus-infection.html?s=03">New York Times piece</a> has a nice visualisation of this concept for sar-cov-2.</p>
 <p>There are several techinques available for incorporating viral load in a viral spread model including serial interval, explored <a class="reference external" href="https://www.ijidonline.com/article/S1201-9712%2820%2930119-3/pdf">here</a> and generation time, explored <a class="reference external" href="https://www.medrxiv.org/content/10.1101/2020.03.08.20032946v1.full.pdf">here</a>. These techniques, however, again tend to ignore <span class="math notranslate nohighlight">\(\overline{c}\)</span> and focus on <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
-<p>A paper from a team at the <a class="reference external" href="https://www.medrxiv.org/content/10.1101/2020.08.07.20169920v3.full.pdf">Fred Hutchinson Cancer Research Center</a>, however, maps transmission risk directly onto an estimated viral load curve and infectiousness factor and optimizes it at a specfic contact rate and contact variance (hence forth known as the “Fred” model).</p>
+<div class="section" id="Hutch-Model">
+<h3>Hutch Model<a class="headerlink" href="#Hutch-Model" title="Permalink to this headline">¶</a></h3>
+<p>A paper from a team at the <a class="reference external" href="https://www.medrxiv.org/content/10.1101/2020.08.07.20169920v3.full.pdf">Fred Hutchinson Cancer Research Center</a>, however, maps transmission risk directly onto an estimated viral load curve and infectiousness factor and optimizes it at a specfic contact rate and contact variance (hence forth known as the Hutch model).</p>
 <p>First, we will show how the dynamic transmission risk curve is derived. The goal is to produce an array of non-zero probabilites reflecting the likelihood of transmission of virus from one infected to a susceptible in a single contact, based on the known viral load characteristics of the virus.</p>
 <p>The Fred model combines quantities of infectiousness and viral load. Viral load is found via a system of 6 differential equations as follows:</p>
 <div class="math notranslate nohighlight">
@@ -614,7 +702,7 @@ E(\overline{c})=\sum_{n=1}^N(1/N^n)*n
 \end{equation}\]</div>
 <p>The paper provides estimates for several of the parameters including <span class="math notranslate nohighlight">\(\gamma\)</span>, <span class="math notranslate nohighlight">\(\alpha\)</span>, etc. The system can be described and solved using the <code class="docutils literal notranslate"><span class="pre">odeint</span></code> method in <code class="docutils literal notranslate"><span class="pre">scipy</span></code>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -694,14 +782,14 @@ E(\overline{c})=\sum_{n=1}^N(1/N^n)*n
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/theory_16_0.png" src="_images/theory_16_0.png" />
+<img alt="_images/theory_21_0.png" src="_images/theory_21_0.png" />
 </div>
 </div>
 <p>We can see that sars-cov-2 viral load has a long tail, however, the Hutch paper showed that the amount of virus present during the tail is unlikely to result in high transmission, as per below.</p>
 <p>Transmission risk is derived from the viral load above as well as two properties of the infectiousness of the subjects in the contact, <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\gamma\)</span> (see the paper for more details).</p>
 <p>The paper estimated <span class="math notranslate nohighlight">\(\alpha\)</span> = 0.8 and <span class="math notranslate nohighlight">\(\gamma\)</span> = <span class="math notranslate nohighlight">\(10^7\)</span>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -727,7 +815,7 @@ E(\overline{c})=\sum_{n=1}^N(1/N^n)*n
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/theory_20_0.png" src="_images/theory_20_0.png" />
+<img alt="_images/theory_25_0.png" src="_images/theory_25_0.png" />
 </div>
 </div>
 <p>We can further combine Chart 1 and Chart 2 above to show that transmission of sars-cov-2 is likely only during a very narrow range in the early stage of infection.</p>
@@ -735,11 +823,19 @@ E(\overline{c})=\sum_{n=1}^N(1/N^n)*n
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/theory_22_0.png" src="_images/theory_22_0.png" />
+<img alt="_images/theory_27_0.png" src="_images/theory_27_0.png" />
 </div>
 </div>
 <p>Note that there is only a significant risk of transmission of the virus for during the first few days of the infection period (shown as the more orange color under the curve).</p>
 <p>If we assume random <span class="math notranslate nohighlight">\(\tau\)</span> values from <code class="docutils literal notranslate"><span class="pre">tmr</span></code> curve above for 30 different infected dots, the likelihood of transmission to a susceptible as a function of the number of dots at the same location, scales as follows:</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/theory_32_0.png" src="_images/theory_32_0.png" />
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="Other-Forms-of-Heterogeneity">
 <h2>Other Forms of Heterogeneity<a class="headerlink" href="#Other-Forms-of-Heterogeneity" title="Permalink to this headline">¶</a></h2>
