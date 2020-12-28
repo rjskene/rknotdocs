@@ -1,3 +1,43 @@
+/* Adjustments to template */
+img {
+  display: block !important;
+  margin: 0 auto !important;
+  width: 35em !important;
+}
+div.prompt > .highlight > pre {
+  display: none !important;
+}
+div.nbinput.container div.prompt, div.nboutput.container div.prompt  {
+  width: 0px !important;
+}
+.wy-nav-content {
+  padding: .9em 2em !important;
+  max-width: 1000px !important;
+}
+
+/* Custom Elements */
+table.results-table  {
+  border: .1em solid rgba(233,234,235,.7) !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+th.results-table  {
+  border: .1em solid rgba(233,234,235,.7) !important;
+  border-bottom: .1em solid rgb(167, 169, 170) !important;
+  font-family:Arial, sans-serif !important;
+  font-size: 1.35em !important;
+  font-weight:bold !important;
+  overflow:hidden !important;
+  word-break:normal !important;
+}
+td.results-table  {
+  border: .1em solid rgba(233,234,235,.7) !important;
+  font-family:Arial, sans-serif !important; 
+  font-size: 1.2em !important;
+  overflow:hidden !important;
+  word-break:normal !important;
+  padding: 1.1em;
+}
 .alert-rknot {
   padding: 15px;
   margin-bottom: 20px;
@@ -13,7 +53,6 @@
 .alert-rknot .alert-rknot-link {
   font-weight: bold;
 }
-
 .alert-rknot ol, 
 .alert-rknot ul {
   margin-top: 0px;
@@ -22,7 +61,6 @@
   padding-bottom: 0px;
   display: inline;
 }
-
 .alert-rknot-info {
   background-color: #EFF6FB;
   border-color: #bce8f1;
