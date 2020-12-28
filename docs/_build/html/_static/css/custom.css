@@ -4,9 +4,9 @@ img {
   margin: 0 auto !important;
   width: 35em !important;
 }
-/* div.prompt > .highlight > pre {
+div.prompt > .highlight > pre {
   display: none !important;
-} */
+}
 div.nbinput.container div.prompt, div.nboutput.container div.prompt  {
   width: 0px !important;
 }
