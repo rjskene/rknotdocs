@@ -25,5 +25,5 @@ RKnot - Beta
    :caption: SIMULATIONS
    :maxdepth: 3
 
-   sir
+   hit
    load

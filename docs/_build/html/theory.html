@@ -112,7 +112,7 @@
 </ul>
 <p class="caption"><span class="caption-text">SIMULATIONS</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="sir.html">SIR: Factors Influencing Spread</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hit.html">SIR: Factors Influencing Spread</a></li>
 <li class="toctree-l1"><a class="reference internal" href="load.html">Dynamic Transmission Risk</a></li>
 </ul>
 
@@ -464,8 +464,7 @@ R_0=\beta*d
 \\\textit{where: }\beta \textit{ = transmission rate (infections / day)}
 \\ d \textit{ = duration of infection (days)}
 \end{equation}\end{split}\]</div>
-<p>The above ignores the number of contacts made, however,</p>
-<p><span class="math notranslate nohighlight">\(\beta\)</span> can be further broken down as:</p>
+<p>The above ignores the number of contacts made, however, <span class="math notranslate nohighlight">\(\beta\)</span> can be further broken down as:</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation}
 \beta=\tau*\overline{c}
@@ -594,7 +593,7 @@ B(k, 1/N)
 \[\mu = np = k / N = density\]</div>
 <p>We can see that relationship below, where an environment with density of 5 generates a <span class="math notranslate nohighlight">\(\overline{k}\)</span> of 5.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[79]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[85]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -613,7 +612,7 @@ B(k, 1/N)
 
 <span class="n">kontact</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">binom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
 
 <span class="n">counts</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
     <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="mi">100000</span><span class="p">),</span>
@@ -629,7 +628,10 @@ B(k, 1/N)
 <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;$\mu$: </span><span class="si">{</span><span class="n">n</span><span class="o">*</span><span class="n">p</span><span class="si">}</span><span class="s1"> contacts / day&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span> <span class="c1"># Or any color</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;imgs/binom.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
