@@ -3040,7 +3040,7 @@
     "\n",
     "Social distancing is assumed to impact the Transmission Factor, $\\tau$ of each dot. The core hypothesis is that practices such as maintaining 6-feet of distance or mask wearing don't reduce the number of contacts, but do reduce the likelihood that a contact will result in a new infection (ceterus paribus).\n",
     "\n",
-    "You can see use of this object [here](sir.ipynb#2.-Social-Distancing)."
+    "You can see use of this object [here](hit.ipynb#2.-Social-Distancing)."
    ]
   },
   {
@@ -3524,24 +3524,11 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 42,
+   "execution_count": null,
    "metadata": {
     "nbsphinx": "hidden"
    },
-   "outputs": [
-    {
-     "data": {
-      "application/javascript": [
-       "IPython.notebook.save_notebook()\n"
-      ],
-      "text/plain": [
-       "<IPython.core.display.Javascript object>"
-      ]
-     },
-     "metadata": {},
-     "output_type": "display_data"
-    }
-   ],
+   "outputs": [],
    "source": [
     "%%javascript\n",
     "IPython.notebook.save_notebook()"
@@ -3549,7 +3536,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 43,
+   "execution_count": null,
    "metadata": {
     "nbsphinx": "hidden"
    },

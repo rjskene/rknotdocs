@@ -531,7 +531,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-<div class="admonition note"><p class="admonition-title fa fa-exclamation-circle">Density</p><p>When R0 and `infdur` are provided, **RKnot** will automatically scale the transmission risk such that the environment will produce the desired R0, regardless of the density. We can see this in the next comparison.</p></div></div>
+<div class="admonition note"><p class="admonition-title fa fa-exclamation-circle">SIR auto-adjusts for density</p><p>When $R_0$ and <em>infdur</em> are provided, <b>RKnot</b> will automatically scale the transmission risk such that the environment will produce the desired R0, regardless of the density. We can see this in the next comparison.</p></div></div>
 </div>
 </div>
 <div class="section" id="Curve-Details">
@@ -649,7 +649,7 @@ B(n,p) = B(\text{infdur} * \overline{k}, \frac{R_0 / \text{infdur}}{\overline{k}
 </div>
 </div>
 <p>We see that <span class="math notranslate nohighlight">\(R_0\)</span> has an inverse relationship to restricted movement (i.e. spread increases as populations become more well-mixed). This, of course, makes sense and is a fundamental premise of viral spread theory.</p>
-<p><span class="math notranslate nohighlight">\(\underline{\text{However}}\)</span> what cannot be overlooked is how closely <span class="math notranslate nohighlight">\(R_0\)</span> in a <em>moderately</em> restricted environment resembles a completely well-mixed environment. And yet we know that the <code class="docutils literal notranslate"><span class="pre">local</span></code> <a class="reference internal" href="sir.html#2.-Local"><span class="std std-ref">mover function (with p-value of 0.6) results in a very different long-term spread curve</span></a>.</p>
+<p><span class="math notranslate nohighlight">\(\underline{\text{However}}\)</span> what cannot be overlooked is how closely <span class="math notranslate nohighlight">\(R_0\)</span> in a <em>moderately</em> restricted environment resembles a completely well-mixed environment. And yet we know that the <code class="docutils literal notranslate"><span class="pre">local</span></code> <a class="reference internal" href="hit.html#2.-Local"><span class="std std-ref">mover function (with p-value of 0.6) results in a very different long-term spread curve</span></a>.</p>
 <p>Further, each p-value results in normally-distributed contacts. We show this for a handful of p-values below.</p>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -927,7 +927,7 @@ B(n,p) = B(\text{infdur} * \overline{k}, \frac{R_0 / \text{infdur}}{\overline{k}
 <h3>Location Clustering<a class="headerlink" href="#Location-Clustering" title="Permalink to this headline">¶</a></h3>
 <p>We should also mention the phenomena of dot clustering. We can determine how many different locations are occupied by at least one dot at each tick as follows:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1099,7 +1099,7 @@ c_t\;\approx\;\Gamma(\alpha, \theta)\;\approx\;\Gamma(\frac{\overline{k}}{\theta
 <p>We know that there should be <span class="math notranslate nohighlight">\(n_{dots}\)</span> * <span class="math notranslate nohighlight">\(n_{days}\)</span> number of records of contacts (300,000) and so can show the number of occurences of each amount of contacts from a gamma sample:</p>
 <p>The initial parameters are as follows:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1118,7 +1118,7 @@ c_t\;\approx\;\Gamma(\alpha, \theta)\;\approx\;\Gamma(\frac{\overline{k}}{\theta
 </div>
 <p>From these, we can generate a sample gamma distribution as follows:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1180,7 +1180,7 @@ n_{e,j} = \frac{k_{tgt,i}}{cap_{e,j}}
 \\\textit{j = i + 1 = event capacity}
 \end{equation}\end{split}\]</div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1196,7 +1196,7 @@ n_{e,j} = \frac{k_{tgt,i}}{cap_{e,j}}
 <p>Our current hack-fix is to regroup and redistribute all contact occurences above that threshold into events. This results in a tail that is less evenly distributed.</p>
 <p>A better solution would be to increase the number of ticks per day, which would allow for many more independent streams of contact distributions among dots. This feature will be available in future versions.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1224,7 +1224,7 @@ n_{e,j} = \frac{k_{tgt,i}}{cap_{e,j}}
 <p>With the number of events for each capacity determined, we can assign event objects.</p>
 <p>To do so, we:</p>
 <ul class="simple">
-<li><p>utilize the <a class="reference internal" href="sir.html"><span class="doc">“baseus” groups used in the SIR analysis</span></a>.</p></li>
+<li><p>utilize the <a class="reference internal" href="hit.html"><span class="doc">“baseus” groups used in the SIR analysis</span></a>.</p></li>
 <li><p>assign a p-value of .98 to the mover function of group.</p>
 <ul>
 <li><p><em>determined through a trial and error process that best fit the Hutch distribution.</em></p></li>
@@ -1288,7 +1288,7 @@ n_{e,j} = \frac{k_{tgt,i}}{cap_{e,j}}
 <p>With contact levels 2+ settled, we must set the non-event environment such that it generates mainly 0 contacts.</p>
 <p>First, we find the average density of the grid (excluding the vbox) during the sim. Only dots not attending events will be in the main grid, so density is as follows:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1317,16 +1317,16 @@ n_{e,j} = \frac{k_{tgt,i}}{cap_{e,j}}
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">d</span><span class="o">*</span><span class="n">z</span><span class="p">)</span>
 <span class="n">mu_space</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="o">.</span><span class="mi">98</span><span class="p">)</span>
 <span class="n">var_space</span> <span class="o">=</span> <span class="n">mu_space</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_dots_not_events</span><span class="o">*</span><span class="mi">30</span><span class="p">))</span>
-<span class="n">counts</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu_space</span><span class="p">,</span> <span class="n">var_space</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">c_non</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu_space</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">var_space</span><span class="p">))</span>
+<span class="n">c_non</span> <span class="o">=</span> <span class="n">d</span><span class="o">*</span><span class="n">n</span><span class="o">*</span><span class="mi">30</span><span class="o">*</span><span class="n">c_non</span>
 </pre></div>
 </div>
 </div>
@@ -1337,19 +1337,43 @@ n_{e,j} = \frac{k_{tgt,i}}{cap_{e,j}}
 <img alt="_images/sizing_84_0.png" src="_images/sizing_84_0.png" />
 </div>
 </div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;And so the expect 0 contacts occurences are right in line with the target: &#39;</span>
+<span class="n">text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1"> </span><span class="si">{</span><span class="n">c_non</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1"> vs. </span><span class="si">{</span><span class="n">c_gam</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="n">text</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">As are the 1 contact occurences: &#39;</span>
+<span class="n">text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1"> </span><span class="si">{</span><span class="n">c_non</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1"> vs. </span><span class="si">{</span><span class="n">c_gam</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1">&#39;</span>
+
+<span class="n">md</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<p>And so the expect 0 contacts occurences are right in line with the target:</p>
+<p>228,464 vs. 217,387</p>
+<p>As are the 1 contact occurences:</p>
+<p>20,230 vs. 15,243</p>
+</div>
+</div>
 <p>Thus, we expect the non-event space will result in 200,000+ dot days with no contacts, right in line with Hutch gamma.</p>
 <p>The final step in preparing the simulation environment is determing the size of the VBox. The chart below shows the number of events occuring on each tick in the Sim.</p>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/sizing_86_0.png" src="_images/sizing_86_0.png" />
+<img alt="_images/sizing_87_0.png" src="_images/sizing_87_0.png" />
 </div>
 </div>
 <p>Above we can see that there are typically ~300 events occuring on a given tick.</p>
 <p>The vbox must allow for each event to have its own location, so the vbox should have enough locations to support the maximum number of events occuring on the same tick, which is:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1360,7 +1384,7 @@ n_{e,j} = \frac{k_{tgt,i}}{cap_{e,j}}
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1415,14 +1439,14 @@ n_{e,j} = \frac{k_{tgt,i}}{cap_{e,j}}
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/sizing_97_0.png" src="_images/sizing_97_0.png" />
+<img alt="_images/sizing_98_0.png" src="_images/sizing_98_0.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/sizing_98_0.png" src="_images/sizing_98_0.png" />
+<img alt="_images/sizing_99_0.png" src="_images/sizing_99_0.png" />
 </div>
 </div>
 <p>And that the expected <span class="math notranslate nohighlight">\(R_0\)</span> distribtion is a much stronger fit for the Endo model (although still underweight slightly to 0 infection outcomes).</p>
@@ -1430,7 +1454,7 @@ n_{e,j} = \frac{k_{tgt,i}}{cap_{e,j}}
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/sizing_100_0.png" src="_images/sizing_100_0.png" />
+<img alt="_images/sizing_101_0.png" src="_images/sizing_101_0.png" />
 </div>
 </div>
 <p><span class="math notranslate nohighlight">\(\underline{\text{Run a Larger Dataset}}\)</span></p>
@@ -1442,7 +1466,7 @@ n_{e,j} = \frac{k_{tgt,i}}{cap_{e,j}}
 </div>
 <p><span class="math notranslate nohighlight">\(\underline{\text{Results}}\)</span></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[77]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1479,14 +1503,14 @@ n_{e,j} = \frac{k_{tgt,i}}{cap_{e,j}}
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/sizing_107_0.png" src="_images/sizing_107_0.png" />
+<img alt="_images/sizing_108_0.png" src="_images/sizing_108_0.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/sizing_108_0.png" src="_images/sizing_108_0.png" />
+<img alt="_images/sizing_109_0.png" src="_images/sizing_109_0.png" />
 </div>
 </div>
 <p>The above iterations set <code class="docutils literal notranslate"><span class="pre">sterile=True</span></code>, in order to isolate the contacts and secondary infections of <em>just the initial infected</em>.</p>
@@ -1506,14 +1530,14 @@ n_{e,j} = \frac{k_{tgt,i}}{cap_{e,j}}
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/sizing_114_0.png" src="_images/sizing_114_0.png" />
+<img alt="_images/sizing_115_0.png" src="_images/sizing_115_0.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/sizing_115_0.png" src="_images/sizing_115_0.png" />
+<img alt="_images/sizing_116_0.png" src="_images/sizing_116_0.png" />
 </div>
 </div>
 </div>
