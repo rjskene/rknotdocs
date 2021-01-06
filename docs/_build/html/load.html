@@ -99,10 +99,10 @@
 <li class="toctree-l1"><a class="reference internal" href="hit.html">SIR: Factors Influencing Spread</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Dynamic Transmission Risk</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Structure">Structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#1.-Events">1. Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Events">Events</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#2.-Gates">2. Gates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#3.-Restrict-Large-Gatherings">3. Restrict Large Gatherings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#4.-Social-Distancing">4. Social Distancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Social-Distancing">Social Distancing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#5.-Restrict-Elderly-Visits">5. Restrict Elderly Visits</a></li>
 </ul>
 </li>
@@ -455,9 +455,10 @@ div.rendered_html tbody tr:hover {
 </ul>
 <p>The transmission risk curve used in these simulations is visualized below. See <a class="reference internal" href="theory.html#Dynamic-Transmission-Risk"><span class="std std-ref">Hutch Model</span></a> for the derivation.</p>
 <p><img alt="Drawing" src="https://storage.googleapis.com/rknotvids/imgs/tmr_curve.png" /></p>
-</div>
-<div class="section" id="1.-Events">
-<h2>1. Events<a class="headerlink" href="#1.-Events" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<div id="1.-Events"></div></div>
+<div class="section" id="Events">
+<h2>Events<a class="headerlink" href="#Events" title="Permalink to this headline">¶</a></h2>
 <p>Here we show the basic outcome of dynamic viral load in a gamma-distributed contacts environment.</p>
 <p>The transmission curve has bee calculated separately and is available as <code class="docutils literal notranslate"><span class="pre">tmr</span></code> from the <code class="docutils literal notranslate"><span class="pre">rknot.dots.fhutch</span></code> module.</p>
 <p>All of the 9,000+ events occur in the “Events” vbox. All events have capacities of 3 subjects or more.</p>
@@ -849,8 +850,9 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>So restricting contacts to maximum 25 per day has a similar impact on spread even with only 75% adherence to the policy.</p>
 </div>
-<div class="section" id="4.-Social-Distancing">
-<h2>4. Social Distancing<a class="headerlink" href="#4.-Social-Distancing" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<div class="section" id="Social-Distancing">
+<h2>Social Distancing<a class="headerlink" href="#Social-Distancing" title="Permalink to this headline">¶</a></h2>
 <p>We will now investigate the impact of social distancing measures <a class="reference internal" href="hit.html#2.-Social-Distancing"><span class="std std-ref">as outlined here</span></a>.</p>
 <p>We provice <code class="docutils literal notranslate"><span class="pre">tmfs</span></code> to each age group, representing the adherence to and impact of various tactics including 6-feet of distance, masks, hand sanitizer, etc.</p>
 <p>The policy measure is implemented on day 30 and maintained for 120 days.</p>
@@ -885,7 +887,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/load_80_0.png" src="_images/load_80_0.png" />
+<img alt="_images/load_81_0.png" src="_images/load_81_0.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -937,7 +939,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/load_95_0.png" src="_images/load_95_0.png" />
+<img alt="_images/load_96_0.png" src="_images/load_96_0.png" />
 </div>
 </div>
 <p>Below we show a representative simulation:</p>
