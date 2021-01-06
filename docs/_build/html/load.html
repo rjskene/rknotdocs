@@ -100,10 +100,16 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Dynamic Transmission Risk</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Structure">Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Events">Events</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#2.-Gates">2. Gates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#3.-Restrict-Large-Gatherings">3. Restrict Large Gatherings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Social-Distancing">Social Distancing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#5.-Restrict-Elderly-Visits">5. Restrict Elderly Visits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Care-Homes">Care Homes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Capacity-Restriction">Capacity Restriction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Capacity-Restrictions-with-Adherence">Capacity Restrictions with Adherence</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Social-Distancing">Social Distancing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Social-Distancing-with-Adherence">Social Distancing with Adherence</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Restrict-Elderly-Visits">Restrict Elderly Visits</a></li>
 </ul>
 </li>
 </ul>
@@ -527,9 +533,10 @@ div.rendered_html tbody tr:hover {
 <img alt="_images/load_17_0.png" src="_images/load_17_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="2.-Gates">
-<h2>2. Gates<a class="headerlink" href="#2.-Gates" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<div id="2.-Gates"></div></div>
+<div class="section" id="Care-Homes">
+<h2>Care Homes<a class="headerlink" href="#Care-Homes" title="Permalink to this headline">¶</a></h2>
 <p>We replicate the <a class="reference internal" href="hit.html#6.-Gates"><span class="std std-ref">SIR Gates scenario</span></a> by creating a separate group of elderly isolated within a gate, intended to simulate care homes or assisted living centers.</p>
 <p>One augmentation is made: a small group of care home workers are added that will reqularly enter the gate to service residents. The care home workers will be drawn from the <code class="docutils literal notranslate"><span class="pre">20-49</span></code> age group.</p>
 <p>The new groups are:</p>
@@ -634,9 +641,10 @@ div.rendered_html tbody tr:hover {
 <table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">Hutch</th><th class="results-table" style="text-align: center;">SIR</th></tr></thead><tbody><tr><td class="results-table" style="text-align: left;">Peak</td><td class="results-table" style="text-align: center;">33.1%</td><td class="results-table" style="text-align: center;">30.0%</td></tr><tr><td class="results-table" style="text-align: left;">HIT</td><td class="results-table" style="text-align: center;">44.1%</td><td class="results-table" style="text-align: center;">62.0%</td></tr><tr><td class="results-table" style="text-align: left;">Total</td><td class="results-table" style="text-align: center;">55.1%</td><td class="results-table" style="text-align: center;">83.0%</td></tr><tr><td class="results-table" style="text-align: left;">Fatalities</td><td class="results-table" style="text-align: center;">0.38%</td><td class="results-table" style="text-align: center;">0.52%</td></tr><tr><td class="results-table" style="text-align: left;">%>70</td><td class="results-table" style="text-align: center;">92.1%</td><td class="results-table" style="text-align: center;">40.0%</td></tr><tr><td class="results-table" style="text-align: left;">IFR</td><td class="results-table" style="text-align: center;">0.69%</td><td class="results-table" style="text-align: center;">0.62%</td></tr><tr><td class="results-table" style="text-align: left;">Days to Peak</td><td class="results-table" style="text-align: center;">83</td><td class="results-table" style="text-align: center;">66</td></tr></tbody></table></div>
 </div>
 <p>Again, relative to SIR, the simulation has a lower peak. In this instance the peak is also significantly later as well. Consistent with the Events scenario, a larger proportion of the fatalities are experienced among the elderly.</p>
-</div>
-<div class="section" id="3.-Restrict-Large-Gatherings">
-<h2>3. Restrict Large Gatherings<a class="headerlink" href="#3.-Restrict-Large-Gatherings" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<div id="3.-Restrict-Large-Gatherings"></div></div>
+<div class="section" id="Capacity-Restriction">
+<h2>Capacity Restriction<a class="headerlink" href="#Capacity-Restriction" title="Permalink to this headline">¶</a></h2>
 <p>As with the <a class="reference internal" href="hit.html#Policy"><span class="std std-ref">SIR Model simulations</span></a>, we can explore the impact of policy restrictions on spread in our more sophisticated environment. First, we will restrict large gatherings.</p>
 <p>We’ll again restrict gatherings with 10+ capacity. We assume this policy is implemented on day 30. The restriction will last for 120 days.</p>
 <p>With a gamma distributed contact distribution, a very large number of contacts can be eliminated by eliminating just a small fraction of events.</p>
@@ -768,7 +776,9 @@ div.rendered_html tbody tr:hover {
 <li><p>adherence to such policies is likely not 100%.</p></li>
 <li><p>mixing amongst jurisdictions with different policies</p></li>
 </ol>
-<p>As a means of rough investigation, simulations were ran for a dozen scenarios of different maximum event capacities and adherence factors (and some combinations). The results are shown in the tables below:</p>
+<div id="CapMax-with-Adherence"></div><div class="section" id="Capacity-Restrictions-with-Adherence">
+<h3>Capacity Restrictions with Adherence<a class="headerlink" href="#Capacity-Restrictions-with-Adherence" title="Permalink to this headline">¶</a></h3>
+<p>To investigate the impact of adherence (or lack thereof), simulations were ran for a dozen scenarios of different maximum event capacities and adherence factors (and some combinations). The results are shown in the tables below:</p>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
@@ -850,6 +860,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>So restricting contacts to maximum 25 per day has a similar impact on spread even with only 75% adherence to the policy.</p>
 </div>
+</div>
 <hr class="docutils" />
 <div class="section" id="Social-Distancing">
 <h2>Social Distancing<a class="headerlink" href="#Social-Distancing" title="Permalink to this headline">¶</a></h2>
@@ -887,7 +898,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/load_81_0.png" src="_images/load_81_0.png" />
+<img alt="_images/load_80_0.png" src="_images/load_80_0.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -905,13 +916,81 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-<table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">Hutch</th><th class="results-table" style="text-align: center;">SIR</th></tr></thead><tbody><tr><td class="results-table" style="text-align: left;">Peak</td><td class="results-table" style="text-align: center;">13.4%</td><td class="results-table" style="text-align: center;">8.0%</td></tr><tr><td class="results-table" style="text-align: left;">HIT</td><td class="results-table" style="text-align: center;">14.2%</td><td class="results-table" style="text-align: center;">24.0%</td></tr><tr><td class="results-table" style="text-align: left;">Total</td><td class="results-table" style="text-align: center;">17.8%</td><td class="results-table" style="text-align: center;">68.0%</td></tr><tr><td class="results-table" style="text-align: left;">Fatalities</td><td class="results-table" style="text-align: center;">0.13%</td><td class="results-table" style="text-align: center;">0.39%</td></tr><tr><td class="results-table" style="text-align: left;">%>70</td><td class="results-table" style="text-align: center;">69.2%</td><td class="results-table" style="text-align: center;">33.0%</td></tr><tr><td class="results-table" style="text-align: left;">IFR</td><td class="results-table" style="text-align: center;">0.73%</td><td class="results-table" style="text-align: center;">0.57%</td></tr><tr><td class="results-table" style="text-align: left;">Days to Peak</td><td class="results-table" style="text-align: center;">49</td><td class="results-table" style="text-align: center;">96</td></tr></tbody></table></div>
+<table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">Hutch</th><th class="results-table" style="text-align: center;">SIR</th></tr></thead><tbody><tr><td class="results-table" style="text-align: left;">Peak</td><td class="results-table" style="text-align: center;">7.1%</td><td class="results-table" style="text-align: center;">8.0%</td></tr><tr><td class="results-table" style="text-align: left;">HIT</td><td class="results-table" style="text-align: center;">7.7%</td><td class="results-table" style="text-align: center;">24.0%</td></tr><tr><td class="results-table" style="text-align: left;">Total</td><td class="results-table" style="text-align: center;">14.0%</td><td class="results-table" style="text-align: center;">68.0%</td></tr><tr><td class="results-table" style="text-align: left;">Fatalities</td><td class="results-table" style="text-align: center;">0.03%</td><td class="results-table" style="text-align: center;">0.39%</td></tr><tr><td class="results-table" style="text-align: left;">%>70</td><td class="results-table" style="text-align: center;">0.0%</td><td class="results-table" style="text-align: center;">33.0%</td></tr><tr><td class="results-table" style="text-align: left;">IFR</td><td class="results-table" style="text-align: center;">0.21%</td><td class="results-table" style="text-align: center;">0.57%</td></tr><tr><td class="results-table" style="text-align: left;">Days to Peak</td><td class="results-table" style="text-align: center;">49</td><td class="results-table" style="text-align: center;">96</td></tr></tbody></table></div>
 </div>
-<p>Here we see that social distancing practices have a much more dramatic impact on spread in the Hutch model than the SIR. There are fewer infections and the outbreak declines much faster, avoiding the very long, slow tail evident in SIR.</p>
+<p>Here we see that social distancing has an even more pronounced impact on spread. The peak and hit are flattened significantly, but the tail is also much shorter.</p>
 <p>A lower <span class="math notranslate nohighlight">\(R_0\)</span> is in part responsible, but so too is the viral load curve in Hutch, which has a longer <em>infection</em> duration but a much shorter truly <em>infectious</em> period.</p>
+<p>Additionally, fatalities are MUCH lower by a factor of 10. This is due to the lower overall infection level, but note that an outbreak was prevented in the care home (70+G area). With the shorter infectious period, the virus has fewer opportunities to enter the gate.</p>
+<div id="SD-with-Adherence"></div><div class="section" id="Social-Distancing-with-Adherence">
+<h3>Social Distancing with Adherence<a class="headerlink" href="#Social-Distancing-with-Adherence" title="Permalink to this headline">¶</a></h3>
+<p>As with <a class="reference external" href="#Capacity-Restrictions">Capacity Restrictions</a> above, we can investigate the impact that sub-100% adherence might have on spread.</p>
+<p>Adherence with respect to <code class="docutils literal notranslate"><span class="pre">SocialDistancing</span></code> requires one additional consideration. A single event is used to cover all the groups in the sim, however, each group is likely to have a different adherence factor given their differing perceived risk factors and motivations.</p>
+<p>For instance, <code class="docutils literal notranslate"><span class="pre">70+G</span></code> subjects are likely to have very high adherence given the known risks invovled and the supervision provide by home care professionals. <code class="docutils literal notranslate"><span class="pre">20-49</span></code> subjects (particularly the youngest in the group) exhibit greater risk-taking behavior in general and covid-19 has provded no different; their adherence would be expected to be lower.</p>
+<p>We ran 5 different scenarios, each with differing adherence factors for each group. The table below shows the adherence factors used for each group in each scenario.</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
 </div>
-<div class="section" id="5.-Restrict-Elderly-Visits">
-<h2>5. Restrict Elderly Visits<a class="headerlink" href="#5.-Restrict-Elderly-Visits" title="Permalink to this headline">¶</a></h2>
+<div class="output_area rendered_html docutils container">
+<table class="results-table"><thead><tr><th class="results-table" style="text-align: left;">Adh<br>Level</th><th class="results-table" style="text-align: center;">0-19</th><th class="results-table" style="text-align: center;">20-49</th><th class="results-table" style="text-align: center;">HCW</th><th class="results-table" style="text-align: center;">50-69</th><th class="results-table" style="text-align: center;">70+</th><th class="results-table" style="text-align: center;">70+G</th><tbody><tr><td class="results-table" style="text-align: left;">Full</td><td class="results-table" style="text-align: center;">100%</td><td class="results-table" style="text-align: center;">100%</td><td class="results-table" style="text-align: center;">100%</td><td class="results-table" style="text-align: center;">100%</td><td class="results-table" style="text-align: center;">100%</td><td class="results-table" style="text-align: center;">100%</td></tr><tr><td class="results-table" style="text-align: left;">High</td><td class="results-table" style="text-align: center;">80%</td><td class="results-table" style="text-align: center;">70%</td><td class="results-table" style="text-align: center;">95%</td><td class="results-table" style="text-align: center;">90%</td><td class="results-table" style="text-align: center;">95%</td><td class="results-table" style="text-align: center;">100%</td></tr><tr><td class="results-table" style="text-align: left;">Medium</td><td class="results-table" style="text-align: center;">75%</td><td class="results-table" style="text-align: center;">60%</td><td class="results-table" style="text-align: center;">90%</td><td class="results-table" style="text-align: center;">80%</td><td class="results-table" style="text-align: center;">80%</td><td class="results-table" style="text-align: center;">100%</td></tr><tr><td class="results-table" style="text-align: left;">Low</td><td class="results-table" style="text-align: center;">60%</td><td class="results-table" style="text-align: center;">50%</td><td class="results-table" style="text-align: center;">90%</td><td class="results-table" style="text-align: center;">75%</td><td class="results-table" style="text-align: center;">75%</td><td class="results-table" style="text-align: center;">100%</td></tr><tr><td class="results-table" style="text-align: left;">None</td><td class="results-table" style="text-align: center;">0%</td><td class="results-table" style="text-align: center;">0%</td><td class="results-table" style="text-align: center;">0%</td><td class="results-table" style="text-align: center;">0%</td><td class="results-table" style="text-align: center;">0%</td><td class="results-table" style="text-align: center;">0%</td></tr></tbody></table></div>
+</div>
+<p>The results of 100 iterations of each scenario are shown below:</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">Full</th><th class="results-table" style="text-align: center;">High</th><th class="results-table" style="text-align: center;">Medium</th><th class="results-table" style="text-align: center;">Low</th><th class="results-table" style="text-align: center;">None</th></tr></thead><tbody><tr><td class="results-table" style="text-align: left;">n</td><td class="results-table" style="text-align: center;">100</td><td class="results-table" style="text-align: center;">100</td><td class="results-table" style="text-align: center;">100</td><td class="results-table" style="text-align: center;">100</td><td class="results-table" style="text-align: center;">100</td></tr><tr><td class="results-table" style="text-align: left;">Peak</td><td class="results-table" style="text-align: center;">1.6%</td><td class="results-table" style="text-align: center;">1.3%</td><td class="results-table" style="text-align: center;">2.4%</td><td class="results-table" style="text-align: center;">2.6%</td><td class="results-table" style="text-align: center;">8.2%</td></tr><tr><td class="results-table" style="text-align: left;">HIT</td><td class="results-table" style="text-align: center;">1.7%</td><td class="results-table" style="text-align: center;">1.5%</td><td class="results-table" style="text-align: center;">3.3%</td><td class="results-table" style="text-align: center;">3.7%</td><td class="results-table" style="text-align: center;">10.0%</td></tr><tr><td class="results-table" style="text-align: left;">Total</td><td class="results-table" style="text-align: center;">2.0%</td><td class="results-table" style="text-align: center;">1.9%</td><td class="results-table" style="text-align: center;">4.2%</td><td class="results-table" style="text-align: center;">5.0%</td><td class="results-table" style="text-align: center;">12.6%</td></tr><tr><td class="results-table" style="text-align: left;">Fatalities</td><td class="results-table" style="text-align: center;">0.01%</td><td class="results-table" style="text-align: center;">0.01%</td><td class="results-table" style="text-align: center;">0.02%</td><td class="results-table" style="text-align: center;">0.03%</td><td class="results-table" style="text-align: center;">0.09%</td></tr><tr><td class="results-table" style="text-align: left;">%>70</td><td class="results-table" style="text-align: center;">70.4%</td><td class="results-table" style="text-align: center;">67.8%</td><td class="results-table" style="text-align: center;">75.0%</td><td class="results-table" style="text-align: center;">81.2%</td><td class="results-table" style="text-align: center;">86.0%</td></tr><tr><td class="results-table" style="text-align: left;">IFR</td><td class="results-table" style="text-align: center;">0.37%</td><td class="results-table" style="text-align: center;">0.21%</td><td class="results-table" style="text-align: center;">0.33%</td><td class="results-table" style="text-align: center;">0.20%</td><td class="results-table" style="text-align: center;">0.20%</td></tr><tr><td class="results-table" style="text-align: left;">Days to Peak</td><td class="results-table" style="text-align: center;">15</td><td class="results-table" style="text-align: center;">15</td><td class="results-table" style="text-align: center;">23</td><td class="results-table" style="text-align: center;">21</td><td class="results-table" style="text-align: center;">21</td></tr><tr><td class="results-table" style="text-align: left;">$R_0$ = 0</td><td class="results-table" style="text-align: center;">52.0%</td><td class="results-table" style="text-align: center;">57.0%</td><td class="results-table" style="text-align: center;">51.0%</td><td class="results-table" style="text-align: center;">53.0%</td><td class="results-table" style="text-align: center;">57.0%</td></tr></tbody></table></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">Full<br>$R_0$ > 0</th><th class="results-table" style="text-align: center;">High<br>$R_0$ > 0</th><th class="results-table" style="text-align: center;">Medium<br>$R_0$ > 0</th><th class="results-table" style="text-align: center;">Low<br>$R_0$ > 0</th><th class="results-table" style="text-align: center;">None<br>$R_0$ > 0</th></tr></thead><tbody><tr><td class="results-table" style="text-align: left;">n</td><td class="results-table" style="text-align: center;">20</td><td class="results-table" style="text-align: center;">15</td><td class="results-table" style="text-align: center;">22</td><td class="results-table" style="text-align: center;">20</td><td class="results-table" style="text-align: center;">23</td></tr><tr><td class="results-table" style="text-align: left;">Peak</td><td class="results-table" style="text-align: center;">7.6%</td><td class="results-table" style="text-align: center;">8.1%</td><td class="results-table" style="text-align: center;">10.5%</td><td class="results-table" style="text-align: center;">12.6%</td><td class="results-table" style="text-align: center;">35.3%</td></tr><tr><td class="results-table" style="text-align: left;">HIT</td><td class="results-table" style="text-align: center;">8.4%</td><td class="results-table" style="text-align: center;">9.3%</td><td class="results-table" style="text-align: center;">14.6%</td><td class="results-table" style="text-align: center;">18.3%</td><td class="results-table" style="text-align: center;">43.5%</td></tr><tr><td class="results-table" style="text-align: left;">Total</td><td class="results-table" style="text-align: center;">9.9%</td><td class="results-table" style="text-align: center;">12.3%</td><td class="results-table" style="text-align: center;">18.8%</td><td class="results-table" style="text-align: center;">24.9%</td><td class="results-table" style="text-align: center;">54.6%</td></tr><tr><td class="results-table" style="text-align: left;">Fatalities</td><td class="results-table" style="text-align: center;">0.06%</td><td class="results-table" style="text-align: center;">0.06%</td><td class="results-table" style="text-align: center;">0.12%</td><td class="results-table" style="text-align: center;">0.12%</td><td class="results-table" style="text-align: center;">0.39%</td></tr><tr><td class="results-table" style="text-align: left;">%>70</td><td class="results-table" style="text-align: center;">70.4%</td><td class="results-table" style="text-align: center;">67.8%</td><td class="results-table" style="text-align: center;">75.0%</td><td class="results-table" style="text-align: center;">81.2%</td><td class="results-table" style="text-align: center;">86.0%</td></tr><tr><td class="results-table" style="text-align: left;">IFR</td><td class="results-table" style="text-align: center;">0.60%</td><td class="results-table" style="text-align: center;">0.39%</td><td class="results-table" style="text-align: center;">0.58%</td><td class="results-table" style="text-align: center;">0.45%</td><td class="results-table" style="text-align: center;">0.72%</td></tr><tr><td class="results-table" style="text-align: left;">Days to Peak</td><td class="results-table" style="text-align: center;">46</td><td class="results-table" style="text-align: center;">56</td><td class="results-table" style="text-align: center;">76</td><td class="results-table" style="text-align: center;">78</td><td class="results-table" style="text-align: center;">75</td></tr><tr><td class="results-table" style="text-align: left;">$R_0$ = 0</td><td class="results-table" style="text-align: center;">0.0%</td><td class="results-table" style="text-align: center;">0.0%</td><td class="results-table" style="text-align: center;">0.0%</td><td class="results-table" style="text-align: center;">0.0%</td><td class="results-table" style="text-align: center;">0.0%</td></tr></tbody></table></div>
+</div>
+<p>Again we see that the policy restriction is resilient in the face of non-compliance, although social distancing appears less resilient than capacity restrictions.</p>
+<p>Below we show a representative simulation for the Medium adherence scenario.</p>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/spindicate/Documents/programming/rknot/rknot/animate/main.py:226: UserWarning: When `reso_format=&#39;web&#39;, you must call the save method at the same time as instantiating the object, or it will hang.
+  warnings.warn(msg)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "985752285cad4cf0acbb9577389e17a4", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/load_97_2.png" src="_images/load_97_2.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="text-align: center">
+    <video width='900px' height='376.56903765690373px'
+    src="https://storage.googleapis.com/rknotvids/us_w_load/social_distancing_w_med_adh.mp4" controls>Video Failed to Load</video>
+</div>
+<p></p></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">SD</th><th class="results-table" style="text-align: center;">SD<br>Medium<br>Adh</th></tr></thead><tbody><tr><td class="results-table" style="text-align: left;">Peak</td><td class="results-table" style="text-align: center;">7.1%</td><td class="results-table" style="text-align: center;">13.5%</td></tr><tr><td class="results-table" style="text-align: left;">HIT</td><td class="results-table" style="text-align: center;">7.7%</td><td class="results-table" style="text-align: center;">16.2%</td></tr><tr><td class="results-table" style="text-align: left;">Total</td><td class="results-table" style="text-align: center;">14.0%</td><td class="results-table" style="text-align: center;">23.1%</td></tr><tr><td class="results-table" style="text-align: left;">Fatalities</td><td class="results-table" style="text-align: center;">0.03%</td><td class="results-table" style="text-align: center;">0.08%</td></tr><tr><td class="results-table" style="text-align: left;">%>70</td><td class="results-table" style="text-align: center;">0.0%</td><td class="results-table" style="text-align: center;">50.0%</td></tr><tr><td class="results-table" style="text-align: left;">IFR</td><td class="results-table" style="text-align: center;">0.21%</td><td class="results-table" style="text-align: center;">0.35%</td></tr><tr><td class="results-table" style="text-align: left;">Days to Peak</td><td class="results-table" style="text-align: center;">49</td><td class="results-table" style="text-align: center;">60</td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="Restrict-Elderly-Visits">
+<h2>Restrict Elderly Visits<a class="headerlink" href="#Restrict-Elderly-Visits" title="Permalink to this headline">¶</a></h2>
 <p>Again, as with the <a class="reference internal" href="hit.html#3.-Restrict-Elderly-Visits"><span class="std std-ref">SIR simulations</span></a>, we will restrict visits to the elderly, HOWEVER, care home workers will continue to have access.</p>
 <p>The policy measure is implemented on day 30 and maintained for another 120 days. There will be no other restrictions.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">no_visits</span> <span class="o">=</span> <span class="n">Restriction</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;no_visits&#39;</span><span class="p">,</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="n">criteria</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;visit&#39;</span><span class="p">})</span>
@@ -939,7 +1018,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/load_96_0.png" src="_images/load_96_0.png" />
+<img alt="_images/load_107_0.png" src="_images/load_107_0.png" />
 </div>
 </div>
 <p>Below we show a representative simulation:</p>
