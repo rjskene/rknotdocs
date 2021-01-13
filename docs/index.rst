@@ -27,3 +27,4 @@ RKnot - Beta
 
    hit
    load
+   multi

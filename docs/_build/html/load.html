@@ -40,6 +40,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Multiple Jurisdictions" href="multi.html" />
     <link rel="prev" title="SIR: Factors Influencing Spread" href="hit.html" /> 
 </head>
 
@@ -118,6 +119,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="multi.html">Multiple Jurisdictions</a></li>
 </ul>
 
             
@@ -488,7 +490,7 @@ div.rendered_html tbody tr:hover {
 <span class="n">vbox</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="mi">344</span><span class="p">,</span> <span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="mi">344</span><span class="p">}</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;groups&#39;</span><span class="p">:</span> <span class="n">groups</span><span class="p">,</span> <span class="s1">&#39;density&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;tmr_curve&#39;</span><span class="p">:</span> <span class="n">tmr</span><span class="p">,</span> <span class="s1">&#39;vboxes&#39;</span><span class="p">:</span> <span class="n">vbox</span><span class="p">,</span> <span class="s1">&#39;events&#39;</span><span class="p">:</span> <span class="n">events</span><span class="p">}</span>
 
-<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 
 <span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
@@ -1387,7 +1389,7 @@ array([[  6780,      2,      1,      0,      0,      1,      1,    408,
 <table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">Schools<br>10Max<br>75ADH</th><th class="results-table" style="text-align: center;">Schools<br>10Max</th></tr></thead><tbody><tr><td class="results-table" style="text-align: left;">Peak</td><td class="results-table" style="text-align: center;">32.5%</td><td class="results-table" style="text-align: center;">29.4%</td></tr><tr><td class="results-table" style="text-align: left;">HIT</td><td class="results-table" style="text-align: center;">33.2%</td><td class="results-table" style="text-align: center;">31.3%</td></tr><tr><td class="results-table" style="text-align: left;">Total</td><td class="results-table" style="text-align: center;">33.9%</td><td class="results-table" style="text-align: center;">33.1%</td></tr><tr><td class="results-table" style="text-align: left;">Fatalities</td><td class="results-table" style="text-align: center;">0.22%</td><td class="results-table" style="text-align: center;">0.24%</td></tr><tr><td class="results-table" style="text-align: left;">%>70</td><td class="results-table" style="text-align: center;">100.0%</td><td class="results-table" style="text-align: center;">95.8%</td></tr><tr><td class="results-table" style="text-align: left;">IFR</td><td class="results-table" style="text-align: center;">0.65%</td><td class="results-table" style="text-align: center;">0.72%</td></tr><tr><td class="results-table" style="text-align: left;">Days to Peak</td><td class="results-table" style="text-align: center;">50</td><td class="results-table" style="text-align: center;">50</td></tr></tbody></table></div>
 </div>
 <p>We can see that 75% adherence results in a slightly larger outbreak with a more abrupt tail (evidenced by the narrower spread between Peak/HIT/Total infections). Fatalities were also inline and confined to only the oldest age groups.</p>
-<div id="Restriction-for-Schoos"></div></div>
+<div id="Restriction-for-Schools"></div></div>
 <div class="section" id="Separate-Restrictions-for-Schools">
 <h3>Separate Restrictions for Schools<a class="headerlink" href="#Separate-Restrictions-for-Schools" title="Permalink to this headline">¶</a></h3>
 <p>The scenarios up to now have assumed exactly zero policy restrictions on School box interactions. In reality, schools have implemented soccial distancing policies designed to limit spread, which we will attempt to mimic.</p>
@@ -1463,7 +1465,7 @@ groups had flattened out.* <a class="reference external" href="https://covid-19.
 <table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">Schools<br>25Max<br>75ADH</th><th class="results-table" style="text-align: center;">Home Care<br>10Max</th></tr></thead><tbody><tr><td class="results-table" style="text-align: left;">Peak</td><td class="results-table" style="text-align: center;">21.6%</td><td class="results-table" style="text-align: center;">7.4%</td></tr><tr><td class="results-table" style="text-align: left;">HIT</td><td class="results-table" style="text-align: center;">24.6%</td><td class="results-table" style="text-align: center;">7.8%</td></tr><tr><td class="results-table" style="text-align: left;">Total</td><td class="results-table" style="text-align: center;">29.0%</td><td class="results-table" style="text-align: center;">8.1%</td></tr><tr><td class="results-table" style="text-align: left;">Fatalities</td><td class="results-table" style="text-align: center;">0.26%</td><td class="results-table" style="text-align: center;">0.18%</td></tr><tr><td class="results-table" style="text-align: left;">%>70</td><td class="results-table" style="text-align: center;">96.2%</td><td class="results-table" style="text-align: center;">100.0%</td></tr><tr><td class="results-table" style="text-align: left;">IFR</td><td class="results-table" style="text-align: center;">0.90%</td><td class="results-table" style="text-align: center;">2.21%</td></tr><tr><td class="results-table" style="text-align: left;">Days to Peak</td><td class="results-table" style="text-align: center;">80</td><td class="results-table" style="text-align: center;">40</td></tr></tbody></table></div>
 </div>
 <p>We can see from the above that providing exclusions for schools, despite including some restrictions without those schools, significantly impairs the impact of restrictions in the broader economy.</p>
-<p>We must consider if an outbreak can ever be prevented if we open schools (and we cannot reduce daily contacts at schools to less than 25 per day).</p>
+<p>We must consider if an outbreak can ever be prevented if we open schools (and we cannot reduce daily contacts at schools to less than maximum 25 per day).</p>
 </div>
 </div>
 </div>
@@ -1475,6 +1477,8 @@ groups had flattened out.* <a class="reference external" href="https://covid-19.
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="multi.html" class="btn btn-neutral float-right" title="Multiple Jurisdictions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="hit.html" class="btn btn-neutral float-left" title="SIR: Factors Influencing Spread" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
