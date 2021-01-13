@@ -424,16 +424,17 @@ div.rendered_html tbody tr:hover {
 <p>With our credible model for dynamic transmission at the contact level and our ability to size environments with approriate contact distributions, we can show the true power of <strong>RKnot</strong> in modelling complex scenarios.</p>
 <p>We <a class="reference internal" href="load.html#Capacity-Restriction"><span class="std std-ref">have previously shown</span></a> that contact restrictions and social distancing in any one community <em>should</em> be effective in eliminating <code class="docutils literal notranslate"><span class="pre">sars-cov-2</span></code> relatively quickly. Across the world, howvever, many states, provinces, and countries, have experienced second and third waves spaced out months apart despite various forms of strict quarantines and lockdowns.</p>
 <p>So why haven’t they been effective?</p>
-<p>In part, this has resulted from the many exceptions made to these restrictions, in particular, schools remaining open in many jurisdictions.</p>
+<p>In part, this has resulted from the many exceptions made to these restrictions, in particular, <a class="reference internal" href="load.html#Schools"><span class="std std-ref">schools remaining open</span></a> in many jurisdictions.</p>
 <p>We must also consider the impact of multiple jurisdictions that have unique characteristics, set policy independently, and, importantly, allow travel between them.</p>
 <p>We will focus on two jurisdictions to start, building to four, and building in complexity along the way.</p>
 <p>To start, we will simply double the size of the environment used in <a class="reference internal" href="load.html"><span class="doc">our dynamic transmission risk models</span></a>. Thus,</p>
 <ul class="simple">
-<li><p>n = 20,000</p></li>
+<li><p>n = 20,000 and 4 initial infections</p></li>
 <li><p>8 groups, split evenly into two states: “East State” and “West State”</p></li>
 <li><p>the states will be exact reflections of each other:</p>
 <ul>
 <li><p>same size, n = 10,000</p></li>
+<li><p>2 initial infections each</p></li>
 <li><p>same demographic mix</p></li>
 <li><p>same number of events</p></li>
 </ul>
@@ -446,6 +447,7 @@ div.rendered_html tbody tr:hover {
 <span class="kn">from</span> <span class="nn">rknot</span> <span class="kn">import</span> <span class="n">Sim</span><span class="p">,</span> <span class="n">Chart</span>
 <span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Restriction</span><span class="p">,</span> <span class="n">Quarantine</span>
 <span class="kn">from</span> <span class="nn">rknot.dots.fhutch</span> <span class="kn">import</span> <span class="n">tmr</span>
+<span class="kn">from</span> <span class="nn">rknot.sims</span> <span class="kn">import</span> <span class="n">us_w_load_18</span><span class="o">.</span><span class="n">events</span>
 
 <span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;W0-19&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2700</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ifr</span><span class="o">=</span><span class="mf">0.00003</span><span class="p">,</span> <span class="n">mover</span><span class="o">=.</span><span class="mi">98</span><span class="p">)</span>
 <span class="n">group2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;W20-49&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">4100</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ifr</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span> <span class="n">mover</span><span class="o">=.</span><span class="mi">98</span><span class="p">)</span>
@@ -495,8 +497,15 @@ div.rendered_html tbody tr:hover {
 <p></p></div>
 </div>
 <p>On a proportionate basis, this structure is indistinguishable from the <code class="docutils literal notranslate"><span class="pre">n=10000</span></code>, 4 group structure used in the viral load simulations. And it should result in the same outbreak curve, on average.</p>
+<p>To test, we ran 50 sims for a quick comparison to the base <a class="reference internal" href="load.html#Events"><span class="std std-ref">Events</span></a> structure that we are building from.</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="results-table center"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">Mixed<br>$R_0$>0</th><th class="results-table" style="text-align: center;">Events w Load<br>$R_0$>0</th></tr></thead><tbody><tr><td class="results-table" style="text-align: left;">n, $R_0$ > 0</td><td class="results-table" style="text-align: center;">28</td><td class="results-table" style="text-align: center;">68</td></tr><tr><td class="results-table" style="text-align: left;">n</td><td class="results-table" style="text-align: center;">50</td><td class="results-table" style="text-align: center;">250</td></tr><tr><td class="results-table" style="text-align: left;">Peak</td><td class="results-table" style="text-align: center;">23.5%</td><td class="results-table" style="text-align: center;">32.7%</td></tr><tr><td class="results-table" style="text-align: left;">HIT</td><td class="results-table" style="text-align: center;">38.0%</td><td class="results-table" style="text-align: center;">40.6%</td></tr><tr><td class="results-table" style="text-align: left;">Total</td><td class="results-table" style="text-align: center;">53.3%</td><td class="results-table" style="text-align: center;">51.5%</td></tr><tr><td class="results-table" style="text-align: left;">Fatalities</td><td class="results-table" style="text-align: center;">0.32%</td><td class="results-table" style="text-align: center;">0.30%</td></tr><tr><td class="results-table" style="text-align: left;">%>70</td><td class="results-table" style="text-align: center;">51.3%</td><td class="results-table" style="text-align: center;">6.5%</td></tr><tr><td class="results-table" style="text-align: left;">IFR</td><td class="results-table" style="text-align: center;">0.60%</td><td class="results-table" style="text-align: center;">0.60%</td></tr><tr><td class="results-table" style="text-align: left;">Days to Peak</td><td class="results-table" style="text-align: center;">95</td><td class="results-table" style="text-align: center;">74</td></tr></tbody></table></div>
+</div>
 <p>As expected, we can see above that, on average, the spread results generated in this structure match those of the <a class="reference internal" href="load.html#Events"><span class="std std-ref">Events structure</span></a> from the viral load analysis.</p>
-<p>The curves do tend to have a different shape, however, as per the sample sim below:</p>
+<p>Notice, however, that the average peak is lower and Days to Peak higher in our new scenario despite all other metrics being the same. We can see this in the sample simulation below:</p>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
@@ -507,7 +516,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p></p></div>
 </div>
-<p>Above, we can see a “wave” effect later in the outbreak. We can seperate the curve among the constituent states to see how each state’s curve added to the aggregate.</p>
+<p>Above, we can see a “wave” effect occuring with two peaks forming, the first around 70 days and second around 115 days. We can seperate the curve among the constituent states to see how each state’s curve might have added to the aggregate.</p>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
