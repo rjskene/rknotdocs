@@ -98,7 +98,11 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="hit.html">SIR: Factors Influencing Spread</a></li>
 <li class="toctree-l1"><a class="reference internal" href="load.html">Dynamic Transmission Risk</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Multiple Jurisdictions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Multiple Jurisdictions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Mixed">Mixed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Borders">Borders</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -427,6 +431,8 @@ div.rendered_html tbody tr:hover {
 <p>In part, this has resulted from the many exceptions made to these restrictions, in particular, <a class="reference internal" href="load.html#Schools"><span class="std std-ref">schools remaining open</span></a> in many jurisdictions.</p>
 <p>We must also consider the impact of multiple jurisdictions that have unique characteristics, set policy independently, and, importantly, allow travel between them.</p>
 <p>We will focus on two jurisdictions to start, building to four, and building in complexity along the way.</p>
+<div class="section" id="Mixed">
+<h2>Mixed<a class="headerlink" href="#Mixed" title="Permalink to this headline">¶</a></h2>
 <p>To start, we will simply double the size of the environment used in <a class="reference internal" href="load.html"><span class="doc">our dynamic transmission risk models</span></a>. Thus,</p>
 <ul class="simple">
 <li><p>n = 20,000 and 4 initial infections</p></li>
@@ -496,16 +502,19 @@ div.rendered_html tbody tr:hover {
 </div>
 <p></p></div>
 </div>
-<p>On a proportionate basis, this structure is indistinguishable from the <code class="docutils literal notranslate"><span class="pre">n=10000</span></code>, 4 group structure used in the viral load simulations. And it should result in the same outbreak curve, on average.</p>
+<p>On a proportionate basis, this structure is indistinguishable from the <code class="docutils literal notranslate"><span class="pre">n=10,000</span></code>, 4 group structure used in the viral load simulations. And it should result in the same outbreak curve, on average.</p>
 <p>To test, we ran 50 sims for a quick comparison to the base <a class="reference internal" href="load.html#Events"><span class="std std-ref">Events</span></a> structure that we are building from.</p>
+<p>As expected, we can see above that, on average, the spread results generated in this structure match those of the <a class="reference internal" href="load.html#Events"><span class="std std-ref">Events structure</span></a> from the viral load analysis. Notice, however, that an outbreak (<span class="math notranslate nohighlight">\(R_0\)</span> &gt; 0) occured much more frequently: 56% vs. 27%. This is likely a result of the greater number of initial infections (4 vs. 2).</p>
+<p>Also notice that the average Peak is lower and Days to Peak higher in our new scenario despite all other metrics being the same.</p>
+<p>We can also see below that the distribution of the Mixed environment is more irregular than the base structure. Outbreaks are sometimes contained to one state and other times hit both states badly and various points in between.</p>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area rendered_html docutils container">
-<table class="results-table center"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">Mixed<br>$R_0$>0</th><th class="results-table" style="text-align: center;">Events w Load<br>$R_0$>0</th></tr></thead><tbody><tr><td class="results-table" style="text-align: left;">n, $R_0$ > 0</td><td class="results-table" style="text-align: center;">28</td><td class="results-table" style="text-align: center;">68</td></tr><tr><td class="results-table" style="text-align: left;">n</td><td class="results-table" style="text-align: center;">50</td><td class="results-table" style="text-align: center;">250</td></tr><tr><td class="results-table" style="text-align: left;">Peak</td><td class="results-table" style="text-align: center;">23.5%</td><td class="results-table" style="text-align: center;">32.7%</td></tr><tr><td class="results-table" style="text-align: left;">HIT</td><td class="results-table" style="text-align: center;">38.0%</td><td class="results-table" style="text-align: center;">40.6%</td></tr><tr><td class="results-table" style="text-align: left;">Total</td><td class="results-table" style="text-align: center;">53.3%</td><td class="results-table" style="text-align: center;">51.5%</td></tr><tr><td class="results-table" style="text-align: left;">Fatalities</td><td class="results-table" style="text-align: center;">0.32%</td><td class="results-table" style="text-align: center;">0.30%</td></tr><tr><td class="results-table" style="text-align: left;">%>70</td><td class="results-table" style="text-align: center;">51.3%</td><td class="results-table" style="text-align: center;">6.5%</td></tr><tr><td class="results-table" style="text-align: left;">IFR</td><td class="results-table" style="text-align: center;">0.60%</td><td class="results-table" style="text-align: center;">0.60%</td></tr><tr><td class="results-table" style="text-align: left;">Days to Peak</td><td class="results-table" style="text-align: center;">95</td><td class="results-table" style="text-align: center;">74</td></tr></tbody></table></div>
+<div class="output_area docutils container">
+<img alt="_images/multi_8_0.png" src="_images/multi_8_0.png" />
 </div>
-<p>As expected, we can see above that, on average, the spread results generated in this structure match those of the <a class="reference internal" href="load.html#Events"><span class="std std-ref">Events structure</span></a> from the viral load analysis.</p>
-<p>Notice, however, that the average peak is lower and Days to Peak higher in our new scenario despite all other metrics being the same. We can see this in the sample simulation below:</p>
+</div>
+<p>We can see this in the sample simulation below:</p>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
@@ -530,7 +539,74 @@ div.rendered_html tbody tr:hover {
 <p>So, from above, we can see that what looked like a single curve and a single outbreak was, in fact, two outbreaks among the two “states”, West and East.</p>
 <p>What is remarkable is that the dots from both states are free to mix in the main grid. The separate waves result simply from isolated event spaces where only the largest events (3+ capacity) occur within the state groups.</p>
 <p>Next we will show the impact of further isolating the two states.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="Borders">
+<h2>Borders<a class="headerlink" href="#Borders" title="Permalink to this headline">¶</a></h2>
+<p>Now we will split the environment in two halves, separating the subjects of the West and East States by a border. They cannot interact in any way.</p>
+<p>This can be accomplished by simply assign a separate box to the groups in each state, as per below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">wstate</span><span class="p">:</span>
+    <span class="n">w</span><span class="p">[</span><span class="s1">&#39;box&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bounds&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">144</span><span class="p">],</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;West State&#39;</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">estate</span><span class="p">:</span>
+    <span class="n">e</span><span class="p">[</span><span class="s1">&#39;box&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bounds&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">144</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">144</span><span class="p">],</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;East State&#39;</span><span class="p">}</span>
+
+<span class="n">groups</span> <span class="o">=</span> <span class="n">wstate</span> <span class="o">+</span> <span class="n">estate</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;groups&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">groups</span>
+</pre></div>
+</div>
+<p>This results in the environment shown below:</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="text-align: center">
+    <video width='900px' height='376.56903765690373px'
+    src="https://storage.googleapis.com/rknotvids/multi/split_agg_dots_only.mp4" controls>Video Failed to Load</video>
+</div>
+<p></p></div>
+</div>
+<p>We ran 50 simulations to compare with the Mixed environment:</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">Borders<br>$R_0$>0</th><th class="results-table" style="text-align: center;">Mixed<br>$R_0$>0</th></tr></thead><tbody><tr><td class="results-table" style="text-align: left;">n, $R_0$ > 0</td><td class="results-table" style="text-align: center;">26</td><td class="results-table" style="text-align: center;">28</td></tr><tr><td class="results-table" style="text-align: left;">n</td><td class="results-table" style="text-align: center;">50</td><td class="results-table" style="text-align: center;">50</td></tr><tr><td class="results-table" style="text-align: left;">Peak</td><td class="results-table" style="text-align: center;">19.1%</td><td class="results-table" style="text-align: center;">23.5%</td></tr><tr><td class="results-table" style="text-align: left;">HIT</td><td class="results-table" style="text-align: center;">25.0%</td><td class="results-table" style="text-align: center;">38.0%</td></tr><tr><td class="results-table" style="text-align: left;">Total</td><td class="results-table" style="text-align: center;">31.5%</td><td class="results-table" style="text-align: center;">53.3%</td></tr><tr><td class="results-table" style="text-align: left;">Fatalities</td><td class="results-table" style="text-align: center;">0.20%</td><td class="results-table" style="text-align: center;">0.32%</td></tr><tr><td class="results-table" style="text-align: left;">%>70</td><td class="results-table" style="text-align: center;">50.8%</td><td class="results-table" style="text-align: center;">51.3%</td></tr><tr><td class="results-table" style="text-align: left;">IFR</td><td class="results-table" style="text-align: center;">0.61%</td><td class="results-table" style="text-align: center;">0.60%</td></tr><tr><td class="results-table" style="text-align: left;">Days to Peak</td><td class="results-table" style="text-align: center;">78</td><td class="results-table" style="text-align: center;">95</td></tr></tbody></table></div>
+</div>
+<p>We can see:</p>
+<ul class="simple">
+<li><p>an outbreak occurs with about the same frequency; likely b/c both environments have the same number of initial infections</p></li>
+<li><p>the size of the outbreaks is significantly lower in the split environment</p></li>
+<li><p>the peaks are significantly lower in the split environment</p></li>
+</ul>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div class="admonition note"><p class="admonition-title fa fa-exclamation-circle">Contact Mix</p><p>Importantly, doubling the number of subjects does <em>not</em> change the number of contacts. Instead, it changes <em>who</em> is contacted. And so when the environment is split and the contact mix becomes more heterogeneous, spread is curtailed.</p></div></div>
+</div>
+<p>Again, we see below that the contact distribution of the Split environment is quite different from the Mixed environment.</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/multi_23_0.png" src="_images/multi_23_0.png" />
+</div>
+</div>
+<p>Here, the same number of outbreaks occur, but the virus cannot cross the border, so at worst can only spread amongst half the population.</p>
+<p>Below we see a representative simulation that evidences the border separating the two states. We can see in the grid on the left that the outbreak was entirely isolated to the West state and did <em>not</em> seep into the East state at all. This resulted in the shorter, more muted peak.</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="text-align: center">
+    <video width='900px' height='376.56903765690373px'
+    src="https://storage.googleapis.com/rknotvids/multi/split_agg.mp4" controls>Video Failed to Load</video>
+</div>
+<p></p></div>
+</div>
 <p>To be continued …</p>
+</div>
 </div>
 
 
