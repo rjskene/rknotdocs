@@ -64,3 +64,5 @@ master_doc = 'index'
 mathjax_config = {
     'TeX': {'equationNumbers': {'autoNumber': 'AMS', 'useLabelIds': True}},
 }
+
+copyright = u'2021 Ryan Skene. All rights reserved.'
