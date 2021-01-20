@@ -650,7 +650,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area rendered_html docutils container">
 <div style="text-align: center">
     <video width='900px' height='376.56903765690373px'
-    src="https://storage.googleapis.com/rknotvids/multi/split_double_peaks.mp4" controls>Video Failed to Load</video>
+    src="https://storage.googleapis.com/rknotvids/multi/split_double_tots.mp4" controls>Video Failed to Load</video>
 </div>
 <p></p></div>
 </div>
@@ -680,6 +680,7 @@ div.rendered_html tbody tr:hover {
 \[\begin{split}\\
 \frac{\text{100MM visitors annually}}{\text{330MM actual population}} *
 \frac{\text{10,000 pop}}{\text{state}} = \frac{\text{3,031 sim visitors annually}}{\text{state}}
+\\\;
 \\\frac{\text{3,031 sim visitors}}{\text{365 days}} = \textit{9 visitors } \text{per day per state}\end{split}\]</div>
 <p>To do this, we will create 8 random locations for each event (within each state’s box), then assign them to our 8 travel events.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Travel</span>
@@ -726,18 +727,6 @@ div.rendered_html tbody tr:hover {
 <div class="row" style="width=100%; display: flex; align-items: center; justify-content: center;"><div class="column" style="flex: 33.33%"><img src="https://storage.googleapis.com/rknotvids/multi/imgs/border_crossing-pickled_peakpie.png" style="width:100%"></div><div class="column" style="flex: 33.33%;"><table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">No <br> Peak</th><th class="results-table" style="text-align: center;">West <br> Peak</th><th class="results-table" style="text-align: center;">East <br> Peak</th><th class="results-table" style="text-align: center;">Double <br> Peak</th></tr></thead><tbody><tr><td class="results-table">Number of <br>Occurences<td class="results-table" style="text-align: center;">32</td><td class="results-table" style="text-align: center;">6</td><td class="results-table" style="text-align: center;">7</td><td class="results-table" style="text-align: center;">5</td></tr></tbody></table></div></div></div>
 </div>
 <p>Below we show a typical Double Peak outcome. The outbreak is almost entirely extinguished and in decline in the East state, but then spread takes hold <em>independently</em> in the West State and creates a second peak.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
-<span class="kn">from</span> <span class="nn">rknot.notebook</span> <span class="kn">import</span> <span class="n">animHTML</span>
-
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">animHTML</span><span class="p">(</span><span class="s1">&#39;multi/border_crossing_tots&#39;</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
@@ -936,20 +925,9 @@ array([[  5210,      1,      1,      0,      0,      1,      1,  15569,
 <li><p>On Tick 45, the subject returned to West State and is at least partly responsible for the re-emergence of the virus in that state.</p></li>
 </ul>
 <p>We can even confirm this visually by isolating that specific dot in the animation by passing <code class="docutils literal notranslate"><span class="pre">highlight=[5210]</span></code> at the Chart instantiation. We also slowed down the frame rate. You can see at Tick 44, the subject jumps from West to East and back very quickly.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">highlight</span><span class="o">=</span><span class="p">[</span><span class="mi">5210</span><span class="p">],</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_restricted</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">highlight</span><span class="o">=</span><span class="p">[</span><span class="mi">5210</span><span class="p">],</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_restricted</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
 </pre></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
-<span class="kn">from</span> <span class="nn">rknot.notebook</span> <span class="kn">import</span> <span class="n">animHTML</span>
-
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">animHTML</span><span class="p">(</span><span class="s1">&#39;multi/border_crossing_multi_SAMPLE_21_dots&#39;</span><span class="p">)))</span>
-</pre></div>
-</div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -1075,15 +1053,6 @@ array([[  5210,      1,      1,      0,      0,      1,      1,  15569,
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/Users/spindicate/Documents/programming/rknot/rknot/notebook/data.py:69: RuntimeWarning: invalid value encountered in double_scalars
-  _70 = _70/group_deps.sum()
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
@@ -1129,68 +1098,21 @@ array([[  5210,      1,      1,      0,      0,      1,      1,  15569,
 <img alt="_images/multi_77_0.png" src="_images/multi_77_0.png" />
 </div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">chsims</span> <span class="o">=</span> <span class="n">sims</span><span class="p">[</span><span class="n">last_date</span><span class="p">][</span><span class="s1">&#39;sims&#39;</span><span class="p">]</span>
-<span class="n">westrng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">eastrng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
-<span class="n">id_groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">westrng</span><span class="p">,</span> <span class="n">eastrng</span><span class="p">]</span>
-
-<span class="n">sstack</span> <span class="o">=</span> <span class="n">statestack</span><span class="p">(</span><span class="n">chsims</span><span class="p">,</span> <span class="n">id_groups</span><span class="p">)</span>
-<span class="n">peakset</span> <span class="o">=</span> <span class="n">peak_analysis</span><span class="p">(</span><span class="n">sstack</span><span class="p">)</span>
-<span class="n">savepath</span> <span class="o">=</span> <span class="n">peakpie</span><span class="p">(</span><span class="n">peakset</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">slug</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "722486d3ee92426ea484dee0018e159b", "version_major": 2, "version_minor": 0}</script></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="_images/multi_78_2.png" src="_images/multi_78_2.png" />
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">peakcomp</span><span class="p">(</span><span class="n">peakset</span><span class="p">,</span> <span class="n">slug</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-<div class="row" style="width=100%; display: flex; align-items: center; justify-content: center;"><div class="column" style="flex: 33.33%"><img src="https://storage.googleapis.com/rknotvids/multi/imgs/carehomes_10Max-pickled_peakpie.png" style="width:100%"></div><div class="column" style="flex: 33.33%;"><table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">No <br> Peak</th><th class="results-table" style="text-align: center;">Single <br> Peak</th><th class="results-table" style="text-align: center;">Double <br> Peak</th></tr></thead><tbody><tr><td class="results-table">Number of <br>Occurences<td class="results-table" style="text-align: center;">29</td><td class="results-table" style="text-align: center;">4</td><td class="results-table" style="text-align: center;">15</td></tr></tbody></table></div></div></div>
+<div class="row" style="width=100%; display: flex; align-items: center; justify-content: center;"><div class="column" style="flex: 33.33%"><img src="https://storage.googleapis.com/rknotvids/multi/imgs/carehomes_10Max-pickled_peakpie.png" style="width:100%"></div><div class="column" style="flex: 33.33%;"><table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">No <br> Peak</th><th class="results-table" style="text-align: center;">Single <br> Peak</th><th class="results-table" style="text-align: center;">Double <br> Peak</th></tr></thead><tbody><tr><td class="results-table">Number of <br>Occurences<td class="results-table" style="text-align: center;">31</td><td class="results-table" style="text-align: center;">0</td><td class="results-table" style="text-align: center;">29</td></tr></tbody></table></div></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[72]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
 <span class="kn">from</span> <span class="nn">rknot.notebook</span> <span class="kn">import</span> <span class="n">animHTML</span>
 
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">animHTML</span><span class="p">(</span><span class="s1">&#39;multi/carehome_10Max_tots&#39;</span><span class="p">)))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">animHTML</span><span class="p">(</span><span class="s1">&#39;multi/carehomes_10Max_tots&#39;</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -1200,7 +1122,7 @@ array([[  5210,      1,      1,      0,      0,      1,      1,  15569,
 <div class="output_area rendered_html docutils container">
 <div style="text-align: center">
     <video width='900px' height='376.56903765690373px'
-    src="https://storage.googleapis.com/rknotvids/multi/carehome_10Max_tots.mp4" controls>Video Failed to Load</video>
+    src="https://storage.googleapis.com/rknotvids/multi/carehomes_10Max_tots.mp4" controls>Video Failed to Load</video>
 </div>
 <p></p></div>
 </div>
@@ -1225,15 +1147,9 @@ array([[  5210,      1,      1,      0,      0,      1,      1,  15569,
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-<div class="row" style="width=100%; display: flex; align-items: center; justify-content: center;"><div class="column" style="flex: 33.33%"><img src="https://storage.googleapis.com/rknotvids/multi/imgs/carehomes_25Max-pickled_peakpie.png" style="width:100%"></div><div class="column" style="flex: 33.33%;"><table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">No <br> Peak</th><th class="results-table" style="text-align: center;">Single <br> Peak</th><th class="results-table" style="text-align: center;">Double <br> Peak</th></tr></thead><tbody><tr><td class="results-table">Number of <br>Occurences<td class="results-table" style="text-align: center;">29</td><td class="results-table" style="text-align: center;">4</td><td class="results-table" style="text-align: center;">15</td></tr></tbody></table></div></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area rendered_html docutils container">
 <div style="text-align: center">
     <video width='900px' height='376.56903765690373px'
-    src="https://storage.googleapis.com/rknotvids/multi/carehome_25Max_tots.mp4" controls>Video Failed to Load</video>
+    src="https://storage.googleapis.com/rknotvids/multi/carehomes_25Max_tots.mp4" controls>Video Failed to Load</video>
 </div>
 <p></p></div>
 </div>
@@ -1259,17 +1175,6 @@ array([[  5210,      1,      1,      0,      0,      1,      1,  15569,
 </div>
 <div class="output_area rendered_html docutils container">
 <div class="row" style="width=100%; display: flex; align-items: center; justify-content: center;"><div class="column" style="flex: 33.33%"><img src="https://storage.googleapis.com/rknotvids/multi/imgs/carehome_async_restrict-pickled_peakpie.png" style="width:100%"></div><div class="column" style="flex: 33.33%;"><table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">No <br> Peak</th><th class="results-table" style="text-align: center;">Single <br> Peak</th><th class="results-table" style="text-align: center;">Double <br> Peak</th></tr></thead><tbody><tr><td class="results-table">Number of <br>Occurences<td class="results-table" style="text-align: center;">26</td><td class="results-table" style="text-align: center;">5</td><td class="results-table" style="text-align: center;">19</td></tr></tbody></table></div></div></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
-<span class="kn">from</span> <span class="nn">rknot.notebook</span> <span class="kn">import</span> <span class="n">animHTML</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">animHTML</span><span class="p">(</span><span class="s1">&#39;multi/carehome_async_restrict_peaks&#39;</span><span class="p">)))</span>
-</pre></div>
-</div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
