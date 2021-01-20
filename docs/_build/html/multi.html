@@ -681,7 +681,7 @@ div.rendered_html tbody tr:hover {
 \frac{\text{100MM visitors annually}}{\text{330MM actual population}} *
 \frac{\text{10,000 pop}}{\text{state}} = \frac{\text{3,031 sim visitors annually}}{\text{state}}
 \\\frac{\text{3,031 sim visitors}}{\text{365 days}} = \textit{9 visitors } \text{per day per state}\end{split}\]</div>
-<p>To do this, we will create 8 random locations for each event (within the each state’s box), then assign them to our 8 travel events.</p>
+<p>To do this, we will create 8 random locations for each event (within each state’s box), then assign them to our 8 travel events.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Travel</span>
 
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
@@ -718,16 +718,16 @@ div.rendered_html tbody tr:hover {
 <img alt="_images/multi_37_0.png" src="_images/multi_37_0.png" />
 </div>
 </div>
-<p>We can see the impact of border travel as constructed is limited. The structure actually resulted in a few fewer outbreaks and resulted in similar single and double peak occurences.</p>
+<p>We see only a limited impact from border travel as constructed. The structure actually resulted in fewer outbreaks and resulted in similar single and double peak occurences.</p>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
 <div class="row" style="width=100%; display: flex; align-items: center; justify-content: center;"><div class="column" style="flex: 33.33%"><img src="https://storage.googleapis.com/rknotvids/multi/imgs/border_crossing-pickled_peakpie.png" style="width:100%"></div><div class="column" style="flex: 33.33%;"><table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">No <br> Peak</th><th class="results-table" style="text-align: center;">West <br> Peak</th><th class="results-table" style="text-align: center;">East <br> Peak</th><th class="results-table" style="text-align: center;">Double <br> Peak</th></tr></thead><tbody><tr><td class="results-table">Number of <br>Occurences<td class="results-table" style="text-align: center;">32</td><td class="results-table" style="text-align: center;">6</td><td class="results-table" style="text-align: center;">7</td><td class="results-table" style="text-align: center;">5</td></tr></tbody></table></div></div></div>
 </div>
-<p>Below we show a typical Double Peak outcome. In the sim below, the outbreak is almost entirely extinguished and in decline in the East state, but then spread takes hold in the West State and creates a second peak.</p>
+<p>Below we show a typical Double Peak outcome. The outbreak is almost entirely extinguished and in decline in the East state, but then spread takes hold <em>independently</em> in the West State and creates a second peak.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -826,13 +826,13 @@ div.rendered_html tbody tr:hover {
 <div class="output_area rendered_html docutils container">
 <div class="row" style="width=100%; display: flex; align-items: center; justify-content: center;"><div class="column" style="flex: 33.33%"><img src="https://storage.googleapis.com/rknotvids/multi/imgs/border_crossing_multi_peakpie.png" style="width:100%"></div><div class="column" style="flex: 33.33%;"><table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">No <br> Peak</th><th class="results-table" style="text-align: center;">Single <br> Peak</th><th class="results-table" style="text-align: center;">Double <br> Peak</th></tr></thead><tbody><tr><td class="results-table">Number of <br>Occurences<td class="results-table" style="text-align: center;">31</td><td class="results-table" style="text-align: center;">1</td><td class="results-table" style="text-align: center;">20</td></tr></tbody></table></div></div></div>
 </div>
-<p>We can some additional tools to confirm that mixing between the states was in fact the culprit in increased prevalence of double peaks. The easiest way to determine this to find simulations where a state reach <em>zero</em> infections, effectively eradicating the virus in prior scenarios, only to have the virus re-emerge.</p>
+<p>We can use some additional tools to confirm that mixing between the states was in fact the culprit in increased prevalence of double peaks. The easiest way is to find simulations where a state reaches <em>zero</em> infections, effectively eradicating the virus in prior scenarios, only to have the virus re-emerge.</p>
 <p>This can <em>ONLY</em> occur if the virus was transported in from the other state.</p>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a1cb255d689541e7aacbce00a1f0fc18", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "ec302a2119d84ebcb46da0fef6721d41", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -852,7 +852,7 @@ The above tool tells us that in *5* simulations a state inherited an infection *
 <p>It also tells us the index position of those states in our grouping of simulations. We will isolate simulation # 21, where West State inherited an outbreak.</p>
 <p>We can isolate the specific subject that carried the virus.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[81]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -866,7 +866,7 @@ The above tool tells us that in *5* simulations a state inherited an infection *
 <p>Above is the number of current infections in the West State at each tick during the simulation. We can clearly see an <em>entire 14-day period</em> during that simulation where the West State had <em>zero</em> infections.</p>
 <p>Then, on Tick 44, a single new infection emerges. We can easily isolate which subject was infected.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[83]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -882,7 +882,7 @@ The above tool tells us that in *5* simulations a state inherited an infection *
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[83]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -894,58 +894,29 @@ array([[  5210,      1,      1,      0,      0,      1,      1,  15569,
 </pre></div></div>
 </div>
 <p>The array above shows the state of subject 5210 as of Tick 44. We can expand the dot matrix to ticks both before and after to get a sense of this subjects movement.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[84]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">id_new</span> <span class="o">=</span> <span class="n">west</span><span class="p">[</span><span class="n">west</span><span class="p">[:,</span> <span class="n">ML</span><span class="p">[</span><span class="s1">&#39;is_inf&#39;</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">dottrace</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">dotlog</span><span class="p">[</span><span class="n">i_erad</span> <span class="o">-</span> <span class="mi">4</span> <span class="p">:</span> <span class="n">i_erad</span> <span class="o">+</span> <span class="mi">4</span><span class="p">,</span> <span class="n">id_new</span><span class="p">]</span>
-<span class="n">dottrace</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[84]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-array([[  5210,      1,      1,      0,      1,      0,      0,   2585,
-            18,    138,   7736,     54,    105,      0,   1515,      1,
-         35205,      5,     98,    100,     20,     -1,     -1,     -1,
-            -1,      0,      1],
-       [  5210,      1,      1,      0,      1,      0,      0,   7736,
-            54,    105,   7736,     54,    105,      1,      1,      1,
-            -1,      5,     98,    100,     20,     -1,     -1,     -1,
-            -1,      1,      1],
-       [  5210,      1,      1,      0,      1,      0,      0,   7736,
-            54,    105,   7736,     54,    105,      0,      1,      1,
-            -1,      5,     98,    100,     20,     -1,     -1,     -1,
-            -1,      1,      1],
-       [  5210,      1,      1,      0,      1,      0,      0,   7736,
-            54,    105,  15569,    109,     18,      0,      2,      1,
-        224729,      5,     98,    100,     20,     -1,     -1,     -1,
-            -1,      1,      1],
-       [  5210,      1,      1,      0,      1,      0,      0,  18426,
-           128,    139,  15569,    109,     18,      0,  17607,      1,
-        214892,      5,     98,    100,     20,     -1,     -1,     -1,
-            -1,      1,      0],
-       [  5210,      1,      1,      0,      0,      1,      1,  15569,
-           109,     18,  15569,    109,     18,      1,      2,      0,
-        224729,      5,     98,    100,     20,     44,     -1,     75,
-           441,      1,      1],
-       [  5210,      1,      1,      0,      0,      1,      1,   7736,
-            54,    105,   7736,     54,    105,      1,      1,      1,
-            -1,      5,     98,    100,     20,     44,     -1,     75,
-           441,      1,      1],
-       [  5210,      1,      1,      0,      0,      1,      1,   7736,
-            54,    105,   7736,     54,    105,      0,      1,      1,
-            -1,      5,     98,    100,     20,     44,     -1,     75,
-           441,      1,      1]], dtype=int32)
-</pre></div></div>
 </div>
 <p>We can take the array above and put it in a table for easier viewing:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">i_erad</span> <span class="o">-</span> <span class="mi">4</span><span class="p">,</span> <span class="n">i_erad</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">dtrace</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">28</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="n">dtrace</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ticks</span>
+<span class="n">dtrace</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">dottrace</span>
+</pre></div>
+</div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
@@ -955,7 +926,7 @@ array([[  5210,      1,      1,      0,      1,      0,      0,   2585,
     background-color: #ec838a;
 }
 </style>
-<table class="results-table"><thead><tr><th>id</th><th>group_id</th><th>is_inf</th><th>x</th><th>y</th><th>homex</th><th>homey</th><th>event_id</th></tr></thead><tbody><tr><td class="results-table" style="text-align: center;">5210</td><td class="results-table" style="text-align: center;">1</td><td class="results-table" style="text-align: center;">0</td><td class="results-table" style="text-align: center;">18</td><td class="results-table" style="text-align: center;">138</td><td class="results-table" style="text-align: center;">54</td><td class="results-table" style="text-align: center;">105</td><td class="results-table" style="text-align: center;">35205</td></tr><tr><td class="results-table" style="text-align: center;">5210</td><td class="results-table" style="text-align: center;">1</td><td class="results-table" style="text-align: center;">0</td><td class="results-table" style="text-align: center;">54</td><td class="results-table" style="text-align: center;">105</td><td class="results-table" style="text-align: center;">54</td><td class="results-table" style="text-align: center;">105</td><td class="results-table" style="text-align: center;">-1</td></tr><tr><td class="results-table" style="text-align: center;">5210</td><td class="results-table" style="text-align: center;">1</td><td class="results-table" style="text-align: center;">0</td><td class="results-table" style="text-align: center;">54</td><td class="results-table" style="text-align: center;">105</td><td class="results-table" style="text-align: center;">54</td><td class="results-table" style="text-align: center;">105</td><td class="results-table" style="text-align: center;">-1</td></tr><tr><td class="results-table" style="text-align: center;">5210</td><td class="results-table" style="text-align: center;">1</td><td class="results-table" style="text-align: center;">0</td><td class="results-table" style="text-align: center;">54</td><td class="results-table" style="text-align: center;">105</td><td class="results-table" style="text-align: center;">109</td><td class="results-table" style="text-align: center;">18</td><td class="results-table" style="text-align: center;">224729</td></tr><tr><td class="results-table nb-hlite" style="text-align: center;">5210</td><td class="results-table nb-hlite" style="text-align: center;">1</td><td class="results-table nb-hlite" style="text-align: center;">0</td><td class="results-table nb-hlite" style="text-align: center;">128</td><td class="results-table nb-hlite" style="text-align: center;">139</td><td class="results-table nb-hlite" style="text-align: center;">109</td><td class="results-table nb-hlite" style="text-align: center;">18</td><td class="results-table nb-hlite" style="text-align: center;">214892</td></tr><tr><td class="results-table nb-hlite" style="text-align: center;">5210</td><td class="results-table nb-hlite" style="text-align: center;">1</td><td class="results-table nb-hlite" style="text-align: center;">1</td><td class="results-table nb-hlite" style="text-align: center;">109</td><td class="results-table nb-hlite" style="text-align: center;">18</td><td class="results-table nb-hlite" style="text-align: center;">109</td><td class="results-table nb-hlite" style="text-align: center;">18</td><td class="results-table nb-hlite" style="text-align: center;">224729</td></tr><tr><td class="results-table" style="text-align: center;">5210</td><td class="results-table" style="text-align: center;">1</td><td class="results-table" style="text-align: center;">1</td><td class="results-table" style="text-align: center;">54</td><td class="results-table" style="text-align: center;">105</td><td class="results-table" style="text-align: center;">54</td><td class="results-table" style="text-align: center;">105</td><td class="results-table" style="text-align: center;">-1</td></tr><tr><td class="results-table" style="text-align: center;">5210</td><td class="results-table" style="text-align: center;">1</td><td class="results-table" style="text-align: center;">1</td><td class="results-table" style="text-align: center;">54</td><td class="results-table" style="text-align: center;">105</td><td class="results-table" style="text-align: center;">54</td><td class="results-table" style="text-align: center;">105</td><td class="results-table" style="text-align: center;">-1</td></tr></tbody></table></div>
+<table class="results-table"><thead><tr><th>tick</th><th>id</th><th>group_id</th><th>is_inf</th><th>x</th><th>y</th><th>homex</th><th>homey</th><th>event_id</th></tr></thead><tbody><tr><td class="results-table">40</td><td class="results-table" style="text-align: center;">5210</td><td class="results-table" style="text-align: center;">1</td><td class="results-table" style="text-align: center;">0</td><td class="results-table" style="text-align: center;">18</td><td class="results-table" style="text-align: center;">138</td><td class="results-table" style="text-align: center;">54</td><td class="results-table" style="text-align: center;">105</td><td class="results-table" style="text-align: center;">35205</td></tr><tr><td class="results-table">41</td><td class="results-table" style="text-align: center;">5210</td><td class="results-table" style="text-align: center;">1</td><td class="results-table" style="text-align: center;">0</td><td class="results-table" style="text-align: center;">54</td><td class="results-table" style="text-align: center;">105</td><td class="results-table" style="text-align: center;">54</td><td class="results-table" style="text-align: center;">105</td><td class="results-table" style="text-align: center;">-1</td></tr><tr><td class="results-table">42</td><td class="results-table" style="text-align: center;">5210</td><td class="results-table" style="text-align: center;">1</td><td class="results-table" style="text-align: center;">0</td><td class="results-table" style="text-align: center;">54</td><td class="results-table" style="text-align: center;">105</td><td class="results-table" style="text-align: center;">54</td><td class="results-table" style="text-align: center;">105</td><td class="results-table" style="text-align: center;">-1</td></tr><tr><td class="results-table">43</td><td class="results-table" style="text-align: center;">5210</td><td class="results-table" style="text-align: center;">1</td><td class="results-table" style="text-align: center;">0</td><td class="results-table" style="text-align: center;">54</td><td class="results-table" style="text-align: center;">105</td><td class="results-table" style="text-align: center;">109</td><td class="results-table" style="text-align: center;">18</td><td class="results-table" style="text-align: center;">224729</td></tr><tr><td class="results-table nb-hlite">44</td><td class="results-table nb-hlite" style="text-align: center;">5210</td><td class="results-table nb-hlite" style="text-align: center;">1</td><td class="results-table nb-hlite" style="text-align: center;">0</td><td class="results-table nb-hlite" style="text-align: center;">128</td><td class="results-table nb-hlite" style="text-align: center;">139</td><td class="results-table nb-hlite" style="text-align: center;">109</td><td class="results-table nb-hlite" style="text-align: center;">18</td><td class="results-table nb-hlite" style="text-align: center;">214892</td></tr><tr><td class="results-table nb-hlite">45</td><td class="results-table nb-hlite" style="text-align: center;">5210</td><td class="results-table nb-hlite" style="text-align: center;">1</td><td class="results-table nb-hlite" style="text-align: center;">1</td><td class="results-table nb-hlite" style="text-align: center;">109</td><td class="results-table nb-hlite" style="text-align: center;">18</td><td class="results-table nb-hlite" style="text-align: center;">109</td><td class="results-table nb-hlite" style="text-align: center;">18</td><td class="results-table nb-hlite" style="text-align: center;">224729</td></tr><tr><td class="results-table">46</td><td class="results-table" style="text-align: center;">5210</td><td class="results-table" style="text-align: center;">1</td><td class="results-table" style="text-align: center;">1</td><td class="results-table" style="text-align: center;">54</td><td class="results-table" style="text-align: center;">105</td><td class="results-table" style="text-align: center;">54</td><td class="results-table" style="text-align: center;">105</td><td class="results-table" style="text-align: center;">-1</td></tr><tr><td class="results-table">47</td><td class="results-table" style="text-align: center;">5210</td><td class="results-table" style="text-align: center;">1</td><td class="results-table" style="text-align: center;">1</td><td class="results-table" style="text-align: center;">54</td><td class="results-table" style="text-align: center;">105</td><td class="results-table" style="text-align: center;">54</td><td class="results-table" style="text-align: center;">105</td><td class="results-table" style="text-align: center;">-1</td></tr></tbody></table></div>
 </div>
 <p>From the table above we can see the following:</p>
 <ul class="simple">
@@ -964,6 +935,43 @@ array([[  5210,      1,      1,      0,      1,      0,      0,   2585,
 <li><p>On Tick 43, the subject attended an event at location (128, 139), where it was infected.</p></li>
 <li><p>On Tick 45, the subject returned to West State and is at least partly responsible for the re-emergence of the virus in that state.</p></li>
 </ul>
+<p>We can even confirm this visually by isolating that specific dot in the animation by passing <code class="docutils literal notranslate"><span class="pre">highlight=[5210]</span></code> at the Chart instantiation. We also slowed down the frame rate. You can see at Tick 44, the subject jumps from West to East and back very quickly.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">highlight</span><span class="o">=</span><span class="p">[</span><span class="mi">5210</span><span class="p">],</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_restricted</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="kn">from</span> <span class="nn">rknot.notebook</span> <span class="kn">import</span> <span class="n">animHTML</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">animHTML</span><span class="p">(</span><span class="s1">&#39;multi/border_crossing_multi_SAMPLE_21_dots&#39;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="text-align: center">
+    <video width='900px' height='376.56903765690373px'
+    src="https://storage.googleapis.com/rknotvids/multi/border_crossing_multi_SAMPLE_21_dots.mp4" controls>Video Failed to Load</video>
+</div>
+<p></p></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="text-align: center">
+    <video width='900px' height='376.56903765690373px'
+    src="https://storage.googleapis.com/rknotvids/multi/border_crossing_multi_SAMPLE_21_tots.mp4" controls>Video Failed to Load</video>
+</div>
+<p></p></div>
+</div>
+<p>Finally above, we show the full outcome of the sim, which pesents almost as a single prolonged peak.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="Care-Homes">
@@ -1067,6 +1075,15 @@ array([[  5210,      1,      1,      0,      1,      0,      0,   2585,
 <span class="p">}</span>
 </pre></div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/spindicate/Documents/programming/rknot/rknot/notebook/data.py:69: RuntimeWarning: invalid value encountered in double_scalars
+  _70 = _70/group_deps.sum()
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
@@ -1077,8 +1094,24 @@ array([[  5210,      1,      1,      0,      1,      0,      0,   2585,
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/multi_66_0.png" src="_images/multi_66_0.png" />
+<img alt="_images/multi_71_0.png" src="_images/multi_71_0.png" />
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div class="row" style="width=100%; display: flex; align-items: center; justify-content: center;"><div class="column" style="flex: 33.33%"><img src="https://storage.googleapis.com/rknotvids/multi/imgs/carehomes-pickled_peakpie.png" style="width:100%"></div><div class="column" style="flex: 33.33%;"><table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">No <br> Peak</th><th class="results-table" style="text-align: center;">Single <br> Peak</th><th class="results-table" style="text-align: center;">Double <br> Peak</th></tr></thead><tbody><tr><td class="results-table">Number of <br>Occurences<td class="results-table" style="text-align: center;">31</td><td class="results-table" style="text-align: center;">0</td><td class="results-table" style="text-align: center;">29</td></tr></tbody></table></div></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="text-align: center">
+    <video width='900px' height='376.56903765690373px'
+    src="https://storage.googleapis.com/rknotvids/multi/carehomes_tots.mp4" controls>Video Failed to Load</video>
+</div>
+<p></p></div>
 </div>
 <hr class="docutils" />
 <div class="section" id="Care-Homes---10Max">
@@ -1089,27 +1122,87 @@ array([[  5210,      1,      1,      0,      1,      0,      0,   2585,
 <div class="output_area rendered_html docutils container">
 <table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">Care Homes<br>10Max<br>$R_0$ > 0</th><th class="results-table" style="text-align: center;">Care Homes<br>$R_0$ > 0</th></tr></thead><tbody><tr><td class="results-table" style="text-align: left;">n, $R_0$ > 0</td><td class="results-table" style="text-align: center;">16</td><td class="results-table" style="text-align: center;">29</td></tr><tr><td class="results-table" style="text-align: left;">n</td><td class="results-table" style="text-align: center;">48</td><td class="results-table" style="text-align: center;">60</td></tr><tr><td class="results-table" style="text-align: left;">Peak</td><td class="results-table" style="text-align: center;">4.9%</td><td class="results-table" style="text-align: center;">26.1%</td></tr><tr><td class="results-table" style="text-align: left;">HIT</td><td class="results-table" style="text-align: center;">5.4%</td><td class="results-table" style="text-align: center;">37.6%</td></tr><tr><td class="results-table" style="text-align: left;">Total</td><td class="results-table" style="text-align: center;">5.5%</td><td class="results-table" style="text-align: center;">55.3%</td></tr><tr><td class="results-table" style="text-align: left;">Fatalities</td><td class="results-table" style="text-align: center;">0.20%</td><td class="results-table" style="text-align: center;">0.40%</td></tr><tr><td class="results-table" style="text-align: left;">%>70</td><td class="results-table" style="text-align: center;">45.0%</td><td class="results-table" style="text-align: center;">42.3%</td></tr><tr><td class="results-table" style="text-align: left;">IFR</td><td class="results-table" style="text-align: center;">3.60%</td><td class="results-table" style="text-align: center;">0.73%</td></tr><tr><td class="results-table" style="text-align: left;">Days to Peak</td><td class="results-table" style="text-align: center;">52</td><td class="results-table" style="text-align: center;">84</td></tr></tbody></table></div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/multi_77_0.png" src="_images/multi_77_0.png" />
+</div>
+</div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[113]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">rknot.notebook</span> <span class="kn">import</span> <span class="n">curvehist</span>
-<span class="n">savepath</span> <span class="o">=</span> <span class="s1">&#39;vids/multi/uncoord_hist&#39;</span>
+<span></span><span class="n">chsims</span> <span class="o">=</span> <span class="n">sims</span><span class="p">[</span><span class="n">last_date</span><span class="p">][</span><span class="s1">&#39;sims&#39;</span><span class="p">]</span>
+<span class="n">westrng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">eastrng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">id_groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">westrng</span><span class="p">,</span> <span class="n">eastrng</span><span class="p">]</span>
 
-<span class="n">title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Total Infection: </span><span class="si">{</span><span class="n">r_ch</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> Simulations&#39;</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;10Max&#39;</span><span class="p">]</span>
+<span class="n">sstack</span> <span class="o">=</span> <span class="n">statestack</span><span class="p">(</span><span class="n">chsims</span><span class="p">,</span> <span class="n">id_groups</span><span class="p">)</span>
+<span class="n">peakset</span> <span class="o">=</span> <span class="n">peak_analysis</span><span class="p">(</span><span class="n">sstack</span><span class="p">)</span>
+<span class="n">savepath</span> <span class="o">=</span> <span class="n">peakpie</span><span class="p">(</span><span class="n">peakset</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">slug</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "722486d3ee92426ea484dee0018e159b", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
 
-<span class="n">curvehist</span><span class="p">([</span><span class="n">r_ch10</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]],</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;tot&#39;</span><span class="p">,</span> <span class="n">widths</span><span class="o">=</span><span class="p">[</span><span class="o">.</span><span class="mi">95</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">savepath</span><span class="o">=</span><span class="n">savepath</span><span class="p">)</span>
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/multi_78_2.png" src="_images/multi_78_2.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">peakcomp</span><span class="p">(</span><span class="n">peakset</span><span class="p">,</span> <span class="n">slug</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area docutils container">
-<img alt="_images/multi_69_0.png" src="_images/multi_69_0.png" />
+<div class="output_area rendered_html docutils container">
+<div class="row" style="width=100%; display: flex; align-items: center; justify-content: center;"><div class="column" style="flex: 33.33%"><img src="https://storage.googleapis.com/rknotvids/multi/imgs/carehomes_10Max-pickled_peakpie.png" style="width:100%"></div><div class="column" style="flex: 33.33%;"><table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">No <br> Peak</th><th class="results-table" style="text-align: center;">Single <br> Peak</th><th class="results-table" style="text-align: center;">Double <br> Peak</th></tr></thead><tbody><tr><td class="results-table">Number of <br>Occurences<td class="results-table" style="text-align: center;">29</td><td class="results-table" style="text-align: center;">4</td><td class="results-table" style="text-align: center;">15</td></tr></tbody></table></div></div></div>
 </div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="kn">from</span> <span class="nn">rknot.notebook</span> <span class="kn">import</span> <span class="n">animHTML</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">animHTML</span><span class="p">(</span><span class="s1">&#39;multi/carehome_10Max_tots&#39;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="text-align: center">
+    <video width='900px' height='376.56903765690373px'
+    src="https://storage.googleapis.com/rknotvids/multi/carehome_10Max_tots.mp4" controls>Video Failed to Load</video>
+</div>
+<p></p></div>
 </div>
 </div>
 <hr class="docutils" />
@@ -1121,27 +1214,28 @@ array([[  5210,      1,      1,      0,      1,      0,      0,   2585,
 <div class="output_area rendered_html docutils container">
 <table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">Care Homes<br>25Max<br>$R_0$ > 0</th><th class="results-table" style="text-align: center;">Care Homes<br>10Max<br>$R_0$ > 0</th></tr></thead><tbody><tr><td class="results-table" style="text-align: left;">n, $R_0$ > 0</td><td class="results-table" style="text-align: center;">22</td><td class="results-table" style="text-align: center;">16</td></tr><tr><td class="results-table" style="text-align: left;">n</td><td class="results-table" style="text-align: center;">50</td><td class="results-table" style="text-align: center;">48</td></tr><tr><td class="results-table" style="text-align: left;">Peak</td><td class="results-table" style="text-align: center;">8.1%</td><td class="results-table" style="text-align: center;">4.9%</td></tr><tr><td class="results-table" style="text-align: left;">HIT</td><td class="results-table" style="text-align: center;">9.6%</td><td class="results-table" style="text-align: center;">5.4%</td></tr><tr><td class="results-table" style="text-align: left;">Total</td><td class="results-table" style="text-align: center;">11.3%</td><td class="results-table" style="text-align: center;">5.5%</td></tr><tr><td class="results-table" style="text-align: left;">Fatalities</td><td class="results-table" style="text-align: center;">0.21%</td><td class="results-table" style="text-align: center;">0.20%</td></tr><tr><td class="results-table" style="text-align: left;">%>70</td><td class="results-table" style="text-align: center;">47.2%</td><td class="results-table" style="text-align: center;">45.0%</td></tr><tr><td class="results-table" style="text-align: left;">IFR</td><td class="results-table" style="text-align: center;">2.11%</td><td class="results-table" style="text-align: center;">3.60%</td></tr><tr><td class="results-table" style="text-align: left;">Days to Peak</td><td class="results-table" style="text-align: center;">67</td><td class="results-table" style="text-align: center;">52</td></tr></tbody></table></div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[116]:
-</pre></div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">rknot.notebook</span> <span class="kn">import</span> <span class="n">curvehist</span>
-<span class="n">savepath</span> <span class="o">=</span> <span class="s1">&#39;vids/multi/uncoord_hist&#39;</span>
-
-<span class="n">title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Total Infection: </span><span class="si">{</span><span class="n">r_ch</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> Simulations&#39;</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;25Max&#39;</span><span class="p">]</span>
-
-<span class="n">curvehist</span><span class="p">([</span><span class="n">r_ch25</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]],</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;tot&#39;</span><span class="p">,</span> <span class="n">widths</span><span class="o">=</span><span class="p">[</span><span class="o">.</span><span class="mi">95</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">savepath</span><span class="o">=</span><span class="n">savepath</span><span class="p">)</span>
-</pre></div>
+<div class="output_area docutils container">
+<img alt="_images/multi_83_0.png" src="_images/multi_83_0.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area docutils container">
-<img alt="_images/multi_72_0.png" src="_images/multi_72_0.png" />
+<div class="output_area rendered_html docutils container">
+<div class="row" style="width=100%; display: flex; align-items: center; justify-content: center;"><div class="column" style="flex: 33.33%"><img src="https://storage.googleapis.com/rknotvids/multi/imgs/carehomes_25Max-pickled_peakpie.png" style="width:100%"></div><div class="column" style="flex: 33.33%;"><table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">No <br> Peak</th><th class="results-table" style="text-align: center;">Single <br> Peak</th><th class="results-table" style="text-align: center;">Double <br> Peak</th></tr></thead><tbody><tr><td class="results-table">Number of <br>Occurences<td class="results-table" style="text-align: center;">29</td><td class="results-table" style="text-align: center;">4</td><td class="results-table" style="text-align: center;">15</td></tr></tbody></table></div></div></div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="text-align: center">
+    <video width='900px' height='376.56903765690373px'
+    src="https://storage.googleapis.com/rknotvids/multi/carehome_25Max_tots.mp4" controls>Video Failed to Load</video>
+</div>
+<p></p></div>
 </div>
 </div>
 <hr class="docutils" />
@@ -1157,7 +1251,7 @@ array([[  5210,      1,      1,      0,      1,      0,      0,   2585,
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/multi_75_0.png" src="_images/multi_75_0.png" />
+<img alt="_images/multi_88_0.png" src="_images/multi_88_0.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1165,6 +1259,27 @@ array([[  5210,      1,      1,      0,      1,      0,      0,   2585,
 </div>
 <div class="output_area rendered_html docutils container">
 <div class="row" style="width=100%; display: flex; align-items: center; justify-content: center;"><div class="column" style="flex: 33.33%"><img src="https://storage.googleapis.com/rknotvids/multi/imgs/carehome_async_restrict-pickled_peakpie.png" style="width:100%"></div><div class="column" style="flex: 33.33%;"><table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">No <br> Peak</th><th class="results-table" style="text-align: center;">Single <br> Peak</th><th class="results-table" style="text-align: center;">Double <br> Peak</th></tr></thead><tbody><tr><td class="results-table">Number of <br>Occurences<td class="results-table" style="text-align: center;">26</td><td class="results-table" style="text-align: center;">5</td><td class="results-table" style="text-align: center;">19</td></tr></tbody></table></div></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="kn">from</span> <span class="nn">rknot.notebook</span> <span class="kn">import</span> <span class="n">animHTML</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">animHTML</span><span class="p">(</span><span class="s1">&#39;multi/carehome_async_restrict_peaks&#39;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="text-align: center">
+    <video width='900px' height='376.56903765690373px'
+    src="https://storage.googleapis.com/rknotvids/multi/carehome_async_restrict_peaks.mp4" controls>Video Failed to Load</video>
+</div>
+<p></p></div>
 </div>
 </div>
 </div>
