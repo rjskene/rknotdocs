@@ -1509,7 +1509,7 @@ n_{e,j} = \frac{k_{tgt,i}}{cap_{e,j}}
 </div>
 <p><span class="math notranslate nohighlight">\(\underline{\text{Results}}\)</span></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[68]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1518,12 +1518,70 @@ n_{e,j} = \frac{k_{tgt,i}}{cap_{e,j}}
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+    <thead>
+        <tr>
+            <th class="results-table">E($R_0$)</th>
+            <th class="results-table">$R_0$</th>
+            <th class="results-table">$\overline{{k}}$</th>
+            <th class="results-table">$\theta$</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td class="results-table">1.78</td>
+            <td class="results-table">1.72</td>
+            <td class="results-table">3.34</td>
+            <td class="results-table">59.72</td>
+        </tr>
+    </tbody>
+</table></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/sizing_108_0.png" src="_images/sizing_108_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/sizing_109_0.png" src="_images/sizing_109_0.png" />
+</div>
+</div>
 <p>The above iterations set <code class="docutils literal notranslate"><span class="pre">sterile=True</span></code>, in order to isolate the contacts and secondary infections of <em>just the initial infected</em>.</p>
 <p>We can learn more about the outcomes in the simulation by again using <code class="docutils literal notranslate"><span class="pre">looper</span></code> and setting <code class="docutils literal notranslate"><span class="pre">sterile=False</span></code>, <code class="docutils literal notranslate"><span class="pre">days=365</span></code>. We will complete just 250 iterations, because each sim will run longer.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">250</span>
 <span class="n">days</span> <span class="o">=</span> <span class="mi">365</span>
 <span class="n">contacts</span><span class="p">,</span> <span class="n">nsecs</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">exceptions</span> <span class="o">=</span> <span class="n">looper</span><span class="p">(</span><span class="n">groups</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">density</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">tmr</span><span class="o">=</span><span class="n">sim_tmr</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="n">vboxes</span><span class="o">=</span><span class="n">vbox</span><span class="p">,</span> <span class="n">sterile</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">1 Infection</th><th class="results-table" style="text-align: center;">2 Infections</th><th class="results-table" style="text-align: center;">1 Infection<br>$R_0$ > 0</th><th class="results-table" style="text-align: center;">2 Infections<br>$R_0$ > 0</th></tr></thead><tbody><tr><td class="results-table" style="text-align: left;">Peak</td><td class="results-table" style="text-align: center;">3.8%</td><td class="results-table" style="text-align: center;">8.9%</td><td class="results-table" style="text-align: center;">34.5%</td><td class="results-table" style="text-align: center;">33.1%</td></tr><tr><td class="results-table" style="text-align: left;">HIT</td><td class="results-table" style="text-align: center;">4.6%</td><td class="results-table" style="text-align: center;">11.1%</td><td class="results-table" style="text-align: center;">42.3%</td><td class="results-table" style="text-align: center;">41.1%</td></tr><tr><td class="results-table" style="text-align: left;">Total</td><td class="results-table" style="text-align: center;">5.9%</td><td class="results-table" style="text-align: center;">14.0%</td><td class="results-table" style="text-align: center;">53.8%</td><td class="results-table" style="text-align: center;">52.3%</td></tr><tr><td class="results-table" style="text-align: left;">Days to Peak</td><td class="results-table" style="text-align: center;">11</td><td class="results-table" style="text-align: center;">24</td><td class="results-table" style="text-align: center;">28</td><td class="results-table" style="text-align: center;">38</td></tr></tbody></table></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/sizing_115_0.png" src="_images/sizing_115_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/sizing_116_0.png" src="_images/sizing_116_0.png" />
+</div>
 </div>
 </div>
 </div>
