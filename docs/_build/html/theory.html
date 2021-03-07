@@ -115,6 +115,7 @@
 <li class="toctree-l1"><a class="reference internal" href="hit.html">SIR: Factors Influencing Spread</a></li>
 <li class="toctree-l1"><a class="reference internal" href="load.html">Dynamic Transmission Risk</a></li>
 <li class="toctree-l1"><a class="reference internal" href="multi.html">Multiple Jurisdictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seasonal.html">Seasonality</a></li>
 </ul>
 
             
@@ -444,11 +445,13 @@ div.rendered_html tbody tr:hover {
 \[\begin{equation}
 E(n_{infs}) = \sum_{i=1}^N c_i*\tau_i
 \end{equation}\]</div>
-<p><span class="math notranslate nohighlight">\(\tau\)</span> is a fundamental property of virus that can be further augmented for properties of the infected, or the subject, or the location of the contact.</p>
+<p><span class="math notranslate nohighlight">\(\tau\)</span> is a fundamental property of the virus. It can be further augmented for properties of the infected, or the subject, or the location of the contact, or any other exogenous factor. These are referred to as <em>transmission factors</em> and are used to scale the likelihood of transmission (up or down as desired).</p>
 <div class="math notranslate nohighlight">
-\[\begin{equation}
-\tau_i = \tau * T_{inf,i} * T_{sus,i} * T_{loc,i}
-\end{equation}\]</div>
+\[\begin{split}\begin{equation}
+\tau_i = f(\tau, T_{inf,i}, T_{sus,i}, T_{loc,i})
+\\\textit{where: }T \textit{ is a transmission factor}
+\end{equation}\end{split}\]</div>
+<p>The function is used to scale <span class="math notranslate nohighlight">\(\tau\)</span> by the various tranmission factors is outlined <a class="reference external" href="#Likelihood-of-Transmission">here</a>.</p>
 <p>Thus, the transmission risk of the virus is required in order to mimick its spread. This can be provided directly or derived from a virus’ estimated <span class="math notranslate nohighlight">\(R_0\)</span>.</p>
 <div class="section" id="R_0">
 <h2><span class="math notranslate nohighlight">\(R_0\)</span><a class="headerlink" href="#R_0" title="Permalink to this headline">¶</a></h2>
@@ -630,7 +633,7 @@ B(k, 1/N)
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span> <span class="c1"># Or any color</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;imgs/binom.png&#39;</span><span class="p">)</span>
 </pre></div>
@@ -651,11 +654,21 @@ B(k, 1/N)
 \[\begin{equation}
 \tau=\frac{R_0}{𝑑*\overline{c}}
 \end{equation}\]</div>
-<p>So, again, If a susceptible subject has contact with an infected at the same location, at any time, its probability of infection is:</p>
+<p>So, again, if a susceptible subject has contact with an infected at the same location, at any time, its probability of infection is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation}
-\tau_i = \tau * T_{inf,i} * T_{sus,i} * T_{loc,i}
+\tau_i = f(\tau, T_{inf,i} * T_{sus,i} * T_{loc,i})
 \end{equation}\]</div>
+<p>Transmission factors scale the <em>odds</em> that an infection will occur and <span class="math notranslate nohighlight">\(\tau\)</span> is a probability, so the function above must convert <span class="math notranslate nohighlight">\(\tau\)</span> to odds, apply the factors, then convert those new odds back to a probability. Further details <a class="reference external" href="https://math.stackexchange.com/questions/761504/what-does-twice-as-likely-mean">here</a>.</p>
+<p>$ <span class="math">\begin{equation}
+\\\qquad \qquad \qquad \qquad \qquad \qquad q = \frac{p}{1 - p} \qquad \text{(odds from probability)}
+\\\qquad \qquad \qquad \qquad \qquad \qquad p = \frac{q}{q + 1} \qquad \text{(probability from odds)}
+\\\\\qquad \qquad \qquad \qquad \qquad \text{so,}
+\\\qquad \qquad \qquad \qquad \qquad \qquad q =  \frac{\tau}{1 - \tau} \qquad \text{(odds of transmission)}
+\\\qquad \qquad \qquad \qquad \qquad \qquad q_i = \tau * T_i \qquad \text{(adusted odds)}
+\\\\\qquad \qquad \qquad \qquad \qquad \qquad  \tau_i = \frac{\tau * T_i}{\tau * T_i + 1} \qquad \text{(adjusted probability)}
+\\\\\qquad \qquad \qquad \qquad \qquad \textit{where: } T_i = T_{inf,i} * T_{sus,i} * T_{loc,i}
+\end{equation}</span> $</p>
 <p>If a susceptible comes in contact with multiple infected, we assume that this results in multiple contacts that occur in succession. So we must sum all the branches of the probability tree that end in an infection:</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation}

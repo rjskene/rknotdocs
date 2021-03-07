@@ -28,3 +28,4 @@ RKnot - Beta
    hit
    load
    multi
+   seasonal
