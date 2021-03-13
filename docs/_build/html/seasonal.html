@@ -100,8 +100,11 @@
 <li class="toctree-l1"><a class="reference internal" href="load.html">Dynamic Transmission Risk</a></li>
 <li class="toctree-l1"><a class="reference internal" href="multi.html">Multiple Jurisdictions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Seasonality</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Location-Transmission-Factors">Location Transmission Factors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#SIR">SIR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Events">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Borders">Borders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Borders-w-Crossing">Borders w Crossing</a></li>
 </ul>
 </li>
 </ul>
@@ -427,12 +430,12 @@ div.rendered_html tbody tr:hover {
 <hr class="docutils" />
 <div class="section" id="Seasonality">
 <h1>Seasonality<a class="headerlink" href="#Seasonality" title="Permalink to this headline">¶</a></h1>
-<p>There are many viruses that exhibit seasonality. In particular, in (northern??) North America, influenza and the common cold (<a class="reference external" href="https://en.wikipedia.org/wiki/Common_cold">which is a catch-all for a collection of ~different virus strains</a>) predictably peak in the winter months and subside in the summer. The reasons for the seasonality of these viruses (and not others) is still somewhat of a mystery, but <a class="reference external" href="https://ccdd.hsph.harvard.edu/will-covid-19-go-away-on-its-own-in-warmer-weather">the Harvard School Public Health provides a summary of potential factors
+<p>There are many viruses that exhibit seasonality. In particular, in North America, influenza and the common cold (<a class="reference external" href="https://en.wikipedia.org/wiki/Common_cold">which is a catch-all for a collection of different viral strains</a>) predictably peak in the winter months and subside in the summer. The reasons for the seasonality of these viruses (and not others) is still somewhat of a mystery, but <a class="reference external" href="https://ccdd.hsph.harvard.edu/will-covid-19-go-away-on-its-own-in-warmer-weather">the Harvard School Public Health provides a summary of potential factors
 here</a>.</p>
 <p><strong>Natural Progression of Immunity</strong></p>
 <ul class="simple">
 <li><p>remarkably, the most relevant factor may have nothing at all to do with seasonality. A virus and its host population may have an immunity profile that results in an intrinsic ebb and flow of infections (that may or may not line up with typical regional seasons). For instance, <a class="reference external" href="https://www.cdc.gov/flu/professionals/acip/immunogenicity.htm#Duration">influenza immunity is believed to last for 3 months</a>, meaning that the potential host population subsides and then increases in time for the
-virus to reemerge months later (to say nothing of the different types of influenza that might be prevalent during any season).</p></li>
+virus to re-emerge months later (to say nothing of the different types of influenza that might be prevalent during any season).</p></li>
 </ul>
 <p><strong>Geological / Meteorological Factors</strong></p>
 <ul class="simple">
@@ -441,8 +444,8 @@ virus to reemerge months later (to say nothing of the different types of influen
 </ul>
 <p><strong>Behavior Changes</strong></p>
 <ul class="simple">
-<li><p>In colder environments, people tend to move indoors more frequently in closer quarters and with worse ventalition. In particular, school seasonality in North America aligns with winter.</p></li>
-<li><p>one should also consider that the <em>warmest</em> environments might experience inverse behavior changes to the coldest. People in the southern US, for example, may move indoors during the peak of summer to take advantage of air conditioning (<a class="reference external" href="https://twitter.com/NateSilver538/status/1273329472524222466">this was suggested by Nate Silver of FiveThirtyEight</a>).</p></li>
+<li><p>in colder environments, people tend to congregate indoors more frequently, in closer quarters and with worse ventalition. In particular, school seasonality in North America aligns with winter.</p></li>
+<li><p>one should also consider that the <em>warmest</em> environments might experience inverse behavior to the coldest. People in the southern US, for example, may move indoors during the peak of summer to take advantage of air conditioning (<a class="reference external" href="https://twitter.com/NateSilver538/status/1273329472524222466">this was suggested by Nate Silver of FiveThirtyEight</a>).</p></li>
 </ul>
 <p><strong>Weakening Immune System</strong></p>
 <ul class="simple">
@@ -450,8 +453,23 @@ virus to reemerge months later (to say nothing of the different types of influen
 </ul>
 <p><a class="reference external" href="https://ccdd.hsph.harvard.edu/will-covid-19-go-away-on-its-own-in-warmer-weather">Professor Lipsitch of Harvard</a> is also very careful to emphasize that seasonal factors are likely much more relevant in <em>existing</em> viruses versus <em>new</em> viruses. The sheer size of the susceptible population of a new virus is likely enough to overwhelm the marginal impact of any one or all seasonal factors combined.</p>
 <p>That said, even with new viruses, one would expect these factors to provide at least <em>some</em> resistance or reinforcement as they case may be.</p>
+<hr class="docutils" />
+<div class="section" id="Location-Transmission-Factors">
+<h2>Location Transmission Factors<a class="headerlink" href="#Location-Transmission-Factors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>RKnot</strong> attempts to encapsulate the various factors above through a transmission factor associated with each location in the Grid. To account for seasonal changes, a separate transmission factor for each tick in the simulation can be assigned.</p></li>
+<li><p>The result is a matrix of shape (# of locations, # of ticks). For now, transmission factors are assigned through the <code class="docutils literal notranslate"><span class="pre">boxf</span></code> attribute of a group or vbox and are input as an integer of 100x factor, consistent with other transmission factors used in the package.</p></li>
+<li><p>Below, we show the <code class="docutils literal notranslate"><span class="pre">loc_tmf</span></code> for a simulation with features:</p>
+<ul>
+<li><p>1 group</p></li>
+<li><p>100 subjects</p></li>
+<li><p>the group’s box is identical to the Grid</p></li>
+<li><p>all locations inside the box are assigned a transmission factor of <code class="docutils literal notranslate"><span class="pre">boxf=200</span></code></p></li>
+</ul>
+</li>
+</ul>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -478,7 +496,7 @@ virus to reemerge months later (to say nothing of the different types of influen
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -487,7 +505,7 @@ virus to reemerge months later (to say nothing of the different types of influen
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -501,16 +519,16 @@ array([[200, 200, 200, ..., 200, 200, 200],
        [200, 200, 200, ..., 200, 200, 200]], dtype=int32)
 </pre></div></div>
 </div>
-<p>Location transmission factors can take on any shape the user desires. In the example below, a series of cosine waves are used to create a single curve with following attributes:</p>
+<p>Location transmission factors can take on any shape the user desires. In the example below, a series of cosine waves are used to create a single curve as follows:</p>
 <ul class="simple">
 <li><p>season lasting 365 days</p></li>
 <li><p>seasonal variability factor of 2x (lower variability factor leads to greater variability)</p></li>
 <li><p>peak transmission factor occurs in the beginning</p></li>
 <li><p>trough transmission factor occurs at the midpoint</p></li>
 </ul>
-<p>This is meant as a rough approximation of seasonal factors impacting viral spread when spread begins in the middle of winter.</p>
+<p>This is meant as a rough approximation of seasonal factors impacting spread when it <em>begins</em> in the <strong>middle of winter</strong>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -538,7 +556,7 @@ array([[200, 200, 200, ..., 200, 200, 200],
 </div>
 <p>And shown in the <code class="docutils literal notranslate"><span class="pre">tmf</span></code> array below:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -547,7 +565,7 @@ array([[200, 200, 200, ..., 200, 200, 200],
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -585,7 +603,7 @@ array([142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142,
 </div>
 <p>Now we assign that <code class="docutils literal notranslate"><span class="pre">tmf</span></code> array to the <code class="docutils literal notranslate"><span class="pre">boxf</span></code> attribute of our group.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -601,7 +619,7 @@ array([142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142,
 </div>
 <p>And in the resulting <code class="docutils literal notranslate"><span class="pre">loc_tmf</span></code> matrix, we can see that each location in the Grid has the same dynamic transmission factor across ticks.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -610,7 +628,7 @@ array([142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142,
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -643,7 +661,7 @@ array([[142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142,
 </div>
 <p>If we invert the cosine waves, we can invert the seasonality curve, thereby mimicking an outbreak beginning in a region’s summer period.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -665,34 +683,36 @@ array([[142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142,
 <img alt="_images/seasonal_19_0.png" src="_images/seasonal_19_0.png" />
 </div>
 </div>
+</div>
 <div class="section" id="SIR">
 <h2>SIR<a class="headerlink" href="#SIR" title="Permalink to this headline">¶</a></h2>
-<p>We’ll now utilize our a pair of seasonality curves in some of the standard simulations demonstrated previously. First, we compare outcomes against the basic <a class="reference external" href="hit.html#1.-Equal">Equal Mover scenario from the SIR section</a>.</p>
+<p>We’ll now utilize the pair of seasonality curves in some of the standard simulations demonstrated previously. First, we compare outcomes against the basic <a class="reference internal" href="hit.html#1.-Equal"><span class="std std-ref">Equal Mover scenario from the SIR section</span></a>.</p>
 <p>The seasonal location factors are applied to every location across all groups. To do so, a box is created covering the entire grid and applied to each group by passing the keywords to each group.</p>
-<p>First, we create the <code class="docutils literal notranslate"><span class="pre">params</span></code> for the Winter Start seasonality.</p>
+<p>We will compare the outcomes of an outbreak beginning in the Winter versus an outbreak beginning in Summer.</p>
+<p>First, we create the <code class="docutils literal notranslate"><span class="pre">params</span></code> for the “Winter Start” seasonality.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[87]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">gkws</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">],</span> <span class="s1">&#39;box_is_gated&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;boxf&#39;</span><span class="p">:</span> <span class="n">tmf</span><span class="p">}</span>
+<span></span><span class="kn">from</span> <span class="nn">rknot.space</span> <span class="kn">import</span> <span class="n">create_seasonal_factors</span>
 
+<span class="n">w_tmf</span> <span class="o">=</span> <span class="n">create_seasonal_factors</span><span class="p">()</span>
+
+<span class="n">gkws</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">],</span> <span class="s1">&#39;box_is_gated&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;boxf&#39;</span><span class="p">:</span> <span class="n">w_tmf</span><span class="p">}</span>
 <span class="n">group1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;0-19&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2700</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ifr</span><span class="o">=</span><span class="mf">0.00003</span><span class="p">,</span> <span class="o">**</span><span class="n">gkws</span><span class="p">)</span>
 <span class="n">group2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;20-49&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">4100</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ifr</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span> <span class="o">**</span><span class="n">gkws</span><span class="p">)</span>
 <span class="n">group3</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;50-69&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2300</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ifr</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="o">**</span><span class="n">gkws</span><span class="p">)</span>
 <span class="n">group4</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;70+&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ifr</span><span class="o">=</span><span class="mf">0.054</span><span class="p">,</span> <span class="o">**</span><span class="n">gkws</span><span class="p">)</span>
 <span class="n">w_groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">,</span> <span class="n">group3</span><span class="p">,</span> <span class="n">group4</span><span class="p">]</span>
 
-<span class="n">w_params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;groups&#39;</span><span class="p">:</span> <span class="n">w_groups</span><span class="p">,</span> <span class="s1">&#39;density&#39;</span><span class="p">:</span> <span class="s1">&#39;med&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Ro&#39;</span><span class="p">:</span><span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;imndur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;infdur&#39;</span><span class="p">:</span> <span class="mi">14</span>
-<span class="p">}</span>
+<span class="n">w_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;groups&#39;</span><span class="p">:</span> <span class="n">w_groups</span><span class="p">,</span> <span class="s1">&#39;density&#39;</span><span class="p">:</span> <span class="s1">&#39;med&#39;</span><span class="p">,</span> <span class="s1">&#39;R0&#39;</span><span class="p">:</span><span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;imndur&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;infdur&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
-<p>Then, we create the <code class="docutils literal notranslate"><span class="pre">params</span></code> for the Summar Start seasonality.</p>
+<p>Then, we create the <code class="docutils literal notranslate"><span class="pre">params</span></code> for the “Summar Start” seasonality.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[88]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -701,67 +721,25 @@ array([[142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142,
 <span class="n">s_groups</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">w_groups</span><span class="p">)</span>
 <span class="n">s_params</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">w_params</span><span class="p">)</span>
 
+<span class="n">s_tmf</span> <span class="o">=</span> <span class="n">create_seasonal_factors</span><span class="p">(</span><span class="n">invert</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">s_groups</span><span class="p">:</span>
-    <span class="n">group</span><span class="p">[</span><span class="s1">&#39;boxf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">inv_tmf</span>
+    <span class="n">group</span><span class="p">[</span><span class="s1">&#39;boxf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_tmf</span>
 
 <span class="n">s_params</span><span class="p">[</span><span class="s1">&#39;groups&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_groups</span>
 </pre></div>
 </div>
 </div>
 <p>We generated 50 simulations encompassing the two seasonal scenarios and the original aseasonal scenario.</p>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-74-a5643e08e420&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> headers <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">r&#39;SIR&lt;br&gt;Winter&lt;br&gt;$R_0$ &gt; 0&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">r&#39;SIR&lt;br&gt;Summer&lt;br&gt;$R_0$ &gt; 0&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">r&#39;SIR&lt;br&gt;Aseasonal&lt;br&gt;$R_0$ &gt; 0&#39;</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>display<span class="ansi-blue-fg">(</span>HTML<span class="ansi-blue-fg">(</span>curve_table<span class="ansi-blue-fg">(</span>headers<span class="ansi-blue-fg">,</span> sir_args<span class="ansi-blue-fg">,</span> sir_sizes<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;sir_args&#39; is not defined
-</pre></div></div>
-</div>
-<p>RESTULS!!!!</p>
+<p>Below we show the animation of a represented simulation of the Winter scenario.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="o">**</span><span class="n">w_params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">dotlog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area rendered_html docutils container">
-<div style="text-align: center">
-    <video width='900px' height='376.56903765690373px'
-    src="https://storage.googleapis.com/rknotvids/seasonality/base.mp4" controls>Video Failed to Load</video>
-</div>
-<p></p></div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="err">```</span><span class="n">python</span>
-<span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="o">**</span><span class="n">s_params</span><span class="p">)</span>
+<p>And now the Summer scenario.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="o">**</span><span class="n">s_params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">dotlog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="err">```</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area rendered_html docutils container">
-<div style="text-align: center">
-    <video width='900px' height='376.56903765690373px'
-    src="https://storage.googleapis.com/rknotvids/seasonality/base.mp4" controls>Video Failed to Load</video>
-</div>
-<p></p></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="o">**</span><span class="n">inv_params</span><span class="p">)</span>
-<span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">dotlog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -770,27 +748,28 @@ array([[142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142,
 <div class="output_area rendered_html docutils container">
 <div style="text-align: center">
     <video width='900px' height='376.56903765690373px'
-    src="https://storage.googleapis.com/rknotvids/seasonality/winter_sir.mp4" controls>Video Failed to Load</video>
+    src="https://storage.googleapis.com/rknotvids/seasonal/sir_summer_peaks.mp4" controls>Video Failed to Load</video>
 </div>
 <p></p></div>
 </div>
+<p>Above we can see how resilient the virus is in the face of some seasonal resistance. The virus barely survives, relying on a handful of hosts for almost 100 days, and once the seasonality factors begin to contribute to spread and exponential pandemic occurs.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="Events">
 <h2>Events<a class="headerlink" href="#Events" title="Permalink to this headline">¶</a></h2>
-<p>We can easily incorporate these location-based, seasonal transmission factors into more complex structures. Below we incorporate the “summer-like” seasonal factors into our <a class="reference internal" href="load.html#Events"><span class="std std-ref">dynamic load, event-based structure</span></a>.</p>
+<p>We can easily incorporate these location-based, seasonal transmission factors into more complex structures. We again compare “Winter Start” and “Summer Start” seasonal factors into our <a class="reference internal" href="load.html#Events"><span class="std std-ref">dynamic load, event-based structure</span></a>.</p>
 <p><strong>NOTE</strong>: Seasonal factors cannot be created for locations <em>not</em> inside a box. In the event structure, the region where the events occur is inside a VBox, however, the remaining region does <em>not</em> occur in a box and so the no transmission factor is applied. The number of contacts outside of the VBox is a very small portion of the total and so should not impact the result materially.</p>
+<p>Here is the structure:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">rknot</span> <span class="kn">import</span> <span class="n">Sim</span><span class="p">,</span> <span class="n">Chart</span>
-
 <span class="kn">from</span> <span class="nn">rknot.dots.fhutch</span> <span class="kn">import</span> <span class="n">tmr</span>
-<span class="kn">from</span> <span class="nn">rknot.sims.us_w_load_18</span> <span class="kn">import</span> <span class="n">events</span>
-<span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Restriction</span><span class="p">,</span> <span class="n">Quarantine</span>
 <span class="kn">from</span> <span class="nn">rknot.space</span> <span class="kn">import</span> <span class="n">create_seasonal_factors</span>
+<span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Restriction</span><span class="p">,</span> <span class="n">Quarantine</span>
+<span class="kn">from</span> <span class="nn">rknot.sims.us_w_load_18</span> <span class="kn">import</span> <span class="n">events</span>
 
 <span class="n">rsxns</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">quars</span> <span class="o">=</span> <span class="p">[]</span>
@@ -811,46 +790,113 @@ array([[142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142,
 <span class="n">group4</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;70+&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span> <span class="n">n_inf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ifr</span><span class="o">=</span><span class="mf">0.054</span><span class="p">,</span> <span class="n">mover</span><span class="o">=.</span><span class="mi">98</span><span class="p">)</span>
 <span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">,</span> <span class="n">group3</span><span class="p">,</span> <span class="n">group4</span><span class="p">]</span>
 
-<span class="n">tmf</span> <span class="o">=</span> <span class="n">create_seasonal_factors</span><span class="p">()</span>
-<span class="n">vbox</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="mi">344</span><span class="p">,</span> <span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="mi">344</span><span class="p">,</span> <span class="s1">&#39;boxf&#39;</span><span class="p">:</span> <span class="n">tmf</span><span class="p">}</span>
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+<span class="n">w_tmf</span> <span class="o">=</span> <span class="n">create_seasonal_factors</span><span class="p">()</span>
+<span class="n">w_vbox</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="mi">344</span><span class="p">,</span> <span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="mi">344</span><span class="p">,</span> <span class="s1">&#39;boxf&#39;</span><span class="p">:</span> <span class="n">w_tmf</span><span class="p">}</span>
+<span class="n">w_params</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;groups&#39;</span><span class="p">:</span> <span class="n">groups</span><span class="p">,</span> <span class="s1">&#39;density&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;tmr_curve&#39;</span><span class="p">:</span> <span class="n">tmr</span><span class="p">,</span>
-    <span class="s1">&#39;vboxes&#39;</span><span class="p">:</span> <span class="n">vbox</span><span class="p">,</span> <span class="s1">&#39;events&#39;</span><span class="p">:</span> <span class="n">events_loc</span><span class="p">,</span>
+    <span class="s1">&#39;vboxes&#39;</span><span class="p">:</span> <span class="n">w_vbox</span><span class="p">,</span> <span class="s1">&#39;events&#39;</span><span class="p">:</span> <span class="n">events_loc</span><span class="p">,</span>
     <span class="s1">&#39;rsxns&#39;</span><span class="p">:</span> <span class="n">rsxns</span><span class="p">,</span>
 <span class="p">}</span>
+
+<span class="n">s_tmf</span> <span class="o">=</span> <span class="n">create_seasonal_factors</span><span class="p">(</span><span class="n">invert</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">s_vbox</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="mi">344</span><span class="p">,</span> <span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="mi">344</span><span class="p">,</span> <span class="s1">&#39;boxf&#39;</span><span class="p">:</span> <span class="n">s_tmf</span><span class="p">}</span>
+<span class="n">s_params</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">w_params</span><span class="p">)</span>
+<span class="n">s_params</span><span class="p">[</span><span class="s1">&#39;vboxes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_vbox</span>
 </pre></div>
 </div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<p>We ran 50 simulations of 3 scenarios with the outcomes below.</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">Winter<br>Events<br>$R_0$ > 0</th><th class="results-table" style="text-align: center;">Summer<br>Events<br>$R_0$ > 0</th><th class="results-table" style="text-align: center;">Aseasonal<br>Events<br>$R_0$ > 0</th></tr></thead><tbody><tr><td class="results-table" style="text-align: left;">n, $R_0$ > 0</td><td class="results-table" style="text-align: center;">20</td><td class="results-table" style="text-align: center;">0</td><td class="results-table" style="text-align: center;">8</td></tr><tr><td class="results-table" style="text-align: left;">n</td><td class="results-table" style="text-align: center;">50</td><td class="results-table" style="text-align: center;">50</td><td class="results-table" style="text-align: center;">50</td></tr><tr><td class="results-table" style="text-align: left;">Peak</td><td class="results-table" style="text-align: center;">52.1%</td><td class="results-table" style="text-align: center;">nan%</td><td class="results-table" style="text-align: center;">36.0%</td></tr><tr><td class="results-table" style="text-align: left;">HIT</td><td class="results-table" style="text-align: center;">57.9%</td><td class="results-table" style="text-align: center;">nan%</td><td class="results-table" style="text-align: center;">42.3%</td></tr><tr><td class="results-table" style="text-align: left;">Total</td><td class="results-table" style="text-align: center;">65.7%</td><td class="results-table" style="text-align: center;">nan%</td><td class="results-table" style="text-align: center;">53.6%</td></tr><tr><td class="results-table" style="text-align: left;">Fatalities</td><td class="results-table" style="text-align: center;">0.40%</td><td class="results-table" style="text-align: center;">nan%</td><td class="results-table" style="text-align: center;">0.34%</td></tr><tr><td class="results-table" style="text-align: left;">%>70</td><td class="results-table" style="text-align: center;">81.2%</td><td class="results-table" style="text-align: center;">0.0%</td><td class="results-table" style="text-align: center;">74.6%</td></tr><tr><td class="results-table" style="text-align: left;">IFR</td><td class="results-table" style="text-align: center;">0.61%</td><td class="results-table" style="text-align: center;">nan%</td><td class="results-table" style="text-align: center;">0.63%</td></tr><tr><td class="results-table" style="text-align: left;">Days to Peak</td><td class="results-table" style="text-align: center;">62</td><td class="results-table" style="text-align: center;">nan</td><td class="results-table" style="text-align: center;">71</td></tr></tbody></table></div>
+</div>
+<p>As expected, the Winter Start scenario resulted in larger spread and faster peak. Less expected, the Summer Start scenario resulted in <em>exactly ZERO</em> outbreaks. The seasonal factors and the concentrated contacts thwarted spread in every simulation.</p>
+<p>Below we show the animation for the Winter Start scenario.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="o">**</span><span class="n">w_params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
 </pre></div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="text-align: center">
+    <video width='900px' height='376.56903765690373px'
+    src="https://storage.googleapis.com/rknotvids/seasonal/eve_winter_peaks.mp4" controls>Video Failed to Load</video>
+</div>
+<p></p></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="Borders">
+<h2>Borders<a class="headerlink" href="#Borders" title="Permalink to this headline">¶</a></h2>
+<p>We can see the impact of seasonal factors most clearly when they are employed in separate jurisidctions.</p>
+<p>Here we will implement a single scenario based the <a class="reference internal" href="multi.html#Borders"><span class="std std-ref">Borders scenario</span></a> with each state having differing seasonal factors. The West State will have Winter Start seasonal factor and the East State will have Summer Start seasonal factors. This is analogous, say, to northern US states versus souther US states during the COVID19 outbreak.</p>
+<p><em>Remember this scenario does</em> <span class="math notranslate nohighlight">\(\underline{not}\)</span> <em>have mixing between the two regions.</em></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">slug</span> <span class="o">=</span> <span class="s1">&#39;events&#39;</span>
-<span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;vids/seasonality&#39;</span>
-<span class="k">if</span> <span class="kc">False</span><span class="p">:</span>
-    <span class="n">chart_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">reso_format</span><span class="o">=</span><span class="s1">&#39;web&#39;</span><span class="p">,</span> <span class="n">dotsize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span></span><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 
-    <span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span>
-        <span class="n">sim</span><span class="p">,</span> <span class="n">yscale</span><span class="o">=</span><span class="s1">&#39;tot&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show_restricted</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">chart_params</span>
-    <span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;tests&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s1">_peaks.mp4&#39;</span><span class="p">))</span>
+<span class="kn">from</span> <span class="nn">rknot</span> <span class="kn">import</span> <span class="n">Sim</span><span class="p">,</span> <span class="n">Chart</span>
+<span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Restriction</span><span class="p">,</span> <span class="n">Quarantine</span>
+<span class="kn">from</span> <span class="nn">rknot.dots.fhutch</span> <span class="kn">import</span> <span class="n">tmr</span>
+<span class="kn">from</span> <span class="nn">rknot.sims</span> <span class="kn">import</span> <span class="n">us_w_load_multi_8g</span>
+<span class="kn">from</span> <span class="nn">rknot.space</span> <span class="kn">import</span> <span class="n">create_seasonal_factors</span>
+
+<span class="n">w_tmf</span> <span class="o">=</span> <span class="n">create_seasonal_factors</span><span class="p">()</span>
+<span class="n">wbox</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;W Main&#39;</span><span class="p">,</span> <span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="mi">344</span><span class="p">,</span> <span class="s1">&#39;boxf&#39;</span><span class="p">:</span> <span class="n">w_tmf</span><span class="p">}</span>
+
+<span class="n">e_tmf</span> <span class="o">=</span> <span class="n">create_seasonal_factors</span><span class="p">(</span><span class="n">invert</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ebox</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;E Main&#39;</span><span class="p">,</span> <span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="mi">344</span><span class="p">,</span> <span class="s1">&#39;boxf&#39;</span><span class="p">:</span> <span class="n">e_tmf</span><span class="p">}</span>
+
+
+<span class="n">vboxes</span> <span class="o">=</span> <span class="p">[</span><span class="n">wbox</span><span class="p">,</span> <span class="n">ebox</span><span class="p">]</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">us_w_load_multi_8g</span><span class="o">.</span><span class="n">params_borders</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;vboxes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vboxes</span>
 </pre></div>
 </div>
 </div>
+<p>Below are 50 simulations of the seasonal scenario (with two regions wiht differing seasonal factors) and the aseasonal scenario.</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">Seasonal<br>Borders<br>$R_0$ > 0</th><th class="results-table" style="text-align: center;">Aseasonal<br>Borders<br>$R_0$ > 0</th></tr></thead><tbody><tr><td class="results-table" style="text-align: left;">n, $R_0$ > 0</td><td class="results-table" style="text-align: center;">20</td><td class="results-table" style="text-align: center;">28</td></tr><tr><td class="results-table" style="text-align: left;">n</td><td class="results-table" style="text-align: center;">50</td><td class="results-table" style="text-align: center;">50</td></tr><tr><td class="results-table" style="text-align: left;">Peak</td><td class="results-table" style="text-align: center;">26.6%</td><td class="results-table" style="text-align: center;">23.5%</td></tr><tr><td class="results-table" style="text-align: left;">HIT</td><td class="results-table" style="text-align: center;">29.6%</td><td class="results-table" style="text-align: center;">38.0%</td></tr><tr><td class="results-table" style="text-align: left;">Total</td><td class="results-table" style="text-align: center;">33.3%</td><td class="results-table" style="text-align: center;">53.3%</td></tr><tr><td class="results-table" style="text-align: left;">Fatalities</td><td class="results-table" style="text-align: center;">0.20%</td><td class="results-table" style="text-align: center;">0.32%</td></tr><tr><td class="results-table" style="text-align: left;">%>70</td><td class="results-table" style="text-align: center;">79.7%</td><td class="results-table" style="text-align: center;">79.1%</td></tr><tr><td class="results-table" style="text-align: left;">IFR</td><td class="results-table" style="text-align: center;">0.60%</td><td class="results-table" style="text-align: center;">0.60%</td></tr><tr><td class="results-table" style="text-align: left;">Days to Peak</td><td class="results-table" style="text-align: center;">62</td><td class="results-table" style="text-align: center;">95</td></tr></tbody></table></div>
+</div>
+<p>The seasonal scenario typically results in a smaller outbreak, with the peak occuring much earlier. More interesting than the average data, however, is the split among the two regions in the seasonal scenario.</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/seasonal_58_0.png" src="_images/seasonal_58_0.png" />
+</div>
+</div>
+<p>Above we see that not a single seasonal simulation ended with HIT &gt; 40%. This suggests that only one region experienced outbreaks in these simulations. Below we can see this is in fact the case.</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div class="row" style="width=100%; display: flex; align-items: center; justify-content: center;"><div class="column" style="flex: 33.33%"><img src="https://storage.googleapis.com/rknotvids/seasonal/imgs/bord_seasonal_peakpie.png" style="width:100%"></div><div class="column" style="flex: 33.33%;"><table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">Nil <br> Peak</th><th class="results-table" style="text-align: center;">West <br> Peak</th><th class="results-table" style="text-align: center;">East <br> Peak</th><th class="results-table" style="text-align: center;">Double <br> Peak</th></tr></thead><tbody><tr><td class="results-table">Number of <br>Occurences<td class="results-table" style="text-align: center;">30</td><td class="results-table" style="text-align: center;">20</td><td class="results-table" style="text-align: center;">0</td><td class="results-table" style="text-align: center;">0</td></tr></tbody></table></div></div></div>
+</div>
+<p>In all 20 instances of an outbreak, the outbreak occured in the West State, where the outbreak began during the Winter. The East state had <em>zero</em> outbreaks across the 50 simulations.</p>
+<p>We can see a sample simulation below:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
 <span class="kn">from</span> <span class="nn">rknot.notebook</span> <span class="kn">import</span> <span class="n">animHTML</span>
 
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">animHTML</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;seasonality/</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">animHTML</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;seasonal/</span><span class="si">{</span><span class="n">slugs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">_west_tot&#39;</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -860,52 +906,108 @@ array([[142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142,
 <div class="output_area rendered_html docutils container">
 <div style="text-align: center">
     <video width='900px' height='376.56903765690373px'
-    src="https://storage.googleapis.com/rknotvids/seasonality/events.mp4" controls>Video Failed to Load</video>
+    src="https://storage.googleapis.com/rknotvids/seasonal/bord_seasonal_west_tot.mp4" controls>Video Failed to Load</video>
 </div>
 <p></p></div>
 </div>
+</div>
+<div class="section" id="Borders-w-Crossing">
+<h2>Borders w Crossing<a class="headerlink" href="#Borders-w-Crossing" title="Permalink to this headline">¶</a></h2>
+<p>Finally, we can see how mixing between our two regions above may further impact spread. This scenario will build on the <a class="reference internal" href="multi.html#Crossings-with-Event-Access"><span class="std std-ref">Border Crossing scenario</span></a>, allowing travel between West and East States and a regular basis.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">inv_tmf</span> <span class="o">=</span> <span class="n">create_seasonal_factors</span><span class="p">(</span><span class="n">invert</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">inv_vbox</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="mi">344</span><span class="p">,</span> <span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="mi">344</span><span class="p">,</span> <span class="s1">&#39;boxf&#39;</span><span class="p">:</span> <span class="n">inv_tmf</span><span class="p">}</span>
-<span class="n">inv_params</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-<span class="n">inv_params</span><span class="p">[</span><span class="s1">&#39;vboxes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">inv_vbox</span>
+<span></span><span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Travel</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+
+<span class="kn">from</span> <span class="nn">rknot</span> <span class="kn">import</span> <span class="n">Sim</span><span class="p">,</span> <span class="n">Chart</span>
+<span class="kn">from</span> <span class="nn">rknot.events</span> <span class="kn">import</span> <span class="n">Restriction</span><span class="p">,</span> <span class="n">Quarantine</span>
+<span class="kn">from</span> <span class="nn">rknot.dots.fhutch</span> <span class="kn">import</span> <span class="n">tmr</span>
+<span class="kn">from</span> <span class="nn">rknot.sims</span> <span class="kn">import</span> <span class="n">us_w_load_multi_8g</span>
+<span class="kn">from</span> <span class="nn">rknot.notebook</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">rknot.space</span> <span class="kn">import</span> <span class="n">create_seasonal_factors</span>
+
+<span class="n">modulereload</span><span class="p">(</span><span class="n">us_w_load_multi_8g</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">us_w_load_multi_8g</span><span class="o">.</span><span class="n">params_borders</span>
+
+<span class="c1"># Randomize location of events</span>
+<span class="n">n_cross</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_cross</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_cross</span><span class="p">)</span>
+<span class="n">w_locs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">74</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_cross</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_cross</span><span class="p">)</span>
+<span class="n">e_locs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">crosses</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_cross</span><span class="p">):</span>
+    <span class="n">crosses</span> <span class="o">+=</span> <span class="p">[</span><span class="n">Travel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;WtoE_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="n">e_locs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">1</span>
+    <span class="p">)]</span>
+    <span class="n">crosses</span> <span class="o">+=</span> <span class="p">[</span><span class="n">Travel</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;EtoW_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="n">w_locs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">start_tick</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">recurring</span><span class="o">=</span><span class="mi">1</span>
+    <span class="p">)]</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;events&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">crosses</span>
+
+<span class="n">w_tmf</span> <span class="o">=</span> <span class="n">create_seasonal_factors</span><span class="p">()</span>
+<span class="n">wbox</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;W Main&#39;</span><span class="p">,</span> <span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="mi">344</span><span class="p">,</span> <span class="s1">&#39;boxf&#39;</span><span class="p">:</span> <span class="n">w_tmf</span><span class="p">}</span>
+<span class="n">e_tmf</span> <span class="o">=</span> <span class="n">create_seasonal_factors</span><span class="p">(</span><span class="n">invert</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ebox</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;E Main&#39;</span><span class="p">,</span> <span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="mi">344</span><span class="p">,</span> <span class="s1">&#39;boxf&#39;</span><span class="p">:</span> <span class="n">e_tmf</span><span class="p">}</span>
+<span class="n">vboxes</span> <span class="o">=</span> <span class="p">[</span><span class="n">wbox</span><span class="p">,</span> <span class="n">ebox</span><span class="p">]</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;vboxes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vboxes</span>
 </pre></div>
 </div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="o">**</span><span class="n">inv_params</span><span class="p">)</span>
+<p>The results of 50 simulations are shown below:</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">Crossing<br>Seasonal<br>$R_0$ > 0</th><th class="results-table" style="text-align: center;">Crossing<br>Aseasonal<br>$R_0$ > 0</th></tr></thead><tbody><tr><td class="results-table" style="text-align: left;">n, $R_0$ > 0</td><td class="results-table" style="text-align: center;">25</td><td class="results-table" style="text-align: center;">21</td></tr><tr><td class="results-table" style="text-align: left;">n</td><td class="results-table" style="text-align: center;">50</td><td class="results-table" style="text-align: center;">52</td></tr><tr><td class="results-table" style="text-align: left;">Peak</td><td class="results-table" style="text-align: center;">25.3%</td><td class="results-table" style="text-align: center;">23.4%</td></tr><tr><td class="results-table" style="text-align: left;">HIT</td><td class="results-table" style="text-align: center;">28.5%</td><td class="results-table" style="text-align: center;">35.6%</td></tr><tr><td class="results-table" style="text-align: left;">Total</td><td class="results-table" style="text-align: center;">38.4%</td><td class="results-table" style="text-align: center;">51.8%</td></tr><tr><td class="results-table" style="text-align: left;">Fatalities</td><td class="results-table" style="text-align: center;">0.24%</td><td class="results-table" style="text-align: center;">0.33%</td></tr><tr><td class="results-table" style="text-align: left;">%>70</td><td class="results-table" style="text-align: center;">78.1%</td><td class="results-table" style="text-align: center;">75.8%</td></tr><tr><td class="results-table" style="text-align: left;">IFR</td><td class="results-table" style="text-align: center;">0.63%</td><td class="results-table" style="text-align: center;">0.64%</td></tr><tr><td class="results-table" style="text-align: left;">Days to Peak</td><td class="results-table" style="text-align: center;">63</td><td class="results-table" style="text-align: center;">86</td></tr></tbody></table></div>
+</div>
+<p>Again, the seasonsal scenario results in fewer infections in a shorter time frame.</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/seasonal_72_0.png" src="_images/seasonal_72_0.png" />
+</div>
+</div>
+<p>In contrast with the prior scenario (which did not allow any travel), there are now several simulations with HIT &gt; 60%, suggesting outbreaks occurred in both states in some instances.</p>
+<p>Below we show region comparison for both the seasonal and aseasonal outcomes.</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div class="row" style="width=100%; display: flex; align-items: center; justify-content: center;"><div class="column" style="flex: 33.33%"><img src="https://storage.googleapis.com/rknotvids/seasonal/imgs/cross_seasonal_peakpie.png" style="width:100%"></div><div class="column" style="flex: 33.33%;"><table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">Nil <br> Peak</th><th class="results-table" style="text-align: center;">West <br> Peak</th><th class="results-table" style="text-align: center;">East <br> Peak</th><th class="results-table" style="text-align: center;">Double <br> Peak</th></tr></thead><tbody><tr><td class="results-table">Number of <br>Occurences<td class="results-table" style="text-align: center;">25</td><td class="results-table" style="text-align: center;">15</td><td class="results-table" style="text-align: center;">2</td><td class="results-table" style="text-align: center;">8</td></tr></tbody></table></div></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div class="row" style="width=100%; display: flex; align-items: center; justify-content: center;"><div class="column" style="flex: 33.33%"><img src="https://storage.googleapis.com/rknotvids/seasonal/imgs/cross_aseasonal_peakpie.png" style="width:100%"></div><div class="column" style="flex: 33.33%;"><table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">Nil <br> Peak</th><th class="results-table" style="text-align: center;">West <br> Peak</th><th class="results-table" style="text-align: center;">East <br> Peak</th><th class="results-table" style="text-align: center;">Double <br> Peak</th></tr></thead><tbody><tr><td class="results-table">Number of <br>Occurences<td class="results-table" style="text-align: center;">31</td><td class="results-table" style="text-align: center;">0</td><td class="results-table" style="text-align: center;">1</td><td class="results-table" style="text-align: center;">20</td></tr></tbody></table></div></div></div>
+</div>
+<p>Above, we can see that, despite the significant mixing, the East State is still fairly protected from an outbreak due to its lower seasonal factors at the early stages of the outbreak. And this results in much better outcomes for the East State.</p>
+<p>We can see this even more clearly in the chart below. Note that in only 1 instance did the East State have an outbreak while the West State did not.</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/seasonal_80_0.png" src="_images/seasonal_80_0.png" />
+</div>
+</div>
+<p>Below we see sample simulations for both a single, West State peak and peaks in both regions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Sim</span><span class="p">(</span><span class="o">**</span><span class="n">w_params</span><span class="p">)</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">()</span>
 </pre></div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">slug_inv</span> <span class="o">=</span> <span class="s1">&#39;events_inv&#39;</span>
-<span class="k">if</span> <span class="kc">False</span><span class="p">:</span>
-    <span class="n">chart_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">reso_format</span><span class="o">=</span><span class="s1">&#39;web&#39;</span><span class="p">,</span> <span class="n">dotsize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-
-    <span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">(</span>
-        <span class="n">sim</span><span class="p">,</span> <span class="n">yscale</span><span class="o">=</span><span class="s1">&#39;tot&#39;</span><span class="p">,</span> <span class="n">show_intro</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show_restricted</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">chart_params</span>
-    <span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;tests&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">slug_inv</span><span class="si">}</span><span class="s1">_peaks.mp4&#39;</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
-<span class="kn">from</span> <span class="nn">rknot.notebook</span> <span class="kn">import</span> <span class="n">animHTML</span>
-
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">animHTML</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;seasonality/</span><span class="si">{</span><span class="n">slug_inv</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)))</span>
-</pre></div>
-</div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -913,74 +1015,19 @@ array([[142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142, 142,
 <div class="output_area rendered_html docutils container">
 <div style="text-align: center">
     <video width='900px' height='376.56903765690373px'
-    src="https://storage.googleapis.com/rknotvids/seasonality/events_inv.mp4" controls>Video Failed to Load</video>
+    src="https://storage.googleapis.com/rknotvids/seasonal/cross_seasonal_double_peaks.mp4" controls>Video Failed to Load</video>
 </div>
 <p></p></div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">if</span> <span class="kc">False</span><span class="p">:</span>
-    <span class="n">sims</span> <span class="o">=</span> <span class="n">pickloop</span><span class="p">(</span>
-        <span class="n">n</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">sterile</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="s1">&#39;slug&#39;</span><span class="p">:</span> <span class="n">slug</span><span class="p">},</span>
-        <span class="o">**</span><span class="n">params</span>
-    <span class="p">)</span>
-    <span class="n">sims</span> <span class="o">=</span> <span class="n">pickloop</span><span class="p">(</span>
-        <span class="n">n</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">sterile</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="s1">&#39;slug&#39;</span><span class="p">:</span> <span class="n">slug_inv</span><span class="p">},</span>
-        <span class="o">**</span><span class="n">inv_params</span>
-    <span class="p">)</span>
-    <span class="n">flat_vbox</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="mi">344</span><span class="p">,</span> <span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="mi">344</span><span class="p">}</span>
-    <span class="n">flat_params</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;groups&#39;</span><span class="p">:</span> <span class="n">groups</span><span class="p">,</span> <span class="s1">&#39;density&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s1">&#39;days&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">,</span> <span class="s1">&#39;tmr_curve&#39;</span><span class="p">:</span> <span class="n">tmr</span><span class="p">,</span>
-        <span class="s1">&#39;vboxes&#39;</span><span class="p">:</span> <span class="n">flat_vbox</span><span class="p">,</span> <span class="s1">&#39;events&#39;</span><span class="p">:</span> <span class="n">events_loc</span><span class="p">,</span>
-        <span class="s1">&#39;rsxns&#39;</span><span class="p">:</span> <span class="n">rsxns</span><span class="p">,</span>
-    <span class="p">}</span>
-    <span class="n">sims</span> <span class="o">=</span> <span class="n">pickloop</span><span class="p">(</span>
-        <span class="n">n</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">sterile</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="s1">&#39;slug&#39;</span><span class="p">:</span> <span class="s1">&#39;events_flat&#39;</span><span class="p">},</span>
-        <span class="o">**</span><span class="n">flat_params</span>
-    <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">slugs</span> <span class="o">=</span> <span class="p">[</span><span class="n">slug</span><span class="p">,</span> <span class="n">slug_inv</span><span class="p">,</span> <span class="s1">&#39;events_flat&#39;</span><span class="p">]</span>
-<span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;sims&#39;</span><span class="p">,</span> <span class="n">s</span> <span class="o">+</span> <span class="s1">&#39;-pickled&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">slugs</span><span class="p">]</span>
-<span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
-    <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">RuntimeWarning</span><span class="p">)</span>
-    <span class="n">args</span><span class="p">,</span> <span class="n">sizes</span><span class="p">,</span> <span class="n">sims</span> <span class="o">=</span> <span class="n">curve_table_inputs</span><span class="p">(</span><span class="o">*</span><span class="n">files</span><span class="p">,</span> <span class="n">sims_for_each</span><span class="o">=</span><span class="p">[])</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-100%|██████████| 3/3 [00:31&lt;00:00, 10.39s/it]
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">headers</span> <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;Winter&lt;br&gt;$R_0$ &gt; 0&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;Summer&lt;br&gt;$R_0$&#39;</span><span class="p">,</span> <span class="s1">&#39;Aseasonal&lt;br&gt;$R_0$&#39;</span><span class="p">]</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">curve_table</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">sizes</span><span class="p">)))</span>
-</pre></div>
-</div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-<table class="results-table"><thead><tr><th class="results-table"></th><th class="results-table" style="text-align: center;">Winter<br>$R_0$ > 0</th><th class="results-table" style="text-align: center;">Summer<br>$R_0$</th><th class="results-table" style="text-align: center;">Aseasonal<br>$R_0$</th></tr></thead><tbody><tr><td class="results-table" style="text-align: left;">n, $R_0$ > 0</td><td class="results-table" style="text-align: center;">16</td><td class="results-table" style="text-align: center;">3</td><td class="results-table" style="text-align: center;">16</td></tr><tr><td class="results-table" style="text-align: left;">n</td><td class="results-table" style="text-align: center;">50</td><td class="results-table" style="text-align: center;">50</td><td class="results-table" style="text-align: center;">50</td></tr><tr><td class="results-table" style="text-align: left;">Peak</td><td class="results-table" style="text-align: center;">50.6%</td><td class="results-table" style="text-align: center;">2.3%</td><td class="results-table" style="text-align: center;">33.1%</td></tr><tr><td class="results-table" style="text-align: left;">HIT</td><td class="results-table" style="text-align: center;">56.3%</td><td class="results-table" style="text-align: center;">3.2%</td><td class="results-table" style="text-align: center;">40.8%</td></tr><tr><td class="results-table" style="text-align: left;">Total</td><td class="results-table" style="text-align: center;">64.7%</td><td class="results-table" style="text-align: center;">3.6%</td><td class="results-table" style="text-align: center;">52.8%</td></tr><tr><td class="results-table" style="text-align: left;">Fatalities</td><td class="results-table" style="text-align: center;">0.39%</td><td class="results-table" style="text-align: center;">0.02%</td><td class="results-table" style="text-align: center;">0.35%</td></tr><tr><td class="results-table" style="text-align: left;">%>70</td><td class="results-table" style="text-align: center;">78.8%</td><td class="results-table" style="text-align: center;">53.3%</td><td class="results-table" style="text-align: center;">73.6%</td></tr><tr><td class="results-table" style="text-align: left;">IFR</td><td class="results-table" style="text-align: center;">0.60%</td><td class="results-table" style="text-align: center;">0.45%</td><td class="results-table" style="text-align: center;">0.66%</td></tr><tr><td class="results-table" style="text-align: left;">Days to Peak</td><td class="results-table" style="text-align: center;">62</td><td class="results-table" style="text-align: center;">51</td><td class="results-table" style="text-align: center;">69</td></tr></tbody></table></div>
+<div style="text-align: center">
+    <video width='900px' height='376.56903765690373px'
+    src="https://storage.googleapis.com/rknotvids/seasonal/cross_seasonal_single_peaks.mp4" controls>Video Failed to Load</video>
+</div>
+<p></p></div>
 </div>
 </div>
 </div>
